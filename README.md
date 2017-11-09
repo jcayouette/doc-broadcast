@@ -1,2 +1,2 @@
 # doc-broadcast
-Publishes Documentation Sources from Remote Repository Branches to gh-pages
+Publishes documentation sources from remote repository branches to a local gh-pages branch.
