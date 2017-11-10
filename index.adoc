@@ -1,3 +1,6 @@
+---
+permalink: index.html
+---
 = Congratulations!
 :showtitle:
 :page-title: Jekyll AsciiDoc Quickstart
@@ -65,9 +68,8 @@ print "\n"
 
 === Update Look and feel
 
-The layout provided with the https://github.com/asciidoctor/jekyll-asciidoc-quickstart[Jekyll AsciiDoc Quickstart] project is based on http://foundation.zurb.com[Foundation], a responsive design css framework. You're free to update the layout by editing the `_layouts/default.html` file and css under the `css` directory.
+The layout provided in the https://github.com/jcayouette/doc-broadcast[Documentation Broadcast] project is based on http://getbootstrap.com/[Bootstrap v4], a responsive design css framework.
 
-//This blog layout is based on the http://foundation.zurb.com/templates-previews-sites-f6/blog.html[Blog template].
 
 === Reference documentation
 

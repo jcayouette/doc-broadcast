@@ -6,11 +6,29 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - Rakefile
+  - .idea/
+
 asciidoc: {}
+
 asciidoctor:
-  base_dir: root
+  base_dir: doc-broadcast/
   safe: unsafe
   attributes:
     - idseparator=_
-    - source-highlighter=coderay
+    - source-highlighter=highlightjs
     - icons=font
+
+
+# Add your product repository here. E.g < suse/doc-susemanager >
+repository: jcayouette/doc-broadcast
+
+# If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch"
+github_editme_path: jcayouette/doc-broadcast/tree/master
+
+# Preview server for test environment
+host: 0.0.0.0
+# Port for test environment
+port: 4000
+
+
+
