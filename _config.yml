@@ -8,7 +8,7 @@ exclude:
   - Rakefile
 asciidoc: {}
 asciidoctor:
-  base_dir: :docdir
+  base_dir: root
   safe: unsafe
   attributes:
     - idseparator=_
