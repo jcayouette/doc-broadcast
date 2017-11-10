@@ -28,6 +28,36 @@ To display a list of posts, use Jekyll syntax similar to the following:
 {% endfor %}
 ----
 
+[source, python]
+----
+friends = ['john', 'pat', 'gary', 'michael']
+for i, name in enumerate(friends):
+    print "iteration {iteration} is {name}".format(iteration=i, name=name)
+----
+
+[source, javascript]
+----
+function myFunction(name,job) {
+    document.getElementById("demo").innerHTML =
+    "Welcome " + name + ", the " + job + ".";
+}
+----
+
+
+[source, ruby]
+----
+# Some counting with a while.
+a = 0
+while a < 15
+    print a, " "
+    if a == 10 then
+        print "made it to ten!!"
+    end
+    a = a + 1
+end
+print "\n"
+----
+
 === Update Look and feel
 
 The layout provided with the https://github.com/asciidoctor/jekyll-asciidoc-quickstart[Jekyll AsciiDoc Quickstart] project is based on http://foundation.zurb.com[Foundation], a responsive design css framework. You're free to update the layout by editing the `_layouts/default.html` file and css under the `css` directory.
