@@ -1,4 +1,4 @@
-title: SUSE Documentation Dev Environment
+title: SUSE Live Documentation
 description: This site was generated from automated tooling for SUSE documentation. In development.
 exclude:
   - LICENSE.adoc
@@ -11,7 +11,7 @@ exclude:
 asciidoc: {}
 
 asciidoctor:
-  base_dir: doc-broadcast/
+  base_dir: suse-publisher/
   safe: unsafe
   attributes:
     - idseparator=_
@@ -20,10 +20,10 @@ asciidoctor:
 
 
 # Add your product repository here. E.g < suse/doc-susemanager >
-repository: jcayouette/doc-broadcast
+repository: jcayouette/suse-publisher
 
 # If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch"
-github_editme_path: jcayouette/doc-broadcast/tree/master
+github_editme_path: jcayouette/suse-publisher/tree/master
 
 # Preview server for test environment
 host: 0.0.0.0
