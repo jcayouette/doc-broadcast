@@ -35,7 +35,7 @@
 
     <!-- github path -->
     
-    <a target="_blank" href="https://github.com/jcayouette/doc-broadcast/tree/master/index.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/jcayouette/doc-broadcast/tree/master/index.adoc" class="btn btn-primary" role="button"> Edit me</a>
 
     
 
@@ -75,38 +75,38 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{% for post in site.posts limit: 5 %}
-&lt;a href=".{{ post.url }}"&gt;{{ post.navtitle }}&lt;/a&gt;
+<pre class="CodeRay highlight"><code data-lang="html">{% for post in site.posts limit: 5 %}
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.{{ post.url }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{ post.navtitle }}<span class="tag">&lt;/a&gt;</span>
 {% endfor %}</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">friends = ['john', 'pat', 'gary', 'michael']
-for i, name in enumerate(friends):
-    print "iteration {iteration} is {name}".format(iteration=i, name=name)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="python">friends = [<span class="string"><span class="delimiter">'</span><span class="content">john</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">pat</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">gary</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">michael</span><span class="delimiter">'</span></span>]
+<span class="keyword">for</span> i, name <span class="keyword">in</span> <span class="predefined">enumerate</span>(friends):
+    <span class="keyword">print</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">iteration {iteration} is {name}</span><span class="delimiter">&quot;</span></span>.format(iteration=i, name=name)</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">function myFunction(name,job) {
-    document.getElementById("demo").innerHTML =
-    "Welcome " + name + ", the " + job + ".";
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">myFunction</span>(name,job) {
+    document.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">demo</span><span class="delimiter">&quot;</span></span>).innerHTML =
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">Welcome </span><span class="delimiter">&quot;</span></span> + name + <span class="string"><span class="delimiter">&quot;</span><span class="content">, the </span><span class="delimiter">&quot;</span></span> + job + <span class="string"><span class="delimiter">&quot;</span><span class="content">.</span><span class="delimiter">&quot;</span></span>;
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby"># Some counting with a while.
-a = 0
-while a &lt; 15
-    print a, " "
-    if a == 10 then
-        print "made it to ten!!"
-    end
-    a = a + 1
-end
-print "\n"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Some counting with a while.</span>
+a = <span class="integer">0</span>
+<span class="keyword">while</span> a &lt; <span class="integer">15</span>
+    print a, <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
+    <span class="keyword">if</span> a == <span class="integer">10</span> <span class="keyword">then</span>
+        print <span class="string"><span class="delimiter">&quot;</span><span class="content">made it to ten!!</span><span class="delimiter">&quot;</span></span>
+    <span class="keyword">end</span>
+    a = a + <span class="integer">1</span>
+<span class="keyword">end</span>
+print <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 </div>
