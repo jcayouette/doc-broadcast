@@ -3,30 +3,27 @@ permalink: index.html
 ---
 = Congratulations!
 :showtitle:
-:page-title: doc-broadcast
+:page-title: SUSE Live Documentation
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
-
-Yo this is a bad test
-
-You've successfully set up and deployed an Jekyll website powered by AsciiDoc using the https://github.com/asciidoctor/jekyll-asciidoc-quickstart[*Jekyll AsciiDoc Quickstart*] project. If everything is in order then changes to the AsciiDoc content will be automatically published to your `gh_pages` branch and hosted via Jekyll and Github.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor pellentesque egestas. Nullam ac libero eget tortor ultrices accumsan vitae eget lectus. Morbi non ante id lorem pulvinar ultrices ac eu massa. Nulla ac nisi laoreet, euismod dolor et, condimentum metus. Nullam condimentum blandit felis condimentum aliquam. Praesent ut nibh et odio blandit posuere. Fusce quis mauris porta, molestie arcu eu, dapibus nisl. Cras ullamcorper urna a bibendum accumsan. Donec faucibus mattis consequat. Vestibulum dignissim felis nibh, et laoreet quam imperdiet vitae. Nunc ornare fringilla enim quis congue. Suspendisse vulputate ullamcorper finibus. Suspendisse dapibus dignissim sem, et pharetra mi imperdiet vel.
 
 
-==  What do I do now?
+==  Get Started
 
 
-Now that you've set up your website to run with AsciiDoc, you have a ton of options available to you.
+Nam consequat dolor sed lectus faucibus, eu scelerisque mauris convallis. Sed nec massa quam. Nunc in urna non arcu feugiat auctor. Duis convallis nisi libero, eget dignissim velit varius eget. Sed molestie congue augue sed vestibulum.
 
 === Edit content
 
-Editing content is very simple. The easiest way to update your blog is to clone your repository, fire up your favorite text editor and run the content locally. To do this run the `jekyll serve` command and open a web browser to http://localhost:4000. Jekyll will automatically process and host changes to the content.
+Proin rhoncus quam purus, in gravida neque condimentum eget. Aenean eros massa, maximus at elit in, porttitor facilisis felis. Mauris sit amet dui quam. Nulla iaculis iaculis purus, non pretium orci gravida id. Sed sed dui in erat suscipit laoreet vitae et augue. Donec dictum augue quis tellus tristique pretium. Ut pulvinar mauris a dapibus viverra.
 
-You may also edit your content directly on Github. To do this, navigate the browser the file you wish to edit, click the pensil (edit) button in the upper right hand corner of the view and make your changes. When you're finished, commit your changes. This will trigger Travis to generate and publish a new website including your changes.
+Aliquam maximus blandit suscipit. Vestibulum aliquet elit non ipsum mollis laoreet. Nullam suscipit lorem at tincidunt efficitur. Quisque accumsan massa sit amet diam aliquet condimentum. Maecenas augue justo, consequat in tincidunt a, pulvinar sed nisi. Morbi odio nisi, tempor in laoreet at, fringilla quis arcu. Praesent efficitur malesuada massa in ultricies. Morbi fringilla venenatis lorem fringilla tincidunt. Praesent orci nisl, feugiat sit amet porttitor pellentesque, tristique id elit. Quisque elementum venenatis tincidunt. Curabitur posuere laoreet arcu eu sodales. Donec aliquam dignissim mi, ac porttitor tortor suscipit at. Curabitur consequat ligula et euismod efficitur. Vestibulum quis enim ut odio efficitur imperdiet.
 
-For blog posts, Jekyll will recognize files under the `_post` directory, parse the name and place it in the list of posts. These will show up under the `site.posts` variable.
+Aliquam eu lacus erat. Nam tempor ornare diam, vitae feugiat odio laoreet at. Suspendisse id commodo sem. Nullam varius sit amet magna id cursus. Phasellus placerat leo diam, in ultricies sapien viverra nec. In semper lectus id diam pulvinar gravida. Proin non urna nibh. Phasellus id volutpat mauris. Integer egestas magna non magna ullamcorper placerat a in tortor.
 
-To display a list of posts, use Jekyll syntax similar to the following:
+Syntax highlighting for various languages:
 
 
 [source, html]
@@ -68,7 +65,7 @@ print "\n"
 
 === Update Look and feel
 
-The layout provided in the https://github.com/jcayouette/doc-broadcast[Documentation Broadcast] project is based on http://getbootstrap.com/[Bootstrap v4], a responsive design css framework.
+The layout provided in the https://github.com/jcayouette/suse-publisher[SUSE Publisher] project utilizes the http://getbootstrap.com/[Bootstrap v4] responsive design css framework.
 
 
 === Reference documentation
