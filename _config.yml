@@ -1,5 +1,5 @@
 title: SUSE Live Documentation
-description: This site was generated from automated tooling for SUSE documentation. In development.
+description: This site generates SUSE documentation using jekyll, asciidoc, travis and github.
 exclude:
   - LICENSE.adoc
   - README.adoc
@@ -22,8 +22,25 @@ asciidoctor:
 # Add your product repository here. E.g < suse/doc-susemanager >
 repository: jcayouette/suse-publisher
 
-# If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch"
-github_editme_path: jcayouette/suse-publisher/tree/master
+# If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch or an external repository"
+edit_path_publisher: jcayouette/suse-publisher/tree/master
+
+# CAAS repository path
+edit_path_caas: jcayouette/example-caas-docs/tree/master
+
+# CLOUD repository path
+edit_path_cloud: jcayouette/example-cloud-docs/tree/master
+
+# STORAGE repository path
+edit_path_storage: jcayouette/example-storage-docs/tree/master
+
+# SLES repository path
+edit_path_sles: jcayouette/example-sles-docs/tree/master
+
+# MANAGER repository path
+edit_path_manager: jcayouette/example-manager-docs/tree/master
+
+
 
 # Preview server for test environment
 host: 0.0.0.0

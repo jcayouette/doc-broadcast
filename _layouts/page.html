@@ -9,8 +9,8 @@ layout: default
 <div class="post-content">
 
     <!-- github path -->
-    {% if site.github_editme_path %}
-    <a target="_blank" href="https://github.com/{{site.github_editme_path}}{% unless page.url contains "index.html" %}pages/{% endunless %}{{page.folder}}{{page.url | remove: ".html" | append: ".adoc"}}" class="btn btn-primary" role="button"> Edit me</a>
+    {% if site.edit_path_publisher %}
+    <a target="_blank" href="https://github.com/{{site.edit_path_publisher}}{% unless page.url contains "index.html" %}pages/{% endunless %}{{page.folder}}{{page.url | remove: ".html" | append: ".adoc"}}" class="btn btn-primary" role="button"> Edit me</a>
     {% endif %}
 
 
