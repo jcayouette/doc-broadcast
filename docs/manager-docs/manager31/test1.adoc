@@ -7,7 +7,7 @@ permalink: manager-index.html
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
-First Manager Test
+Second Manager Test
 
 Simple Test
 
