@@ -1,0 +1,25 @@
+---
+permalink: manager31-intro.html
+---
+= Congratulations its Building!
+:showtitle:
+:page-title: Introduction to SUSE Manager 3.1
+:page-description: A forkable blog-ready Jekyll site using AsciiDoc
+:sectanchors:
+
+Second Manager Test
+
+Simple Test
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor pellentesque egestas. Nullam ac libero eget tortor ultrices accumsan vitae eget lectus. Morbi non ante id lorem pulvinar ultrices ac eu massa. Nulla ac nisi laoreet, euismod dolor et, condimentum metus. Nullam condimentum blandit felis condimentum aliquam. Praesent ut nibh et odio blandit posuere. Fusce quis mauris porta, molestie arcu eu, dapibus nisl. Cras ullamcorper urna a bibendum accumsan. Donec faucibus mattis consequat. Vestibulum dignissim felis nibh, et laoreet quam imperdiet vitae. Nunc ornare fringilla enim quis congue. Suspendisse vulputate ullamcorper finibus. Suspendisse dapibus dignissim sem, et pharetra mi imperdiet vel.
+
+
+==  Get Started
+
+
+Nam consequat dolor sed lectus faucibus, eu scelerisque mauris convallis. Sed nec massa quam. Nunc in urna non arcu feugiat auctor. Duis convallis nisi libero, eget dignissim velit varius eget. Sed molestie congue augue sed vestibulum.
+
+=== Edit content
+
+Proin rhoncus quam purus, in gravida neque condimentum eget. Aenean eros massa, maximus at elit in, porttitor facilisis felis. Mauris sit amet dui quam. Nulla iaculis iaculis purus, non pretium orci gravida id. Sed sed dui in erat suscipit laoreet vitae et augue. Donec dictum augue quis tellus tristique pretium. Ut pulvinar mauris a dapibus viverra.
