@@ -7,6 +7,8 @@ permalink: sles-index.html
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
+Hello Andy from Germany! This is test 2
+
 Test for Multiple PRs, this is a SLES Accepted PR
 
 Simple Test
