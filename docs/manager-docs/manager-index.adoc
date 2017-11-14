@@ -3,7 +3,7 @@ permalink: manager-index.html
 ---
 = Congratulations its Building!
 :showtitle:
-:page-title: SUSE Manager Documentation
+:page-title: SUSE Manager Live Documentation
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
