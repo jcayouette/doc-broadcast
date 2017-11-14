@@ -7,7 +7,7 @@ permalink: sles-index.html
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
-First SLES Doc Test
+Test for Multiple PRs, this is a SLES Accepted PR
 
 Simple Test
 
