@@ -7,7 +7,6 @@ permalink: manager-index.html
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
 
-Hello Andy from Germany!
 
 Test with multiple PRs
 
