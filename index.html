@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SUSE Live Documentation</title>
+    <title>SUSE Live Documentation Alpha</title>
     <meta name="description" content="A forkable blog-ready Jekyll site using AsciiDoc">
     <meta name="author" content="Your name goes here">
     <meta name="copyright" content="Maybe consider a Creative Commons license">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
     <link rel="stylesheet" href="assets/css/coderay.css">
     <link rel="stylesheet" href="assets/css/asciidoctor.css">
     <link rel="stylesheet" href="assets/css/custom.css">
@@ -34,6 +34,7 @@
     <script src="js/toc.js"></script> -->
 </head>
 
+
 <body>
 <!-- Top most navbar -->
 
@@ -41,7 +42,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="post-header">
-    <h1 class="post-title-main">SUSE Live Documentation</h1>
+    <h1 class="post-title-main">SUSE Live Documentation Alpha</h1>
 </div>
 
 <div class="post-content">
@@ -58,11 +59,6 @@
 
     <!-- page content -->
     <h1>Congratulations!</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Another test</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -73,100 +69,123 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Test</p>
-</div>
-<div class="paragraph">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor pellentesque egestas. Nullam ac libero eget tortor ultrices accumsan vitae eget lectus. Morbi non ante id lorem pulvinar ultrices ac eu massa. Nulla ac nisi laoreet, euismod dolor et, condimentum metus. Nullam condimentum blandit felis condimentum aliquam. Praesent ut nibh et odio blandit posuere. Fusce quis mauris porta, molestie arcu eu, dapibus nisl. Cras ullamcorper urna a bibendum accumsan. Donec faucibus mattis consequat. Vestibulum dignissim felis nibh, et laoreet quam imperdiet vitae. Nunc ornare fringilla enim quis congue. Suspendisse vulputate ullamcorper finibus. Suspendisse dapibus dignissim sem, et pharetra mi imperdiet vel.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="get_started"><a class="anchor" href="#get_started"></a>Get Started</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Nam consequat dolor sed lectus faucibus, eu scelerisque mauris convallis. Sed nec massa quam. Nunc in urna non arcu feugiat auctor. Duis convallis nisi libero, eget dignissim velit varius eget. Sed molestie congue augue sed vestibulum.</p>
-</div>
-<div class="sect2">
-<h3 id="edit_content"><a class="anchor" href="#edit_content"></a>Edit content</h3>
-<div class="paragraph">
-<p>Proin rhoncus quam purus, in gravida neque condimentum eget. Aenean eros massa, maximus at elit in, porttitor facilisis felis. Mauris sit amet dui quam. Nulla iaculis iaculis purus, non pretium orci gravida id. Sed sed dui in erat suscipit laoreet vitae et augue. Donec dictum augue quis tellus tristique pretium. Ut pulvinar mauris a dapibus viverra.</p>
-</div>
-<div class="paragraph">
-<p>Aliquam maximus blandit suscipit. Vestibulum aliquet elit non ipsum mollis laoreet. Nullam suscipit lorem at tincidunt efficitur. Quisque accumsan massa sit amet diam aliquet condimentum. Maecenas augue justo, consequat in tincidunt a, pulvinar sed nisi. Morbi odio nisi, tempor in laoreet at, fringilla quis arcu. Praesent efficitur malesuada massa in ultricies. Morbi fringilla venenatis lorem fringilla tincidunt. Praesent orci nisl, feugiat sit amet porttitor pellentesque, tristique id elit. Quisque elementum venenatis tincidunt. Curabitur posuere laoreet arcu eu sodales. Donec aliquam dignissim mi, ac porttitor tortor suscipit at. Curabitur consequat ligula et euismod efficitur. Vestibulum quis enim ut odio efficitur imperdiet.</p>
-</div>
-<div class="paragraph">
-<p>Aliquam eu lacus erat. Nam tempor ornare diam, vitae feugiat odio laoreet at. Suspendisse id commodo sem. Nullam varius sit amet magna id cursus. Phasellus placerat leo diam, in ultricies sapien viverra nec. In semper lectus id diam pulvinar gravida. Proin non urna nibh. Phasellus id volutpat mauris. Integer egestas magna non magna ullamcorper placerat a in tortor.</p>
-</div>
-<div class="paragraph">
-<p>Syntax highlighting for various languages:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="html">{% for post in site.posts limit: 5 %}
-<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.{{ post.url }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{ post.navtitle }}<span class="tag">&lt;/a&gt;</span>
-{% endfor %}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="python">friends = [<span class="string"><span class="delimiter">'</span><span class="content">john</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">pat</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">gary</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">michael</span><span class="delimiter">'</span></span>]
-<span class="keyword">for</span> i, name <span class="keyword">in</span> <span class="predefined">enumerate</span>(friends):
-    <span class="keyword">print</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">iteration {iteration} is {name}</span><span class="delimiter">&quot;</span></span>.format(iteration=i, name=name)</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">myFunction</span>(name,job) {
-    document.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">demo</span><span class="delimiter">&quot;</span></span>).innerHTML =
-    <span class="string"><span class="delimiter">&quot;</span><span class="content">Welcome </span><span class="delimiter">&quot;</span></span> + name + <span class="string"><span class="delimiter">&quot;</span><span class="content">, the </span><span class="delimiter">&quot;</span></span> + job + <span class="string"><span class="delimiter">&quot;</span><span class="content">.</span><span class="delimiter">&quot;</span></span>;
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Some counting with a while.</span>
-a = <span class="integer">0</span>
-<span class="keyword">while</span> a &lt; <span class="integer">15</span>
-    print a, <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
-    <span class="keyword">if</span> a == <span class="integer">10</span> <span class="keyword">then</span>
-        print <span class="string"><span class="delimiter">&quot;</span><span class="content">made it to ten!!</span><span class="delimiter">&quot;</span></span>
-    <span class="keyword">end</span>
-    a = a + <span class="integer">1</span>
-<span class="keyword">end</span>
-print <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="update_look_and_feel"><a class="anchor" href="#update_look_and_feel"></a>Update Look and feel</h3>
-<div class="paragraph">
-<p>The layout provided in the <a href="https://github.com/jcayouette/suse-publisher">SUSE Publisher</a> project utilizes the <a href="http://getbootstrap.com/">Bootstrap v4</a> responsive design css framework.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="reference_documentation"><a class="anchor" href="#reference_documentation"></a>Reference documentation</h3>
-<div class="paragraph">
-<p>The following links will help with detailed explanations on Jekyll and AsciiDoc.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://jekyllrb.com">Jekyll</a></p>
-</li>
-<li>
-<p><a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">AsciiDoc Quick Reference</a></p>
-</li>
-<li>
-<p><a href="http://asciidoctor.org">Asciidoctor</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
 
 </div>
+    <section class="cards-section text-center">
+        <div class="container">
+            <h2 class="fp-intro-title">Getting started is easy!</h2>
+            <div class="fp-intro">
+                <p>Welcome to SUSE Live Documentation. Select a product to view its documentation. For parties interested in contributing to our documentation review our Contribution Guide. The documents contained on this site update a few minutes after a pull request has been accepted by our technical writers. Enjoy!</p>
+                <div class="cta-container">
+                    <a class="btn btn-primary btn-cta" href="http://themes.3rdwavemedia.com/" target="_blank"><i class="fa fa-cloud-download"></i> Contribution Guide</a>
+                </div><!--//cta-container-->
+            </div><!--//intro-->
+            <div id="cards-wrapper" class="cards-wrapper row">
+                <div class="item item-green col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><i class="fa fa-thumbs-o-up fa-4x intro"></i></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Best Practices</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="manager-index.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-pink item-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                          <!--  <span aria-hidden="true" class="icon icon_puzzle_alt"></span> -->
+                            <span><img src="assets/images/caas.svg" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE CaaS Platform</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="components.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-blue col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <!-- <span aria-hidden="true" class="icon icon_datareport_alt"></span> -->
+                            <span><img src="assets/images/ses.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Enterprise Storage</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="charts.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-purple col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/soc.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE OpenStack Cloud</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="faqs.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-primary col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/sles.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Server</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="showcase.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-orange col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/sled.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Desktop</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="license.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-orange col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/slepos.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Point of Service</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="license.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-orange col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/slepos.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Point of Service Image Server</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="license.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+                <div class="item item-orange col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/sles-sap.png" class="icon-frontpage"></span>
+                        </div><!--//icon-holder-->
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Server for SAP Applications</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation </p>
+                        <a class="link" href="license.html"><span></span></a>
+                    </div><!--//item-inner-->
+                </div><!--//item-->
+            </div><!--//cards-->
+
+        </div><!--//container-->
+    </section><!--//cards-section-->
 </div>
 
 

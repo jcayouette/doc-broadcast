@@ -13,3 +13,36 @@ a {
     background-color: #F7A3D5;
     border-color: #F7A3D5;
 }
+
+.icon-frontpage {
+    height: 80px;
+    width: 80px;
+}
+
+.item-inner {
+    background-color: #0D2C40 ;
+    border-radius: 3px;
+
+}
+
+.icon-holder {
+    background-color: #02D35F;
+    /*border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+
+.intro {
+    color:  white;
+    padding: 4px;
+
+}
+
+.fp-card-title {
+    color:   #A0FF5F;
+    margin: 6px;
+    padding: 24px;
+}
+
+.btn-cta {
+    margin: 40px;
+}
