@@ -5,7 +5,7 @@ permalink: index.html
 :layout: frontpage
 :showtitle:
 :page-title: SUSE Live Documentation Alpha
-:page-description: A forkable blog-ready Jekyll site using AsciiDoc
+:page-description: SUSE Manager Live Documents
 :sectanchors:
 
 
