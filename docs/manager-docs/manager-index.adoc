@@ -1,11 +1,14 @@
 ---
+layout: default
+title: SUSE Manager Live Docs
 permalink: manager-index.html
 ---
-= Congratulations its Building!
+= SUSE Manager Live Documentation
 :showtitle:
 :page-title: SUSE Manager Live Documentation
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
 :sectanchors:
+
 
 
 Test with multiple PRs
