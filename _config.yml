@@ -22,6 +22,10 @@ asciidoctor:
 # Add your product repository here. E.g < suse/doc-susemanager >
 repository: jcayouette/suse-publisher
 
+editme_links:
+  manager-docs: jcayouette/example-manager-docs/tree/master
+  sles-docs: jcayouette/example-sles-docs/tree/master
+
 # If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch or an external repository"
 edit_path_publisher: jcayouette/suse-publisher/tree/master
 
@@ -41,6 +45,7 @@ edit_path_sles: jcayouette/example-sles-docs/tree/master
 edit_path_manager: jcayouette/example-manager-docs/tree/master
 
 baseurl: ""
+slesurl: jcayouette/example-sles-docs/tree/master
 
 # Preview server for test environment
 host: 0.0.0.0

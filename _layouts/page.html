@@ -8,19 +8,16 @@ layout: frontpage
 
 <div class="post-content">
 
-    <!-- github path -->
-    {% if site.edit_path_publisher %}
-    <a target="_blank" href="https://github.com/{{site.edit_path_publisher}}{% unless page.url contains "index.html" %}pages/{% endunless %}{{page.folder}}{{page.url | remove: ".html" | append: ".adoc"}}" class="btn btn-primary" role="button"> Edit me</a>
+    <!-- HACK enough for the demo lol -->
+    {% if page.path contains 'manager-docs' %}
+      {% assign editme_link = 'manager-docs' %}
+    {% elsif page.path contains 'sles-docs' %}
+      {% assign editme_link = 'sles-docs' %}
     {% endif %}
 
-
-    <!-- gitlab path
-    {% if site.gitlab_editme_path %}
-
-    <a target="_blank" href="https://github.com/{{site.gitlab_editme_path}}{% unless page.url contains "index.html" %}pages/{% endunless %}{{page.folder}}{{page.url | remove: ".html" | append: ".md"}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-gitlab fa-lg"></i> Edit me</a>
-
+    {% if editme_link %}
+      <a target="_blank" href="https://github.com/{{site.editme_links[editme_link]}}/{{page.path}}" class="btn btn-primary" role="button"> Edit me</a>
     {% endif %}
- -->
 
     <!-- page content -->
     {{content}}
