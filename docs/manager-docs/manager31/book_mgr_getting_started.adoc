@@ -5,9 +5,8 @@
 :icons: font
 :experimental:
 
-:leveloffset: 1
-include::quickstart3_chap_install_overview.adoc[]
-:leveloffset: 0
+
+link:quickstart3_chap_install_overview.html[Installation Overview]
 
 :leveloffset: 1
 include::quickstart3_chap_suma_installation_jeos.adoc[]

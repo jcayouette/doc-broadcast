@@ -20,6 +20,7 @@ asciidoctor:
 
 
 # Add your product repository here. E.g < suse/doc-susemanager >
+
 repository: jcayouette/suse-publisher
 
 editme_links:
