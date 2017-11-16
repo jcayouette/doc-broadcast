@@ -1,7 +1,6 @@
 ---
 permalink: manager-index.html
 ---
-= SUSE Manager Live Documentation
 :layout: default
 :showtitle:
 :page-title: SUSE Manager Live Documentation
