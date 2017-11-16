@@ -1,7 +1,30 @@
+.header {
+    min-height: 400px;
+    background:#0D2C40;
+    background: url(/assets/images/office-space-14.jpg) no-repeat center center fixed;
+    background-size: cover;
+    z-index:-100;
+    padding-top: 20px;
+}
+
+.lead {
+    color:  white;
+    padding: 0px;
+
+}
+.header-bullets {
+    color:#FD9A2B ;
+}
+
+.suse-heading {
+    color:  #A0FF5F;
+}
+
 a {
     text-decoration:none;
 }
 /* test to force css */
+
 .btn-primary {
     color: #ffffff;
     background-color: #00B2E2;
@@ -44,6 +67,14 @@ a {
 
 }
 
+.intro-blerp {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.fp-intro-title {
+    color:#0D2C40;
+}
 .fp-card-title {
     color:   #A0FF5F;
     margin: 6px;
@@ -52,9 +83,15 @@ a {
 
 }
 
+.fp-intro {
+    padding-bottom: 30px;
+}
+
 .btn-cta {
     margin: 40px;
 }
+
+
 
 
 

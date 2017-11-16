@@ -1,17 +1,10 @@
 ---
+layout: frontpage
 permalink: index.html
 ---
-= Congratulations!
-:layout: frontpage
 :showtitle:
 :page-title: SUSE Live Documentation Alpha
 :page-description: SUSE Manager Live Documents
 :sectanchors:
 
 
-
-- link:manager-index.html[SUSE Manager Live Documentation]
-
-- link:sles-index.html[SLES Live Documentation]
-
-Test

@@ -4,13 +4,29 @@
 <!-- head -->
 {% include html-head.html %}
 
-
 <body>
-<!-- Top most navbar -->
-
 
 <!-- Page Content -->
 
+   <header class="header">
+       <div class="container header-image">
+           <div class="row header text-center">
+               <div class="col-md-12">
+                   <h1 class="suse-heading">SUSE Live Documentation</h1>
+
+                   <p class="lead"><i class="fa fa-dot-circle-o header-bullets" aria-hidden="true"></i>
+                        Write in AsciiDoc not XML</p>
+                   <p class="lead"> <i class="fa fa-dot-circle-o header-bullets" aria-hidden="true"></i>
+                       Up-to-Date in Minutes not Months</p>
+                   <p class="lead"><i class="fa fa-dot-circle-o header-bullets" aria-hidden="true"></i>
+                       Moderated by SUSE Technical Writers</p>
+
+
+                   <a class="btn btn-large btn-primary" href="#"><i class="fa fa-retweet" aria-hidden="true"></i> Process Overview</a>
+               </div>
+       </div>
+       </div>
+   </header>
 
 <div class="container">
     {{ content }}
@@ -18,9 +34,10 @@
         <div class="container">
             <h2 class="fp-intro-title">Getting started is easy!</h2>
             <div class="fp-intro">
-                <p>Welcome to SUSE Live Documentation. Select a product to view its documentation. For parties interested in contributing to our documentation review our Contribution Guide. The documents contained on this site update a few minutes after a pull request has been accepted by our technical writers. Enjoy!</p>
+                <p>Welcome to SUSE Live Documentation. Select a product to view its documentation.
+                If you wish to make a contribution, have a look at our contribution guide.</p>
                 <div class="cta-container">
-                    <a class="btn btn-primary btn-cta" href="http://themes.3rdwavemedia.com/" target="_blank"><i class="fa fa-cloud-download"></i> Contribution Guide</a>
+                    <a class="btn btn-primary btn-cta" href="#" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contribution Guide </a>
                 </div>
             </div>
 
@@ -28,14 +45,27 @@
                 <a href="manager-index.html"><div class="item item-green col-md-4 col-sm-6 col-xs-6">
                     <div class="item-inner">
                         <div class="icon-holder">
-                            <span><i class="fa fa-thumbs-o-up fa-4x intro"></i></span>
+                            <span><img src="assets/images/manager.png" class="icon-frontpage"></span>
                         </div>
-                        <h3 class="fp-card-title">SUSE Best Practices</h3>
+                        <h3 class="fp-card-title">SUSE Manager</h3>
                         <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
                         <p class="intro">Live Documentation</p>
+                        <!-- Add links to manager-index.html for each version of manager -->
                         <a class="link" href="docs/manager-docs/manager-index.html"><span></span></a>
                     </div>
                 </div></a>
+               <a href="sles-index.html"><div class="item item-primary col-md-4 col-sm-6 col-xs-6">
+                    <div class="item-inner">
+                        <div class="icon-holder">
+                            <span><img src="assets/images/sles.png" class="icon-frontpage"></span>
+                        </div>
+                        <h3 class="fp-card-title">SUSE Linux Enterprise Server</h3>
+                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
+                        <p class="intro">Live Documentation</p>
+                        <a class="link" href="showcase.html"><span></span></a>
+                    </div>
+                </div></a>
+
                 <a href="caas-index.html"> <div class="item item-pink item-2 col-md-4 col-sm-6 col-xs-6">
                     <div class="item-inner">
                         <div class="icon-holder">
@@ -69,17 +99,7 @@
                         <a class="link" href="faqs.html"><span></span></a>
                     </div>
                 </div>
-                <div class="item item-primary col-md-4 col-sm-6 col-xs-6">
-                    <div class="item-inner">
-                        <div class="icon-holder">
-                            <span><img src="assets/images/sles.png" class="icon-frontpage"></span>
-                        </div>
-                        <h3 class="fp-card-title">SUSE Linux Enterprise Server</h3>
-                        <i class="fa fa-heartbeat intro" aria-hidden="true"></i>
-                        <p class="intro">Live Documentation</p>
-                        <a class="link" href="showcase.html"><span></span></a>
-                    </div>
-                </div>
+
                 <div class="item item-orange col-md-4 col-sm-6 col-xs-6">
                     <div class="item-inner">
                         <div class="icon-holder">
