@@ -1,0 +1,10 @@
+---
+permalink: contribution.html
+---
+:layout: default
+:showtitle:
+:page-title: Contribution Process
+:page-description: SUSE Manager Documentation
+:sectanchors:
+
+image::assets/images/workflow.svg[Workflow Process]
