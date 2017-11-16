@@ -4,7 +4,7 @@ permalink: manager-index.html
 :layout: default
 :showtitle:
 :page-title: SUSE Manager Live Documentation
-:page-description: A forkable blog-ready Jekyll site using AsciiDoc
+:page-description: SUSE Manager Documentation
 :sectanchors:
 
 
