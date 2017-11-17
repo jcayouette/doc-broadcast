@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6290fda8-a0a8-4160-b696-70bb714f5cdb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/book_mgr_getting_started.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_installation_jeos.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_installation_sles12_sp1.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_keys_and_first_client.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_setup_with_yast.adoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/manager31-index.adoc" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/.test" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/manager-docs/manager31/book_mgr_getting_started.adoc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/manager-docs/manager31/manager31-intro.adoc" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/docs/manager-docs/manager31/quickstart3_chap_install_overview.adoc" afterPath="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_install_overview.adoc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_includes/html-head.html" afterPath="$PROJECT_DIR$/_includes/html-head.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/manager-docs/manager-index.adoc" afterPath="$PROJECT_DIR$/docs/manager-docs/manager-index.adoc" />
@@ -43,8 +32,8 @@
         <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager-index.adoc">
           <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="144">
-                <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <first_editor relative-caret-position="378">
+                <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -65,28 +54,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book_mgr_getting_started.adoc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/book_mgr_getting_started.adoc">
-          <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="270">
-                <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="44" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="quickstart3_chap_suma_salt_gs.adoc" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc">
-          <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="36">
-                <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="html-head.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_includes/html-head.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,11 +92,9 @@
         <option value="$PROJECT_DIR$/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/_layouts/frontpage.html" />
         <option value="$PROJECT_DIR$/docs/contribution.adoc" />
-        <option value="$PROJECT_DIR$/_includes/html-head.html" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/quickstart3_chap_install_overview.adoc" />
         <option value="$PROJECT_DIR$/_layouts/index-pages.html" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/manager31-index.adoc" />
-        <option value="$PROJECT_DIR$/docs/manager-docs/manager-index.adoc" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/book_mgr_getting_started.adoc" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_install_overview.adoc" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_installation_jeos.adoc" />
@@ -132,6 +103,8 @@
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_keys_and_first_client.adoc" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_setup_with_yast.adoc" />
         <option value="$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc" />
+        <option value="$PROJECT_DIR$/docs/manager-docs/manager-index.adoc" />
+        <option value="$PROJECT_DIR$/_includes/html-head.html" />
       </list>
     </option>
   </component>
@@ -174,6 +147,21 @@
             <path>
               <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
               <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
+              <item name="_includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
+              <item name="_layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -181,21 +169,6 @@
               <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="manager-docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="manager-docs" type="462c0819:PsiDirectoryNode" />
-              <item name="manager31" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suse-publisher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="suse-publisher" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="manager-docs" type="462c0819:PsiDirectoryNode" />
-              <item name="manager31" type="462c0819:PsiDirectoryNode" />
-              <item name="getting-started" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -251,12 +224,12 @@
       <workItem from="1510647918001" duration="2018000" />
       <workItem from="1510662279660" duration="24598000" />
       <workItem from="1510820370034" duration="23890000" />
-      <workItem from="1510914857927" duration="7729000" />
+      <workItem from="1510914857927" duration="8351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113801000" />
+    <option name="totallyTimeSpent" value="114423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="2560" height="1573" extended-state="6" />
@@ -267,7 +240,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25384617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="2010" y="1297" width="1717" height="904" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5426573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="2010" y="1297" width="1717" height="904" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -525,23 +498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager-index.adoc">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="144">
-            <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.adoc">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -579,33 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/html-head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/manager31-index.adoc">
-      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="324">
-            <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -665,6 +594,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="36">
+            <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/book_mgr_getting_started.adoc">
       <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
         <state split_layout="SPLIT">
@@ -676,14 +616,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc">
+    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager-index.adoc">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="36">
-            <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <first_editor relative-caret-position="378">
+            <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/manager-docs/manager31/manager31-index.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="324">
+            <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/html-head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
