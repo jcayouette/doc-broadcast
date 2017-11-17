@@ -8,7 +8,7 @@ permalink: quickstart3_chap_suma_installation_jeos.html
 :toc: left
 :icons: font
 :experimental:
-:sourcedir: .
+:sectanchors:
 
 [[_quickstart.sect.kvm.settings]]
 == Virtual Machine Manager (virt-manager) Settings
