@@ -14,4 +14,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor pellentes
 
 ==  SUSE Manager Versions
 
-- link:book_mgr_getting_started.html[SUSE Manager Server 3.1]
+- link:manager31-index.html[SUSE Manager Server 3.1]
