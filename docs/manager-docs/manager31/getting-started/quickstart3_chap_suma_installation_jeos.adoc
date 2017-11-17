@@ -1,0 +1,292 @@
+---
+permalink: quickstart3_chap_suma_installation_jeos.html
+---
+[[_sles.installation.within.kvm.jeos]]
+= JeOS Installation
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+[[_quickstart.sect.kvm.settings]]
+== Virtual Machine Manager (virt-manager) Settings
+
+.Version Information
+[NOTE]
+====
+&susemgr;
+ 3.1 was originally released as a SLES 12 SP2 extension.
+With the next maintenance update (2017), &susemgr;
+ 3.1 will be based on SLES 12 SP3 and it will support SLE 12 SP3 clients officially.
+In the following sections and chapters, it is highly recommended to use SLE 12 SP3 instead of SP2. 
+====
+
+
+This chapter provides the required (KVM) settings for installation of &sle;
+Just Enough Operating System (JeOS) 12 as the base for &susemgr;
+ 3.1.
+A kernel virtual machine (KVM) combined with Virtual Machine Manager (``virt-manager``) will be used as a sandbox for your first installation. 
+
+.&suse;Virtualization Guide
+[TIP]
+====
+For more information on virtualization, see https://www.suse.com/documentation/sles-12/singlehtml/book_virt/book_virt.html. 
+====
+
+
+Enter the following settings when creating a new virtual machine using ``virt-manager``. 
+
+[cols="1,1", options="header"]
+|===
+| 
+                             KVM Settings
+                        
+
+
+|
+
+Installation Method:
+|
+
+Import Existing Disk Image
+
+|
+
+OS:
+|
+
+Linux
+
+|
+
+Version:
+|``SLES12-SP2-JeOS-for-kvm-and-xen.x86_64-GM.qcow2``
+
+|
+
+Memory:
+|
+
+4096 MB
+
+|
+
+CPU's:
+|
+
+2
+
+|
+
+Storage Format:
+|
+
+`$$.$$qcow` 24 GB (Default) JeOS Root Partition 
+
+|
+
+Virtual Disks:
+
+VirtIO Disk 2
+
+VirtIO Disk 3
+
+VirtIO Disk 4
+|
+
+ 
+
+101 GB for [path]_/var/spacewalk_
+
+50 GB for [path]_/var/lib/pgsql_
+
+4 GB for swap
+
+|
+
+Name:
+|
+
+`example-server`
+
+|
+
+Network
+|
+
+Bridge `br0`
+|===
+
+.&suse;Virtualization Guide
+[TIP]
+====
+For more information on virtualization, see https://www.suse.com/documentation/sles-12/singlehtml/book_virt/book_virt.html. 
+====
+
+== JeOS KVM Settings
+
+
+Create 3 additional virtual disks required for the &susemgr;
+storage partitions.
+
+.Procedure: Creating the Required Partitions with KVM
+. Create a new virtual machine using the downloaded JeOS KVM image and select menu:Import existing disk image[] . 
+. Configure RAM and number of CPU's: At least 4 GB RAM and 2 CPUs.
+. Name your KVM machine and select the menu:>Customize configuration before install[] check box.
+. Select the menu:Add Hardware[] button and create three new virtual disks with the following specifications. These disks will be partitioned and mounted in the following procedure.
++
+
+[cols="1,1,1", options="header"]
+|===
+| 
+                                        VirtIO Storage Disks
+                                    
+| 
+                                        Name
+                                    
+| 
+                                        Sizing
+                                    
+
+
+|
+
+VirtIO Disk 2
+|
+
+spacewalk
+|
+
+101 GB
+
+|
+
+VirtIO Disk 3
+|
+
+pgsql
+|
+
+50 GB
+
+|
+
+VirtIO Disk 4
+|swap
+|
+
+4 GB
+|===
+. Select menu:Begin Installation[] and your new VM will boot from the JeOS image.
+
+
+Proceed through the basic JeOS installation prompts until you reach the command line.
+
+== Preparing JeOS for &susemgr;
+
+.Procedure: Preparing JeOS for &susemgr;Installation.. Register with SCC:
++
+
+----
+# SUSEConnect -e EMAIL_ADDRESS -r SUSE_MANAGER_CODE
+----
+.. Add &susemgr; repositories:
++
+
+----
+# SUSEConnect -p SUSE-Manager-Server/3.1/x86_64 -r SUSE_MANAGER_CODE
+----
+.. Install [package]#patterns-openSUSE-yast2_basis# pattern. __You will need this basic administration package for preparing storage partitions__:
++
+
+----
+# zypper in pattern -t patterns-openSUSE-yast2_basis
+----
+.. Partition and mount the virtual disks at the following locations using &yast; Partitioner (``yast2 disk``). 
++
+
+[cols="1,1,1,1", options="header"]
+|===
+| 
+                                        VirtIO Storage Disks
+                                    
+| 
+                                        Name
+                                    
+| 
+                                        Storage Size
+                                    
+| 
+                                        File System Type
+                                    
+
+
+|
+
+VirtIO Disk 2
+|
+
+[path]_/var/spacewalk_
+|
+
+101 GB
+|
+
+XFS
+
+|
+
+VirtIO Disk 3
+|
+
+[path]_/var/lib/pgsql_
+|
+
+50 GB
+|
+
+XFS
+
+|
+
+VirtIO Disk 4
+|[path]_/swap_
+|
+
+4 GB
+|
+
+swap
+|===
+.. SLES 12 by default uses the BTRFS file system. A mount point is created automatically for [path]_/var/lib/pgsql/_ (even when not installed). This must be removed or commented out from the [path]_/etc/fstab_ entries. As &rootuser; edit [path]_/etc/fstab_ and comment out or remove the line:
++
+
+----
+/var/lib/pgsql btrfs subvol=@/var/lib/pgsql 0 0
+----
++
+
+.Removing the /etc/fstab pgsql Entry
+[WARNING]
+====
+If you do not remove this line from fstab the first time you shutdown the server you will lose your database.
+This occurs because you will have duplicate entries in the fstab.
+====
+.. Exit partitioner and install the &susemgr; pattern:
++
+
+----
+# zypper in -t pattern suma_server
+----
+.. Execute &susemgr; setup:
++
+
+----
+# yast2 susemanager_setup
+----
+
+
+Proceed to <<_suma.setup.with.yast>>
+.

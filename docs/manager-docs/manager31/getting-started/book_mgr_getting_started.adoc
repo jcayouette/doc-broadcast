@@ -1,0 +1,17 @@
+---
+permalink: book_mgr_getting_started.html
+---
+= SUSE Manager 3.1 Getting Started
+:layout: default
+:doctype: book
+:sectnums:
+:icons: font
+:experimental:
+
+==== link:quickstart3_chap_install_overview.html[Installation Overview]
+==== link:quickstart3_chap_suma_installation_jeos.html[JeOS as the SUSE Manager Base OS]
+==== link:quickstart3_chap_suma_installation_sles12_sp1.html[SLES as the SUSE Manager Base OS]
+==== link:quickstart3_chap_suma_setup_with_yast.html[SUSE Manager Setup]
+==== link:quickstart3_chap_suma_keys_and_first_client.html[Registering Clients]
+==== link:quickstart3_chap_suma_salt_gs.html[Getting Started with Salt]
+

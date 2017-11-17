@@ -1,0 +1,140 @@
+---
+permalink: quickstart3_chap_suma_installation_sles12_sp1.html
+---
+[[_quickstart3.chap.suma.installation.sles12]]
+= SLES 12 Installation
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+:imagesdir: images
+
+.Version Information
+[NOTE]
+====
+&susemgr;
+ 3.1 was originally released as a SLES 12 SP2 extension.
+With the next maintenance update (2017), &susemgr;
+ 3.1 will be based on SLES 12 SP3 and it will support SLE 12 SP3 clients officially.
+In the following sections and chapters, it is highly recommended to use SLE 12 SP3 instead of SP2. 
+====
+
+== SLES 12 KVM Requirements
+
+
+This chapter provides the required (kvm) settings for installation of &sls;
+ 12 media as the base for the &susemgr; 3.1.
+A kernel virtual machine (kvm) combined with Virtual Machine Manager (``virt-manager``) will be used as a sandbox for this installation. 
+
+Enter the following settings when creating a new virtual machine using ``virt-manager``. 
+
+[cols="1,1", options="header"]
+|===
+| 
+       
+        KVM Settings for SLES 12
+       
+      
+
+
+|
+
+Installation Method: 
+|
+
+Local install media (ISO image or CDROM) 
+
+|
+
+OS: 
+|
+
+Linux 
+
+|
+
+Version: 
+|``SLE-12-SP2-Server-x86_64-GM-DVD1.iso``
+
+|
+
+Memory: 
+|
+
+4096 MB 
+
+|
+
+CPUs: 
+|
+
+2 
+
+|
+
+Storage Format: 
+|
+
+ISO 3 GB 
+
+|
+
+Additional Disks: 
+|
+
+
+230 GB split between 4 GB swap and 130 GB mounted at [path]_/var/spacewalk/_
+ (Virtual Disk 1) and 50 GB mounted at [path]_/var/lib/pgsql_
+ (Virtual Disk 2) 
+
+|
+
+Name: 
+|
+
+`example-server`
+
+|
+
+Network 
+|
+
+Bridge `br0`
+|===
+
+[[_sles.installation.within.kvm.media]]
+== SLES 12 KVM Settings
+
+
+This section provides guidance on installation of &susemgr;
+utilizing the full installation media with KVM and ``virt-manager``.
+This section assumes you have previously setup an account with SCC and downloaded the SLES 12 full installation media. 
+
+.Procedure: Preparing for SLES 12 Installation
+. In `virt-manager` select menu:File[] then menu:New Virtual Machine[] . 
+. Choose menu:Local install media (ISO image or CDROM).[]
+. Ensure menu:Use ISO Image[] is selected then click menu:Browse[] and locate the full SLES 12 image you downloaded from your SCC account. 
+. Configure your machine with at least 4096 MB RAM and a minimum of 2 CPUs. 
+. Create a storage device with a minimum of 230 GB storage space for the installation. During the partitioning setup of the SLES 12 installation this disk should be partitioned into a 4 GB `swap` a 130 GB partition (or a dedicated virtual disk) for [path]_/var/spacewalk/_ (XFS) and an additional 50 GB partition (or a dedicated virtual disk) for [path]_/var/lib/pgsql/_ (XFS). The remaining storage space will be used by the operating system. Select menu:Finish[] to begin the installation. 
+
+
+Installation of &sls;
+ 12 will begin.
+For more information on completing an installation of &sls;
+ 12, see https://www.suse.com/documentation/sles-12/book_quickstarts/data/sec_sle_installquick.html. 
+
+[[_quickstart3.sec.suma.installation.sles12.sp1.sumaext]]
+== Selecting the &susemgr;3.1 Extension
+
+
+During the &sls;
+ 12 installation you will be presented with the menu:Extension and Module Selection[]
+ (see <<_fig.suma.installation.sles12.sumaext>>
+).  Select the &susemgr;
+ 3.1 Extension and then complete the &sls;
+ 12 installation. 
+
+.Selecting &susemgr;Extension
+image::manager-extension.png[]
