@@ -8,7 +8,7 @@ permalink: quickstart3_chap_suma_salt_gs.html
 :toc: left
 :icons: font
 :experimental:
-:sourcedir: .
+:sectanchors:
 
 [[_salt.gs.guide.intro]]
 == Introduction

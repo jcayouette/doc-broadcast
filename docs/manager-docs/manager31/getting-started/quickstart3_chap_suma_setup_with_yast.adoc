@@ -8,7 +8,7 @@ permalink: quickstart3_chap_suma_setup_with_yast.html
 :toc: left
 :icons: font
 :experimental:
-:sourcedir: .
+:sectanchors:
 
 [[_suma.setup.with.yast.setup]]
 == Included Topics
