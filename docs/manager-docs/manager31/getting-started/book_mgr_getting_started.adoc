@@ -7,14 +7,14 @@
 :icons: font
 :experimental:
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_install_overview.adoc[]
+include::quickstart3_chap_install_overview.adoc[]
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_installation_jeos.adoc[]
+include::quickstart3_chap_suma_installation_jeos.adoc[]
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_installation_sles12_sp1.adoc[]
+include::quickstart3_chap_suma_installation_sles12_sp1.adoc[]
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_setup_with_yast.adoc[]
+include::quickstart3_chap_suma_setup_with_yast.adoc[]
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_keys_and_first_client.adoc[]
+include::quickstart3_chap_suma_keys_and_first_client.adoc[]
 
-include::docs/manager-docs/manager31/getting-started/quickstart3_chap_suma_salt_gs.adoc[]
+include::quickstart3_chap_suma_salt_gs.adoc[]
