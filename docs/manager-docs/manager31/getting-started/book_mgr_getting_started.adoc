@@ -6,8 +6,9 @@
 :toc:
 :icons: font
 :experimental:
+:sourcedir: docs/manager-docs/manager31/getting-started/
 
-include::quickstart3_chap_install_overview.adoc[]
+include::{sourcedir}quickstart3_chap_install_overview.adoc[]
 
 include::quickstart3_chap_suma_installation_jeos.adoc[]
 
