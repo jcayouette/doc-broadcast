@@ -1,7 +1,5 @@
----
-permalink: quickstart3_chap_install_overview.html
----
-:layout: default
+:page-layout: default
+:page-permalink: quickstart3_chap_install_overview.html
 :doctype: book
 :sectnums:
 :sectanchors:

@@ -1,18 +1,9 @@
----
-permalink: manager31-index.html
----
 :layout: default
+:page-permalink: manager31-index.html
 :showtitle:
 :page-title:
-:page-description: A forkable blog-ready Jekyll site using AsciiDoc
+:page-description: 3.1 Docs
 :sectanchors:
 
-== SUSE Manager 3.1 Books
 
-|===
-| link:suse_mgr_release_notes_31.html[SUSE Manager Release Notes]
-| link:book_mgr_getting_started.html[SUSE Manager Getting Started Guide]
-| link:book_mgr_getting_started.html[SUSE Manager Reference Guide]
-| link:book_mgr_getting_started.html[SUSE Manager Best Practices Guide]
-| link:book_mgr_getting_started.html[SUSE Manager Advanced Topics Guide]
-| link:book_mgr_getting_started.html[SUSE Manager API Documentation]
+link:book_mgr_getting_started.html[Getting Started]
