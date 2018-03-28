@@ -6,7 +6,7 @@
 :toc:
 :icons: font
 :experimental:
-:sourcedir: docs/manager-docs/manager31/getting-started/
+:sourcedir: example-manager-docs/docs/manager-docs/manager31/getting-started/
 
 include::{sourcedir}quickstart3_chap_install_overview.adoc[]
 
