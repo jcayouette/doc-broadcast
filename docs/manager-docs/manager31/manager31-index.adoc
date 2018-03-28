@@ -6,4 +6,4 @@
 :sectanchors:
 
 
-link:book_mgr_getting_started.html[Getting Started]
+link:book_mgr_getting_started.adoc[Getting Started]
