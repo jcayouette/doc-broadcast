@@ -8,14 +8,14 @@
 :experimental:
 :sourcedir: example-manager-docs/docs/manager-docs/manager31/getting-started/
 
-include::{sourcedir}quickstart3_chap_install_overview.adoc[]
+link::quickstart3_chap_install_overview.adoc[]
 
-include::quickstart3_chap_suma_installation_jeos.adoc[]
+link::quickstart3_chap_suma_installation_jeos.adoc[]
 
-include::quickstart3_chap_suma_installation_sles12_sp1.adoc[]
+link::quickstart3_chap_suma_installation_sles12_sp1.adoc[]
 
-include::quickstart3_chap_suma_setup_with_yast.adoc[]
+link::quickstart3_chap_suma_setup_with_yast.adoc[]
 
-include::quickstart3_chap_suma_keys_and_first_client.adoc[]
+link::quickstart3_chap_suma_keys_and_first_client.adoc[]
 
-include::quickstart3_chap_suma_salt_gs.adoc[]
+link::quickstart3_chap_suma_salt_gs.adoc[]
