@@ -10,12 +10,12 @@
 
 link:quickstart3_chap_install_overview.adoc[Overview]
 
-link:quickstart3_chap_suma_installation_jeos.adoc[]
+link:quickstart3_chap_suma_installation_jeos.adoc[JeOS Installation]
 
-link:quickstart3_chap_suma_installation_sles12_sp1.adoc[]
+link:quickstart3_chap_suma_installation_sles12_sp1.adoc[SLES Installation]
 
-link:quickstart3_chap_suma_setup_with_yast.adoc[]
+link:quickstart3_chap_suma_setup_with_yast.adoc[YaST Setup]
 
-link:quickstart3_chap_suma_keys_and_first_client.adoc[]
+link:quickstart3_chap_suma_keys_and_first_client.adoc[Connecting a Client]
 
-link:quickstart3_chap_suma_salt_gs.adoc[]
+link:quickstart3_chap_suma_salt_gs.adoc[Salt Getting Started]
