@@ -7,7 +7,7 @@
 
 == SUSE Manager Versions
 
-include::manager31/manager31-index.adoc[SUSE Manager 3.1]
-
+include::manager31/manager31-index.html[SUSE Manager 3.1]
+include::manager32/test2.html[SUSE Manager 3.1]
 
 
