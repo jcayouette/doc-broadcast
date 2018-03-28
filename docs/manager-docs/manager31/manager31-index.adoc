@@ -7,4 +7,4 @@
 
 == Resources
 
-link:book-mgr-getting-started.adoc[Getting Started]
+link:getting-started/book-mgr-getting-started.adoc[Getting Started]
