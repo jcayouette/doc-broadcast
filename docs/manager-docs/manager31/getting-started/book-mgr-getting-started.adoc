@@ -1,4 +1,4 @@
-:page-permalink: book-mgr-getting-started.html
+:permalink: book-mgr-getting-started.html
 :layout: default
 :showtitle:
 :page-title: SUSE Manager 3.1

@@ -1,4 +1,4 @@
-:page-permalink: manager31-index.html
+:permalink: manager31-index.html
 :layout: default
 :showtitle:
 :page-title: SUSE Manager 3.1
