@@ -1,6 +1,5 @@
 :page-permalink: book-mgr-getting-started.html
 :layout: default
-:sectnums:
 :icons: font
 :experimental:
 

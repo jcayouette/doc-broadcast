@@ -3,7 +3,7 @@
 :showtitle:
 :page-title: SUSE Manager 3.1
 :page-description: 3.1 Docs
-:sectanchors:
+
 
 == Resources
 
