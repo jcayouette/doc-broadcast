@@ -3,10 +3,9 @@
 :showtitle:
 :page-title:
 :page-description: SUSE Manager Documentation
-:sourcedir: manager31
 
 == Version
 
-link:{sourcedir}/manager31-index.adoc[SUSE Manager 3.1]
+link:manager31-index.adoc[SUSE Manager 3.1]
 
 Test

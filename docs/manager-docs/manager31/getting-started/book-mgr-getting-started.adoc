@@ -1,10 +1,8 @@
 :page-permalink: book-mgr-getting-started.html
 :layout: default
 :sectnums:
-:toc:
 :icons: font
 :experimental:
-:sourcedir: getting-started
 
 == SUSE Manager 3.1 Getting Started
 
