@@ -8,5 +8,5 @@ gem 'jekyll-asciidoc'
 
 
 group :jekyll_plugins do
-  gem 'jekyll-asciidoc', '~> 2.0.1'
+  gem 'jekyll-asciidoc' #'~> 2.0.1'
 end
