@@ -4,6 +4,7 @@ gem 'jekyll', '~> 3.1.6'
 gem 'asciidoctor'
 gem 'coderay', '~> 1.1.0'
 gem 'rake-jekyll', '~> 1.1.0'
+gem 'jekyll-asciidoc'
 
 
 group :jekyll_plugins do
