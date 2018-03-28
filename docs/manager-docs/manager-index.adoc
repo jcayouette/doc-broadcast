@@ -1,0 +1,9 @@
+:page-permalink: manager-index.html
+:layout: default
+:showtitle:
+:page-title:
+:page-description: SUSE Manager Documentation
+
+== Version
+
+link:manager31-index.adoc[SUSE Manager 3.1]
