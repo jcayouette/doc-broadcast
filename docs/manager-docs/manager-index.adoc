@@ -5,7 +5,7 @@
 :page-title: SUSE Manager Live Documentation
 :page-description: SUSE Manager Documentation
 
-
+Test
 == SUSE Manager Versions
 
 link:manager31-index.html[SUSE Manager 3.1]
