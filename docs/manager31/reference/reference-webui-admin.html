@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Admin</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav></div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Admin</h1>
+</div>
+
+<div class="post-content">
+
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.admin.wizard">1. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Setup Wizard[</b></span></a></li>
+<li><a href="#_ref.webui.admin.org">2. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Organizations[</b></span></a>
+<ul class="sectlevel2">
+<li><a href="#_s2_sattools_org_details_details">2.1. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Details[</b></span></a></li>
+<li><a href="#_s2_sattools_org_details_users">2.2. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></a></li>
+<li><a href="#_s2_sattools_org_details_trust">2.3. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Trust[</b></span></a></li>
+<li><a href="#_s2_sattools_org_details_conf">2.4. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Configuration[</b></span></a></li>
+<li><a href="#_s2_sattools_org_details_states">2.5. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:States[</b></span></a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.admin.users">3. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></a></li>
+<li><a href="#_ref.webui.admin.config">4. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span></a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sattools_config_gen">4.1. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">General</b></a></li>
+<li><a href="#_s3_sattools_config_bootstrap">4.2. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Bootstrap Script</b></a></li>
+<li><a href="#_s3_sattools_config_orgs">4.3. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Organizations</b></a></li>
+<li><a href="#_s3_sattools_config_restart">4.4. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Restart</b></a></li>
+<li><a href="#_s3_sattools_config_cobbler">4.5. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Cobbler</b></a></li>
+<li><a href="#_s3_sattools_config_bare_metal">4.6. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Bare-metal systems</b></a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.admin.iss">5. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:ISS Configuration[</b></span></a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sattools_iss_master">5.1. Configuring the Master {susemgr} Server</a></li>
+<li><a href="#_s3_sattools_iss_slave">5.2. Configuring Slave Servers</a></li>
+<li><a href="#_s3_sattools_iss_map_orgs">5.3. Mapping {susemgr} Master Server Organizations to Slave Organizations</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.admin.schedules">6. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Task Schedules[</b></span></a></li>
+<li><a href="#_ref.webui.admin.status">7. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Task Engine Status[</b></span></a></li>
+<li><a href="#_ref.webui.admin.logs">8. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Show Tomcat Logs[</b></span></a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ pages allows {susemgr} customers to manage the basic configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">including creating and managing multiple organizations.
+Only the {susemgr} administrator can access the menu:Admin[</b></span>
+ pages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.wizard">1. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Setup Wizard[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Setting up {susemgr} typically requires some extra steps after installation for common configuration tasks.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Setup Wizard</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link is displayed when the {susemgr} Web interface is used for the fist time and can be accessed later at any time by clicking menu:Admin[Setup
+   Wizard</b></span>
+.
+On the three tabs configure the HTTP proxy server, organization credentials, and {suse} products.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">HTTP Proxy:</b></dt>
+<dd>
+<p>Configure a proxy server that {susemgr} will use to access SCC ({suse} Customer Center) and other remote servers here.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_proxy_settings.png[]</p>
+</div>
+<div class="paragraph">
+<p>+
+Use <code>hostname:port</code> syntax in the <b class="menuref">Hostname</b>
+field if the proxy port is not 8080.
+Clearing the fields disables proxy.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Organization Credentials:</b></dt>
+<dd>
+<p>Click <b class="menuref">Add a new credential</b>
+and enter user name and password to allow a user to access SCC.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_credentials.png[]</p>
+</div>
+<div class="paragraph">
+<p>+
+After saving, a new credential card will be displayed.
+Buttons below the credential card allow you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>see the credential validation status (green tick or red cross icon). To re-check the credential with SCC, click the icon;</p>
+</li>
+<li>
+<p>set the primary credentials for inter-server synchronization (yellow star icon);</p>
+</li>
+<li>
+<p>list the subscriptions related to a certain credential (list icon);</p>
+</li>
+<li>
+<p>edit the credential (pencil icon);</p>
+</li>
+<li>
+<p>delete the credential (trash can icon).</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">SUSE Products:</b></dt>
+<dd>
+<p>On the menu:{suse} Products[]
+page, select product-specific channels you are entitled to.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_suse_products.png[]</p>
+</div>
+<div class="paragraph">
+<p>+
+The products displayed are directly linked to your organization credentials and your {suse} subscriptions.
+Product extentions and modules are shown when you select the corresponding base product or click the plus sign to its left.
+After you have made your selection, click <b class="menuref">Add products</b>
+.
+This equals running <code>mgr-sync add products</code> or <code>mgr-sync</code> without any argument.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Synchronization Time</div>
+<div class="paragraph">
+<p>Channel synchronization will start and might take several hours.
+When finished the corresponding channels can be used in {susemgr}.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">If Synchronization Fails</div>
+<div class="paragraph">
+<p>SUSE does not automatically trust 3rd party GPG keys.
+Should a reposync fail you can detect if an untrusted GPG key is the root cause by viewing log files located in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/var/log/rhn/reposync</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Look for lines similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>['/usr/bin/spacewalk-repo-sync', '--channel', 'sle-12-sp1-ga-desktop-
+      nvidia-driver-x86_64', '--type', 'yum', '--non-interactive']
+    ChannelException: The GPG key for this repository is not part of
+      the keyring.
+    Please run spacewalk-repo-sync in interactive mode to import it.</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+
+Alternatively, you can add listed channels right away by clicking the <span class="menuseq"><b class="menu">Add this product</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+button in the status column.
+A progress bar will be displayed.
+The main product will expand</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">and now you can select add-on products belonging to the product that is currently added.
+To check for required channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the list icon in the menu:Channels[</b></span>
+column.
+When a product is downloaded and ready to use, the state will change to <b class="menuref">Finished</b>
+.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.org">2. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Organizations[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The organizations feature allows {susemgr} administrators to create and manage multiple organizations across {susemgr}. Administrators can allocate software and system entitlements across various organizations, and control an organization&#8217;s access to system management tasks.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_list_organizations.png[]</p>
+</div>
+<div class="paragraph">
+<p>If you click the name of an organization, the Organization Details page appears.</p>
+</div>
+<div class="sect2">
+<h3 id="_s2_sattools_org_details_details">2.1. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Details[</b></span></h3>
+<div class="paragraph">
+<p>The <b class="menuref">Organization Details</b>
+ page lists the details of the selected organization.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_details.png[]</p>
+</div>
+<div class="paragraph">
+<p>The following details are avialable:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="menuseq"><b class="menu">Organization Name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] : String (between 3 and 128 characters). This is the only value that you can change here. When done</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">confirm with clicking the menu:Update Organization[</b></span> button.</p>
+</li>
+<li>
+<p><b class="menuref">Organization ID</b> : Number</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Active Users</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] : Number. Clicking this number will open the menu:Users[</b></span> tab. For more information, see <a href="#_s2_sattools_org_details_users"><span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></a> .</p>
+</li>
+<li>
+<p><b class="menuref">Systems</b> : Number</p>
+</li>
+<li>
+<p><b class="menuref">System Groups</b> : Number</p>
+</li>
+<li>
+<p><b class="menuref">Activation Keys</b> : Number</p>
+</li>
+<li>
+<p><b class="menuref">Autoinstallation Profiles</b> : Number</p>
+</li>
+<li>
+<p><b class="menuref">Configuration Channels</b> : Number</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2_sattools_org_details_users">2.2. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></h3>
+<div class="paragraph">
+<p>List of all the users of an organization.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_users.png[]</p>
+</div>
+<div class="paragraph">
+<p>You can modify the user details if you belong to that organization and have organization administrator privileges.
+For more information, see <a href="#_ref.webui.admin.users"><span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></a>
+.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2_sattools_org_details_trust">2.3. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Trust[</b></span></h3>
+<div class="paragraph">
+<p>Here establish trust between organizations.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_trusts.png[]</p>
+</div>
+<div class="paragraph">
+<p>Such a trust allows sharing contents and migrate systems between these two organizations.
+You may add a trust by checking the box next to an organization (or remove a trust by unchecking it) and clicking the <b class="menuref">Modify Trusts</b>
+ button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2_sattools_org_details_conf">2.4. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Configuration[</b></span></h3>
+<div class="paragraph">
+<p>Here you enable the Organization Administrator to manage Organization configuration, configure the organization to use staged contents (&#8220;pre-fetching&#8221;
+ packages, etc.), set up software crash reporting, and upload of SCAP files.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_configuration.png[]</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SUSE Manager Configuration</dt>
+<dd>
+<p>Enable menu:Allow Organization Admin to manage Organization
+Configuration[]
+if wanted.</p>
+</dd>
+<dt class="hdlist1">Organization Configuration</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><b class="menuref">Enable Staging Contents</b></p>
+</li>
+<li>
+<p><b class="menuref">Enable Errata E-mail Notifications (for users belonging to this organization)</b></p>
+</li>
+<li>
+<p><b class="menuref">Enable Software Crash Reporting</b></p>
+</li>
+<li>
+<p><b class="menuref">Enable Upload Of Crash Files</b></p>
+</li>
+<li>
+<p><b class="menuref">Crash File Upload Size Limit</b></p>
+</li>
+<li>
+<p><b class="menuref">Enable Upload Of Detailed SCAP Files</b></p>
+</li>
+<li>
+<p><b class="menuref">SCAP File Upload Size Limit</b></p>
+</li>
+<li>
+<p><b class="menuref">Allow Deletion of SCAP Results</b></p>
+</li>
+<li>
+<p><b class="menuref">Allow Deletion After (period in days)</b></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When settings are done, confirm with clicking the menu:Update
+    Organization[]
+ button.</p>
+</div>
+<div class="paragraph">
+<div class="title">Enable Staging Contents</div>
+<p>The clients will download packages in advance and stage them.
+This has the advantage that the package installation action will take place immediately, when the schedule is actually executed.
+This &#8220;pre-fetching&#8221;
+ saves maintenance window time, which is good for service uptime.</p>
+</div>
+<div class="paragraph">
+<p>For staging contents (&#8220;pre-fetching&#8221;
+), edit on the client <em class="path">/etc/sysconfig/rhn/up2date</em>
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>stagingContent=1
+stagingContentWindow=24</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>stagingContentWindow</code> is a time value expressed in hours and determines when downloading will start.
+It is the number of hours before the scheduled installation or update time.
+In this case, it means <code>24</code> hours before the installation time.
+The exact download start time depends on the contact method{mdash}when the next <code>rhn_check</code> is performed.</p>
+</div>
+<div class="paragraph">
+<p>Next time an action is scheduled, packages will automatically be downloaded but not installed yet.
+When the scheduled time comes, the action will use the staged version.</p>
+</div>
+<div class="paragraph">
+<div class="title">Minion Content Staging</div>
+<p>Every Organization administrator can enable Content Staging from the Organization configuration page <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Organization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">OrgName</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Enable Staging
+     Contents</b></span>
+.
+Prior to SUSE Manager 3.1, this option was read-only by traditional clients for staging content (packages and patches) before an installation, to help reduce the time required for installing and updating packages and patches.
+Beginning with SUSE Manager 3.1, Enable Staging Contents also targets Salt minions for the selected Organization.</p>
+</div>
+<div class="paragraph">
+<p>Staging content for minions is affected by two parameters.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em class="path">salt_content_staging_advance:</em> expresses the advance time, in hours, for the content staging window to open with regard to the scheduled installation/upgrade time.</p>
+</li>
+<li>
+<p><em class="path">salt_content_staging_window:</em> expresses the duration, in hours, of the time window for Salt minions to stage packages in advance of scheduled installations or upgrades.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A value of <strong>salt_content_staging_advance</strong> equal to <strong>salt_content_staging_window</strong> results in the content staging window closing exactly when the installation/upgrade is scheduled to be executed, a larger value allows separating the download time from the installation time.</p>
+</div>
+<div class="paragraph">
+<p>These options are configured in <em class="path">/usr/share/rhn/config-defaults/rhn_java.conf</em>
+ and by default assume the following values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em class="path">salt_content_staging_advance: 8 hours</em></p>
+</li>
+<li>
+<p><em class="path">salt_content_staging_window: 8 hours</em></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>These parameters will only have an effect when Content Staging is enabled for the targeted Organization.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2_sattools_org_details_states">2.5. <span class="menuseq"><b class="menu">Organization Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:States[</b></span></h3>
+<div class="paragraph">
+<p>From the <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Organizations</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">States</b></span>
+ page you can assign Salt states from the State Catalog to all systems in an organization.
+For example, this way it is possible to define a few global security policies or add a common admin user to all machines.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_organization_states.png[]</p>
+</div>
+<div class="paragraph">
+<p>For more information about the State Catalog and creating states, see <a href="#_ref.webui.salt.states.catalog">[_ref.webui.salt.states.catalog]</a>
+.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.users">3. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Users[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To view and manage all users of the organization you are currently logged in to, click <span class="menuseq"><b class="menu">Users</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ in the left navigation bar.
+The table lists user name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">real name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">organization and whether the user is organization or {susemgr} administrator.
+To modify administrator privileges</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the user name to get to the user&#8217;s menu:Details[</b></span>
+ page.
+For more information, see <a href="#_s3_sm_user_active_details">[_s3_sm_user_active_details]</a>
+. <mark>#emap 2014-05-09: Commented description of ext. auth tab description since
+   it will be disabled for 2.1 release. Possible used in future versions.</mark></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.config">4. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><b class="menuref">Manager Configuration</b>
+ is split into tabs that allow you to configure most aspects of {susemgr}.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_gen">4.1. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">General</b></h3>
+<div class="paragraph">
+<p>This page allows you to alter basic {susemgr} administration settings.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_general_configuration.png[]</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Administrator Email Address</b></dt>
+<dd>
+<p>E-mail address of the {susemgr} administrator.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">SUSE Manager Hostname</b></dt>
+<dd>
+<p>Host name of the {susemgr} server.</p>
+</dd>
+<dt class="hdlist1">{susemgr} Proxy Configuration</dt>
+<dd>
+<p><span class="menuseq"><b class="menu">HTTP proxy</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:HTTP proxy username[</b></span>
+, <span class="menuseq"><b class="menu">HTTP proxy password</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and menu:Confirm HTTP proxy
+password[</b></span>
+.</p>
+<div class="paragraph">
+<p>The HTTP proxy settings are for the communication with a {susemgr} parent server, if there is any.
+The HTTP proxy should be of the form: <code>hostname:port</code>; the default port <code>8080</code> will be used if none is explicitly provided.
+HTTP proxy settings for client systems to connect to this {susemgr} can be different, and will be configured separately, for example via <a href="#_s3_sattools_config_bootstrap"><span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Bootstrap Script</b></a>
+.</p>
+</div>
+</dd>
+<dt class="hdlist1"><b class="menuref">RPM repository mount point</b></dt>
+<dd>
+<p>The directory where RPM packages are mirrored.
+By default: <em class="path">/var/spacewalk</em>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Default To SSL</b></dt>
+<dd>
+<p>For secure communication, use SSL.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When done, confirm with <b class="menuref">Update</b>
+.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_bootstrap">4.2. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Bootstrap Script</b></h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Manager Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Bootstrap Script</b></span>
+ page allows you to generate a bootstrap script that registers the client systems with {susemgr} and disconnects them from the remote {scc}.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_configuration_bootstrap.png[]</p>
+</div>
+<div class="paragraph">
+<p>This generated script will be placed within the <em class="path">/srv/www/htdocs/pub/bootstrap/</em>
+ directory on your {susemgr} server.
+The bootstrap script will significantly reduce the effort involved in reconfiguring all systems, which by default obtains packages from the {scc}. The required fields are pre-populated with values derived from previous installation steps.
+Ensure this information is accurate.</p>
+</div>
+<div class="paragraph">
+<p>To bootstrap traditional clients, uncheck menu:Bootstrap using
+    Salt[]
+.
+For more information, see <a href="#_registering.clients.traditional">[_registering.clients.traditional]</a>
+.</p>
+</div>
+<div class="paragraph">
+<p>Check boxes offer options for including built-in security SSL and GNU Privacy Guard (GPG) features, both of which are advised.
+In addition, you may enable remote command acceptance and remote configuration management of the systems to be bootstrapped to the {susemgr}. Both features are useful for completing client configuration.
+Finally, if you are using an HTTP proxy server, fill in the related fields.
+When finished, click <b class="menuref">Update</b>
+.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_orgs">4.3. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Organizations</b></h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Manager Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Organizations</b></span>
+ page contains details about the organizations feature of {susemgr}, and links for creating and configuring organizations.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_configuration_organization.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_restart">4.4. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Restart</b></h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Manager Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Restart</b></span>
+ page comprises the final step in configuring {susemgr}.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_configuration_restart.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click the <b class="menuref">Restart</b>
+ button to restart {susemgr} and incorporate all of the configuration options added on the previous screens.
+It will take between four and five minutes for the restart to finish.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_cobbler">4.5. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Cobbler</b></h3>
+<div class="paragraph">
+<p>On the <span class="menuseq"><b class="menu">Manager Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Cobbler</b></span>
+ page you can run the Cobbler synchronization by clicking <b class="menuref">Update</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_configuration_cobbler.png[]</p>
+</div>
+<div class="paragraph">
+<p>Cobbler synchronization is used to repair or rebuild the contents of <em class="path">/srv/tftpboot</em>
+ or <em class="path">/srv/www/cobbler</em>
+ when a manual modification of the cobbler setup has occurred.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_config_bare_metal">4.6. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manager Configuration[</b></span>> <b class="menuref">Bare-metal systems</b></h3>
+<div class="paragraph">
+<p>Here you can add unprovisioned ("bare-metal") systems capable of booting using PXE to an organization.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_configuration_bare_metal_systems.png[]</p>
+</div>
+<div class="paragraph">
+<p>First click menu:Enable adding to this
+    organization[]
+.
+Those systems then will appear in the <b class="menuref">Systems</b>
+ list, where regular provisioning via autoinstallation is possible in a completely unattended fashion.
+Only AMD64/Intel 64 systems with at least 1 GB of RAM are supported.
+{susemgr} server will use its integrated Cobbler instance and will act as TFTP server for this feature to work, so the network segment that connects it to target systems must be properly configured.
+In particular, a DHCP server must exist and have a next-server configuration parameter set to the {susemgr} server IP address or hostname.</p>
+</div>
+<div class="paragraph">
+<p>When enabled, any bare-metal system connected to the SUSE Manager server network will be automatically added to the organization when it powers on.
+The process typically takes a few minutes; when it finishes, the system will automatically shut down and then appear in the <b class="menuref">Systems</b>
+ list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>New systems will be added to the organization of the administrator who enabled this feature.
+To change the organization, disable the feature, log in as an administrator of a different organization and enable it again.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Provisioning can be initiated by clicking the <b class="menuref">Provisioning</b>
+ tab.
+In case of bare-metal systems, though, provisioning cannot be scheduled, it will happen automatically when it is completely configured and the system is powered on.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to use <b class="menuref">System Set Manager</b>
+ with bare-metal systems, although in that case some features will not be available as those systems do not have an operating system installed.
+This limitation also applies to mixed sets with regular and bare-metal systems: full features will be enabled again when all bare-metal systems are removed from the set.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.iss">5. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:ISS Configuration[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Inter-Server Synchronization (ISS) allows {susemgr} synchronizing content and permissions from another {susemgr} instance in a peer-to-peer relationship.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_iss_master">5.1. Configuring the Master {susemgr} Server</h3>
+<div class="paragraph">
+<p>The following will help you set up a master ISS server.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_iss_configuration_master.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">>ISS
+    Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Master Setup</b></span>
+.
+In the top right-hand corner of this page, click menu:Add New
+    Slave[]
+:</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_iss_configuration_edit_slave.png[]</p>
+</div>
+<div class="paragraph">
+<p>and fill in the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Slave Fully Qualified Domain Name (FQDN)</p>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p>+
+Allow Slave to Sync? {mdash} Choosing this field will allow the slave {susemgr} to access this master {susemgr}. Otherwise, contact with this slave will be denied.</p>
+</div>
+</li>
+<li>
+<p>Sync All Orgs to Slave? {mdash} Checking this field will synchronize all organizations to the slave {susemgr}.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Choosing the <span class="menuseq"><b class="menu">Sync All Orgs to Slave?</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ option on the menu:Master Setup[</b></span>
+ page will override any specifically selected organizations in the local organization table.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Click <span class="menuseq"><b class="menu">Create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+Optionally</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click any local organization to be exported to the slave {susemgr} then click menu:Allow
+    Orgs[</b></span>
+.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Enabling Inter-server Synchronization</div>
+<div class="paragraph">
+<p>ISS is enabled by default in {susemgr} 3.1 and later.
+The following configuration change applies only to {susemgr} 2.1 and earlier.
+To enable the inter-server synchronization (ISS) feature, edit the <em class="path">/etc/rhn/rhn.conf</em>
+ file and set: <code>disable_iss=0</code>.
+Save the file and restart the httpd service with <code>service httpd restart</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For synchronization timeout settings, see <a href="#_bp.troubleshooting.timeouts">[_bp.troubleshooting.timeouts]</a>
+.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_iss_slave">5.2. Configuring Slave Servers</h3>
+<div class="paragraph">
+<p>Slave servers receive content synchronized from the master server.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_iss_configuration_slave.png[]</p>
+</div>
+<div class="paragraph">
+<p>To securely transfer content to the slave servers, the ORG-SSL certificate from the master server is needed.
+Click <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">ISS Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Slave Setup</b></span>
+.
+In the top right-hand corner, click <b class="menuref">Add New Master:</b></p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_iss_configuration_edit_master.png[]</p>
+</div>
+<div class="paragraph">
+<p>menu:[]
+ and fill in the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Master Fully Qualified Domain Name (FQDN)</p>
+</li>
+<li>
+<p>Default Master?</p>
+</li>
+<li>
+<p>Filename of this Master&#8217;s CA Certificate: use the full path to the CA Certificate. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre> /etc/pki/trust/anchors</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Click <b class="menuref">Add New Master</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>Once the master and slave servers are configured, start the synchronization on the Master server by executing <code>mgr-inter-sync</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mgr-inter-sync -c YOUR-CHANNEL</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sattools_iss_map_orgs">5.3. Mapping {susemgr} Master Server Organizations to Slave Organizations</h3>
+<div class="paragraph">
+<p>A mapping between organizational names on the master {susemgr} allows for channel access permissions being set on the master server and propagated when content is synchronized to a slave {susemgr}. Not all organization and channel details need to be mapped for all slaves.
+{susemgr} administrators can select which permissions and organizations can be synchronized by allowing or omitting mappings.</p>
+</div>
+<div class="paragraph">
+<p>To complete the mapping, log in to the Slave {susemgr} as administrator.
+Click <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">ISS
+    Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Slave Setup</b></span>
+ and select a master {susemgr} by clicking its name.
+Use the drop-down box to map the exported master organization name to a matching local organization in the slave {susemgr}, then click <b class="menuref">Update Mapping</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>On the command line, issue the synchronization command on each of the custom channels to obtain the correct trust structure and channel permissions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mgr-inter-sync -c YOUR-CHANNEL</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.schedules">6. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Task Schedules[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Under <b class="menuref">Task Schedules</b>
+ all predefined task bunches are listed.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_task_schedules.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click a <span class="menuseq"><b class="menu">Schedule name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ to open its menu:Basic Schedule
+   Details[</b></span>
+ where you disable it or change the frequency. Click <span class="menuseq"><b class="menu">Edit Schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ to update the schedule with your settings.
+To delete a schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:delete schedule[</b></span>
+ in the upper right-hand corner.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only disable or delete a schedule if you are absolutely certain this is necessary as they are essential for {susemgr} to work properly.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you click a bunch name, a list of runs of that bunch type and their status will be displayed.
+Clicking the start time links takes you back to the <b class="menuref">Basic Schedule Details</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>For example, the following predefined task bunches are scheduled by default and can be configured:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">channel-repodata-default:</b></dt>
+<dd>
+<p>(re)generates repository metadata files.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">cleanup-data-default:</b></dt>
+<dd>
+<p>cleans up stale package change log and monitoring time series data from the database.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">clear-taskologs-default:</b></dt>
+<dd>
+<p>clears task engine (taskomatic) history data older than a specified number of days, depending on the job type, from the database.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">cobbler-sync-default:</b></dt>
+<dd>
+<p>synchronizes distribution and profile data from {susemgr} to Cobbler.
+For more information on Cobbler, see <a href="#_advanced.topics.cobbler">[_advanced.topics.cobbler]</a>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">compare-configs-default:</b></dt>
+<dd>
+<p>compares configuration files as stored in configuration channels with the files stored on all configuration-enabled servers.
+To review comparisons, click the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+tab and click the system of interest.
+Go tomenu: Configuration[Compare Files</b></span>
+.
+For more information, refer to <a href="#_s5_sdc_configuration_diff">[_s5_sdc_configuration_diff]</a>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">cve-server-channels-default:</b></dt>
+<dd>
+<p>updates internal pre-computed CVE data that is used to display results on the <span class="menuseq"><b class="menu">CVE Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+page.
+Search results in the menu:CVE
+Audit[</b></span>
+page are updated to the last run of this schedule). For more information, see <a href="#_ref.webui.audit.cve">[_ref.webui.audit.cve]</a>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">daily-status-default:</b></dt>
+<dd>
+<p>sends daily report e-mails to relevant addresses.
+See <a href="#_s4_usr_active_details_prefs">[_s4_usr_active_details_prefs]</a>
+to learn more about how to configure notifications for specific users.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">errata-cache-default:</b></dt>
+<dd>
+<p>updates internal patch cache database tables, which are used to look up packages that need updates for each server.
+Also, this sends notification emails to users that might be interested in certain patches.
+For more information on patches, see <a href="#_ref.webui.patches">[_ref.webui.patches]</a>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">errata-queue-default:</b></dt>
+<dd>
+<p>queues automatic updates (patches) for servers that are configured to receive them.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">kickstart-cleanup-default:</b></dt>
+<dd>
+<p>cleans up stale kickstart session data.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">kickstartfile-sync-default:</b></dt>
+<dd>
+<p>generates Cobbler files corresponding to Kickstart profiles created by the configuration wizard.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">mgr-register-default:</b></dt>
+<dd>
+<p>calls the <code>mgr-register</code> command, which synchronizes client registration data with NCC (new, changed or deleted clients' data are forwarded).</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">mgr-sync-refresh-default:</b></dt>
+<dd>
+<p>the default time at which the start of synchronization with SUSE Customer Center (SCC) takes place (<code>mgr-sync-refresh</code>).</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">package-cleanup-default:</b></dt>
+<dd>
+<p>deletes stale package files from the file system.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">reboot-action-cleanup-default:</b></dt>
+<dd>
+<p>any reboot actions pending for more than six hours are marked as failed and associated data is cleaned up in the database.
+For more information on scheduling reboot actions, see <a href="#_s5_sdc_provisioning_powermgnt">[_s5_sdc_provisioning_powermgnt]</a>
+.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">sandbox-cleanup-default:</b></dt>
+<dd>
+<p>cleans up <span class="menuseq"><b class="menu">sandbox</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+configuration files and channels that are older than the menu:sandbox_lifetime[</b></span>
+configuration parameter (3 days by default). Sandbox files are those imported from systems or files under development.
+For more information, see <a href="#_s5_sdc_configuration_add_files">[_s5_sdc_configuration_add_files]</a></p>
+</dd>
+<dt class="hdlist1"><b class="menuref">session-cleanup-default:</b></dt>
+<dd>
+<p>cleans up stale Web interface sessions, typically data that is temporarily stored when a user logs in and then closes the browser before logging out.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">ssh-push-default:</b></dt>
+<dd>
+<p>prompts clients to check in with {susemgr} via SSH if they are configured with a <b class="menuref">SSH Push</b>
+contact method.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.status">7. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Task Engine Status[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a status report of the various tasks running by the {susemgr} task engine.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_task_status_last_execution.png[]</p>
+</div>
+<div class="paragraph">
+<p>Next to the task name you find the date and time of the last execution and the status.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.admin.logs">8. <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Show Tomcat Logs[</b></span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here the {susemgr} Admin user has access to the Tomcat log file located at <em class="path">/var/log/rhn/rhn_web_ui.log</em>
+.
+No {rootuser} privileges are required.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::admin_show_tomcat_logs.png[]</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
