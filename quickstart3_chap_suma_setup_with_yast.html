@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SUSE Manager Setup</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav></div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">SUSE Manager Setup</h1>
+</div>
+
+<div class="post-content">
+
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_suma.setup.with.yast.setup">1. Included Topics</a></li>
+<li><a href="#_suma.setup.with.yast.sumasetup">2. &susemgr;Setup via GUI</a></li>
+<li><a href="#_suma.setup.with.yast.admin">3. Creating the Organization with the Administrator&#8217;s Account</a></li>
+<li><a href="#_quickstart.first.channel.sync">4. Synchronizing with &scc;(SCC)</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_suma.setup.with.yast.setup"><a class="anchor" href="#_suma.setup.with.yast.setup"></a>1. Included Topics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers setup procedures of &susemgr;
+ 3.1.
+You will perform the following procedures:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Initiate &susemgr; 3.1 setup from the command line</p>
+</li>
+<li>
+<p>Create the <em class="path">admin</em> user with the &susemgr;&webui;</p>
+</li>
+<li>
+<p>Synchronize with &scc; (SCC) to obtain a list of product channels available for your clients.</p>
+</li>
+<li>
+<p>Add the &sle; 12 SP2 channel</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Version Information</div>
+<div class="paragraph">
+<p>&susemgr;
+ 3.1 was originally released as a SLES 12 SP2 extension.
+With the next maintenance update (2017), &susemgr;
+ 3.1 will be based on SLES 12 SP3 and it will support SLE 12 SP3 clients officially.
+In the following sections and chapters, it is highly recommended to use SLE 12 SP3 instead of SP2.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_suma.setup.with.yast.sumasetup"><a class="anchor" href="#_suma.setup.with.yast.sumasetup"></a>2. &susemgr;Setup via GUI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Procedure: &susemgr;Setup</div>
+<p>This section will guide you through &susemgr;
+setup procedures. . Log in to the &sle; 12 desktop and start the &yast;&susemgr; Setup module: Either click <span class="menuseq"><b class="menu">Applications</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">System Tools</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">YaST</b></span> and enter menu: Setup[] , or open a terminal and as &rootuser; type <code>yast2 susemanager_setup</code> to initiate the setup.
+. On the initial screen select <span class="menuseq"><b class="menu">Setup SUSE Manager from scratch</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] and select menu:Next[</b></span> to continue.
+. Enter an email address which will receive notifications about the server&#8217;s status. The number of emails sent from &susemgr; can be extensive, therefore notifications via email may be disabled from the &webui; after setup if desired. If wanted, enable advertising &susemgr; via SLP; this can simplify client setup.</p>
+</div>
+<div class="paragraph">
+<p>+
+Select <span class="menuseq"><b class="menu">Next</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+to continue.
+. Enter your certificate information and a password. The password should be stored in a secure location. <em>Without this password it will not be possible to setup a &susemgr; Proxy Server.</em> Select menu:Next[</b></span> to continue.</p>
+</div>
+<div class="paragraph">
+<p>+
+. In <span class="menuseq"><b class="menu">Database Settings</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">enter a database user and password. This password should be stored in a secure location. Select menu:Next[</b></span> to continue.</p>
+</div>
+<div class="paragraph">
+<p>+
+. &susemgr; requires that you connect to &scc; for software, updates and patches. You will be unable to synchronize or provide channels to your clients without this information. Enter your &scc;[path]<em>Organization Credentials</em> . You may open <a href="https://scc.suse.com/login" class="bare">https://scc.suse.com/login</a> to register or access to your organization credentials. Select <em class="path">Next</em> to continue.</p>
+</div>
+<div class="paragraph">
+<p>+
+. Select <b class="menuref">Yes</b> to run setup when prompted. When completed select <em class="path">Next</em> to continue.</p>
+</div>
+<div class="paragraph">
+<p>+
+You will be presented with your new &susemgr;&webui;
+address.</p>
+</div>
+<div class="paragraph">
+<p>+
+Select <b class="menuref">Finish</b>
+to complete &susemgr;
+setup.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="#_suma.setup.with.yast.admin">Creating the Organization with the Administrator&#8217;s Account</a>
+, you will create the administrator&#8217;s account and synchronize with &scc;
+.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_suma.setup.with.yast.admin"><a class="anchor" href="#_suma.setup.with.yast.admin"></a>3. Creating the Organization with the Administrator&#8217;s Account</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section will walk you through creating the organization with the administrator&#8217;s account for your &susemgr;
+Server.
+The administrator&#8217;s account is the highest authority account within &susemgr;
+and therefore administrator account access information should be stored in a secure location.
+It is recommended that an administrator creates low level user accounts designated for administration of each organization or group under the administrator&#8217;s account for security.</p>
+</div>
+<div class="paragraph">
+<div class="title">Procedure: Setting up the Administrator&#8217;s Account.. To begin open your browser and direct it to your &susemgr; Server URL which was provided to you after completing setup.</div>
+<p>+
+Enter the <span class="menuseq"><b class="menu">Organization Name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then your menu:Desired
+Login[</b></span>
+name and <span class="menuseq"><b class="menu">Desired Password</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Fill in the Account Information fields including an email for system notifications.
+Select menu:Create
+Organization[</b></span>
+to finish creating your administration account.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Congratulations! You should now be presented with the &susemgr;
+Front Page. <a href="#_quickstart.first.channel.sync">Synchronizing with &scc;(SCC)</a>
+ will help prepare the server for connecting your first client.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quickstart.first.channel.sync"><a class="anchor" href="#_quickstart.first.channel.sync"></a>4. Synchronizing with &scc;(SCC)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&scc;
+(SCC) maintains a collection of repositories which contain packages, software and updates for all supported client systems.
+These repositories are organized into channels each of which provide software specific to a distribution, release and architecture.
+You must synchronize your &susemgr;
+Server with SCC to add channels for your client systems.
+After synchronizing with SCC your clients are able to receive updates or be organized into groups to be assigned to a specific software channel.
+This section covers synchronizing with SCC from the &webui;
+and adding your first client channels.</p>
+</div>
+<div class="olist lowerroman">
+<div class="title">Procedure: Synchronizing with &scc;&#8230;&#8203; From the &susemgr;&webui; start page select <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Setup Wizard</b></span> .</div>
+<ol class="lowerroman" type="i">
+<li>
+<p>From the <span class="menuseq"><b class="menu">Setup Wizard</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] page select the menu: Products[</b></span> tab. Wait a moment for the <b class="menuref">Available Products Below</b> list to populate. You are present with a list of repositories provided from SCC. Each of these repositories represents a single software source known as a <em class="path">Base Channel</em> within &susemgr; . You can also see the architecture, channels, and status information from this page.</p>
+</li>
+<li>
+<p>As you are adding a &sle; 12 SP2 client based on the <em class="path">x86_64</em> architecture, scroll down the page and select the check box for this channel now.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add single channels to &susemgr; by selecting the check box to the left the menu:+[] button of each channel.</p>
+</li>
+<li>
+<p>Add multiple channels by selecting the check boxes to the left of the channels list and then schedule synchronization by clicking the <code>\+ Add products</code> button located at the bottom of the page.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After adding your first channel &susemgr;
+will schedule the channel to be copied and begin mirroring it.
+This can take a long time as &susemgr;
+must copy all software sources from the &suse;
+Vendor repositories located at &scc;
+to your servers local <code class="replaceable">/var/spacewalk/</code> directory.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">PostgreSQL and Transparant Huge Pages</div>
+<div class="paragraph">
+<p>In some environments, Transparent Huge Pages provided by the kernel may slow down PostgreSQL workloads significantly.</p>
+</div>
+<div class="paragraph">
+<p>To disable transparant huge pages set the <code>transparent_hugepage</code> kernel parameter to <code>never</code>.
+This has to be changed in <em class="path">/etc/default/grub</em>
+ and added to the line <code>GRUB_CMDLINE_LINUX_DEFAULT</code>, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="resume=/dev/sda1 splash=silent quiet showopts elevator=noop transparent_hugepage=never"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To write the new configuration run <code>grub2-mkconfig -o
+     /boot/grub2/grub.cfg</code>.
+To update the grub2 during boot run <code>grub2-install
+     /dev/sda</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Monitor channel synchronization process in real-time by viewing channel log files located in the following directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>example-server:/var/log/rhn/reposync/# tail -f &lt;Channel_Name&gt;.log</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After your channel sync has completed proceed to <a href="#_preparing.and.registering.clients">[_preparing.and.registering.clients]</a>
+.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
