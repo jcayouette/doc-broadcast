@@ -5,7 +5,7 @@
 :toc:
 :icons: font
 :experimental:
-:sourcedir: example-manager-docs/docs/manager-docs/manager31/getting-started/
+:sourcedir: getting-started
 
 == SUSE Manager 3.1 Getting Started
 
