@@ -1,0 +1,104 @@
+.header {
+    min-height: 400px;
+    background:#0D2C40;
+    background: url(../images/office-space-14.jpg) no-repeat center center fixed;
+    background-size: cover;
+    z-index:-100;
+    padding-top: 20px;
+}
+
+.lead {
+    color:  white;
+    padding: 0px;
+}
+.header-bullets {
+    color:#FD9A2B ;
+}
+
+.suse-heading {
+    color:  #A0FF5F;
+}
+
+a {
+    text-decoration:none;
+}
+/* test to force css */
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #00B2E2;
+    border-color: #00B2E2;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #F7A3D5;
+    border-color: #F7A3D5;
+}
+
+.icon-frontpage {
+    height: 80px;
+    width: 80px;
+}
+
+.item-inner {
+    background-color: #0D2C40 ;
+    -webkit-box-shadow: 0 6px 6px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.3);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 3px;
+    text-align: center;
+    min-height: 295px;
+}
+
+.item-inner:hover {
+    -webkit-box-shadow: 6px 10px 14px 0 rgba(0,0,0,0.3);
+    box-shadow: 6px 10px 14px 0 rgba(0,0,0,0.3);
+}
+
+.icon-holder {
+    background-color: #02D35F;
+    /*border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+
+.intro {
+    color:  #EDEDED;
+    padding: 6px;
+
+}
+
+.intro-blerp {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.fp-intro-title {
+    color:#0D2C40;
+}
+.fp-card-title {
+    color:   #A0FF5F;
+    margin: 6px;
+    padding: 20px;
+    min-height: 140px;
+
+}
+
+.fp-intro {
+    padding-bottom: 30px;
+}
+
+.btn-cta {
+    margin: 40px;
+}
+
+.post-content {
+    max-width:54em;
+    margin:auto;
+    padding:0 1em;
+}
+
+
+

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Salt</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav></div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Salt</h1>
+</div>
+
+<div class="post-content">
+
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.salt.onboarding">1. Keys</a></li>
+<li><a href="#_ref.webui.salt.remote.commands">2. Remote Commands</a></li>
+<li><a href="#_ref.webui.salt.states.catalog">3. State Catalog</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Open the <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ menu on the left bar. menu:Keys[</b></span>
+ provides an overview of your Salt minions (clients). Use <span class="menuseq"><b class="menu">Remote Commands</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ to execute remote commands on your Salt minions.
+You can also define a menu:State Catalog[</b></span>
+ for creating a collection of salt system states.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.salt.onboarding">1. Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <b class="menuref">Keys</b>
+ page provides a summary of your minions, including their names, fingerprints, state, and actions you may perform on them.</p>
+</div>
+<div class="paragraph">
+<p>Once you have pointed a minion to the {susemgr} server as its master within <code class="replaceable">/etc/salt/minion</code>, you can choose to accept or reject a minion from this page.
+Either click the check mark or cross in the actions column.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="onboarding.png" alt="onboarding">
+</div>
+<div class="title">Figure 1. Keys Overview</div>
+</div>
+<div class="paragraph">
+<p>For more information about key handling and onboarding, see <a href="#_preparing.and.registering.clients.salt">[_preparing.and.registering.clients.salt]</a>
+.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.salt.remote.commands">2. Remote Commands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The remote commands page allows you to execute and run commands from the {susemgr} server on several minions.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="remote_commands.png" alt="remote commands">
+</div>
+<div class="title">Figure 2. Remote Commands</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Remote Commands Security</div>
+<div class="paragraph">
+<p>All commands run from the <b class="menuref">Remote Commands</b>
+ page are executed as {rootuser} on minions.
+As you may use wildcards to run commands across any number of systems you must always take extra precaution as this may have drastic consequences for your systems.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On the <span class="menuseq"><b class="menu">Remote Commands</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page located under menu:Salt[Remote Commands</b></span>
+ you will see two text boxes.
+The first box is for entering commands.
+The second box is for targeting minions by name, group or by using wildcards.</p>
+</div>
+<div class="paragraph">
+<p>Input a command you want to execute, add a target minion, group or wildcard you want to execute the command on.
+Select the menu:Find
+   Targets[]
+ button to verify which machines will be targeted.
+Select the <b class="menuref">Run Command</b>
+ button to execute a command on selected systems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.salt.states.catalog">3. State Catalog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Selecting <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">State
+   Catalog</b></span>
+ presents you with the menu:State
+   Catalog[]
+ overview.
+You can use this page to manage custom Salt states.
+Salt states created on this page may be applied to organizations, groups, and single systems.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="state_catalog.png" alt="state catalog">
+</div>
+<div class="title">Figure 3. State Catalog</div>
+</div>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Create State</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button to open the menu:Create
+   State[</b></span>
+ page.
+On this page you can define custom states which will be stored within the <span class="menuseq"><b class="menu">State Catalog</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+For example</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">to create a custom state for installation of the apache Web server you would provide a name: menu:Webserver[</b></span>
+ and the state content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apache:
+  pkg.installed: []
+  service.running:
+    - require:
+      - pkg: apache</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you have finished entering your custom state definition click the <b class="menuref">Create State</b>
+ button.
+This will save the state and allow use of this specific state at the minion, group, and organization level.</p>
+</div>
+<div class="paragraph">
+<p>To add this state at the individual minion level perform the following actions:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Using a State with a Minion</div>
+<ol class="arabic">
+<li>
+<p>From the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] overview page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select a salt managed minion. You will be taken to the menu:System Details[</b></span> page.</p>
+</li>
+<li>
+<p>Select <span class="menuseq"><b class="menu">States</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Custom</b></span> from the navigation tabs.</p>
+</li>
+<li>
+<p>Click the search button to look at an overview of all available states, or enter a custom state name to find it within the <b class="menuref">State Catalog</b> .</p>
+</li>
+<li>
+<p>Select the <b class="menuref">Assign</b> check box to assign the state to this minion.</p>
+</li>
+<li>
+<p>Click the <span class="menuseq"><b class="menu">Save</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] button to save this assignment to the database. Then click the menu:Apply[</b></span> button to finalize application of the state or states which you have selected.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">The Save Button</div>
+<div class="paragraph">
+<p>The <b class="menuref">Save</b>
+ button saves your changes but does not apply the state.
+If you leave the page after clicking the save button your state will be saved to the database but not yet applied.
+You must apply states for all minions, groups, or organizations for states to be finalized.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>

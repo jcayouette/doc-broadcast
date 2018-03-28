@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Software</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav></div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Software</h1>
+</div>
+
+<div class="post-content">
+
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.channels.software">1. Channels</a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sm_channel_list_all">1.1. All</a></li>
+<li><a href="#_s3_sm_channel_list_redhat">1.2. {suse}</a></li>
+<li><a href="#_s3_sm_channel_list_popular">1.3. Popular</a></li>
+<li><a href="#_s3_sm_channel_list_my">1.4. My Channels</a></li>
+<li><a href="#_s3_sm_channel_list_shared">1.5. Shared</a></li>
+<li><a href="#_s3_sm_channel_list_retired">1.6. Retired</a></li>
+<li><a href="#_s3_sm_channel_details">1.7. Channel Details</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.channels.search">2. Package Search</a></li>
+<li><a href="#_ref.webui.channels.manage">3. Manage Software Channels</a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.channels.manage.overview">3.1. Manage Software Channels > Overview</a></li>
+<li><a href="#_s3_chnl_mgmt_channel_details">3.2. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span></a></li>
+<li><a href="#_s3_chnl_mgmt_mng_pkgs">3.3. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manage Software Packages[</b></span></a></li>
+<li><a href="#_s3_chnl_mgmt_mng_repos">3.4. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manage Repositories[</b></span></a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.channels.mapping">4. Distribution Channel Mapping</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The pages in the <b class="menuref">Software</b>
+ category enable you to view and manage software channels and packages associated with your systems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.channels.software">1. Channels</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>
+
+</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page is the first to appear in the menu:Software[</b></span>
+ category.
+A software channel provides packages grouped by products or applications to simplify the selection of packages to be installed on a system.</p>
+</div>
+<div class="paragraph">
+<p>There are two types of software channels: base channels and child channels.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Base Channels</dt>
+<dd>
+<p>A base channel consists of packages built for a specific architecture and release.
+For example, all of the packages in {sls}&#160;12 for the <code>x86_64</code> architecture make up a base channel.
+The list of packages in {sls}&#160;12 for the <code>s390x</code> architecture make up a different base channel.</p>
+<div class="paragraph">
+<p>A system must be subscribed to only one base channel assigned automatically during registration based on the {sle} release and system architecture.
+For paid base channels, an associated subscription must exist.</p>
+</div>
+<div class="paragraph">
+<p><mark>#toms 2011-02-07: Need to add a section about Long Term Support?</mark></p>
+</div>
+</dd>
+<dt class="hdlist1">Child Channels</dt>
+<dd>
+<p>A child channel is associated with a base channel and provides extra packages.
+For example, an organization can create a child channel associated with {sls} on <code>x86_64</code> architecture that contains extra packages for a custom application.</p>
+<div class="paragraph">
+<p>Especially important are the {susemgr} Tools channels that are available for every base channel.
+These tools channels provide the tools needed to connect the clients with the {susemgr} server.</p>
+</div>
+<div class="paragraph">
+<p>A system can be subscribed to multiple child channels of its base channel.
+Only packages provided by a subscribed channel can be installed or updated.
+{susemgr} Administrators and Channel Administrators have channel management authority.
+This authority gives them the ability to create and manage their own custom channels.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not create child channels containing packages that are not compatible with the client system.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+
+Channels can be further distinguished by relevance: <span class="menuseq"><b class="menu">All</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:{suse}[</b></span>
+, <span class="menuseq"><b class="menu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:My Channels[</b></span>
+, <span class="menuseq"><b class="menu">Shared</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and menu:Retired[</b></span>
+.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_all">1.1. All</h3>
+<div class="paragraph">
+<p>Under <span class="menuseq"><b class="menu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ in the left navigation menu select menu:All[</b></span>
+.
+All channels available to your organization are listed.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_all_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>Links within this list go to different tabs of the menu:Software
+    Channel Details[]
+ page.
+Clicking a channel name takes you to the <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab.
+Clicking the number of packages takes you to the menu:Packages[</b></span>
+ tab.
+Clicking the number of systems takes you to the <b class="menuref">Subscribed Systems</b>
+ tab.
+Refer to <a href="#_s3_sm_channel_details">Channel Details</a>
+ for details.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Package Count Update Change</div>
+<div class="paragraph">
+<p>During a channel synchronization all package are now downloaded before they are incremented and displayed within the WebUI.
+When packages have completed the initial download, packages will begin to increment in your channel as they are imported to the database.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_redhat">1.2. {suse}</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The menu:{suse}[]
+ page displays all {suse} channels and any available child channels.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_vendor_channels.png[]</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">{suse} Channels Cannot be Deleted</div>
+<div class="paragraph">
+<p>When imported, {suse} channels cannot be deleted.
+Only custom software channels can be deleted.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_popular">1.3. Popular</h3>
+<div class="paragraph">
+<p>The <b class="menuref">Popular</b>
+ page displays the software channels most subscribed by systems registered to your organization.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_popular_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>You can refine the search by using the drop-down box to list only the channels with at least a certain number of systems subscribed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_my">1.4. My Channels</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">My Channels</b>
+ page displays all software channels that belong to your organization, including both {suse} and custom channels.
+Use the text box to filter by channel name.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_custom_channels.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_shared">1.5. Shared</h3>
+<div class="paragraph">
+<p>The <b class="menuref">Shared</b>
+ page displays the channels shared with others in the organizational trust.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_shared_channels.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_list_retired">1.6. Retired</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Retired</b>
+ page displays available channels that have reached their end-of-life dates and do not receive updates.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_retired_channels.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_channel_details">1.7. Channel Details</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>If you click the name of a channel, the menu:Channel
+    Details[]
+ page appears.</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_details">1.7.1. <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Details[</b></span></h4>
+<div class="paragraph">
+<p>General information about the channel and its parent if applicable.
+This summary, description, and architecture is also displayed when clicking a channel.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_details_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>In addition, <span class="menuseq"><b class="menu">Per-User Subscription Restrictions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ can be set globally by {susemgr} administrators and channel administrators.
+By default</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">any user can subscribe channels to a system.
+To manage user permissions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select menu:Only selected users within your organization
+     may subscribe to this channel[</b></span>
+ and click <span class="menuseq"><b class="menu">Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+The menu:Subscribers[</b></span>
+ tab appears.
+Click it to grant specific users subscription permissions to a channel.
+{susemgr} administrators and channel administrators can always subscribe any channels to a system.</p>
+</div>
+<div class="paragraph">
+<p>Only customers with custom base channels can change their systems' base channel assignments via the {susemgr} Web interface in two ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Assign the system to a custom base channel.</p>
+</li>
+<li>
+<p>Revert subscriptions from a custom base channel to the appropriate distribution-based base channel.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The assigned base channel must match the installed system.
+For example, a system running {sle}&#160;11 for <code>x86_64</code> cannot be registered to a {sle}&#160;12 for <code>s390x</code> base channel.
+Use the files <em class="path">/etc/os-release</em>
+ or <em class="path">/etc/SuSE-release</em>
+ to check your product, architecture (try <code>uname -a</code>), version, and patch level.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_managers">1.7.2. <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Managers[</b></span></h4>
+<div class="paragraph">
+<p>On the <b class="menuref">Managers</b>
+ page, you can check which users are authorized to manage the selected channel.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_details_managers_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>Real name and e-mail address are listed with the user names.
+Organization and Channel administrators can manage any channel.
+As a {susemgr} administrator you can change roles for specific users by clicking the name.
+For more information on user management and the menu:User
+     Details[]
+ page, see <a href="#_ref.webui.users">[_ref.webui.users]</a>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_errata">1.7.3. <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Patches[</b></span></h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Patches</b>
+ page lists patches to be applied to packages provided in the channel.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_details_patches_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>The list displays advisory types, names, summaries, and issue dates.
+Clicking an advisory name takes you to its menu:Patch
+     Details[]
+ page.
+Refer to <a href="#_s3_sm_errata_details">[_s3_sm_errata_details]</a>
+ for more information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_packages">1.7.4. <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Packages[</b></span></h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This page lists packages in the channel.
+Clicking a package name takes you to the <b class="menuref">Package Details</b>
+ page.</p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_details_packages_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>This page displays a set of tabs with information about the package, including architectures on which it runs, the package size, build date, package dependencies, change log, list of files in the package, newer versions, and which systems have the package installed.
+Download the packages as RPMs.</p>
+</div>
+<div class="paragraph">
+<p>To search for a specific package or a subset of packages, use the package filter at the top of the list.
+Enter a substring to search for package names containing the string.
+For example, typing <code>dd</code> in the filter might return: <em class="path">dd_rescue</em>
+, <em class="path">ddclient</em>
+, and <em class="path">uuidd</em>
+.
+The filter is case-insensitive.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_subsys">1.7.5. <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Subscribed Systems[</b></span></h4>
+<div class="paragraph">
+<p>The list displays system names and their system type.
+Clicking a system name takes you to its <b class="menuref">System Details</b>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a>
+ for more information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_channel_details_tarsys">1.7.6. <span class="menuseq"><b class="menu">Software Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Target Systems[</b></span></h4>
+<div class="paragraph">
+<p>List of systems eligible for subscription to the channel.
+This tab appears only for child channels.
+Use the check boxes to select the systems, then click the <span class="menuseq"><b class="menu">Confirm</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ and menu:Subscribe[</b></span>
+ button on the bottom right-hand corner.
+You will receive a success message or be notified of any errors.
+This can also be accomplished through the <span class="menuseq"><b class="menu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:System Details[</b></span>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a>
+ for more information.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.channels.search">2. Package Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>.
+image::channels_search_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Package Search</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page allows you to search through packages using various criteria provided by the menu:What to search
+   for[</b></span>
+ selection list:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><b class="menuref">Free Form</b>&#8201;&#8212;&#8201;a general keyword search useful when the details of a particular package and its contents are unknown.</p>
+</li>
+<li>
+<p><b class="menuref">Name Only</b>&#8201;&#8212;&#8201;Targeted search to find a specific package known by name.</p>
+</li>
+<li>
+<p><b class="menuref">Name and Summary</b>&#8201;&#8212;&#8201;Search for a package or program which might not show up in the respective package name but in its one-line summary.</p>
+</li>
+<li>
+<p><b class="menuref">Name and Description</b>&#8201;&#8212;&#8201;Search package names and their descriptions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Free Form</b>
+ field additionally allows you to search using field names that you prepend to search queries and filter results by that field keyword.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you wanted to search all of the {sle} packages for the word <code>java</code> in the description and summary, type the following in the <b class="menuref">Free Form</b>
+ field:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>summary:java and description:java</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other supported field names include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: search package names for a particular keyword,</p>
+</li>
+<li>
+<p><code>version</code>: search for a particular package version,</p>
+</li>
+<li>
+<p><code>filename</code>: search the package file names for a particular keyword,</p>
+</li>
+<li>
+<p><code>description</code>: search the packages' detailed descriptions for a particular keyword,</p>
+</li>
+<li>
+<p><code>summary</code>: search the packages' brief summary for a particular keyword,</p>
+</li>
+<li>
+<p><code>arch</code>: search the packages by their architecture (such as <code>x86_64</code>, <code>ppc64le</code>, or <code>s390</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can also limit searches to menu:Channels relevant to your
+   systems[]
+ by clicking the check box.
+Additionally, you can restrict your search by platform (menu:Specific channel you have
+   access to[]
+) or architecture (menu:Packages of a specific
+   architecture[]
+).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.channels.manage">3. Manage Software Channels</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This menu allows administrators to create, clone, and delete custom channels.
+These channels may contain altered versions of distribution-based channels or custom packages.</p>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.channels.manage.overview">3.1. Manage Software Channels > Overview</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Overview</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page of the menu:Manage Software
+    Channels[</b></span>
+ menu lists all available channels including custom, distribution-based, and child channels.</p>
+</div>
+<div class="paragraph">
+<p>To clone an existing channel, click the <span class="menuseq"><b class="menu">Clone Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ link.
+Select the channel to be cloned from the drop-down box</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select whether to clone the current state (including patches) or the original state (without patches). You can also select specific patches to use for cloning.
+Then click the menu:Create Channel[</b></span>
+ button.
+In the next screen select options for the new channel, including base architecture and GPG, then click <b class="menuref">Create Channel</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>To create a new channel, click the <span class="menuseq"><b class="menu">Create Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ link.
+Select the appropriate options for the new channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">including base architecture and GPG options</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click menu:Create Channel[</b></span>
+.
+Note that a channel created in this manner is blank, containing no packages.
+You must either upload software packages or add packages from other repositories.
+You may also choose to include patches in your custom channel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_chnl_mgmt_channel_details">3.2. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span></h3>
+<div class="sect3">
+<h4 id="_s4_chnlmgmt_cdetails_cdetails">3.2.1. menu:Manage Software Channels []> <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Details[</b></span></h4>
+<div class="paragraph">
+<p>This page lists the settings made during channel creation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_chnlmgmt_cdetails_manage">3.2.2. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span>> <b class="menuref">Managers</b></h4>
+<div class="paragraph">
+<p>{susemgr} administrators and channel administrators may alter or delete any channel.
+To grant other users rights to alter or delete this channel, check the box next to the user&#8217;s name and click <b class="menuref">Update</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>To allow all users to manage the channel, click the menu:Select
+     All[]
+ button at the bottom of the list then click <span class="menuseq"><b class="menu">Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+To remove a user&#8217;s right to manage the channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">uncheck the box next to their name and click menu:Update[</b></span>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_chnlmgmt_cdetails_errata">3.2.3. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span>> <b class="menuref">Patches</b></h4>
+<div class="paragraph">
+<p>Channel managers can list, remove, clone, and add patches to their custom channel.
+Custom channels not cloned from a distribution may not contain patches until packages are available.
+Only patches that match the base architecture and apply to a package in that channel may be added.
+Finally, only cloned or custom patches may be added to custom channels.
+Patches may be included in a cloned channel if they are selected during channel creation.</p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Sync</b>
+ tab lists patches that were updated since they were originally cloned in the selected cloned channel.
+More specifically, a patch is listed here if and only if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it is a cloned patch,</p>
+</li>
+<li>
+<p>it belongs to the selected cloned channel,</p>
+</li>
+<li>
+<p>it has already been published in the selected cloned channel,</p>
+</li>
+<li>
+<p>it does not contain a package that the original patch has, or it has at least one package with a different version with regard to the corresponding one in the original patch, or both.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Clicking the <span class="menuseq"><b class="menu">Sync Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button opens a confirmation page in which a subset of those patches can be selected for synchronization.
+Clicking the menu:Confirm[</b></span>
+ button in the confirmation page results in such patches being copied over from the original channel to the cloned channel, thus updating corresponding packages.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_cnlmgmt_cdetails_pkgs">3.2.4. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span>> <b class="menuref">Packages</b></h4>
+<div class="paragraph">
+<p>As with patches, administrators can list, remove, compare, and add packages to a custom channel.</p>
+</div>
+<div class="paragraph">
+<p>To list all packages in the channel, click the menu:List / Remove
+     Packages[]
+ link.
+Check the box to the left of any package you want to remove, then click <b class="menuref">Remove Packages</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>To add packages, click the <span class="menuseq"><b class="menu">Add Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link.
+From the drop-down box activate a channel from which to add packages and click menu:View[</b></span>
+ to continue.
+Check the box to the left of any package you want to add to the custom channel, then click menu:Add
+     Packages[]
+.</p>
+</div>
+<div class="paragraph">
+<p>To compare packages in the current channel with those in another, select that channel from the drop-down box and click <b class="menuref">Compare</b>
+.
+Packages in both channels are compared, including architecture and version.
+The results are displayed on the next screen.</p>
+</div>
+<div class="paragraph">
+<p>To make the two channels identical, click the menu:Merge
+     Differences[]
+ button.
+In the next dialog, resolve any conflicts. <span class="menuseq"><b class="menu">Preview Merge</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ allows you to review the changes before applying them to the channels.
+Select those packages that you want to merge.
+Click menu:Merge Packages[</b></span>
+ then <b class="menuref">Confirm</b>
+ to perform the merge.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_chnlmgmt_cdetails_repos">3.2.5. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Channel Details[</b></span>> <b class="menuref">Repositories</b></h4>
+<div class="paragraph">
+<p>On the <b class="menuref">Repositories</b>
+ page, assign software repositories to the channel and synchronize repository content:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="menuseq"><b class="menu">Add/Remove</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] lists configured repositories</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">which can be added and removed by selecting the check box next to the repository name and clicking menu:Update Repositories[</b></span> .</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Sync</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] lists configured repositories. The synchronization schedule can be set using the drop-down boxes</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">or an immediate synchronization can be performed by clicking menu:Sync Now[</b></span> .</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Manage Repositories</b>
+ tab to the left shows all assigned repositories.
+Click a name to see details and possibly delete a repository.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_chnl_mgmt_mng_pkgs">3.3. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manage Software Packages[</b></span></h3>
+<div class="paragraph">
+<p>This page allows managing custom software packages, listing all software or viewing only packages in a custom channel.
+Select the respective channel from the drop-down box and click menu:View
+    Packages[]
+.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_chnl_mgmt_mng_repos">3.4. <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]> menu:Manage Repositories[</b></span></h3>
+<div class="paragraph">
+<p>Add or manage custom or third-party package repositories and link the repositories to an existing channel.
+The repositories feature currently supports repomd repositories.</p>
+</div>
+<div class="paragraph">
+<p>To create a new repository click the <span class="menuseq"><b class="menu">Create Repository</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link at the top right of the menu:Manage Repositories[</b></span>
+ page.
+The <span class="menuseq"><b class="menu">Create Repository</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ screen prompts you to enter a menu:Repository Label[</b></span>
+ such as <code>sles-12-x86_64</code> and a <span class="menuseq"><b class="menu">Repository URL</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+You may enter URLs pointing to mirror lists or direct download repositories</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click menu:Create Repository[</b></span>
+.</p>
+</div>
+<div class="paragraph">
+<p>To link the new repository to an existing software channel, select <span class="menuseq"><b class="menu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ from the left menu</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">then click the channel you want to link.
+In the channel&#8217;s detail page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Repositories[</b></span>
+ subtab, then check the box next to the repository you want to link to the channel.
+Click menu:Update
+    Repositories[]
+.</p>
+</div>
+<div class="paragraph">
+<p>To synchronize packages from a custom repository to your channel, click the <span class="menuseq"><b class="menu">Sync</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link from the channel&#8217;s menu:Repositories[</b></span>
+ subtab, and confirm by clicking the <b class="menuref">Sync</b>
+ button.</p>
+</div>
+<div class="paragraph">
+<p>You can also perform a synchronization via command line by using the <code>spacewalk-repo-sync</code> command, which additionally allows you to accept keys.</p>
+</div>
+<div class="paragraph">
+<p><code>spacewalk-repo-sync</code> creates log files in the <em class="path">/var/log/rhn/reposync</em>
+ directory.
+{susemgr} uses one log file per channel and reuses it with the next synchronization run.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.channels.mapping">4. Distribution Channel Mapping</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Distribution Channel Mapping page displays a list of all your defined default base channels that clients will pick up according to their operating system and architecture at registration time.
+These mappings can be overriden, but cannot be deleted.
+To create such a mapping click menu:Create Distribution Channel
+   Mapping[]
+ in the upper-right corner.
+Several columns provide information for each mapping.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
