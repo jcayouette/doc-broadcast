@@ -1,5 +1,5 @@
-:layout: default
 :page-permalink: manager31-index.html
+:layout: default
 :showtitle:
 :page-title: SUSE Manager {version} Live Documentation
 :page-description: 3.1 Docs
@@ -7,4 +7,4 @@
 :version: 3.1
 
 
-link:getting-started/book_mgr_getting_started.adoc[Getting Started]
+link:book_mgr_getting_started.adoc[Getting Started]
