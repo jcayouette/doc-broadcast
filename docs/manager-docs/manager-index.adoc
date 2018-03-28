@@ -7,7 +7,7 @@
 
 == SUSE Manager Versions
 
-link:manager31/manager31-index.adoc[SUSE Manager 3.1]
+link:manager31/manager31-index.html[SUSE Manager 3.1]
 
 
 
