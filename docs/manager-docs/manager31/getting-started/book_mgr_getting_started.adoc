@@ -1,6 +1,6 @@
 = SUSE Manager 3.1 Getting Started
-:layout: default
 :page-permalink: book_mgr_getting_started.html
+:layout: default
 :doctype: book
 :sectnums:
 :toc:
