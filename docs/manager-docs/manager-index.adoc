@@ -1,4 +1,4 @@
-:permalink: manager-index.html
+:page-permalink: manager-index.html
 :layout: default
 :showtitle:
 :page-title:
