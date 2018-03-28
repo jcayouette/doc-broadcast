@@ -8,7 +8,7 @@
 :experimental:
 :sourcedir: example-manager-docs/docs/manager-docs/manager31/getting-started/
 
-quickstart3_chap_install_overview.adoc[]
+quickstart3_chap_install_overview.adoc[Overview]
 
 link:quickstart3_chap_suma_installation_jeos.adoc[]
 
