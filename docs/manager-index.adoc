@@ -1,0 +1,18 @@
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+endif::[]
+:layout: default
+:page-permalink: manager-index.html
+:showtitle:
+:page-title: SUSE Manager Live Documentation
+:page-description: SUSE Manager Documentation
+
+
+== SUSE Manager Versions
+
+link:manager31-index.html[SUSE Manager 3.1]
+
+
+
+
+
