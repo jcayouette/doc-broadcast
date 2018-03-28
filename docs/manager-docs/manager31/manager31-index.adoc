@@ -4,7 +4,7 @@
 :page-title: SUSE Manager {version} Live Documentation
 :page-description: 3.1 Docs
 :sectanchors:
-:sourcedir: getting-started
+:sourcedir: manager31/getting-started
 :version: 3.1
 
 == Resources
