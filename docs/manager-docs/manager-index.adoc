@@ -6,9 +6,11 @@ layout: page
 :page-title:
 :page-description: SUSE Manager Documentation
 
-You will find the latest version of SUSE Manager documentation below.
+This page contains links to draft builds from the SUSE Manager documentation source code repository. Latest builds are triggered automatically once a pull request has been accepted by a SUSE technical writer. Keep in mind these documents are live works in progress and will contain bugs and incomplete sections. Use development(latest) documents listed here at your own risk.
 
 == Latest Version
+
+Documentation
 
 <<manager31-index.adoc#manager31-index, SUSE Manager Index>>
 
