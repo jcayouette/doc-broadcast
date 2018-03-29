@@ -20,6 +20,6 @@ Latest builds are triggered automatically once a pull request has been accepted 
 
 The following enterprise documentation links represents documentation which has passed through extensive testing and QA procedures. It is verified and reliable. Bugs which are submitted by community and fixed in the latest develop edition will be applied to downstream enterprise documentation branches if applicable.
 
-* https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html[SUSE Manager 3.0 Getting Started]
+https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html[SUSE Manager 3.0 Getting Started, role="external", window="_blank"]
 
-* https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html[SUSE Manager 3.0 Reference Manual]
+https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html[SUSE Manager 3.0 Reference Manual]
