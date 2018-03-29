@@ -6,13 +6,17 @@ layout: page
 :page-title:
 :page-description: SUSE Manager Documentation
 
-This page contains links to draft builds from the SUSE Manager documentation source code repository. Latest builds are triggered automatically once a pull request has been accepted by a SUSE technical writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at your own risk.
+== Documentation Editions
 
-== Latest Development Edition
+This page contains links to draft builds from the SUSE Manager documentation source code repository.
+
+=== Latest Development Edition (Upstream)
+
+Latest builds are triggered automatically once a pull request has been accepted by a SUSE technical writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at your own risk.
 
 <<manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
 
-== Enterprise Editions
+=== Enterprise Editions (Downstream)
 
 The following enterprise documentation links represents documentation which has passed through extensive testing and QA procedures. It is verified and reliable. Bugs which are submitted by community and fixed in the latest develop edition will be applied to downstream enterprise documentation branches if applicable.
 
