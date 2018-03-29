@@ -21,7 +21,7 @@ In the following sections and chapters, it is highly recommended to use SLE 12 
 
 
 == SLES 12 KVM Requirements
-
+Hello world this is a test!
 
 This chapter provides the required (kvm) settings for installation of &sls;
  12 media as the base for the &susemgr; 3.1.
