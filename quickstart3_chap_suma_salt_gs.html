@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Getting Started with Salt</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav></div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Getting Started with Salt</h1>
+</div>
+
+<div class="post-content">
+
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_salt.gs.guide.intro">1. Introduction</a></li>
+<li><a href="#_salt.gs.guide.testing.first.minion">2. Understanding Salt Calls</a></li>
+<li><a href="#_salt.gs.guide.term.overview">3. Common Salt Terminology</a></li>
+<li><a href="#_salt.gs.guide.useful.salt.commands">4. Useful Salt Commands</a></li>
+<li><a href="#_salt.gs.guide.salt.file.locations">5. Salt File Locations and Structure</a>
+<ul class="sectlevel2">
+<li><a href="#_salt.gs.guide.salt.file.locations.file.roots">5.1. file_roots</a></li>
+<li><a href="#_salt.gs.guide.salt.file.locations.pillar.roots">5.2. pillar_roots</a></li>
+</ul>
+</li>
+<li><a href="#install_the_suse_manager_locale_formula">6. Install the SUSE Manager Locale Formula</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.intro"><a class="anchor" href="#_salt.gs.guide.intro"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter provides an introduction to using the new Salt features added in &susemgr;
+ 3.
+This chapter assumes you have completed all former sections within the &mgrgetstart;
+.
+You should have a running &susemgr;
+server and at least one on-boarded Salt minion to complete the sections of this chapter.
+If you find yourself stuck at any point refer to the <em class="ref">SaltStack Get
+    Started</em>
+ tutorial located at <a href="https://docs.saltstack.com/en/getstarted/fundamentals/index.html" class="bare">https://docs.saltstack.com/en/getstarted/fundamentals/index.html</a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Use More than One Minion</div>
+<div class="paragraph">
+<p>Connecting two or more minions during your testing is considered best practice.
+This will allow you to target individual minions using Salt and experiment with the power of its targeting features.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This guide does not attempt to cover all that Salt has to offer.
+This guide is a primer for using Salt with &susemgr;
+.
+For comprehensive Salt documentation, see <a href="https://docs.saltstack.com/en/latest/contents.html" class="bare">https://docs.saltstack.com/en/latest/contents.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>The current version of Salt in &susemgr;
+is <code>2016.3.x</code>.
+For additional covering the major differences between Salt version <code>2015.11.x</code> and <code>2016.3.x</code> review the following release notes: <a href="https://docs.saltstack.com/en/latest/topics/releases/2015.8.0.htmlhttps://docs.saltstack.com/en/latest/topics/releases/2016.3.0.html" class="bare">https://docs.saltstack.com/en/latest/topics/releases/2015.8.0.htmlhttps://docs.saltstack.com/en/latest/topics/releases/2016.3.0.html</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.testing.first.minion"><a class="anchor" href="#_salt.gs.guide.testing.first.minion"></a>2. Understanding Salt Calls</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Salt Calls</dt>
+<dd>
+<p>Salt calls are defined by three main properties:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt 'target' function [arguments]</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Target</dt>
+<dd>
+<p>Use the second property in a Salt call to define a target machine.
+Specify the minion or group of minions you would like to run a function on.</p>
+</dd>
+<dt class="hdlist1">General Targeting</dt>
+<dd>
+<p>List available grains on all minions:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*' grains.ls</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Ping a specific minion:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt 'web1.example.com' test.ping</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Glob Targeting</dt>
+<dd>
+<p>Ping all minions using a domain:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*example.com' test.ping</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Display the OS name of all minions with the label <code>webserver</code>:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt 'webserver*' grains.item oscodename</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">List Targeting</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre># salt -L 'webserver.example.com,db.example.com' test.ping</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Regular Expression Targeting</dt>
+<dd>
+<p>You may use PCRE-compliant regular expressions:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt -E '(?!web)' test.ping</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IP Address Targeting</dt>
+<dd>
+<p>List minion IP addresses:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*' network.ip_addrs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Ping a specific minion IP address:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt -S '172.31.60.74' test.ping</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Ping all minions on a subnet:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt -S 172.31.0.0/16 test.ping</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Lookup a Subnet Using the <code>ip</code> Command</div>
+<div class="paragraph">
+<p>You can use the <code>ip</code> command to find the subnet mask in the format of <code>192.168.1.1/24</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># ip -o -f inet addr show | awk '/scope global/ {print $4}'</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Function</dt>
+<dd>
+<p>Once you have specified a target, provide the function you would like to call.
+Functions also accept arguments.
+These are space-delimited.
+For example:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>salt '*' cmd.run 'echo "Hello: $FIRST_NAME"' env='{FIRST_NAME: "John"}'</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Locating Additional Minion Functions</dt>
+<dd>
+<p>Find more functions which can be called on minions by running:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>salt '*' sys.doc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+A full list of callable functions are located here: <a href="https://docs.saltstack.com/en/2015.8/ref/modules/all/index.html" class="bare">https://docs.saltstack.com/en/2015.8/ref/modules/all/index.html</a>
+Arguments::
+Provides the extra data needed by a function you are calling.
+The command <code>pkg.install</code> requires an argument specifying a package to install. &yast;
+has been selected for installation.
+For example:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*' pkg.install yast2</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.term.overview"><a class="anchor" href="#_salt.gs.guide.term.overview"></a>3. Common Salt Terminology</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Grains</dt>
+<dd>
+<p>Grains provide information about the hardware of a minion.
+For example, the operating system, IP addresses, network interfaces, memory, etc.
+When running a Salt command from keep in mind any modules and functions called are run locally from the system being called.
+Salt modules are stored on minions and master within the following directory:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/usr/lib/python2.7/site-packages/salt/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+List all available grains with the <code>grains.ls</code> function:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*' grains.ls</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+List collected grain system data by using the <code>grains.items</code> function:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt '*' grains.items</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+For more information on grains, see <a href="https://docs.saltstack.com/en/latest/topics/grains/" class="bare">https://docs.saltstack.com/en/latest/topics/grains/</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">States</dt>
+<dd>
+<p>States are templates which place systems into a known configuration, for example which applications and services are installed and running on those systems.
+States are a way for you to describe what each of your systems should look like.
+Once written, states are applied to target systems automating the process of managing and maintaining a large numbers of systems into a known state.
+For more information on states, see <a href="https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html" class="bare">https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html</a>.</p>
+</dd>
+<dt class="hdlist1">Pillar</dt>
+<dd>
+<p>Pillars unlike grains are created on the master.
+Pillar files contain information about a minion or group of minions.
+Pillars allow you to send confidential information to a targeted minion or group of minions.
+Pillars are useful for sensitive data, configuration of minions, variables, and any arbitrary data which should be defined.
+For more information on pillars, see <a href="https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html" class="bare">https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html</a>.</p>
+</dd>
+<dt class="hdlist1">Beacons</dt>
+<dd>
+<p>Beacons allow an admin to use the event system in Salt to monitor non-Salt processes.
+Minions may use beacons to hook into many types of system proceses for constant monitoring.
+Once a targeted monitored activity occurs an event is sent on the Salt event bus that may be used to trigger a reactor.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Enabling Beacons</div>
+<div class="paragraph">
+<p>To work with beacons on Salt minions the package python-pyinotify must be installed for SUSE systems.
+For RES systems install python-inotify.
+This package is not installed automatically during the salt minion package installation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Peer Communication with salt-broker</div>
+<div class="paragraph">
+<p>The salt-broker acts like a switch and not like a hub, therefore Peer communication will only work for minions behind the same broker/Proxy.
+For more information on Salt and peer communication see: <a href="https://docs.saltstack.com/en/latest/ref/peer.html" class="bare">https://docs.saltstack.com/en/latest/ref/peer.html</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.useful.salt.commands"><a class="anchor" href="#_salt.gs.guide.useful.salt.commands"></a>4. Useful Salt Commands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following list provides several useful Salt commands.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>salt-run</code></dt>
+<dd>
+<p>Print a list of all minions that are up:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-run manage.up</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Print a list of all minions that are down:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-run manage.down</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Print a list with the current status of all Salt minions:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-run manage.status</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+Check the version of Salt running on the master and active minions:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-run manage.versions</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>salt-cp</code></dt>
+<dd>
+<p>Copy a file to a minion or set of minions.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-cp '*' foo.conf /root</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+For more information, see <a href="https://docs.saltstack.com/en/latest/ref/cli/salt-cp.html" class="bare">https://docs.saltstack.com/en/latest/ref/cli/salt-cp.html</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">salt-key -l</dt>
+<dd>
+<p>List public keys:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-key -l</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">salt-key -A</dt>
+<dd>
+<p>Accept all pending keys:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># salt-key -A</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.salt.file.locations"><a class="anchor" href="#_salt.gs.guide.salt.file.locations"></a>5. Salt File Locations and Structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following screen describes Salt file structures and their locations used by the &susemgr;
+server.
+These files are listed in <em class="path">/etc/salt/master.d/susemanager.conf</em>
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># Configure different file roots
+
+file_roots:
+  base:
+    - /usr/share/susemanager/salt    #Should not be touched by a user
+    - /srv/susemanager/salt          #Should not be touched by a user
+    - /srv/salt                      #Your custom states go here
+
+# Configure different pillar roots
+
+pillar_roots:
+  base:
+    - /usr/share/susemanager/pillar  #Should not be touched by a user
+    - /srv/pillar                    #Custom pillars go here
+
+# Extension modules path
+
+extension_modules: /usr/share/susemanager/modules
+
+# Master top configuration
+
+master_tops:
+  mgr_master_tops: True</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following tips should be kept in mind when working with <em class="path">/etc/salt/master.d/susemanager.conf</em>
+.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Files listed are searched in the order they appear.</p>
+</li>
+<li>
+<p>The first file found is called.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_salt.gs.guide.salt.file.locations.file.roots"><a class="anchor" href="#_salt.gs.guide.salt.file.locations.file.roots"></a>5.1. file_roots</h3>
+<div class="paragraph">
+<p>&susemgr;
+as the Salt master reads its state data from three specific file root directories.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">/usr/share/susemanager/salt</em></dt>
+<dd>
+<p>This directory is created by &susemgr;
+and its content generated by the <code>/usr/share/susemanager/modules/tops/mgr_master_tops.py</code> python module:</p>
+<div class="paragraph">
+<p>It is shipped and updated together with &susemgr;
+and includes certificate setup and common state logic that will be applied to packages and channels.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Non-editable Directory</div>
+<div class="paragraph">
+<p>You should not edit or add custom Salt data to this directory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">/srv/susemanager/salt</em></dt>
+<dd>
+<p>This directory is created by &susemgr;
+and contains assigned channels and packages for minions, groups, and organizations.
+These files will be overwritten and regenerated.
+A good analogy for this directory would be the &susemgr;
+database translated into Salt directives.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Non-editable Directory</div>
+<div class="paragraph">
+<p>You should not edit or add custom Salt data to this directory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">/srv/salt</em></dt>
+<dd>
+<p>The directory <em class="path">/srv/salt</em>
+is for your custom state data, salt modules etc. &susemgr;
+does not touch or do anything with this directory.
+However the state data placed here affects the Highstate of minions and is merged with the result generated by &susemgr;
+.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Editable Directory</div>
+<div class="paragraph">
+<p>Place your custom Salt data here.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_salt.gs.guide.salt.file.locations.pillar.roots"><a class="anchor" href="#_salt.gs.guide.salt.file.locations.pillar.roots"></a>5.2. pillar_roots</h3>
+<div class="paragraph">
+<p>&susemgr;
+as the Salt master reads its pillar data from two specific pillar root directories.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">/usr/share/susemanager/pillar</em></dt>
+<dd>
+<p>This directory is generated by &susemgr;
+.
+It is shipped and updated together with &susemgr;
+.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Non-editable Directory</div>
+<div class="paragraph">
+<p>You should not edit or add custom Salt data to this directory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">/srv/pillar</em></dt>
+<dd>
+<p>&susemgr;
+by default does not touch or do anything with this directory.
+However the custom pillar data placed here is merged with the pillar result created by &susemgr;
+.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Editable Directory</div>
+<div class="paragraph">
+<p>Place your custom Salt pillar data here.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install_the_suse_manager_locale_formula"><a class="anchor" href="#install_the_suse_manager_locale_formula"></a>6. Install the SUSE Manager Locale Formula</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following section provides guidance on installing and using SUSE provided Salt formulas.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Installing the Locale Formula</div>
+<ol class="arabic">
+<li>
+<p>Install the locale formula with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>zypper install locale-formula</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This installs the package contents to <em class="path">/usr/share/susemanager/formulas/{metadata,states}</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>After installing the RPM, log in to the &susemgr;&webui; .</p>
+</li>
+<li>
+<p>Browse to the <b class="menuref">System Details</b> page of any minion you would like to apply the formula to.</p>
+</li>
+<li>
+<p>On the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] page of the minion you will see a new menu:Formulas[</b></span> tab. Select it to view a list of installed formulas.</p>
+</li>
+<li>
+<p>In the <span class="menuseq"><b class="menu">Formulas</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] listing select menu:Locale[</b></span> and click <b class="menuref">Save</b> .</p>
+</li>
+<li>
+<p>A new tab will appear next to the <span class="menuseq"><b class="menu">Formula</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] subtab. Select the new menu:Locale[</b></span> tab.</p>
+</li>
+<li>
+<p>The <span class="menuseq"><b class="menu">Locale</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] tab contains options for setting the language</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">keyboard layout</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">timezone</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and whether hardware clock is set to UTC. Select the desired options and click menu:Save[</b></span> .</p>
+</li>
+<li>
+<p>Run the following command to verify pillar settings. The output has been truncated.</p>
+<div class="listingblock">
+<div class="content">
+<pre>salt '$your_minion' pillar.items</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> ...
+   keyboard_and_language:
+       ----------
+       keyboard_layout:
+           English (US)
+       language:
+           English (US)
+   machine_password:
+       foobar
+   mgr_server:
+       manager_server
+   org_id:alt '$your_minion_here'
+       1
+   timezone:
+       ----------
+       hardware_clock_set_to_utc:
+           True
+       name:
+           CET
+    ...</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply this state to your minion by applying the highstate from the command line with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>salt '$your_minion' state.highstate</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can also apply the highstate from the previous formula tab from the &susemgr;&webui;
+by clicking <b class="menuref">Apply Highstate</b>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
