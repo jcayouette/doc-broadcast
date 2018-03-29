@@ -1,4 +1,5 @@
 ---
+permalink: /docs/
 #permalink: manager-index.html
 layout: page
 ---
