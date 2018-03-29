@@ -25,7 +25,7 @@ asciidoc_ext: asciidoc,adoc,ad
 repository: jcayouette/suse-publisher
 
 editme_links:
-  manager-docs: jcayouette/example-manager-docs/tree/master
+  manager-docs: jcayouette/example-manager-docs/edit/master
   sles-docs: jcayouette/example-sles-docs/tree/master
 
 # If your using github, provide the basepath to the branch for users to submit pull requests. The following is a sample from my test project. "Click the `edit me` button and a user will be redirected to the page in the github branch or an external repository"
