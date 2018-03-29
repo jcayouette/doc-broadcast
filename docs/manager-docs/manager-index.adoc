@@ -10,8 +10,6 @@ This page contains links to draft builds from the SUSE Manager documentation sou
 
 == Latest Development Edition
 
-Documentation
-
 <<manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
 
 == Enterprise Editions
