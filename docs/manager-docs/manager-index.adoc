@@ -1,6 +1,5 @@
 ---
-permalink: docs/
-#permalink: manager-index.html
+permalink: docs/manager-index.html
 layout: page
 ---
 :showtitle:
