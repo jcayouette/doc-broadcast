@@ -8,4 +8,4 @@ layout: page
 
 == Version
 
-<<manager31-index.adoc#SUSE manager 3.1, SUSE Manager 3.1>>
+<<manager31-index.adoc#suse-manager-31, SUSE Manager 3.1>>
