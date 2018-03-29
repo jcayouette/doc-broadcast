@@ -1,6 +1,5 @@
 ---
-permalink: /docs/
-#permalink: quickstart3_chap_suma_installation_jeos.html
+permalink: quickstart3_chap_suma_installation_jeos.html
 layout: page
 ---
 :sectnums:
