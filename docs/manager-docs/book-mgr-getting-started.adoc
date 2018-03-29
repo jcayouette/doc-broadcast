@@ -1,6 +1,6 @@
 ---
 permalink: book-mgr-getting-started.html
-layout: default
+layout: page
 ---
 :showtitle:
 :page-title: SUSE Manager 3.1
