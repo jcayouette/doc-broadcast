@@ -10,4 +10,4 @@ layout: page
 
 Adding a test para.
 
-<<book-mgr-getting-started.adoc#Getting Started, Getting Started>>
+<<book-mgr-getting-started.adoc#getting-started, Getting Started>>
