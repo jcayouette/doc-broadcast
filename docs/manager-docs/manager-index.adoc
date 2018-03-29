@@ -1,11 +1,19 @@
 ---
-permalink: manager-index.html
+permalink: docs/manager-index.html
 layout: page
 ---
 :showtitle:
 :page-title:
 :page-description: SUSE Manager Documentation
 
-== Version
+You will find the latest version of SUSE Manager documentation below.
 
-<<manager31-index.adoc#suse-manager-31, SUSE Manager 3.1>>
+== Latest Version
+
+link:manager31-index.adoc[SUSE Manager 3.1]
+
+== Maintenance Version
+
+* https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html[SUSE Manager 3.0 Getting Started]
+
+* https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html[SUSE Manager 3.0 Reference Manual]
