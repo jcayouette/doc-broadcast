@@ -1,5 +1,5 @@
 ---
-permalink: manager31-index.html
+#permalink: manager31-index.html
 layout: page
 ---
 :showtitle:
