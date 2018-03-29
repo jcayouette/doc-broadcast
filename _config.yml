@@ -8,7 +8,7 @@ exclude:
   - Rakefile
   - .idea/
 
-asciidoc: {}
+#asciidoc: {}
 
 asciidoctor:
   base_dir: suse-publisher/
