@@ -12,7 +12,7 @@ This page contains links to upstream/downstream builds from the SUSE Manager doc
 
 === Latest Development Edition (Upstream)
 
-Latest builds are triggered automatically once a pull request has been accepted by a SUSE technical writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at _your own risk_.
+Latest builds are triggered automatically once a pull request has been accepted by a SUSE Technical Writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at _your own risk_.
 
 
 <<manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
