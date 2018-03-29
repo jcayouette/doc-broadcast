@@ -18,13 +18,6 @@ asciidoctor:
     - source-highlighter=coderay
     - icons=font
 
-defaults:
-  -
-    scope:
-      type: "docs"
-      path: "docs/"
-    value:
-      layout: page
 
 
 # Add your product repository here. E.g < suse/doc-susemanager >
