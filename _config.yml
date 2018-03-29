@@ -31,22 +31,22 @@ editme_links:
 edit_path_publisher: jcayouette/suse-publisher/tree/master
 
 # CAAS repository path
-edit_path_caas: jcayouette/example-caas-docs/tree/master
+#edit_path_caas: jcayouette/example-caas-docs/tree/master
 
 # CLOUD repository path
-edit_path_cloud: jcayouette/example-cloud-docs/tree/master
+#edit_path_cloud: jcayouette/example-cloud-docs/tree/master
 
 # STORAGE repository path
-edit_path_storage: jcayouette/example-storage-docs/tree/master
+#edit_path_storage: jcayouette/example-storage-docs/tree/master
 
 # SLES repository path
-edit_path_sles: jcayouette/example-sles-docs/tree/master
+#edit_path_sles: jcayouette/example-sles-docs/tree/master
 
 # MANAGER repository path
-edit_path_manager: jcayouette/example-manager-docs/tree/master
+#edit_path_manager: jcayouette/example-manager-docs/tree/master
 
 baseurl: ""
-slesurl: jcayouette/example-sles-docs/tree/master
+
 
 # Preview server for test environment
 host: 0.0.0.0
