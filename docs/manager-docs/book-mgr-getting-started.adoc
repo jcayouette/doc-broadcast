@@ -1,6 +1,5 @@
 ---
-permalink: /docs/
-#permalink: book-mgr-getting-started.html
+permalink: book-mgr-getting-started.html
 layout: page
 ---
 :showtitle:
