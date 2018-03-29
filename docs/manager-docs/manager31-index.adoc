@@ -8,8 +8,6 @@ layout: page
 
 == Available Documents
 
-Adding a test para.
-
 <<book-mgr-getting-started.adoc#getting-started, Getting Started>>
 
 * Placeholder Installation and Deployment

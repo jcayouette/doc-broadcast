@@ -10,7 +10,7 @@ You will find the latest version of SUSE Manager documentation below.
 
 == Latest Version
 
-<<manager31-index.adoc#suse-manager-31-index, SUSE Manager Index>>
+<<manager31-index.adoc#manager31-index, SUSE Manager Index>>
 
 == Maintenance Version
 
