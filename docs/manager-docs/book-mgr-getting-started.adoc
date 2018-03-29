@@ -1,4 +1,5 @@
 ---
+permalink: /docs/
 #permalink: book-mgr-getting-started.html
 layout: page
 ---
