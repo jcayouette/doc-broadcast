@@ -18,6 +18,7 @@ asciidoctor:
     - source-highlighter=coderay
     - icons=font
 
+asciidoc_ext: asciidoc,adoc,ad
 
 
 # Add your product repository here. E.g < suse/doc-susemanager >
