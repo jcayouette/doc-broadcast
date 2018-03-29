@@ -11,14 +11,14 @@ layout: page
 
 Another test.
 
-link:quickstart3_chap_install_overview.adoc[Overview]
+<<quickstart3_chap_install_overview.adoc#overview, Overview>>
 
-link:quickstart3_chap_suma_installation_jeos.adoc[JeOS Installation]
+<<quickstart3_chap_suma_installation_jeos.adoc#jeos-installation, JeOS Installation>>
 
-link:quickstart3_chap_suma_installation_sles12_sp1.adoc[SLES Installation]
+<<quickstart3_chap_suma_installation_sles12_sp1.adoc#sles-installation, SLES Installation>>
 
-link:quickstart3_chap_suma_setup_with_yast.adoc[YaST Setup]
+<<quickstart3_chap_suma_setup_with_yast.adoc#yast-setup, Yast Setup>>
 
-link:quickstart3_chap_suma_keys_and_first_client.adoc[Connecting a Client]
+<<quickstart3_chap_suma_keys_and_first_client.adoc#connecting-a-client, Connecting a Client>>
 
-link:quickstart3_chap_suma_salt_gs.adoc[Salt Getting Started]
+<<quickstart3_chap_suma_salt_gs.adoc#salt-getting-started, Salt Getting Started>>
