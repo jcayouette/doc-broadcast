@@ -8,13 +8,13 @@ layout: page
 
 This page contains links to draft builds from the SUSE Manager documentation source code repository. Latest builds are triggered automatically once a pull request has been accepted by a SUSE technical writer. Keep in mind these documents are live works in progress and will contain bugs and incomplete sections. Use development(latest) documents listed here at your own risk.
 
-== Latest Version
+== Latest Development Edition
 
 Documentation
 
 <<manager31-index.adoc#manager31-index, SUSE Manager Index>>
 
-== Maintenance Version
+== Enterprise Editions
 
 * https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html[SUSE Manager 3.0 Getting Started]
 
