@@ -26,4 +26,4 @@ NOTE: Tested and verified documents, if you find a bug report it in our develop 
 
 https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html[SUSE Manager 3.0 Getting Started, role="external", window="_blank"]
 
-https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html[SUSE Manager 3.0 Reference Manual]
+https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html[SUSE Manager 3.0 Reference Manual, role="external", window="_blank"]
