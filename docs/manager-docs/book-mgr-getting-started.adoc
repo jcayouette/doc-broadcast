@@ -9,8 +9,6 @@ layout: page
 
 == SUSE Manager 3.1 Getting Started
 
-Another test.
-
 <<quickstart3_chap_install_overview.adoc#overview, Overview>>
 
 <<quickstart3_chap_suma_installation_jeos.adoc#jeos-installation, JeOS Installation>>
