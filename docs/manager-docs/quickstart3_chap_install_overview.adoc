@@ -1,6 +1,6 @@
 ---
 permalink: quickstart3_chap_install_overview.html
-layout: post
+layout: page
 ---
 :sectnums:
 :sectanchors:

@@ -1,6 +1,6 @@
 ---
 permalink: manager31-index.html
-layout: post
+layout: page
 ---
 :showtitle:
 :page-title: SUSE Manager 3.1

@@ -1,6 +1,6 @@
 ---
 permalink: quickstart3_chap_suma_salt_gs.html
-layout: post
+layout: page
 ---
 :page-title: Getting Started with Salt
 :sectnums:

@@ -1,6 +1,6 @@
 ---
 permalink: quickstart3_chap_suma_keys_and_first_client.html
-layout: post
+layout: page
 ---
 :sectnums:
 :experimental:

@@ -1,6 +1,6 @@
 ---
 permalink: quickstart3_chap_suma_installation_jeos.html
-layout: post
+layout: page
 ---
 :sectnums:
 :experimental:

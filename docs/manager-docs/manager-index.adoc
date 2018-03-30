@@ -1,6 +1,6 @@
 ---
 permalink: manager-index.html
-layout: post
+layout: page
 ---
 :showtitle:
 :page-title:

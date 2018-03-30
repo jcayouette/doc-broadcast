@@ -1,6 +1,6 @@
 ---
 permalink: quickstart3_chap_suma_installation_sles12_sp1.html
-layout: post
+layout: page
 ---
 :sectnums:
 :experimental:
