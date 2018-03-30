@@ -6,8 +6,8 @@ layout: default
     <h1 class="post-title-main">{{ page.title }}</h1>
 </div>
 <!-- If this does not work place post-content back in div and remove article -->
-<div class="post">
-<article class="post-content">
+<div class="post-content">
+<article class="post-content-article">
     <!-- HACK enough for the demo lol -->
     {% if page.path contains 'manager-docs' %}
       {% assign editme_link = 'manager-docs' %}
@@ -19,7 +19,7 @@ layout: default
       <a target="_blank" href="https://github.com/{{site.editme_links[editme_link]}}/{{page.path}}" class="btn btn-primary" role="button"> Edit me</a>
     {% endif %}
 
-    <!-- page content -->
     {{content}}
+
 </article>
 </div>

@@ -1,5 +1,13 @@
 title: SUSE Live Documentation
 description: This site generates SUSE documentation using jekyll, asciidoc, travis and github.
+
+gems:
+  - searchyll
+
+elasticsearch:
+  url: https://3kk56hxdw:sr3myuk5w2@publishing-search-9187135536.eu-central-1.bonsaisearch.net
+  index_name: publishing-search
+
 exclude:
   - LICENSE.adoc
   - README.adoc
@@ -53,6 +61,3 @@ baseurl: ""
 host: 0.0.0.0
 # Port for test environment
 port: 4000
-
-
-
