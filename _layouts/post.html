@@ -7,7 +7,6 @@ layout: default
 </div>
 <!-- If this does not work place post-content back in div and remove article -->
 <div class="post-content">
-<article class="post-content-article">
     <!-- HACK enough for the demo lol -->
     {% if page.path contains 'manager-docs' %}
       {% assign editme_link = 'manager-docs' %}
@@ -21,5 +20,4 @@ layout: default
 
     {{content}}
 
-</article>
 </div>
