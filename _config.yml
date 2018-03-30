@@ -2,10 +2,6 @@ title: SUSE Live Documentation
 description: This site generates SUSE documentation using jekyll, asciidoc, travis and github.
 
 
-elasticsearch:
-  url: https://3kk56hxdw:sr3myuk5w2@publishing-search-9187135536.eu-central-1.bonsaisearch.net
-  index_name: publishing-search
-
 exclude:
   - LICENSE.adoc
   - README.adoc
@@ -26,8 +22,9 @@ asciidoctor:
 asciidoc_ext: asciidoc,adoc,ad
 
 algolia:
-    vars: ["title", "excerpt", "date", "url", "categories", "tags"]
-
+  application_id: 'T01BBS7521'
+  index_name: publisher
+  search_only_api_key: 86725ddb2f1de87ae392652f46b60815
 # Add your product repository here. E.g < suse/doc-susemanager >
 
 repository: jcayouette/suse-publisher
