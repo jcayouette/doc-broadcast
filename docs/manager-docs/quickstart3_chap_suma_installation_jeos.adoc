@@ -25,6 +25,8 @@ In the following sections and chapters, it is highly recommended to use SLE 12 
 ====
 
 
+Hello World! This is a test!
+
 This chapter provides the required (KVM) settings for installation of &sle;
 Just Enough Operating System (JeOS) 12 as the base for &susemgr;
  3.1.
