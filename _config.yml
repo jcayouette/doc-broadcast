@@ -1,8 +1,6 @@
 title: SUSE Live Documentation
 description: This site generates SUSE documentation using jekyll, asciidoc, travis and github.
 
-gems:
-  - searchyll
 
 elasticsearch:
   url: https://3kk56hxdw:sr3myuk5w2@publishing-search-9187135536.eu-central-1.bonsaisearch.net
@@ -27,6 +25,8 @@ asciidoctor:
 
 asciidoc_ext: asciidoc,adoc,ad
 
+algolia:
+    vars: ["title", "excerpt", "date", "url", "categories", "tags"]
 
 # Add your product repository here. E.g < suse/doc-susemanager >
 
