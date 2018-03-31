@@ -25,7 +25,7 @@ algolia:
   application_id: 'WNURXD2O78'
   index_name: suse-publisher
   search_only_api_key: 761b121f117dc5882bfa9e6b1a7abd88
-  extensions_to_index: 'html,md,adoc,textile'
+  extensions_to_index: [html,adoc]
 # Add your product repository here. E.g < suse/doc-susemanager >
 
 repository: jcayouette/suse-publisher

@@ -10,6 +10,7 @@ layout: page
 [[_sles.installation.within.kvm.jeos]]
 == JeOS Installation
 
+In this section you will use kvm and the SLES12 Just Enough Operating system image to install a test environment.
 
 [[_quickstart.sect.kvm.settings]]
 == Virtual Machine Manager (virt-manager) Settings
