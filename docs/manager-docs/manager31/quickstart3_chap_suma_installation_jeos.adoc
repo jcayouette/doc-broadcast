@@ -10,9 +10,13 @@ layout: page
 [[_sles.installation.within.kvm.jeos]]
 == JeOS Installation
 
+Hello family!
 
 [[_quickstart.sect.kvm.settings]]
 == Virtual Machine Manager (virt-manager) Settings
+
+
+
 
 .Version Information
 [NOTE]
