@@ -108,15 +108,31 @@
     
 
     <!-- page content -->
-    <div class="sect1">
-<h2 id="_salt.gs.guide.intro"><a class="anchor" href="#_salt.gs.guide.intro"></a>1. Introduction</h2>
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_salt.gs.guide.intro">1. Introduction</a></li>
+<li><a href="#_salt.gs.guide.testing.first.minion">2. Understanding Salt Calls</a></li>
+<li><a href="#_salt.gs.guide.term.overview">3. Common Salt Terminology</a></li>
+<li><a href="#_salt.gs.guide.useful.salt.commands">4. Useful Salt Commands</a></li>
+<li><a href="#_salt.gs.guide.salt.file.locations">5. Salt File Locations and Structure</a>
+<ul class="sectlevel2">
+<li><a href="#_salt.gs.guide.salt.file.locations.file.roots">5.1. file_roots</a></li>
+<li><a href="#_salt.gs.guide.salt.file.locations.pillar.roots">5.2. pillar_roots</a></li>
+</ul>
+</li>
+<li><a href="#install_the_suse_manager_locale_formula">6. Install the SUSE Manager Locale Formula</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_salt.gs.guide.intro">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter provides an introduction to using the new Salt features added in &susemgr;
+<p>This chapter provides an introduction to using the new Salt features added in {susemgr}
  3.
-This chapter assumes you have completed all former sections within the &mgrgetstart;
+This chapter assumes you have completed all former sections within the {mgrgetstart}
 .
-You should have a running &susemgr;
+You should have a running {susemgr}
 server and at least one on-boarded Salt minion to complete the sections of this chapter.
 If you find yourself stuck at any point refer to the <em class="ref">SaltStack Get
     Started</em>
@@ -140,19 +156,19 @@ This will allow you to target individual minions using Salt and experiment with 
 </div>
 <div class="paragraph">
 <p>This guide does not attempt to cover all that Salt has to offer.
-This guide is a primer for using Salt with &susemgr;
+This guide is a primer for using Salt with {susemgr}
 .
 For comprehensive Salt documentation, see <a href="https://docs.saltstack.com/en/latest/contents.html" class="bare">https://docs.saltstack.com/en/latest/contents.html</a>.</p>
 </div>
 <div class="paragraph">
-<p>The current version of Salt in &susemgr;
+<p>The current version of Salt in {susemgr}
 is <code>2016.3.x</code>.
 For additional covering the major differences between Salt version <code>2015.11.x</code> and <code>2016.3.x</code> review the following release notes: <a href="https://docs.saltstack.com/en/latest/topics/releases/2015.8.0.htmlhttps://docs.saltstack.com/en/latest/topics/releases/2016.3.0.html" class="bare">https://docs.saltstack.com/en/latest/topics/releases/2015.8.0.htmlhttps://docs.saltstack.com/en/latest/topics/releases/2016.3.0.html</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_salt.gs.guide.testing.first.minion"><a class="anchor" href="#_salt.gs.guide.testing.first.minion"></a>2. Understanding Salt Calls</h2>
+<h2 id="_salt.gs.guide.testing.first.minion">2. Understanding Salt Calls</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -164,7 +180,11 @@ For additional covering the major differences between Salt version <code>2015.11
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt 'target' function [arguments]</pre>
+<pre>#
+salt '`target`
+'`function`
+[`arguments`
+]</pre>
 </div>
 </div>
 <div class="dlist">
@@ -182,7 +202,8 @@ Specify the minion or group of minions you would like to run a function on.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*' grains.ls</pre>
+<pre>#
+salt '*' grains.ls</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -194,7 +215,8 @@ Ping a specific minion:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt 'web1.example.com' test.ping</pre>
+<pre>#
+salt 'web1.example.com' test.ping</pre>
 </div>
 </div>
 <div class="dlist">
@@ -207,7 +229,8 @@ Ping a specific minion:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*example.com' test.ping</pre>
+<pre>#
+salt '*example.com' test.ping</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -219,7 +242,8 @@ Display the OS name of all minions with the label <code>webserver</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt 'webserver*' grains.item oscodename</pre>
+<pre>#
+salt 'webserver*' grains.item oscodename</pre>
 </div>
 </div>
 <div class="dlist">
@@ -228,7 +252,8 @@ Display the OS name of all minions with the label <code>webserver</code>:</p>
 <dd>
 <div class="listingblock">
 <div class="content">
-<pre># salt -L 'webserver.example.com,db.example.com' test.ping</pre>
+<pre>#
+salt -L 'webserver.example.com,db.example.com' test.ping</pre>
 </div>
 </div>
 </dd>
@@ -240,7 +265,8 @@ Display the OS name of all minions with the label <code>webserver</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt -E '(?!web)' test.ping</pre>
+<pre>#
+salt -E '(?!web)' test.ping</pre>
 </div>
 </div>
 <div class="dlist">
@@ -253,7 +279,8 @@ Display the OS name of all minions with the label <code>webserver</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*' network.ip_addrs</pre>
+<pre>#
+salt '*' network.ip_addrs</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -265,7 +292,8 @@ Ping a specific minion IP address:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt -S '172.31.60.74' test.ping</pre>
+<pre>#
+salt -S '172.31.60.74' test.ping</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -277,7 +305,8 @@ Ping all minions on a subnet:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt -S 172.31.0.0/16 test.ping</pre>
+<pre>#
+salt -S 172.31.0.0/16 test.ping</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -290,13 +319,14 @@ Ping all minions on a subnet:</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="title">Lookup a Subnet Using the <code>ip</code> Command</div>
+<div class="title">Lookup a Subnet Using the <code class="command">ip</code> Command</div>
 <div class="paragraph">
-<p>You can use the <code>ip</code> command to find the subnet mask in the format of <code>192.168.1.1/24</code>:</p>
+<p>You can use the <code class="command">ip</code> command to find the subnet mask in the format of <code>192.168.1.1/24</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># ip -o -f inet addr show | awk '/scope global/ {print $4}'</pre>
+<pre>#
+ip -o -f inet addr show | awk '/scope global/ {print $4}'</pre>
 </div>
 </div>
 </td>
@@ -337,7 +367,7 @@ For example:</p>
 A full list of callable functions are located here: <a href="https://docs.saltstack.com/en/2015.8/ref/modules/all/index.html" class="bare">https://docs.saltstack.com/en/2015.8/ref/modules/all/index.html</a>
 Arguments::
 Provides the extra data needed by a function you are calling.
-The command <code>pkg.install</code> requires an argument specifying a package to install. &yast;
+The command <code>pkg.install</code> requires an argument specifying a package to install. {yast}
 has been selected for installation.
 For example:</p>
 </div>
@@ -346,13 +376,14 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*' pkg.install yast2</pre>
+<pre>#
+salt '*' pkg.install yast2</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_salt.gs.guide.term.overview"><a class="anchor" href="#_salt.gs.guide.term.overview"></a>3. Common Salt Terminology</h2>
+<h2 id="_salt.gs.guide.term.overview">3. Common Salt Terminology</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -379,7 +410,8 @@ List all available grains with the <code>grains.ls</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*' grains.ls</pre>
+<pre>#
+salt '*' grains.ls</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -391,7 +423,8 @@ List collected grain system data by using the <code>grains.items</code> function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt '*' grains.items</pre>
+<pre>#
+salt '*' grains.items</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -407,6 +440,29 @@ States are a way for you to describe what each of your systems should look like.
 Once written, states are applied to target systems automating the process of managing and maintaining a large numbers of systems into a known state.
 For more information on states, see <a href="https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html" class="bare">https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html</a>.</p>
 </dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Upating Salt</div>
+<div class="paragraph">
+<p>Do not update <span class="package">salt</span>
+ itself using Salt states.
+First update all other system packages using Salt states then update <span class="package">salt</span>
+ as a separate stand-alone step from the {susemgr}{webui}
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Pillar</dt>
 <dd>
 <p>Pillars unlike grains are created on the master.
@@ -462,14 +518,14 @@ For more information on Salt and peer communication see: <a href="https://docs.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="_salt.gs.guide.useful.salt.commands"><a class="anchor" href="#_salt.gs.guide.useful.salt.commands"></a>4. Useful Salt Commands</h2>
+<h2 id="_salt.gs.guide.useful.salt.commands">4. Useful Salt Commands</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following list provides several useful Salt commands.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>salt-run</code></dt>
+<dt class="hdlist1"><code class="command">salt-run</code></dt>
 <dd>
 <p>Print a list of all minions that are up:</p>
 </dd>
@@ -477,7 +533,8 @@ For more information on Salt and peer communication see: <a href="https://docs.s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-run manage.up</pre>
+<pre>#
+salt-run manage.up</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -489,7 +546,8 @@ Print a list of all minions that are down:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-run manage.down</pre>
+<pre>#
+salt-run manage.down</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -501,7 +559,8 @@ Print a list with the current status of all Salt minions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-run manage.status</pre>
+<pre>#
+salt-run manage.status</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -513,12 +572,13 @@ Check the version of Salt running on the master and active minions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-run manage.versions</pre>
+<pre>#
+salt-run manage.versions</pre>
 </div>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>salt-cp</code></dt>
+<dt class="hdlist1"><code class="command">salt-cp</code></dt>
 <dd>
 <p>Copy a file to a minion or set of minions.</p>
 </dd>
@@ -526,7 +586,8 @@ Check the version of Salt running on the master and active minions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-cp '*' foo.conf /root</pre>
+<pre>#
+salt-cp '*' foo.conf /root</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -543,7 +604,8 @@ For more information, see <a href="https://docs.saltstack.com/en/latest/ref/cli/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-key -l</pre>
+<pre>#
+salt-key -l</pre>
 </div>
 </div>
 <div class="dlist">
@@ -556,18 +618,19 @@ For more information, see <a href="https://docs.saltstack.com/en/latest/ref/cli/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># salt-key -A</pre>
+<pre>#
+salt-key -A</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_salt.gs.guide.salt.file.locations"><a class="anchor" href="#_salt.gs.guide.salt.file.locations"></a>5. Salt File Locations and Structure</h2>
+<h2 id="_salt.gs.guide.salt.file.locations">5. Salt File Locations and Structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following screen describes Salt file structures and their locations used by the &susemgr;
+<p>The following screen describes Salt file structures and their locations used by the {susemgr}
 server.
-These files are listed in <em class="path">/etc/salt/master.d/susemanager.conf</em>
+These files are listed in <code class="path">/etc/salt/master.d/susemanager.conf</code>
 :</p>
 </div>
 <div class="listingblock">
@@ -598,7 +661,7 @@ master_tops:
 </div>
 </div>
 <div class="paragraph">
-<p>The following tips should be kept in mind when working with <em class="path">/etc/salt/master.d/susemanager.conf</em>
+<p>The following tips should be kept in mind when working with <code class="path">/etc/salt/master.d/susemanager.conf</code>
 .</p>
 </div>
 <div class="ulist">
@@ -612,19 +675,19 @@ master_tops:
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_salt.gs.guide.salt.file.locations.file.roots"><a class="anchor" href="#_salt.gs.guide.salt.file.locations.file.roots"></a>5.1. file_roots</h3>
+<h3 id="_salt.gs.guide.salt.file.locations.file.roots">5.1. file_roots</h3>
 <div class="paragraph">
-<p>&susemgr;
+<p>{susemgr}
 as the Salt master reads its state data from three specific file root directories.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em class="path">/usr/share/susemanager/salt</em></dt>
+<dt class="hdlist1"><code class="path">/usr/share/susemanager/salt</code></dt>
 <dd>
-<p>This directory is created by &susemgr;
+<p>This directory is created by {susemgr}
 and its content generated by the <code>/usr/share/susemanager/modules/tops/mgr_master_tops.py</code> python module:</p>
 <div class="paragraph">
-<p>It is shipped and updated together with &susemgr;
+<p>It is shipped and updated together with {susemgr}
 and includes certificate setup and common state logic that will be applied to packages and channels.</p>
 </div>
 </dd>
@@ -647,12 +710,12 @@ and includes certificate setup and common state logic that will be applied to pa
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em class="path">/srv/susemanager/salt</em></dt>
+<dt class="hdlist1"><code class="path">/srv/susemanager/salt</code></dt>
 <dd>
-<p>This directory is created by &susemgr;
+<p>This directory is created by {susemgr}
 and contains assigned channels and packages for minions, groups, and organizations.
 These files will be overwritten and regenerated.
-A good analogy for this directory would be the &susemgr;
+A good analogy for this directory would be the {susemgr}
 database translated into Salt directives.</p>
 </dd>
 </dl>
@@ -674,12 +737,12 @@ database translated into Salt directives.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em class="path">/srv/salt</em></dt>
+<dt class="hdlist1"><code class="path">/srv/salt</code></dt>
 <dd>
-<p>The directory <em class="path">/srv/salt</em>
-is for your custom state data, salt modules etc. &susemgr;
+<p>The directory <code class="path">/srv/salt</code>
+is for your custom state data, salt modules etc. {susemgr}
 does not touch or do anything with this directory.
-However the state data placed here affects the Highstate of minions and is merged with the result generated by &susemgr;
+However the state data placed here affects the Highstate of minions and is merged with the result generated by {susemgr}
 .</p>
 </dd>
 </dl>
@@ -701,18 +764,18 @@ However the state data placed here affects the Highstate of minions and is merge
 </div>
 </div>
 <div class="sect2">
-<h3 id="_salt.gs.guide.salt.file.locations.pillar.roots"><a class="anchor" href="#_salt.gs.guide.salt.file.locations.pillar.roots"></a>5.2. pillar_roots</h3>
+<h3 id="_salt.gs.guide.salt.file.locations.pillar.roots">5.2. pillar_roots</h3>
 <div class="paragraph">
-<p>&susemgr;
+<p>{susemgr}
 as the Salt master reads its pillar data from two specific pillar root directories.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em class="path">/usr/share/susemanager/pillar</em></dt>
+<dt class="hdlist1"><code class="path">/usr/share/susemanager/pillar</code></dt>
 <dd>
-<p>This directory is generated by &susemgr;
+<p>This directory is generated by {susemgr}
 .
-It is shipped and updated together with &susemgr;
+It is shipped and updated together with {susemgr}
 .</p>
 </dd>
 </dl>
@@ -734,11 +797,11 @@ It is shipped and updated together with &susemgr;
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em class="path">/srv/pillar</em></dt>
+<dt class="hdlist1"><code class="path">/srv/pillar</code></dt>
 <dd>
-<p>&susemgr;
+<p>{susemgr}
 by default does not touch or do anything with this directory.
-However the custom pillar data placed here is merged with the pillar result created by &susemgr;
+However the custom pillar data placed here is merged with the pillar result created by {susemgr}
 .</p>
 </dd>
 </dl>
@@ -762,7 +825,7 @@ However the custom pillar data placed here is merged with the pillar result crea
 </div>
 </div>
 <div class="sect1">
-<h2 id="install_the_suse_manager_locale_formula"><a class="anchor" href="#install_the_suse_manager_locale_formula"></a>6. Install the SUSE Manager Locale Formula</h2>
+<h2 id="install_the_suse_manager_locale_formula">6. Install the SUSE Manager Locale Formula</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following section provides guidance on installing and using SUSE provided Salt formulas.</p>
@@ -777,23 +840,13 @@ However the custom pillar data placed here is merged with the pillar result crea
 <pre>zypper install locale-formula</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>This installs the package contents to <em class="path">/usr/share/susemanager/formulas/{metadata,states}</em></p>
-</div>
-</td>
-</tr>
-</table>
+<p>NOTE:
+This installs the package contents to <code class="path">/usr/share/susemanager/formulas/{metadata,states}</code></p>
 </div>
 </li>
 <li>
-<p>After installing the RPM, log in to the &susemgr;&webui; .</p>
+<p>After installing the RPM, log in to the {susemgr}{webui} .</p>
 </li>
 <li>
 <p>Browse to the <b class="menuref">System Details</b> page of any minion you would like to apply the formula to.</p>
@@ -819,7 +872,7 @@ However the custom pillar data placed here is merged with the pillar result crea
 </div>
 <div class="listingblock">
 <div class="content">
-<pre> ...
+<pre>...
    keyboard_and_language:
        ----------
        keyboard_layout:
@@ -849,21 +902,11 @@ However the custom pillar data placed here is merged with the pillar result crea
 <pre>salt '$your_minion' state.highstate</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>You can also apply the highstate from the previous formula tab from the &susemgr;&webui;
+<p>NOTE:
+You can also apply the highstate from the previous formula tab from the {susemgr}{webui}
 by clicking <b class="menuref">Apply Highstate</b>
 .</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </li>
 </ol>

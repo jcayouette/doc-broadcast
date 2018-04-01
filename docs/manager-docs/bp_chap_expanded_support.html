@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Expanded Support</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Expanded Support</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/bp_chap_expanded_support.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bp.expanded_support.resclients">1. Managing RES Clients</a>
+<ul class="sectlevel2">
+<li><a href="#_bp.expanded_support.resclients.server">1.1. Server Configuration for RES Channels</a></li>
+<li><a href="#_bp.expanded_support.resclients.tips">1.2. RES Channel Management Tips</a></li>
+<li><a href="#mirroring_rhel_media_into_a_channel">1.3. Mirroring RHEL Media into a Channel</a></li>
+<li><a href="#registering_res_salt_minions_with_susemgr">1.4. Registering RES Salt Minions with {susemgr}</a></li>
+<li><a href="#register_a_salt_minion_via_bootstrap">1.5. Register a Salt Minion via Bootstrap</a></li>
+<li><a href="#manual_salt_minion_registration">1.6. Manual Salt Minion Registration</a></li>
+</ul>
+</li>
+<li><a href="#_bp.expanded_support.centos_repos.trad">2. Preparing Channels and Repositories for CentOS Traditional Clients</a></li>
+<li><a href="#_bp.expanded_support.centos_salt">3. Registering CentOS Salt Minions with {susemgr}</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the following sections find information about Red Hat and Centos clients.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.expanded_support.resclients">1. Managing RES Clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following sections provide guidance on managing Red Hat Expanded Support clients, this includes Salt minions and traditional systems.</p>
+</div>
+<div class="sect2">
+<h3 id="_bp.expanded_support.resclients.server">1.1. Server Configuration for RES Channels</h3>
+<div class="paragraph">
+<p>This section provides guidance on server configuration for RES Channels provided by {suse}
+.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Minimum of 8 GB RAM and at least two physical or virtual CPUs. Taskomatic will use one of these CPUs.</p>
+</li>
+<li>
+<p>Taskomatic requires of minimum of 3072 MB RAM. This should be set in <code class="path">/etc/rhn/rhn.conf</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre>taskomatic.java.maxmemory=3072</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Provision enough disk space. <code class="path">/var/spacewalk</code> contains all mirrored RPMs. For example, RES 6 x86_64 channels require 90 GB and more.</p>
+</li>
+<li>
+<p>LVM or an NFS mount is recommended.</p>
+</li>
+<li>
+<p>Access to RHEL 5/6/7 Subscription Media.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Access to RHEL Media or Repositories</div>
+<div class="paragraph">
+<p>Access to Red Hat base media repositories and RHEL installation media is the responsibility of the user.
+Ensure that all your RHEL systems obtain support from RHEL or all your RHEL systems obtain support from {suse}
+.
+If you do not follow these practices you may violate terms with Red Hat.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bp.expanded_support.resclients.tips">1.2. RES Channel Management Tips</h3>
+<div class="paragraph">
+<p>This section provides tips on RES channel management.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The base parent distribution RES channel per architecture contains zero packages. No base media is provided by {suse} . The RHEL media or installation ISOs should be added as child channels of the RES parent channel.</p>
+</li>
+<li>
+<p>The RES and tools channels are provided by SUSE Customer Center (SCC) using <code class="command">mgr-sync</code>.</p>
+</li>
+<li>
+<p>It can take up to 24 hours for an initial channel synchronization to complete.</p>
+</li>
+<li>
+<p>When you have completed the initial synchronization process of any RES channel it is recommended to clone the channel before working with it. This provides you with a backup of the original synchronization.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mirroring_rhel_media_into_a_channel">1.3. Mirroring RHEL Media into a Channel</h3>
+<div class="paragraph">
+<p>The following procedure guides you through setup of the RHEL media as a {susemgr}
+channel.
+All packages on the RHEL media will be mirrored into a child channel located under RES 5/6/7 distribution per architecture.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Mirroring RHEL Media into a Channel</div>
+<ol class="arabic">
+<li>
+<p>Create a new Channel by log in to the {webui} and selecting <span class="menuseq"><b class="menu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Create Channel</b></span> .</p>
+</li>
+<li>
+<p>Fill in basic channel details and add the channel as a child to the corresponding RES 5/6/7 distribution channel per architecture from SCC. The base parent channel should contain zero packages.</p>
+</li>
+<li>
+<p>Modify the RES 5/6/7 activation key to include this new child channel.</p>
+</li>
+<li>
+<p>As {rootuser} on the {susemgr} command line copy the ISO to the <code class="path">/tmp</code> directory.</p>
+</li>
+<li>
+<p>Create a directory to contain the media content:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+mkdir -p /srv/www/htdocs/pub/rhel</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Mount the ISO:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+mount -o loop /tmp/name_of_iso /srv/www/htdocs/pub/rhel</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start <code class="command">spacewalk-repo-sync</code> to synchronize packages:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+spacewalk-repo-sync -c channel_name -u https://127.0.0.1/pub/rhel/Server/
+Repo URL: https://127.0.0.1/pub/rhel/Server/
+Packages in repo:              3690
+Packages already synced:          0
+Packages to sync:              3690
+1/3690 : texlive-latex-2007-57.el6_2-0.x86_64
+2/3690 : boost-filesystem-1.41.0-18.el6-0.i686
+3/3690 : policycoreutils-newrole-2.0.83-19.39.el6-0.x86_64
+[...]</pre>
+</div>
+</div>
+</li>
+<li>
+<p>When the channel has completed the synchronization process you can use the channel as any normal {susemgr} channel.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="registering_res_salt_minions_with_susemgr">1.4. Registering RES Salt Minions with {susemgr}</h3>
+<div class="paragraph">
+<p>This section will guide you through registering RHEL minions with {susemgr}
+.
+This section assumes you have updated your server to the latest patch level.</p>
+</div>
+<div class="sect3">
+<h4 id="synchronizing_appropriate_res_channels">1.4.1. Synchronizing Appropriate RES Channels</h4>
+<div class="paragraph">
+<p>Ensure you have the corresponding RES product enabled and required channels have been fully synchronized:</p>
+</div>
+<div class="ulist">
+<div class="title">RHEL 7.x</div>
+<ul>
+<li>
+<p>Product: RES 7</p>
+</li>
+<li>
+<p>Mandatory channels: <code class="systemitem">rhel-x86_64-server-7</code> , <code class="systemitem">res7-suse-manager-tools-x86_64</code> , <code class="systemitem">res7-x86_64</code> systemitem&gt;</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">RHEL 6.x</div>
+<ul>
+<li>
+<p>Product: RES 6</p>
+</li>
+<li>
+<p>Mandatory channels: <code class="systemitem">rhel-x86_64-server-6</code> , <code class="systemitem">res6-suse-manager-tools-x86_64</code> , <code class="systemitem">res6-x86_64</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Checking Synchronization Progress</div>
+<div class="paragraph">
+<p>To check if a channel has finished synchronizing you can do one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the {susemgr}{webui} browse to <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Setup Wizard</b></span> and select the <b class="menuref">SUSE Products</b> tab. Here you will find a percent completion bar for each product.</p>
+</li>
+<li>
+<p>Alternatively, you may check the synchronization log file located under <code class="path">/var/log/rhn/reposync/channel-label.log</code> using cat or the tailf command. Keep in mind that base channels can contain multiple child channels. Each of these child channels will generate its own log during the synchronization progress. Do not assume a channel has finished synchronizing until you have checked all relevant log files including base and child channels.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Create an activation key associated with the RES channel.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating_a_bootstrap_repository">1.4.2. Creating a Bootstrap Repository</h4>
+<div class="paragraph">
+<p>The following procedure demonstrate creating a bootstrap repository for RHEL</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the server command line as root, create a bootstrap repo for RHEL with the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mgr-create-bootstrap-repo RHEL_activation_channel_key</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Rename <code class="command">bootstrap.sh</code> to <code class="command">resversion-boostrap.sh</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+cp bootstrap.sh res7-bootstrap.sh</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="register_a_salt_minion_via_bootstrap">1.5. Register a Salt Minion via Bootstrap</h3>
+<div class="paragraph">
+<p>The following procedure will guide you through registering a Salt minion using the bootstrap script.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Registration Using the Bootstrap Script</div>
+<ol class="arabic">
+<li>
+<p>For your new minion download the bootstrap script from the {susemgr} server:</p>
+<div class="listingblock">
+<div class="content">
+<pre>wget --no-check-certificate https://`server`
+/pub/bootstrap/res7-bootstrap.sh</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the appropriate res-gpg-pubkey-<mark><mark></mark>-<mark></mark></mark>.key to the <code>ORG_GPG_KEY</code> key parameter, comma delimited in your <code class="command">res7-bootstrap.sh</code> script. These are located on your {susemgr} server at:</p>
+<div class="listingblock">
+<div class="content">
+<pre>http://`server`
+/pub/</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make the <code class="command">res7-bootstrap.sh</code> script executable and run it. This will install necessary Salt packages from the bootstrap repository and start the Salt minion service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+chmod +x res7-bootstrap.sh{prompt.root}
+./res7-boostrap.sh</pre>
+</div>
+</div>
+</li>
+<li>
+<p>From the {susemgr}{webui} select <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Keys</b></span> and accept the new minion&#8217;s key.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Troubleshooting Bootstrap</div>
+<div class="paragraph">
+<p>If bootstrapping a minion fails it is usually caused by missing packages.
+These missing packages are contained on the RHEL installation media.
+The RHEL installation media should be loop mounted and added as a child channel to the RES channel.
+See the warning in <a href="#_bp.expanded_support.resclients">Managing RES Clients</a> on access to RHEL Media.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manual_salt_minion_registration">1.6. Manual Salt Minion Registration</h3>
+<div class="paragraph">
+<p>The following procedure will guide you through the registration of a Salt minion manually.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the bootstrap repository:</p>
+<div class="listingblock">
+<div class="content">
+<pre>yum-config-manager --add-repo https://`server`
+/pub/repositories/res/7/bootstrap</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install the <span class="package">salt-minion</span> package:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+yum install salt-minion</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit the Salt minion configuration file to point to the {susemgr} server:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+mkdir /etc/salt/minion.d{prompt.root}
+echo "master:`server_fqdn`
+" &gt; /etc/salt/minion.d/susemanager.conf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the minion service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+systemctl start salt-minion</pre>
+</div>
+</div>
+</li>
+<li>
+<p>From the {susemgr}{webui} select the <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Keys</b></span> and accept the new minion&#8217;s key.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.expanded_support.centos_repos.trad">2. Preparing Channels and Repositories for CentOS Traditional Clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This following section provides an example procedure for configuring CentOS channels and repositories and finally registering a CentOS client with {susemgr}
+.
+These steps will be identical for Scientific Linux and Fedora.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Preparing Channels and Repositories</div>
+<ol class="arabic">
+<li>
+<p>As {rootuser} install <span class="package">spacewalk-utils</span> on your {susemgr} server:</p>
+<div class="listingblock">
+<div class="content">
+<pre>zypper in spacewalk-utils</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Supported Tools</div>
+The <span class="package">spacewalk-utils</span>
+ package contains a collection of upstream command line tools which provide assistance with spacewalk administrative operations.
+You will be using the <code class="command">spacewalk-common-channels</code> tool.
+Keep in mind {suse}
+ only provides support for <code class="command">spacewalk-clone-by-date</code> and <code class="command">spacewalk-manage-channel-lifecycle</code> tools.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Run the <code class="command">spacewalk-common-channels</code> script to add the CentOS7 base, updates, and Spacewalk client channels.</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+spacewalk-common-channels -u admin -p`secret`
+-a x86_64 'centos7'{prompt.root}
+spacewalk-common-channels -u admin -p`secret`
+-a x86_64 'centos7-updates'{prompt.root}
+spacewalk-common-channels -u admin -p`secret`
+-a x86_64 'spacewalk26-client-centos7'</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Required Channel References</div>
+The <code class="path">/etc/rhn/spacewalk-common-channels.ini</code>
+ must contain the channel references to be added.
+If a channel is not listed, check the latest version here for updates: <a href="https://github.com/spacewalkproject/spacewalk/tree/master/utils" class="bare">https://github.com/spacewalkproject/spacewalk/tree/master/utils</a>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>From the {webui} select <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Manage Software Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Overview</b></span> . Select the base channel you want to synchronize, in this case <code>CentOS7 (x86_64)</code>. Select <span class="menuseq"><b class="menu">Repositories</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Sync</b></span> . Check the channels you want to synchronize and then click the <b class="menuref">Sync Now</b> button or, optionally, schedule a regular synchronization time.</p>
+</li>
+<li>
+<p>Copy all relevant GPG keys to <code class="path">/srv/www/htdocs/pub</code> . Depending on what distribution you are interested in managing these could include an EPEL key, SUSE keys, Red Hat keys, and CentOS keys. After copying these you can reference them in a comma-delimited list within your bootstrap script (see <a href="#_proc.bp.expanded_support.centos_repos.trad.bsscript">Procedure: Preparing the Bootstrap Script</a>).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CentOS7 key files: <a href="http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7" class="bare">http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7</a></p>
+</li>
+<li>
+<p>EPEL key file: <a href="http://mirrors.kernel.org/fedora-epel/RPM-GPG-KEY-EPEL-7" class="bare">http://mirrors.kernel.org/fedora-epel/RPM-GPG-KEY-EPEL-7</a></p>
+</li>
+<li>
+<p>Spacewalk key: <a href="http://spacewalk.redhat.com/yum/RPM-GPG-KEY-spacewalk-2015" class="bare">http://spacewalk.redhat.com/yum/RPM-GPG-KEY-spacewalk-2015</a></p>
+</li>
+<li>
+<p>Red Hat keys: <a href="http://www.redhat.com/contact/security-response-team/gpg-keys.html" class="bare">http://www.redhat.com/contact/security-response-team/gpg-keys.html</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Install and setup a CentOS 7 client with the default installation packages.</p>
+</li>
+<li>
+<p>Ensure the client machine can resolve itself and your {susemgr} server via DNS. Validate that there is an entry in <code class="path">/etc/hosts</code> for the real IP address of the client.</p>
+</li>
+<li>
+<p>Create an activation key (<code>centos7</code>) on the {susemgr} server that points to the correct parent/child channels, including the CentOS base repo, updates, and Spacewalk client.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now prepare the bootstrap script.</p>
+</div>
+<div id="_proc.bp.expanded_support.centos_repos.trad.bsscript" class="olist arabic">
+<div class="title">Procedure: Preparing the Bootstrap Script</div>
+<ol class="arabic">
+<li>
+<p>Create/edit your bootstrap script to correctly reflect the following:</p>
+<div class="listingblock">
+<div class="content">
+<pre># can be edited, but probably correct (unless created during initial install):
+
+# NOTE: ACTIVATION_KEYS *must* be used to bootstrap a client machine.
+
+ACTIVATION_KEYS=1-centos7
+
+ORG_GPG_KEY=res.key,RPM-GPG-KEY-CentOS-7,suse-307E3D54.key,suse-9C800ACA.key,RPM-GPG-KEY-spacewalk-2015
+
+FULLY_UPDATE_THIS_BOX=0
+
+yum clean all
+# Install the prerequisites
+yum -y install yum-rhn-plugin rhn-setup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the following lines to the bottom of your script, (just before <code>echo &#8220;-bootstrap complete -&#8221;</code> ):</p>
+<div class="listingblock">
+<div class="content">
+<pre># This section is for commands to be executed after registration
+mv /etc/yum.repos.d/Cent* /root/
+yum clean all
+chkconfig rhnsd on
+chkconfig osad on
+service rhnsd restart
+service osad restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Continue by following normal bootstrap procedures to bootstrap the new client.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.expanded_support.centos_salt">3. Registering CentOS Salt Minions with {susemgr}</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following procedure will guide you through registering a CentOS Minion.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Support for CentOS Patches</div>
+<div class="paragraph">
+<p>CentOS uses patches originating from CentOS is not officially supported by {suse}
+.
+See the matrix of {susemgr}
+clients on the main page of the {susemgr}
+wiki, linked from the <em class="ref">Quick
+    Links</em>
+ section: <a href="https://wiki.microfocus.com/index.php?title=SUSE_Manager" class="bare">https://wiki.microfocus.com/index.php?title=SUSE_Manager</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Register a CentOS 7 Minion</div>
+<ol class="arabic">
+<li>
+<p>Add the Open Build Service repo for Salt:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+yum-config-manager --add-repo http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/products/RHEL_7/</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Import the repo key:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+rpm --import http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/products/RHEL_7/repodata/repomd.xml.key</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check if there is a different repository that contains Salt. If there is more than one repository listed disable the repository that contains Salt apart from the OBS one.</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+yum list --showduplicates salt</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install the Salt minion:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+yum install salt salt-minion</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change the Salt configuration to point to the {susemgr} server:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+mkdir -p /etc/salt/minion.d{prompt.root}
+echo "master:`server_fqdn`
+" &gt; /etc/salt/minion.d/susemanager.conf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Restart the minion</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+systemctl restart salt-minion</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Proceed to <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Keys</b></span> from the {webui} and accept the minion&#8217;s key.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

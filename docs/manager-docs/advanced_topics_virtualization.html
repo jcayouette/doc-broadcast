@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Virtualization</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Virtualization</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/advanced_topics_virtualization.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_sec.virtualization.autoinstall">1. Autoinstalling {vmguest} s</a>
+<ul class="sectlevel2">
+<li><a href="#_sec.virtualization.autoinstall.req_mgr">1.1. Requirements on {susemgr}</a></li>
+<li><a href="#_sec.virtualization.autoinstall.req_vmhost">1.2. {vmhost} Setup</a></li>
+<li><a href="#_sec.virtualization.autoinstall.installation">1.3. Autoinstalling {vmguest} s</a></li>
+</ul>
+</li>
+<li><a href="#_sec.virtualization.vmguest_manage">2. Managing {vmguest} s</a>
+<ul class="sectlevel2">
+<li><a href="#_sec.virtualization.vmguest_manage.details">2.1. Displaying a {vmguest} 's Profile</a></li>
+<li><a href="#_sec.virtualization.vmguest_manage.status">2.2. Starting, Stopping, Suspending and Resuming a {vmguest}</a></li>
+<li><a href="#changing_the_cpu_or_ram_allocation_of_a_vmguest">2.3. Changing the CPU or RAM allocation of a {vmguest}</a></li>
+<li><a href="#_sec.virtualization.vmguest_manage.delete">2.4. Deleting a {vmguest}</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>{susemgr}
+ allows you to autoinstall and manage {xen}
+ and {kvm}{vmguest}
+s on a registered {vmhost}
+.
+To autoinstall a {vmguest}
+, an autoinstallable distribution and an autoinstallation profile ({ay}
+ or {kickstart}
+) need to exist on {susemgr}
+. {vmguest}
+s registered with {susemgr}
+ can be managed like &#8220;regular&#8221;
+ machines.
+In addition, basic {vmguest}
+ management tasks such as (re)starting and stopping or changing processor and memory allocation can be carried out using {susemgr}
+.</p>
+</div>
+<div class="paragraph">
+<p><em>The following documentation is valid in the context of
+    traditional clients.  Salt minions must be treated differently:
+    autoinstallation is still not supported and libvirt hosts are
+    supported read-only.</em></p>
+</div>
+</blockquote>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Limitation to Xen and KVM Guests</div>
+<div class="paragraph">
+<p>Autoinstalling and managing {vmguest}
+s via {susemgr}
+is limited to {xen}
+and {kvm}
+guests. {susemgr}
+uses <code class="library">libvirt</code>
+ for virtual machine management.
+Currently, virtual machines from other virtualization solutions such as VMware* or VirtualBox*, are recognized as {vmguest}
+s, but cannot be managed from within {susemgr}
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sec.virtualization.autoinstall">1. Autoinstalling {vmguest} s</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With {susemgr}
+you can automatically deploy {xen}
+and {kvm}{vmguest}
+s using {ay}
+or {kickstart}
+profiles.
+It is also possible to automatically register the {vmguest}
+s, so they can immediately be managed by {susemgr}
+.</p>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.autoinstall.req_mgr">1.1. Requirements on {susemgr}</h3>
+<div class="paragraph">
+<p>Setting up and managing {vmguest}
+s with {susemgr}
+does not require special configuration options.
+However, you need to provide activation keys for the {vmhost}
+and the {vmguest}
+s, an autoinstallable distribution and an autoinstallation profile.
+To automatically register {vmguest}
+s with {susemgr}
+, a bootstrap script is needed.</p>
+</div>
+<div class="sect3">
+<h4 id="_sec.virtualzation.autoinstall.req_mgr.keys">1.1.1. Activation Keys</h4>
+<div class="paragraph">
+<p>Just like any other client, {vmhost}
+and {vmguest}
+s need to be registered with {susemgr}
+using activation keys.
+Find details on how to set up activation keys at <a href="#_create.act.keys">[_create.act.keys]</a>.
+While there are no special requirements for a {vmguest}
+ key, at least the following requirements must be met for the {vmhost}
+ activation key.</p>
+</div>
+<div class="ulist">
+<div class="title">{vmhost}Activation Key: Minimum Requirements</div>
+<ul>
+<li>
+<p>Entitlements: Provisioning, Virtualization Platform.</p>
+</li>
+<li>
+<p>Packages: <code class="resource">rhn-virtualization-host</code> , <code class="resource">osad</code> .</p>
+<div class="paragraph">
+<p>If you want to manage the {vmhost}
+system from {susemgr}
+(e.g.
+by executing remote scripts), the package <code class="resource">rhncfg-actions</code>
+needs to be installed as well.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sec.virtualzation.autoinstall.req_mgr.inst_source">1.1.2. Setting up an Autoinstallable Distribution</h4>
+<div class="paragraph">
+<p>To autoinstall clients from {susemgr}
+, you need to provide an &#8220;autoinstallable distribution&#8221;
+, also referred to as autoinstallable tree or installation source.
+This installation source needs to be made available through the file system of the {susemgr}
+ host.
+It can for example be a mounted local or remote directory or a &#8220;loop-mounted&#8221;
+ ISO image.
+It must match the following requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kernel and initrd location:</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">RedHat / Generic RPM **images/pxeboot/vmlinuz</div>
+<ul>
+<li>
+<p>images/pxeboot/initrd.img</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">SUSE **boot/<code class="replaceable">arch</code>/loader/initrd</div>
+<ul>
+<li>
+<p>boot/<code class="replaceable">arch</code>/loader/linux</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <b class="menuref">Base Channel</b> needs to match the autoinstallable distribution.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Autoinstallation package sources</div>
+<div class="paragraph">
+<p>There is a fundamental difference between RedHat and {suse}
+systems regarding the package sources for autoinstallation.
+The packages for a RedHat installation are being fetched from the <b class="menuref">Base Channel</b>
+.
+Packages for installing {suse}
+ systems are being fetched from the autoinstallable distribution.</p>
+</div>
+<div class="paragraph">
+<p>As a consequence, the autoinstallable distribution for a {suse}
+system has to be a complete installation source (same as for a regular installation).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Creating Autoinstallable Distribution</div>
+<ol class="arabic">
+<li>
+<p>Make sure an installation source is available from a local directory. The data source can be any kind of network resource, a local directory or an ISO image (which has to be &#8220;loop-mounted&#8221; ). Files and directories must be world readable.</p>
+</li>
+<li>
+<p>Log in to the {susemgr} Web interface and navigate to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Distributions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Create Distribution</b></span> .</p>
+</li>
+<li>
+<p>Fill out the form <b class="menuref">Create Autoinstallable Distribution</b> as follows:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Distribution Label</b></dt>
+<dd>
+<p>Choose a unique name for the distribution.
+Only letters, numbers, hyphens, periods, and underscores are allowed; the minimum length is 4 characters.
+This field is mandatory.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Tree Path</b></dt>
+<dd>
+<p>Absolute local disk path to installation source.
+This field is mandatory.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Base Channel</b></dt>
+<dd>
+<p>Channel matching the installation source.
+This channel is the package source for non-{suse}
+installations.
+This field is mandatory.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Installer Generation</b></dt>
+<dd>
+<p>Operating system version matching the installation source.
+This field is mandatory.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Kernel Options</b></dt>
+<dd>
+<p>Options passed to the kernel when booting for the installation.
+There is no need to specify the <code class="option">install=</code> parameter since it will automatically be added.
+Moreover, the parameters <code class="option">self_update=0 pt.options=self_update</code> are added automatically to prevent AutoYaST from updating itself during the system installation.
+This field is optional.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Post Kernel Options</b></dt>
+<dd>
+<p>Options passed to the kernel when booting the installed system for the first time.
+This field is optional.</p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Save your settings by clicking <b class="menuref">Create Autoinstallable Distribution</b> .</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To edit an existing <span class="menuseq"><b class="menu">Autoinstallable Distribution</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+, go to menu:Systems[Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Distributions</b></span>
+ and click on a <span class="menuseq"><b class="menu">Label</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Make the desired changes and save your settings by clicking menu:Update Autoinstallable Distribution[</b></span>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sec.virtualzation.autoinstall.req_mgr.profile">1.1.3. Providing an Autoinstallation Profile</h4>
+<div class="paragraph">
+<p>Autoinstallation profiles ({ay}
+or {kickstart}
+files) contain all the installation and configuration data needed to install a system without user intervention.
+They may also contain scripts that will be executed after the installation has completed.</p>
+</div>
+<div class="paragraph">
+<p>All profiles can be uploaded to {susemgr}
+and be edited afterwards.
+Kickstart profiles can also be created from scratch with {susemgr}
+.</p>
+</div>
+<div class="paragraph">
+<p>A minimalist {ay}
+profile including a script for registering the client with {susemgr}
+is listed in <a href="#_advanced.topics.app.ay.example_simple">[_advanced.topics.app.ay.example_simple]</a>.
+For more information, examples and HOWTOs on {ay}
+ profiles, refer to <em class="ref">SUSE Linux Enterprise AutoYaST</em>
+ (<a href="https://www.suse.com/documentation/sles-12/book_autoyast/data/book_autoyast.html" class="bare">https://www.suse.com/documentation/sles-12/book_autoyast/data/book_autoyast.html</a>). For more information on {kickstart}
+ profiles, refer to your RedHat documentation.</p>
+</div>
+<div class="sect4">
+<h5 id="_sec.virtualzation.autoinstall.req_mgr.profile.upload">Uploading an Autoinstallation Profile</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the {susemgr} Web interface and open <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Profiles</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Upload New Kickstart/AutoYaST File</b></span> .</p>
+</li>
+<li>
+<p>Choose a unique name for the profile. Only letters, numbers, hyphens, periods, and underscores are allowed; the minimum length is 6 characters. This field is mandatory.</p>
+</li>
+<li>
+<p>Choose an <span class="menuseq"><b class="menu">Autoinstallable Tree</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] from the drop-down menu. If no menu:Autoinstallable Tree[</b></span> is available, you need to add an Autoinstallable Distribution. Refer to <a href="#_sec.virtualzation.autoinstall.req_mgr.inst_source">Setting up an Autoinstallable Distribution</a> for instructions.</p>
+</li>
+<li>
+<p>Choose a <span class="menuseq"><b class="menu">Virtualization Type</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] from the drop-down menu. {kvm} and {xen} (para-virtualized and fully-virtualized) are available. Do not choose menu:Xen Virtualized Host[</b></span> here.</p>
+</li>
+<li>
+<p>Scroll down to the <span class="menuseq"><b class="menu">File to Upload</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] dialog</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Browse[</b></span> to select it, then click <b class="menuref">Upload File</b> .</p>
+</li>
+<li>
+<p>The uploaded file will be displayed in the <b class="menuref">File Contents</b> section, where you can edit it.</p>
+</li>
+<li>
+<p>Click <b class="menuref">Create</b> to store the profile.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To edit an existing profile, go to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Profiles</b></span>
+ and click on a <span class="menuseq"><b class="menu">Label</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Make the desired changes and save your settings by clicking menu:Create[</b></span>
+.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Editing existing {kickstart}profiles</div>
+<div class="paragraph">
+<p>If you are changing the <span class="menuseq"><b class="menu">Virtualization Type</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ of an existing {kickstart}
+ profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">it may also modify the bootloader and partition options</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">potentially overwriting any user customizations.
+Be sure to review the menu:Partitioning[</b></span>
+ tab to verify these settings when changing the <b class="menuref">Virtualization Type</b>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sec.virtualzation.autoinstall.req_mgr.profile.generate">Creating a Kickstart Profile</h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently it is only possible to create autoinstallation profiles for RHEL systems.
+If installing a {sls}
+system, you need to upload an existing {ay}
+profile as described in <a href="#_sec.virtualzation.autoinstall.req_mgr.profile.upload">Uploading an Autoinstallation Profile</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="_pro.at.virtualzation.autoinstall.ks.profile.generate" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the {susemgr} Web interface and go to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Profiles</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Create New Kickstart File</b></span> .</p>
+</li>
+<li>
+<p>Choose a unique name for the profile. The minimum length is 6 characters. This field is mandatory.</p>
+</li>
+<li>
+<p>Choose a <span class="menuseq"><b class="menu">Base Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] . This channel is the package source for non-{suse} installations and must match the menu:Autoinstallable Tree[</b></span> . This field is mandatory.</p>
+</li>
+<li>
+<p>Choose an <span class="menuseq"><b class="menu">Autoinstallable Tree</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] from the drop-down menu. If no menu:Autoinstallable Tree[</b></span> is available, you need to add an Autoinstallable Distribution. Refer to <a href="#_sec.virtualzation.autoinstall.req_mgr.inst_source">Setting up an Autoinstallable Distribution</a> for instructions.</p>
+</li>
+<li>
+<p>Choose a <span class="menuseq"><b class="menu">Virtualization Type</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] from the drop-down menu. {kvm} and {xen} (para-virtualized and fully-virtualized) are available. Do not choose menu:Xen Virtualized Host[</b></span> here.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">Next</b> button to continue to <a href="#_pro.at.virtualzation.autoinstall.ks.profile.generate.name">[_pro.at.virtualzation.autoinstall.ks.profile.generate.name]</a>.</p>
+</li>
+<li>
+<p>Select the location of the distribution files for the installation of your {vmguest} s. There should already be a <span class="menuseq"><b class="menu">Default Download Location</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] filled out and selected for you on this screen. Click the menu:Next[</b></span> button to continue to <a href="#_pro.at.virtualzation.autoinstall.ks.profile.generate.bc">[_pro.at.virtualzation.autoinstall.ks.profile.generate.bc]</a>.</p>
+</li>
+<li>
+<p>Choose a {rootuser} password for the {vmguest} s. Click the <b class="menuref">Finish</b> button to generate the profile.</p>
+<div class="paragraph">
+<p>This completes {kickstart}
+profile creation.
+After completing <a href="#_pro.at.virtualzation.autoinstall.ks.profile.generate.bc">[_pro.at.virtualzation.autoinstall.ks.profile.generate.bc]</a>, you are taken to the newly-created {kickstart}
+profile.
+You may browse through the various tabs of the profile and modify the settings as you see fit, but this is not necessary as the default settings should work well for the majority of cases.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sec.virtualzation.autoinstall.req_mgr.profile.scripts">Adding a Registration Script to the Autoinstallation Profile</h5>
+<div class="paragraph">
+<p>A {vmguest}
+that is autoinstalled does not get automatically registered.
+Adding a section to the autoinstallation profile that invokes a bootstrap script for registration will fix this.
+The following procedure describes adding a corresponding section to an {ay}
+profile.
+Refer to your RedHat Enterprise Linux documentation for instructions on adding scripts to a {kickstart}
+file.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, provide a bootstrap script on the {susemgr} :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a bootstrap script for {vmguest} s on the {susemgr} as described in <a href="#_generate.bootstrap.script">[_generate.bootstrap.script]</a>.</p>
+</li>
+<li>
+<p>Log in as {rootuser} to the konsole of {susemgr} and go to <code class="path">/srv/www/htdocs/pub/bootstrap</code> . Copy <code class="path">bootstrap.sh</code> (the bootstrap script created in the previous step) to e.g. <code class="path">bootstrap_vm_guests.sh</code> in the same directory.</p>
+</li>
+<li>
+<p>Edit the newly created file according to your needs. The minimal requirement is to include the activation key for the {vmguest} s (see <a href="#_sec.virtualzation.autoinstall.req_mgr.keys">Activation Keys</a> for details). We strongly recommend to also include one or more GPG keys (for example, your organization key and package signing keys).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Log in to the {susemgr} Web interface and go to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Profiles</b></span> . Click on the profile that is to be used for autoinstalling the {vmguest} s to open it for editing.</p>
+<div class="paragraph">
+<p>Scroll down to the <b class="menuref">File Contents</b>
+section where you can edit the {ay}
+XML file.
+Add the following snippet at the end of the XML file right before the closing <code>&lt;/profile&gt;</code> tag and replace the given IP address with the address of the {susemgr}
+server.
+See <a href="#_advanced.topics.app.ay.example_simple">[_advanced.topics.app.ay.example_simple]</a>for an example script.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;scripts&gt;
+  &lt;init-scripts config:type="list"&gt;
+    &lt;script&gt;
+      &lt;interpreter&gt;shell &lt;/interpreter&gt;
+      &lt;location&gt;
+        http://`192.168.1.1`
+/pub/bootstrap/bootstrap_vm_guests.sh
+      &lt;/location&gt;
+    &lt;/script&gt;
+  &lt;/init-scripts&gt;
+&lt;/scripts&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Only one <code>&lt;scripts&gt;</code> section allowed</div>
+If your {ay}
+profile already contains a <code>&lt;scripts&gt;</code> section, do not add a second one, but rather place the <code>&lt;script&gt;</code> part above within the existing <code>&lt;scripts&gt;</code> section!
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Click <b class="menuref">Update</b> to save the changes.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.autoinstall.req_vmhost">1.2. {vmhost} Setup</h3>
+<div class="paragraph">
+<p>A {vmhost}
+system serving as a target for autoinstalling {vmguest}
+s from {susemgr}
+must be capable of running guest operating systems.
+This requires either {kvm}
+or {xen}
+being properly set up.
+For installation instructions for {sls}
+systems refer to the <em class="ref">SLES Virtualization Guide</em>
+ available from <a href="https://www.suse.com/documentation/sles-12/book_virt/data/book_virt.html" class="bare">https://www.suse.com/documentation/sles-12/book_virt/data/book_virt.html</a>.
+For instructions on setting up a RedHat {vmhost}
+ refer to your RedHat Enterprise Linux documentation.</p>
+</div>
+<div class="paragraph">
+<p>Since {susemgr}
+uses <code class="library">libvirt</code>
+ for {vmguest}
+ installation and management, the <code class="daemon">libvirtd</code>
+ needs to run on the {vmhost}
+.
+The default <code class="library">libvirt</code>
+ configuration is sufficient to install and manage {vmguest}
+s from {susemgr}
+.
+However, in case you want to access the VNC console of a {vmguest}
+ as a non-{rootuser}
+ user, you need to configure <code class="library">libvirt</code>
+ appropriately.
+Configuration instructions for <code class="library">libvirt</code>
+ on {sls}
+ are available in the <em class="ref">SLES Virtualization
+    Guide</em>
+ available from <a href="https://www.suse.com/documentation/sles-12/book_virt/data/book_virt.html" class="bare">https://www.suse.com/documentation/sles-12/book_virt/data/book_virt.html</a> available from <a href="http://www.suse.com/documentation/sles11/" class="bare">http://www.suse.com/documentation/sles11/</a>.
+For instructions for a RedHat {vmhost}
+ refer to your RedHat Enterprise Linux documentation.</p>
+</div>
+<div class="paragraph">
+<p>Apart from being able to serve as a host for {kvm}
+or {xen}
+guests, which are managed by <code class="library">libvirt</code>
+, a {vmhost}
+ must be registered with {susemgr}
+.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure either {kvm} or {xen} is properly set up.</p>
+</li>
+<li>
+<p>Make sure the <code class="daemon">libvirtd</code> is running.</p>
+</li>
+<li>
+<p>Register the {vmhost} with {susemgr} :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a bootstrap script on the {susemgr} as described in <a href="#_generate.bootstrap.script">[_generate.bootstrap.script]</a>.</p>
+</li>
+<li>
+<p>Download the bootstrap script from <code>susemanager.example.com/pub/bootstrap/bootstrap.sh</code> to the {vmhost} .</p>
+</li>
+<li>
+<p>Edit the bootstrap script according to your needs. The minimal requirement is to include the activation key for the {vmhost} (see <a href="#_sec.virtualzation.autoinstall.req_mgr.keys">Activation Keys</a> for details). We strongly recommend to also include one or more GPG keys (for example, your organization key and package signing keys).</p>
+</li>
+<li>
+<p>Execute the bootstrap script to register the {vmhost} .</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p>+
+Once the registration process is finished and all packages have been installed, enable the <code class="daemon">osad</code>
+(Open Source Architecture Daemon). On a {sls}
+system this can be achieved by running the following commands as user {rootuser}
+:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>systemctl stop rhnsd
+systemctl disable rhnsd</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>systemctl enable osad
+systemctl start osad</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title"><code class="daemon">osad</code>Together with <code class="daemon">rhnsd</code></div>
+The <code class="daemon">rhnsd</code>
+ daemon checks for scheduled actions every four hours, so it can take up to four hours before a scheduled action is carried out.
+If many clients are registered with {susemgr}
+, this long interval ensures a certain level of load balancing since not all clients act on a scheduled action at the same time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>However, when managing {vmguest}
+s, you usually want actions like rebooting a {vmguest}
+to be carried out immediately. Adding <code class="daemon">osad</code>
+ ensures that.
+The <code class="daemon">osad</code>
+ daemon receives commands over the jabber protocol from {susemgr}
+ and commands are instantly executed.
+Alternatively you may schedule actions to be carried out at a fixed time in the future (whereas with <code class="daemon">rhnsd</code>
+ you can only schedule for a time in the future plus up to four hours).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.autoinstall.installation">1.3. Autoinstalling {vmguest} s</h3>
+<div class="paragraph">
+<p>Once all requirements on the {susemgr}
+and the {vmhost}
+are met, you can start to autoinstall {vmguest}
+s on the host.
+Note that {vmguest}
+s will not be automatically registered with {susemgr}
+, therefore we strongly recommend to modify the autoinstallation profile as described in <a href="#_sec.virtualzation.autoinstall.req_mgr.profile.scripts">Adding a Registration Script to the Autoinstallation Profile</a>. {vmguest}
+s need to be registered to manage them with {susemgr}
+.
+Proceed as follows to autoinstall a {vmguest}
+;.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">No parallel Autoinstallations on {vmhost}</div>
+<div class="paragraph">
+<p>It is not possible to install more than one {vmguest}
+at a time on a single {vmhost}
+.
+When scheduling more than one autoinstallation with {susemgr}
+make sure to choose a timing, that starts the next installation after the previous one has finished.
+If a guest installation starts while another one is still running, the running installation will be cancelled.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the {susemgr} Web interface and click the <b class="menuref">Systems</b> tab.</p>
+</li>
+<li>
+<p>Click the {vmhost} 's name to open its <b class="menuref">System Status</b> page.</p>
+</li>
+<li>
+<p>Open the form for creating a new {vmguest} by clicking <span class="menuseq"><b class="menu">Virtualization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Provisioning</b></span> . Fill out the form by choosing an autoinstallation profile and by specifying a name for the {vmguest} (must not already exist on {vmhost} ). Choose a proxy if applicable and enter a schedule. To change the {vmguest} 's hardware profile and configuration options, click <b class="menuref">Advanced Options</b> .</p>
+</li>
+<li>
+<p>Finish the configuration by clicking <span class="menuseq"><b class="menu">Schedule Autoinstallation and Finish</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] . The menu:Session Status[</b></span> page opens for you to monitor the autoinstallation process.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Checking the Installation Log</div>
+<div class="paragraph">
+<p>To view the installation log, click <span class="menuseq"><b class="menu">Events</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">History</b></span>
+ on the <span class="menuseq"><b class="menu">Session Status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+On the menu:System History Event[</b></span>
+ page you can click a <b class="menuref">Summary</b>
+ entry to view a detailed log.</p>
+</div>
+<div class="paragraph">
+<p>In case an installation has failed, you can <b class="menuref">Reschedule</b>
+ it from this page once you have corrected the problem.
+You do not have to configure the installation again.</p>
+</div>
+<div class="paragraph">
+<p>If the event log does not contain enough information to locate a problem, log in to the {vmhost}
+console and read the log file <code class="path">/var/log/up2date</code>
+.
+If you are using the <code class="daemon">rhnsd</code>
+, you may alternatively immediately trigger any scheduled actions by calling <code class="command">rhn_ckeck</code> on the {vmhost}
+.
+Increase the command&#8217;s verbosity by using the options <code class="option">-v</code>, <code class="option">-vv</code>, or <code class="option">-vvv</code>, respectively.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sec.virtualization.vmguest_manage">2. Managing {vmguest} s</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Basic {vmguest}
+management actions such as restarting or shutting down a virtual machine as well as changing the CPU and memory allocation can be carried out in the {susemgr}
+Web interface if the following requirements are met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>{vmhost} must be a {kvm} or {xen} host.</p>
+</li>
+<li>
+<p><code class="daemon">libvirtd</code> must be running on {vmhost} .</p>
+</li>
+<li>
+<p>{vmhost} and {vmguest} must be registered with {susemgr} .</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All actions can be triggered in the {susemgr}
+Web interface from the <span class="menuseq"><b class="menu">Virtualization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page of the {vmhost}
+.
+Navigate to this page by clicking the menu:Systems[</b></span>
+ tab.
+On the resulting page, click the {vmhost}
+'s name and then on <b class="menuref">Virtualization</b>
+.
+This page lists all {vmguest}
+s for this host, known to {susemgr}
+.</p>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.vmguest_manage.details">2.1. Displaying a {vmguest} 's Profile</h3>
+<div class="paragraph">
+<p>Click the name of a {vmguest}
+on the {vmhost}
+'s <b class="menuref">Virtualization</b>
+ page to open its profile page with detailed information about this guest.
+For details, refer to <a href="#_ref.webui.systems.systems">[_ref.webui.systems.systems]</a>.</p>
+</div>
+<div class="paragraph">
+<p>A profile page for a virtual system does not differ from a regular system&#8217;s profile page.
+You can perform the same actions (e.g.
+installing software or changing its configuration).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.vmguest_manage.status">2.2. Starting, Stopping, Suspending and Resuming a {vmguest}</h3>
+<div class="paragraph">
+<p>To start, stop, restart, suspend, or resume a {vmguest}
+, navigate to the {vmhost}
+'s <span class="menuseq"><b class="menu">Virtualization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+Check one or more menu:Guests[</b></span>
+ listed in the table and scroll down to the bottom of the page.
+Choose an action from the drop-down list and click <span class="menuseq"><b class="menu">Apply Action</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+. menu:Confirm[</b></span>
+ the action on the next page.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Automatically restarting a {vmguest}</div>
+<div class="paragraph">
+<p>Automatically restarting a {vmguest}
+when the {vmhost}
+reboots is not enabled by default on {vmguest}
+s and cannot be configured from {susemgr}
+.
+Refer to your {kvm}
+or {xen}
+documentation.
+Alternatively, you may use <code class="library">libvirt</code>
+ to enable automatic reboots.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing_the_cpu_or_ram_allocation_of_a_vmguest">2.3. Changing the CPU or RAM allocation of a {vmguest}</h3>
+<div class="paragraph">
+<p>To change the CPU or RAM allocation of a {vmguest}
+navigate to the {vmhost}
+'s <span class="menuseq"><b class="menu">Virtualization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+Check one or more menu:Guests[</b></span>
+ from the table and scroll down to the bottom of the page.
+Choose an action from the <span class="menuseq"><b class="menu">Set</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ drop-down list and provide a new value.
+Confirm with menu:Apply Changes[</b></span>
+ followed by <b class="menuref">Confirm</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>The memory allocation can be changed on the fly, provided the memory ballooning driver is installed on the {vmguest}
+.
+If this is not the case, or if you want to change the CPU allocation, you need to shutdown the guest first.
+Refer to <a href="#_sec.virtualization.vmguest_manage.status">Starting, Stopping, Suspending and Resuming a {vmguest}</a> for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec.virtualization.vmguest_manage.delete">2.4. Deleting a {vmguest}</h3>
+<div class="paragraph">
+<p>To delete a {vmguest}
+you must first shut it down as described in <a href="#_sec.virtualization.vmguest_manage.status">Starting, Stopping, Suspending and Resuming a {vmguest}</a>.
+Wait at least two minutes to allow the shutdown to finish and then choose <span class="menuseq"><b class="menu">Delete Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ followed by menu:Apply Action[</b></span>
+ and <b class="menuref">Confirm</b>
+.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

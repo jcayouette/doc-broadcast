@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Audit</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Audit</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/reference-webui-audit.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.audit.cve">1. CVE Audit</a>
+<ul class="sectlevel2">
+<li><a href="#_s1_cve_usage">1.1. Normal Usage</a></li>
+<li><a href="#api_usage">1.2. API Usage</a></li>
+<li><a href="#_sec_cve_maint">1.3. Maintaining CVE Data</a></li>
+<li><a href="#_sec_cve_tips">1.4. Tips and Background Information</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.audit.subscription">2. <b class="menuref">Subscription Matching</b></a>
+<ul class="sectlevel2">
+<li><a href="#span_class_menuseq_b_class_menu_subscription_matching_b_i_class_fa_fa_angle_right_caret_i_b_class_submenu_b_i_class_fa_fa_angle_right_caret_i_b_class_menuitem_menu_subscriptions_b_span">2.1. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Subscriptions[</b></span></a></li>
+<li><a href="#subscription_matcher_reports">2.2. Subscription Matcher Reports</a></li>
+<li><a href="#_ref.webui.audit.submatch.unmatched.systems">2.3. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Unmatched Products[</b></span></a></li>
+<li><a href="#_ref.webui.audit.submatch.sub.pinning">2.4. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Pins[</b></span></a></li>
+<li><a href="#_ref.webui.audit.submatch.submatch.messages">2.5. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Messages[</b></span></a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.audit.openscap">3. OpenSCAP</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Select <b class="menuref">Audit</b>
+ from the left navigation menu to audit your managed systems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.audit.cve">1. CVE Audit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">CVE Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page will display a list of client systems with their patch status regarding a given CVE (Common Vulnerabilities and Exposures) number.
+image::audit_cve_audit.png[</b></span></p>
+</div>
+<div class="sect2">
+<h3 id="_s1_cve_usage">1.1. Normal Usage</h3>
+<div class="paragraph">
+<p>Proceed as follows if you want to verify that a client system has received a given CVE patch:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure that the CVE data is up-to-date. For more information, see <a href="#_sec_cve_maint">Maintaining CVE Data</a>.</p>
+</li>
+<li>
+<p>Click <span class="menuseq"><b class="menu">Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">CVE Audit</b></span> in the left navigation menu to open the <b class="menuref">CVE Audit</b> page.</p>
+</li>
+<li>
+<p>Input a 13-char CVE identifier in the <b class="menuref">CVE Number</b> field. The year setting will be automatically adjusted. Alternatively, set the year manually and add the last four digits.</p>
+</li>
+<li>
+<p>Optionally, uncheck the patch statuses you are not interested in.</p>
+</li>
+<li>
+<p>Click <b class="menuref">Audit systems</b> .</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Performing this procedure will result in a list of client systems, where each system comes with a <b class="menuref">Patch Status</b>
+ belonging to the given CVE identifier.
+Possible statuses are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><span class="image"><img src="patch-status-affected-patch-inapplicable.png" alt="[red"></span>]&#8201;&#8212;&#8201;Affected, patches are available in channels that are not assigned</dt>
+<dd>
+<p>The system is affected by the vulnerability and {susemgr}
+has one or more patches for it, but at this moment, the channels offering the patches are not assigned to the system.</p>
+</dd>
+<dt class="hdlist1"><span class="image"><img src="patch-status-affected-patch-applicable.png" alt="[orange"></span>]&#8201;&#8212;&#8201;Affected, at least one patch available in an assigned channel</dt>
+<dd>
+<p>The system is affected by the vulnerability, {susemgr}
+has at least one patch for it in a channel that is directly assigned to the system.</p>
+</dd>
+<dt class="hdlist1"><span class="image"><img src="patch-status-not-affected.png" alt="[grey"></span>]&#8201;&#8212;&#8201;Not affected</dt>
+<dd>
+<p>The system does not have any packages installed that are patchable.</p>
+</dd>
+<dt class="hdlist1"><span class="image"><img src="patch-status-patched.png" alt="[green"></span>]&#8201;&#8212;&#8201;Patched</dt>
+<dd>
+<p>A patch has already been installed.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>In other words, it can mean the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>More than one patch might be needed to fix a certain vulnerability.</p>
+</li>
+<li>
+<p>The <span class="image"><img src="patch-status-affected-patch-applicable.png" alt="[orange"></span>] state is displayed when {susemgr} has at least one patch in an assigned channel. This might mean that, after installing such patch, others might be needed{mdash} users should double check the CVE Audit page after applying a patch to be sure that their systems are not affected anymore.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a more precise definitions of these states, see <a href="#_sec_cve_tips">Tips and Background Information</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Unknown CVE Number</div>
+<div class="paragraph">
+<p>If the CVE number is not known to {susemgr}
+, an error message is displayed because {susemgr}
+cannot collect and display any audit data.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For each system, the <b class="menuref">Next Action</b>
+ column contains suggestions on the steps to take to address the vulnerabilities.
+Under these circumstances it is either sensible to install a certain patch or assign a new channel.
+If applicable, a list of &#8220;candidate&#8221;
+ channels or patches is displayed for your convenience.</p>
+</div>
+<div class="paragraph">
+<p>You can also assign systems to a <b class="menuref">System Set</b>
+ for further batch processing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api_usage">1.2. API Usage</h3>
+<div class="paragraph">
+<p>An API method called <code>audit.listSystemsByPatchStatus</code> is available to run CVE audits from custom scripts.
+Details on how to use it are available in the API guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec_cve_maint">1.3. Maintaining CVE Data</h3>
+<div class="paragraph">
+<p>To produce correct results, CVE Audit must periodically refresh the data needed for the search in the background.
+By default, the refresh is scheduled at 11:00 PM every night.
+It is recommended to run such a refresh right after the {susemgr}
+installation to get proper results immediately instead of waiting until the next day.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Web interface, click <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Task Schedules</b></span> in the left navigation menu.</p>
+</li>
+<li>
+<p>Click the <code>cve-server-channels-default</code> schedule link.</p>
+</li>
+<li>
+<p>Click the <code>cve-server-channels-bunch</code> link.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">Single Run Schedule</b> button.</p>
+</li>
+<li>
+<p>After some minutes, refresh the page and check that the scheduled run status is <code>FINISHED</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A direct link is also available on the <span class="menuseq"><b class="menu">CVE Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page (menu:extra CVE data update[</b></span>
+).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sec_cve_tips">1.4. Tips and Background Information</h3>
+<div class="paragraph">
+<p>Audit results are only correct if the assignment of channels to systems did not change since the last scheduled refresh (normally at 11:00 PM every night). If a CVE audit is needed and channels were assigned or unassigned to any system during the day, a manual run is recommended.
+For more information, see <a href="#_sec_cve_maint">Maintaining CVE Data</a>.</p>
+</div>
+<div class="paragraph">
+<p>Systems are called &#8220;affected&#8221;
+, &#8220;not affected&#8221;
+ or &#8220;patched&#8221;
+ not in an absolute sense, but based on information available to {susemgr}
+.
+This implies that concepts such as &#8220;being
+    affected by a vulnerability&#8221;
+ have particular meanings in this context.
+The following definitions apply:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">System affected by a certain vulnerability</dt>
+<dd>
+<p>A system which has an installed package with version lower than the version of the same package in a relevant patch marked for the vulnerability.</p>
+</dd>
+<dt class="hdlist1">System not affected by a certain vulnerability</dt>
+<dd>
+<p>A system which has no installed package that is also in a relevant patch marked for the vulnerability.</p>
+</dd>
+<dt class="hdlist1">System patched for a certain vulnerability</dt>
+<dd>
+<p>A system which has an installed package with version equal to or greater than the version of the same package in a relevant patch marked for the vulnerability.</p>
+</dd>
+<dt class="hdlist1">Relevant patch</dt>
+<dd>
+<p>A patch known by {susemgr}
+in a relevant channel.</p>
+</dd>
+<dt class="hdlist1">Relevant channel</dt>
+<dd>
+<p>A channel managed by {susemgr}
+, which is either assigned to the system, the original of a cloned channel which is assigned to the system, a channel linked to a product which is installed on the system or a past or future service pack channel for the system.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>A notable consequence of the above definitions is that results can be incorrect in cases of unmanaged channels, unmanaged packages, or non-compliant systems.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.audit.subscription">2. <b class="menuref">Subscription Matching</b></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To match subscriptions with your systems use the Subscription Matcher tool.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Edit Virtual Host Managers</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link in the upper right corner will take you to the menu:Systems[Virtual Host Managers</b></span>
+ overview.
+For more information about Virtual Host Managers, see <a href="#_ref.webui.systems.virt_host_managers">[_ref.webui.systems.virt_host_managers]</a>.
+image::audit_subscription_matching.png[]</p>
+</div>
+<div class="paragraph">
+<p>It gathers information about systems, subscriptions and pinned matches (fixed customer defined subscriptions to systems mapping) as input and returns the best possible match according to the SUSE Terms and Conditions.
+The Subscription Matcher (<code class="command">subscription-matcher</code>) is also able to write CSV Reports.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <b class="menuref">Subscriptions Report</b> provides subscriptions report data when used</p>
+</li>
+<li>
+<p>The <b class="menuref">Unmatched Products Report</b> provides information on products and their systems when a match to a subscription cannot be found</p>
+</li>
+<li>
+<p>The <b class="menuref">Error Report</b> provides a list of errors raised during the matching process</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Selecting <span class="menuseq"><b class="menu">Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Subscription
+   Matching</b></span>
+ from the left navigation menu will provide you with an overview of all results generated by the Subscription Matcher.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Subscription Matcher Accuracy</div>
+<div class="paragraph">
+<p>This tool&#8217;s goal is to help provide visual coverage on current subscription use and support reporting.
+The Subscription Matcher is excellent at matching systems and products registered with {susemgr}
+, however any systems, products or environments which are not found in the database will remain unmatched.
+This tool is not intended to act as a replacement for auditing.
+Auditing should always take precedence over subscription matching.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="span_class_menuseq_b_class_menu_subscription_matching_b_i_class_fa_fa_angle_right_caret_i_b_class_submenu_b_i_class_fa_fa_angle_right_caret_i_b_class_menuitem_menu_subscriptions_b_span">2.1. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Subscriptions[</b></span></h3>
+<div class="paragraph">
+<p>The Subscription Matching overview provides subscription part numbers, product descriptions, policies, matched total subscriptions used and remaining, and the start and end dates of subscriptions.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="smatching-overview.png" alt="smatching overview">
+</div>
+<div class="title">Figure 1. Subscription Matching Overview</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Part Number</dt>
+<dd>
+<p>Identifier of a particular product</p>
+</dd>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Name of a particular product</p>
+</dd>
+<dt class="hdlist1">Policy</dt>
+<dd>
+<p>Kind of the subscription of this product</p>
+</dd>
+<dt class="hdlist1">Matched/Total</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>.Fully Matched
+If the total amounts of a subscription are fully matched, the quantity column value is highlighted with a yellow warning triangle: <span class="image"><img src="fa-warning.svg" alt="Warning"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">Susbscritions about to Expire</div>
+<p>When a subscription will expire within less than 3 months, the record is highlighted.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">Expired Subscriptions</div>
+<p>If a subscription is expired, the record for it is faded.</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Start Date</dt>
+<dd>
+<p>Start date of the subscription</p>
+</dd>
+<dt class="hdlist1">End Date</dt>
+<dd>
+<p>End date of the subscription</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="subscription_matcher_reports">2.2. Subscription Matcher Reports</h3>
+<div class="paragraph">
+<p>{susemgr}
+automatically generates up-to-date nightly status reports by matching your {suse}
+subscriptions with all your registered systems.
+These reports are stored in <code class="path">/var/lib/spacewalk/subscription-matcher</code>
+ and provided in CSV format.
+These CSV files may be opened with a spreadsheet application such as LibreOffice Calc.</p>
+</div>
+<div class="paragraph">
+<p>If you want to schedule these reports to be produced at different times, or at a certain frequency or schedule a one time completion you can perform this task by editing the Taskomatic settings for the gatherer-matcher located in the {webui}
+at <span class="menuseq"><b class="menu">Admin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Task Schedules</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">gatherer-matcher-default</b></span>
+.
+image::audit_subscription_matching_gatherer_matcher_default.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.audit.submatch.unmatched.systems">2.3. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Unmatched Products[</b></span></h3>
+<div class="paragraph">
+<p>Selecting the <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Unmatched Products</b></span>
+ tab provides an overview of all systems the matcher could not find in the database or which were not registered with {susemgr}
+.
+The <b class="menuref">Unmatched Products</b>
+ overview contains product names and the number of systems which remain unmatched with known installed products.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="audit_subscription_matching_unmatched_products.png" alt="audit subscription matching unmatched products">
+</div>
+<div class="title">Figure 2. Unmatched Products</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Show System List</dt>
+<dd>
+<p>Select to open and display a list of all systems which were detected with an installed product but remain unmatched with a subscription.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.audit.submatch.sub.pinning">2.4. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Pins[</b></span></h3>
+<div class="paragraph">
+<p>The subscription pinning feature allows a user to instruct the subscription matcher to favor matching a specific subscription with a given system or group of systems.
+This is achieved by creating pins.
+Each pin contains information about the preferred subscription-system match.
+image::audit_subscription_matching_pins.png[]</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Respecting Pins</div>
+<div class="paragraph">
+<p>In some cases the algorithm may determine that a specific pin cannot be respected, depending on the subscription&#8217;s availability and applicability rules, in this case it will be shown as not satisfied.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The pins table displays a list of all pins.
+Items in the list contain the status of pins, which can be <code>satisfied</code>, <code>not
+    satisfied</code> and <code>pending next run</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A pin is <code>satisfied</code> if its system and subscription was matched in the last matcher run.</p>
+</li>
+<li>
+<p>A pin is <code>not satisfied</code> if its system and subscription was <em>not</em> matched in the last matcher run. This can happen, for example, if the pin violates terms and conditions for subscriptions.</p>
+</li>
+<li>
+<p>A pin is in the <code>pending next run</code> state when it needs a new matcher run to be taken into account. After the new run, the pin will become either <code>satisfied</code> or <code>not satisfied</code>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="sm-pins.png" alt="sm pins">
+</div>
+<div class="title">Figure 3. Subscription Pinning</div>
+</div>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Add a Pin</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button to open the menu:Available Systems[</b></span>
+ window.
+You may filter systems by name and select a system for the matcher to pin manually.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="add-pin.png" alt="add pin">
+</div>
+<div class="title">Figure 4. Add a Pin</div>
+</div>
+<div class="paragraph">
+<p>Within the <span class="menuseq"><b class="menu">Subscriptions Available for Selected System</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ window click the menu:Save Pin[</b></span>
+ button to raise priority for subscription use on the selected system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.audit.submatch.submatch.messages">2.5. <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Messages[</b></span></h3>
+<div class="paragraph">
+<p>You can review all messages related to <span class="menuseq"><b class="menu">Subscription Matching</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ from the menu:Subscription
+    Matching[Messages</b></span>
+ overview.</p>
+</div>
+<div class="paragraph">
+<p>The following status messages can be displayed.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Unknown Part Number</dt>
+<dd>
+<p>Unsupported part number detected</p>
+</dd>
+<dt class="hdlist1">Physical Guest</dt>
+<dd>
+<p>Physical system is reported as virtual guest, check hardware data</p>
+</dd>
+<dt class="hdlist1">Guest with Unknown Host</dt>
+<dd>
+<p>Virtual guest has unknown host, assuming it is a physical system</p>
+</dd>
+<dt class="hdlist1">Unknown CPU Count</dt>
+<dd>
+<p>System has an unknown number of sockets, assuming 16.
+You can try fixing this by scheduling hardware refresh for affected system.
+image::audit_subscription_matching_messages.png[]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.audit.openscap">3. OpenSCAP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you click <span class="menuseq"><b class="menu">Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">OpenSCAP</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">All
+   Scans</b></span>
+ in the left navigation menu, an overview of the {openscap}
+ Scans appears.
+SCAP (Security Content Automation Protocol) is a framework to maintain the security of enterprise systems.
+It mainly performs the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically verifying the availability of patches</p>
+</li>
+<li>
+<p>Checking system security configuration settings</p>
+</li>
+<li>
+<p>Examining systems for signs of compromise</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a description of the {webui}
+dialogs, see <a href="#_s2_openscap_suma_pages">[_s2_openscap_suma_pages]</a>.</p>
+</div>
+<div class="paragraph">
+<p>For instructions and tips on how to best use OpenSCAP with {susemgr}
+, refer to <a href="#_ch_openscap">[_ch_openscap]</a>.
+To learn more about OpenSCAP, see the project home page at <a href="http://open-scap.org" class="bare">http://open-scap.org</a>.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in reference-webui-audit.adoc - include::manager_reference_openscap.adoc[leveloffset=1]</p>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

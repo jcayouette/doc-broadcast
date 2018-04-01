@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{susemgr} on IBM {zsystems}</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">{susemgr} on IBM {zsystems}</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/advanced_topics_suma3_zsystems.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#base_system_requirements">2. Base System Requirements</a></li>
+<li><a href="#additional_requirements">3. Additional Requirements</a></li>
+<li><a href="#sles_sles_version_sp_version_installation_and_the_susemgr_extension">4. SLES {sles-version}{sp-version} Installation and the {susemgr} Extension</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This best practice guide is intended for z/VM administrators responsible for operating the IBM {zseries}
+Mainframe.
+The goal of this guide is to lead an z/VM administrator trained on normal {zseries}
+operating protocols through the installation of {susemgr}
+onto an existing mainframe system.
+The intent of this article is not to cover the variety of hardware configuration profiles available on {zseries}
+but instead to provide a foundational overview of the procedure and requirements necessary for a successful {susemgr}
+server deployment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="base_system_requirements">2. Base System Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The z/VM administrator should acquire and prepare the following resources for a successful {susemgr}
+installation. {susemgr}{productnumber}
+is delivered as an extension.
+These sections will provide you with the minimum and recommended system requirements for {susemgr}
+.
+The base system for {susemgr}
+ {productnumber}
+is SLES {sles-version}{sp-version}
+.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Hardware</th>
+<th class="tableblock halign-left valign-top">Recommended Hardware</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IBM Systems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* IBM zEnterprise System z196 <em>(z196)</em>
+* IBM zEnterprise System z114 <em>(z114)</em>
+* IBM zEnterprise EC12 <em>(zEC12)</em>
+* IBM zEnterprise EC12 <em>(zEC12)</em>
+* IBM zEnterprise BC12 <em>(zBC12)</em>
+* IBM z13 <em>(z13)</em>
+* LinuxOne Rockhopper
+* LinuxOne Emperor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RAM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Split memory requirements across available RAM, VDISK and
+        swap to suit your environment. On a production system the ratio of
+        physical memory to VDISK will need to be re-evaluated based on the
+        number of clients which will be supported.</em></p>
+<p class="tableblock">Minimum 5&#160;
+ GB+ for test server <em>(3 GB RAM + 2 GB VDISK
+        Swap)</em></p>
+<p class="tableblock">Minimum 16&#160;
+GB+ for base installation</p>
+<p class="tableblock">Minimum 32&#160;
+GB+ for a production server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free Disk Space</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum 100&#160;
+GB for root partition</p>
+<p class="tableblock">Minimum 50&#160;
+GB for <code class="replaceable">/var/lib/pgsql</code></p>
+<p class="tableblock">Minimum 50&#160;
+GB per {suse}
+product + 100 GB per Red Hat product <code class="replaceable">/var/spacewalk</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Network Connection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* OSA Express Ethernet <em>(including Fast and Gigabit Ethernet) _
+* HiperSockets or Guest LAN
+* 10 GBE, VSWITCH
+* RoCE _(RDMA over Converged Ethernet)</em></p>
+<p class="tableblock">The following interfaces are still included but no longer supported:</p>
+<p class="tableblock">* CTC <em>(or virtual CTC)</em>
+* IP network interface for IUCV</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Media Requirements</div>
+<ul>
+<li>
+<p>{sle} {sles-version}{sp-version} Installation Media for IBM {zsystems} :</p>
+<div class="paragraph">
+<p><a href="https://www.suse.com/products/server/download/" class="bare">https://www.suse.com/products/server/download/</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="additional_requirements">3. Additional Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a few additional resource requirements you will need to prepare before installing the {susemgr}
+extension on your system.
+This section overviews these requirements.</p>
+</div>
+<div class="paragraph">
+<p>The guest z/VM should be provided with a static IP address and hostname as these cannot be easily changed after initial setup.
+The hostname should contain less than 8 characters.</p>
+</div>
+<div class="paragraph">
+<p>For more information on {susemgr}
+additional requirements, see <a href="https://www.suse.com/documentation/suse-manager-3/book_suma_best_practices/data/mgr_conceptual_overview.html" class="bare">https://www.suse.com/documentation/suse-manager-3/book_suma_best_practices/data/mgr_conceptual_overview.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>You are required to calculate sufficient disk storage for {susemgr}
+before running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>yast2 susemanager_setup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following information will help fulfill these requirements.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">{susemgr}Default Volume Groups and Disk Space</div>
+<div class="paragraph">
+<p>By default the file system of {susemgr}
+including the embedded database and patch directories will reside within the root volume.
+While adjustments are possible once installation has completed it becomes the administrators responsibility to specify and monitor these adjustments.</p>
+</div>
+<div class="paragraph">
+<p>If your {susemgr}
+runs out of disk space, this can have a severe impact on its database and file structure.
+Preparing storage requirements in accordance with this section will aid in preventing these harmful effects.</p>
+</div>
+<div class="paragraph">
+<p>_{suse}
+ technical services will not be able to provide support for
+    systems suffering from low disk space conditions as this can have an effect
+    on an entire system and therefore becomes unresolvable. A full recovery is
+    only possible with a previous backup or a new {susemgr}</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>installation._</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Required Storage Devices</div>
+<ul>
+<li>
+<p>An additional disk is required for database storage. This should be an <code class="systemitem">zFCP</code> or <code class="systemitem">DASD</code> device as these are preferred for use with <code class="systemitem">HYPERPAV</code> . This disk should fulfill the following requirements</p>
+<div class="paragraph">
+<p>At least 50 GB for</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/var/lib/pgsql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Minimum 50&#160;
+GB per SUSE product + 100 GB per Red Hat product</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/var/spacewalk</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sles_sles_version_sp_version_installation_and_the_susemgr_extension">4. SLES {sles-version}{sp-version} Installation and the {susemgr} Extension</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers the installation of {susemgr}{productnumber}
+as an extension to SLES {sles-version}{sp-version}
+.</p>
+</div>
+<div class="paragraph">
+<p>For more information on deploying SLES {sles-version}{sp-version}
+on your hardware, see <a href="https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_zseries.html" class="bare">https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_zseries.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>During installation of SLES {sles-version}{sp-version}
+select {susemgr}
+as an extension.</p>
+</div>
+<div class="paragraph">
+<p>After rebooting you will need to set up the additional storage required for <code class="path">/var/spacewalk</code>
+ and <code class="path">/var/lib/pgsql</code>
+ and swap space using the yast partitioner tool.
+This step is <em>required</em> before running <code class="command">yast2
+   susemanager_setup</code>.</p>
+</div>
+<div class="paragraph">
+<p>After configuring the storage requirements, having executed a {yast}
+online update and completed a full system reboot, run {susemgr}
+setup to finalize the {susemgr}
+installation on your {zsystems}
+mainframe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+yast2 susemanager_setup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This completes the installation of {susemgr}
+on your {zseries}
+.
+For more information on beginning management with {susemgr}
+, see <a href="#_suma.setup.with.yast.sumasetup">[_suma.setup.with.yast.sumasetup]</a>.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

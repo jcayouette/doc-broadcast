@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SUSE Manager 3.1</title>
-    <meta name="description" content="3.1 Docs">
+    <title>Using a Custom SSL Certificate</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
     <meta name="author" content="Your name goes here">
     <meta name="copyright" content="Maybe consider a Creative Commons license">
 
@@ -67,7 +67,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="post-header">
-    <h1 class="post-title-main">SUSE Manager 3.1</h1>
+    <h1 class="post-title-main">Using a Custom SSL Certificate</h1>
 </div>
 <div id="search-box">
   <!-- SearchBox widget will appear here -->
@@ -104,31 +104,162 @@
     
 
     
-      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager31-index.adoc" class="btn btn-primary" role="button"> Edit me</a>
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/bp_chap_bring_your_own_cert.adoc" class="btn btn-primary" role="button"> Edit me</a>
     
 
     <!-- page content -->
-    <div class="sect1">
-<h2 id="available_documents">Available Documents</h2>
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bp.cert.custom.req">1. Prerequisites</a></li>
+<li><a href="#_bp.cert.custom.setup">2. Setup</a></li>
+<li><a href="#_bp.cert.custom.proxy">3. Using a Custom Certificate with {susemgrproxy}</a></li>
+</ul>
+</div>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="book-mgr-getting-started.html#getting-started">Getting Started</a></p>
+<p>The following section will guide you through using a custom certificate with {susemgr}{productnumber}
+and {susemgrproxy}{productnumber}
+.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.cert.custom.req">1. Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following list provides requirements for using a custom certificate.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Placeholder Installation and Deployment</p>
+<p>A Certificate Authority (CA) SSL public certificate file</p>
 </li>
 <li>
-<p>Placeholder Reference Manual</p>
+<p>A Web server SSL private key file</p>
 </li>
 <li>
-<p>Placeholder Administration Guide</p>
+<p>A Web server SSL public certificate file</p>
 </li>
 <li>
-<p>Placeholder White Papers</p>
+<p>Key and Certificate files must be in PEM format</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Hostname and SSL Keys</div>
+<div class="paragraph">
+<p>The hostname of the web server&#8217;s SSL keys and relevant certificate files must match the hostname of the machine which they will be deployed on.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Intermediate Certificates</div>
+<div class="paragraph">
+<p>In case you want to use CAs with intermediate certificates, merge the intermediate and root CA certificates into one file.
+It is important that the intermediate certificate comes first within the combined file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.cert.custom.setup">2. Setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After completing {yast}
+firstboot procedures, export your current environment variables and point them to the correct SSL files to be imported.
+Running these commands will make the default certificate obsolete after executing the <code class="command">yast2 susemanager_setup</code> command.
+For more information on {yast}
+ firstboot, see <a href="https://www.suse.com/documentation/suse-manager-3/singlehtml/suse_manager21/book_susemanager_install/book_susemanager_install.html#sec.manager.inst.setup" class="bare">https://www.suse.com/documentation/suse-manager-3/singlehtml/suse_manager21/book_susemanager_install/book_susemanager_install.html#sec.manager.inst.setup</a>.</p>
+</div>
+<div id="_bp.cert.custom.setup.proc.export" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Export the environment variables and point to the SSL files to be imported:</p>
+<div class="listingblock">
+<div class="content">
+<pre>export CA_CERT=`path_to_CA_certificate_file`
+export SERVER_KEY=`path_to_web_server_key`
+export SERVER_CERT=`path_to_web_server_certificate`</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Execute {susemgr} setup with</p>
+<div class="listingblock">
+<div class="content">
+<pre>yast2 susemanager_setup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Proceed with the default setup.
+Upon reaching the Certificate Setup window during {yast}
+installation, fill in random values, as these will be overridden with the values specified in <a href="#_bp.cert.custom.setup.proc.export">[_bp.cert.custom.setup.proc.export]</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Shell Requirements</div>
+Make sure that you execute <code class="command">yast2
+      susemanager_setup</code> from within the same shell the environment variables were exported from.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.cert.custom.proxy">3. Using a Custom Certificate with {susemgrproxy}</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After completing the installation with yast found in <a href="#_advanced.topics.proxy.quickstart">[_advanced.topics.proxy.quickstart]</a> continue with a modified <a href="#_at.manager.proxy.run.confproxy">[_at.manager.proxy.run.confproxy]</a> procedure:</p>
+</div>
+<div id="_bp.cert.custom.proxy.proc" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Execute <code class="command">configure-proxy.sh</code>.</p>
+</li>
+<li>
+<p>When prompted with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>Do you want to import existing certificates?</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Answer with <kbd>y</kbd>
+.</p>
+</div>
+</li>
+<li>
+<p>Continue by following the script prompts.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>

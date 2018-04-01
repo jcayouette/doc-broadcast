@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title></title>
-    <meta name="description" content="SUSE Manager Documentation">
+    <title>Sample Autoinstallation Script for System Upgrade (SLES 11 SP4 to SLES 12 SP3)</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
     <meta name="author" content="Your name goes here">
     <meta name="copyright" content="Maybe consider a Creative Commons license">
 
@@ -67,7 +67,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="post-header">
-    <h1 class="post-title-main"></h1>
+    <h1 class="post-title-main">Sample Autoinstallation Script for System Upgrade (SLES 11 SP4 to SLES 12 SP3)</h1>
 </div>
 <div id="search-box">
   <!-- SearchBox widget will appear here -->
@@ -104,37 +104,69 @@
     
 
     
-      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager-index.adoc" class="btn btn-primary" role="button"> Edit me</a>
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/bp_ex_autoinst_system-upgrade.adoc" class="btn btn-primary" role="button"> Edit me</a>
     
 
     <!-- page content -->
-    <div class="sect1">
-<h2 id="documentation_editions">Documentation Editions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This page contains links to upstream/downstream builds from the SUSE Manager documentation source code repository.</p>
+    <div class="paragraph">
+<p></p>
 </div>
-<div class="sect2">
-<h3 id="latest_development_edition_upstream">Latest Development Edition (Upstream)</h3>
-<div class="paragraph">
-<p>Latest builds are triggered automatically once a pull request has been accepted by a SUSE Technical Writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at <em>your own risk</em>.</p>
-</div>
-<div class="paragraph">
-<p><a href="manager31-index.html#manager31-index">SUSE Manager 3.1</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="enterprise_editions_downstream">Enterprise Editions (Downstream)</h3>
-<div class="paragraph">
-<p>The following enterprise documentation links represents documentation which has passed through extensive testing and QA procedures. It is verified and reliable. Bugs which are submitted by community and fixed in the latest develop edition will be applied to downstream enterprise documentation branches if applicable.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.suse.com/documentation/suse-manager-3/book_suma3_quickstart_3/data/quickstart_chapt_overview_requirements.html" class="external" target="_blank" rel="noopener">SUSE Manager 3.0 Getting Started</a></p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.suse.com/documentation/suse-manager-3/book_suma_reference_manual_3/data/book_suma_reference_manual_3.html" class="external" target="_blank" rel="noopener">SUSE Manager 3.0 Reference Manual</a></p>
-</div>
-</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE profile&gt;
+&lt;profile xmlns="http://www.suse.com/1.0/yast2ns"
+         xmlns:config="http://www.suse.com/1.0/configns"&gt;
+  &lt;general&gt;
+  $SNIPPET('spacewalk/sles_no_signature_checks')
+    &lt;mode&gt;
+      &lt;confirm config:type="boolean"&gt;false&lt;/confirm&gt;
+    &lt;/mode&gt;
+  &lt;/general&gt;
+  &lt;add-on&gt;
+    &lt;add_on_products config:type="list"&gt;
+      &lt;listentry&gt;
+        &lt;ask_on_error config:type="boolean"&gt;true&lt;/ask_on_error&gt;
+        &lt;media_url&gt;http://$redhat_management_server/ks/dist/child/sles12-sp3-updates-x86_64/summer2017&lt;/media_url&gt;
+        &lt;name&gt;SLES12 SP3 Updates&lt;/name&gt;
+        &lt;product&gt;SLES12-SP3&lt;/product&gt;
+        &lt;product_dir&gt;/&lt;/product_dir&gt;
+      &lt;/listentry&gt;
+      &lt;listentry&gt;
+        &lt;ask_on_error config:type="boolean"&gt;true&lt;/ask_on_error&gt;
+        &lt;media_url&gt;http://$redhat_management_server/ks/dist/child/sle-manager-tools12-pool-x86_64-sp3/summer2017&lt;/media_url&gt;
+        &lt;name&gt;SLE12 SP3 Manager Tools Pool&lt;/name&gt;
+        &lt;product&gt;SLES12-SP3&lt;/product&gt;
+        &lt;product_dir&gt;/&lt;/product_dir&gt;
+      &lt;/listentry&gt;
+      &lt;listentry&gt;
+        &lt;ask_on_error config:type="boolean"&gt;true&lt;/ask_on_error&gt;
+        &lt;media_url&gt;http://$redhat_management_server/ks/dist/child/sle-manager-tools12-updates-x86_64-sp3/summer2017&lt;/media_url&gt;
+        &lt;name&gt;SLE12 SP3 Manager Tools Updates&lt;/name&gt;
+        &lt;product&gt;SLES12-SP3&lt;/product&gt;
+        &lt;product_dir&gt;/&lt;/product_dir&gt;
+      &lt;/listentry&gt;
+    &lt;/add_on_products&gt;
+  &lt;/add-on&gt;
+  &lt;upgrade&gt;
+    &lt;only_installed_packages config:type="boolean"&gt;false&lt;/only_installed_packages&gt;
+    &lt;stop_on_solver_conflict config:type="boolean"&gt;true&lt;/stop_on_solver_conflict&gt;
+  &lt;/upgrade&gt;
+  &lt;backup&gt;
+    &lt;sysconfig config:type="boolean"&gt;true&lt;/sysconfig&gt;
+    &lt;modified config:type="boolean"&gt;true&lt;/modified&gt;
+    &lt;remove_old config:type="boolean"&gt;false&lt;/remove_old&gt;
+  &lt;/backup&gt;
+  &lt;networking&gt;
+    &lt;keep_install_network config:type="boolean"&gt;true&lt;/keep_install_network&gt;
+    &lt;start_immediately config:type="boolean"&gt;true&lt;/start_immediately&gt;
+  &lt;/networking&gt;
+   &lt;scripts&gt;
+    &lt;init-scripts config:type="list"&gt;
+      $SNIPPET('spacewalk/sles_register_script')
+    &lt;/init-scripts&gt;
+  &lt;/scripts&gt;
+&lt;/profile&gt;</pre>
 </div>
 </div>
 

@@ -1,0 +1,4128 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Systems</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Systems</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/reference-webui-systems.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.systems.overview">1. Overview</a></li>
+<li><a href="#_ref.webui.systems.systems">2. Systems</a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.systems.systems.all">2.1. All</a></li>
+<li><a href="#_ref.webui.systems.systems.physical">2.2. Physical Systems</a></li>
+<li><a href="#_ref.webui.systems.systems.virtual">2.3. Virtual Systems</a></li>
+<li><a href="#_ref.webui.systems.systems.baremetal">2.4. Unprovisioned Systems</a></li>
+<li><a href="#_ref.webui.systems.systems.ood">2.5. Out of Date</a></li>
+<li><a href="#_ref.webui.systems.systems.reboot">2.6. Requiring Reboot</a></li>
+<li><a href="#_ref.webui.systems.systems.non_compliant">2.7. Non-compliant Systems</a></li>
+<li><a href="#_ref.webui.systems.systems.wst">2.8. Without System Type</a></li>
+<li><a href="#_ref.webui.systems.systems.ungrp">2.9. Ungrouped</a></li>
+<li><a href="#_ref.webui.systems.systems.inact">2.10. Inactive</a></li>
+<li><a href="#_ref.webui.systems.systems.rregistered">2.11. Recently Registered</a></li>
+<li><a href="#_ref.webui.systems.systems.proxy">2.12. Proxy</a></li>
+<li><a href="#_ref.webui.systems.systems.dup">2.13. Duplicate Systems</a></li>
+<li><a href="#_ref.webui.systems.systems.currency">2.14. System Currency</a></li>
+<li><a href="#_ref.webui.systems.systems.types">2.15. System Types</a></li>
+</ul>
+</li>
+<li><a href="#_s3_sm_system_details">3. System Details</a>
+<ul class="sectlevel2">
+<li><a href="#_s4_sm_system_details_details">3.1. System Details  &gt;  Details</a></li>
+<li><a href="#_s4_sm_system_details_channels">3.2. System Details &gt;  Software</a></li>
+<li><a href="#_s5_sm_system_details_channels_config">3.3. System Details &gt;  Configuration  [Management]</a></li>
+<li><a href="#_s4_sm_system_details_kick">3.4. System Details &gt;  Provisioning  [Management]</a></li>
+<li><a href="#_s4_sm_system_details_virtualization">3.5. System Details &gt;  Virtualization</a></li>
+<li><a href="#_s4_sm_system_details_groups">3.6. System Details &gt;  Groups</a></li>
+<li><a href="#_s4_sm_system_details_audit">3.7. System Details &gt;  Audit  [Management]</a></li>
+<li><a href="#_s4_sm_system_details_states">3.8. System Details &gt;  States  [Salt]</a></li>
+<li><a href="#_s4_sm_system_details_formualas">3.9. System Details &gt;  Formulas  [Salt]</a></li>
+<li><a href="#_s4_sm_system_details_events">3.10. System Details &gt;  Events</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.systems.systemgroups">4. System Groups</a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.systems.systemgroups.create">4.1. Creating Groups</a></li>
+<li><a href="#_ref.webui.systems.systemgroups.add">4.2. Adding and Removing Systems in Groups</a></li>
+<li><a href="#_ref.webui.systems.systemgroups.details">4.3. System Group Details</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.systems.ssm">5. <b class="menuref">System Set Manager</b></a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.systems.ssm.overview">5.1. System Set Manager &gt;  Overview</a></li>
+<li><a href="#_ref.webui.systems.ssm.systems">5.2. System Set Manager &gt;  Systems</a></li>
+<li><a href="#_ref.webui.systems.ssm.patches">5.3. System Set Manager &gt;  Patches</a></li>
+<li><a href="#_ref.webui.systems.ssm.packages">5.4. System Set Manager &gt;  Packages</a></li>
+<li><a href="#_ref.webui.systems.ssm.groups">5.5. System Set Manager &gt;  Groups</a></li>
+<li><a href="#_ref.webui.systems.ssm.channels">5.6. System Set Manager &gt;  Channels</a></li>
+<li><a href="#_ref.webui.systems.ssm.config">5.7. System Set Manager &gt;  Configuration</a></li>
+<li><a href="#_ref.webui.systems.ssm.provision">5.8. System Set Manager &gt;  Provisioning</a></li>
+<li><a href="#_ref.webui.systems.ssm.audit">5.9. System Set Manager &gt;  Audit</a></li>
+<li><a href="#_ref.webui.systems.ssm.misc">5.10. System Set Manager &gt;  Misc</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.systems.bootstrapping">6. Bootstrapping [Salt]</a></li>
+<li><a href="#_ref.webui.systems.visualization">7. Visualization</a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.systems.virtual.visualzation">7.1. Virtualization Hierarchy</a></li>
+<li><a href="#_ref.webui.systems.proxy.visualzation">7.2. Proxy Hierarchy</a></li>
+<li><a href="#_ref.webui.systems.grouping.visualzation">7.3. Systems Grouping</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.systems.search">8. Advanced Search</a></li>
+<li><a href="#_ref.webui.systems.activ_keys">9. Activation Keys</a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sm_system_keys_manage">9.1. Managing Activation Keys</a></li>
+<li><a href="#_s3_sm_system_keys_multiple">9.2. Using Multiple Activation Keys at Once</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.systems.profiles">10. Stored Profiles</a></li>
+<li><a href="#_ref.webui.systems.cust_info">11. Custom System Info</a></li>
+<li><a href="#_ref.webui.systems.virt_host_managers">12. Virtual Host Managers</a>
+<ul class="sectlevel2">
+<li><a href="#_ref.webui.systems.virt_host_managers.vmware">12.1. VMware-Based</a></li>
+<li><a href="#_ref.webui.systems.virt_host_managers.file">12.2. File-Based</a></li>
+<li><a href="#configuring_virtual_host_managers_via_xmlrpc_api">12.3. Configuring Virtual Host Managers via XMLRPC API</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>If you click <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Overview</b></span>
+ on the left bar, an overview listing of your <b class="menuref">Systems</b>
+ appears.
+Here you can select systems to perform actions on them and create system profiles.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.overview">1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">System Overview</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page provides a summary of your systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">including their status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">number of associated patches (errata) and packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and their so-called system type.
+Clicking the name of a system takes you to its menu:System Details[</b></span>
+ page.
+Refer to <a href="#_s3_sm_system_details">System Details</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Clicking <span class="menuseq"><b class="menu">View System Groups</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ at the top of the menu:Overview[</b></span>
+ page takes you to a similar summary of your system groups.
+It identifies group status and displays the number of systems contained.
+Then, clicking the number of systems takes you to the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:System Group Details[</b></span>
+ page, while clicking the group name takes you to the <b class="menuref">Details</b>
+ tab for that system group.
+Refer to <a href="#_ref.webui.systems.systemgroups.details">System Group Details</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>You can also click <span class="menuseq"><b class="menu">Use in SSM</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ in the menu:System Groups[</b></span>
+ section to go directly to the <b class="menuref">System Set Manager</b>
+.
+Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.systems">2. Systems</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Systems</b>
+ page displays a list of all your registered systems.
+Several columns provide information for each system:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select box: Systems without a system type cannot be selected. To select systems, mark the appropriate check boxes. Selected systems are added to the <b class="menuref">System Set Manager</b> , where actions can be carried out simultaneously on all systems in the set. Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> for details.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">System</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] : The name of the system specified during registration. The default name is the host name of the system. Clicking the name of a system displays its menu:System Details[</b></span> page. Refer to <a href="#_s3_sm_system_details">System Details</a> for more information.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/spacewalk-icon-virtual-host.svg" alt="Virtual Host"></span>&#8201;&#8212;&#8201;Virtual Host.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/spacewalk-icon-virtual-guest.svg" alt="Virtual Guest"></span>&#8201;&#8212;&#8201;Virtual Guest.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-236-non-virtual-system.svg" alt="Non-Virtual System"></span>&#8201;&#8212;&#8201;Non-Virtual System.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/spacewalk-icon-unprov-system.svg" alt="Unprovisioned System"></span>&#8201;&#8212;&#8201;Unprovisioned System.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Updates</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] : Shows which type of update action is applicable to the system or confirms that the system is up-to-date. Some icons are linked to related tasks. For example</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">the standard Updates icon is linked to the menu:Upgrade[</b></span> subtab of the packages list, while the Critical Updates icon links directly to the <b class="menuref">Software Patches</b> page.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-check-circle.svg" alt="Check Circle"></span>&#8201;&#8212;&#8201;System is up-to-date.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-exclamation-circle.svg" alt="Exclamation Circle"></span>&#8201;&#8212;&#8201;Critical patch (errata) available, update <em>strongly</em>
+     recommended.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-warning.svg" alt="Warning"></span>&#8201;&#8212;&#8201;Updates available and recommended.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-question-circle.svg" alt="Question"></span>&#8201;&#8212;&#8201;System not checking in properly (for 24 hours or more).</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-lock.svg" alt="Lock"></span>&#8201;&#8212;&#8201;System is locked; actions prohibited.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-rocket.svg" alt="Rocket"></span>&#8201;&#8212;&#8201;System is being deployed using {ay}
+or Kickstart.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-clock-o.svg" alt="Clock"></span>&#8201;&#8212;&#8201;Updates have been scheduled.</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-times-circle.svg" alt="Times"></span>&#8201;&#8212;&#8201;System not entitled to any update service.</p>
+</li>
+<li>
+<p><b class="menuref">Patches</b> : Total number of patch alerts applicable to the system.</p>
+</li>
+<li>
+<p><b class="menuref">Packages</b> : Total number of package updates for the system, including packages related to patch alerts and newer versions of packages not related to patch alerts. For example, if a client system that has an earlier version of a package installed gets subscribed to the appropriate base channel (such as {sle} 12 SP2), that channel may have an updated version of the package. If so, the package appears in the list of available package updates.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Package Conflict</div>
+If {susemgr}
+identifies package updates for the system, but the package updater (such as Red Hat Update Agent or {yast}
+) responds with a message like "Your system is fully updated", a conflict likely exists in the system&#8217;s package profile or in the <code class="path">up2date</code>
+ configuration file.
+To resolve the conflict, either schedule a package list update or remove the packages from the package exceptions list.
+Refer to <a href="#_s3_sm_system_details">System Details</a> for instructions.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><b class="menuref">Configs</b> : Total number of configuration files applicable to the system.</p>
+</li>
+<li>
+<p><b class="menuref">Base Channel</b> : The primary channel for the system based on its operating system. Refer to <a href="#_ref.webui.channels.software">[_ref.webui.channels.software]</a> for more information.</p>
+</li>
+<li>
+<p><b class="menuref">System Type</b> : Shows whether the system is managed and at what service level.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Links in the navigation bar below <b class="menuref">Systems</b>
+ enable you to select and view predefined sets of your systems.
+All of the options described above can be applied within these pages.</p>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.all">2.1. All</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">All</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page contains the default set of your systems.
+It displays every system you have permission to manage.
+You have permission if you are the only user in your organization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">if you are a {susemgr}
+ Administrator</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">or if the system belongs to a group for which you have admin rights.
+image::systems_all.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.physical">2.2. Physical Systems</h3>
+<div class="paragraph">
+<p>To reach this page, select <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Physical Systems</b></span>
+ from the left bar.
+This page lists each physical system of which {susemgr}
+ is aware.
+image::systems_physical_systems.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.virtual">2.3. Virtual Systems</h3>
+<div class="paragraph">
+<p>To reach this page, select <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Virtual Systems</b></span>
+ from the left bar.
+This page lists each virtual host of which {susemgr}
+ is aware and the guest systems on those hosts.
+image::systems_virtual_systems.png[]</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">System</b></dt>
+<dd>
+<p>This column displays the name of each guest system.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Updates</b></dt>
+<dd>
+<p>This column shows whether there are patches (errata updates) available for the guest systems that have not yet been applied.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Status</b></dt>
+<dd>
+<p>This column indicates whether a guest is running, paused, or stopped.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Base Channel</b></dt>
+<dd>
+<p>This column displays the base channel to which the guest is currently subscribed.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Only guests registered with {susemgr}
+are displayed with blue text.
+Clicking the host name of such a guest system displays its <b class="menuref">System Details</b>
+ page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.baremetal">2.4. Unprovisioned Systems</h3>
+<div class="paragraph">
+<p>Here, all unprovisioned (bare-metal) systems with hardware details are listed.
+For more information about Unprovisioned systems, see <a href="#_s3_sattools_config_bare_metal">[_s3_sattools_config_bare_metal]</a>.
+image::systems_bare_metal.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.ood">2.5. Out of Date</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Out of Date</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page displays all systems where applicable patch alerts have not been applied.
+image::systems_outofdate.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.reboot">2.6. Requiring Reboot</h3>
+<div class="paragraph">
+<p>Systems listed here need rebooting.
+Click the name for details, where you can also schedule a reboot.
+image::systems_requiringreboot.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.non_compliant">2.7. Non-compliant Systems</h3>
+<div class="paragraph">
+<p>Non-compliant systems have packages installed which are not available from {susemgr}
+. <span class="menuseq"><b class="menu">Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ shows how many installed packages are not available in the channels assigned to the system.
+A non-compliant system cannot be reinstalled.
+image::systems_noncompliant.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.wst">2.8. Without System Type</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Without System Type</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page displays systems without System Type.
+(System types are: Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Management</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Foreign Host</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">etc.)
+image::systems_without_system_type.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.ungrp">2.9. Ungrouped</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Ungrouped</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page displays systems not yet assigned to a specific system group.
+image::systems_ungrouped.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.inact">2.10. Inactive</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Inactive Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page displays systems that have not checked in with {susemgr}
+ for 24 hours or more.
+image::systems_inactive.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Checking in means that Zypper on {sle}
+or Red Hat Update Agent on {rhel}
+client systems connects to {susemgr}
+to see if there are any updates available or if any actions have been scheduled.
+If you see a message telling you that check-ins are not taking place, the client system is not successfully connecting to {susemgr}
+.
+The reason may be one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The system is not entitled to any {susemgr} service. System profiles that remain unentitled for 180 days (6 months) are removed.</p>
+</li>
+<li>
+<p>The system is entitled, but the {susemgr} daemon (<code class="systemitem">rhnsd</code> ) has been disabled on the system. Refer to <a href="#_bp.contact.methods.rhnsd">[_bp.contact.methods.rhnsd]</a> for instructions on restarting and troubleshooting.</p>
+</li>
+<li>
+<p>The system is behind a firewall that does not allow connections over <code class="systemitem">https</code> (port 443).</p>
+</li>
+<li>
+<p>The system is behind an HTTP proxy server that has not been properly configured.</p>
+</li>
+<li>
+<p>The system is connected to a {susemgr} Proxy Server or {susemgr} that has not been properly configured.</p>
+</li>
+<li>
+<p>The system itself has not been properly configured, perhaps pointing at the wrong {susemgr} Server.</p>
+</li>
+<li>
+<p>The system is not in the network.</p>
+</li>
+<li>
+<p>Some other barrier exists between the system and the {susemgr} Server.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.rregistered">2.11. Recently Registered</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Recently Registered</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page displays any systems that have been registered in a given period.
+Use the drop-down box to specify the period in days</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">weeks</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">30- and 180-day increments</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and years.
+image::systems_recently_registered.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.proxy">2.12. Proxy</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Proxy</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page displays the {susemgrproxy}
+ Server systems registered with your {susemgr}
+ server.
+image::systems_proxy.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.dup">2.13. Duplicate Systems</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Duplicate Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page lists current systems and any active and inactive entitlements associated with them.
+image::systems_duplicate_systems.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Active entitlements are in gray, while inactive entitlements are highlighted in yellow and their check boxes checked by default for you to delete them as needed by clicking the <span class="menuseq"><b class="menu">Delete Selected</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Entitlements are inactive if the system has not checked in with {susemgr}
+ in a time specified via the drop-down box menu:A system profile is inactive if its system has not checked in for[</b></span>
+.</p>
+</div>
+<div class="paragraph">
+<p>You can filter duplicate entitlements by <span class="menuseq"><b class="menu">IP Address</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:IPv6 Address[</b></span>
+, <span class="menuseq"><b class="menu">Hostname</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">or menu:MAC address[</b></span>
+ by clicking the respective tab.
+You may filter further by inactive time or typing the system&#8217;s host name, IP address, IPv6 address, or MAC address in the corresponding <b class="menuref">Filter by</b>
+ text box.</p>
+</div>
+<div class="paragraph">
+<p>To compare up to three duplicate entitlements at one time, click the <span class="menuseq"><b class="menu">Compare Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link in the menu:Last Checked In[</b></span>
+ column.
+Inactive components of the systems are highlighted in yellow.
+You can then determine which systems are inactive or duplicate and delete them by clicking the <span class="menuseq"><b class="menu">Delete System Profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Click the menu:Confirm Deletion[</b></span>
+ button to confirm your choice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.currency">2.14. System Currency</h3>
+<div class="paragraph">
+<p>The System Currency Report displays an overview of severity scores of patches relevant to the system.
+The weighting is defined via the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+The default weight awards critical security patches with the heaviest weight and enhancements with the lowest.
+The report can be used to prioritize maintenance actions on the systems registered to {susemgr}
+.
+image::systems_currency_report.png[</b></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systems.types">2.15. System Types</h3>
+<div class="paragraph">
+<p>System Types define the set of functionalities available for each system in {susemgr}
+such as the ability of installing software or creating guest virtual machines.
+image::systems_system_types.png[]</p>
+</div>
+<div class="paragraph">
+<p>A list of profiled systems follows, with their base and add-on system types shown in the appropriate columns.
+To change system types, select the systems you want to modify, and choose either <span class="menuseq"><b class="menu">Add System Type</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ or menu:Remove System Type[</b></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_s3_sm_system_details">3. System Details</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When systems are registered to {susemgr}
+, they are displayed on the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Overview</b></span>
+ page.
+Here and on any other page, clicking the name takes you to the <b class="menuref">System Details</b>
+ page of the client, where all kinds of administrative tasks can be performed, including the removal of a system.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <b class="menuref">Delete System</b>
+ link in the upper right of this screen refers to the system profile only.
+Deleting a host system profile will not destroy or remove the registration of guest systems.
+Deleting a guest system profile does not remove it from the list of guests for its host, nor does it stop or pause the guest.
+It does, however, remove your ability to manage it via {susemgr}
+.</p>
+</div>
+<div class="paragraph">
+<p>If you mistakenly deleted a system profile from {susemgr}
+, you may re-register the system using the bootstrap script or <code class="command">rhnreg_ks</code> manually.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The Details page has numerous subtabs that provide specific system information and other identifiers unique to the system.
+The following sections discuss these tabs and their subtabs in detail.</p>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_details">3.1. System Details  &gt;  Details</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This page is not accessible from any of the left bar.
+However, clicking the name of a system anywhere in the Web interface displays such a System Details page.
+By default, the <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Overview</b></span>
+ subtab is displayed.
+Other tabs are available, depending on the system type and add-on system type.
+For example Traditional systems (Management, <a href="#_fig.system_details.details.overview.trad">[_fig.system_details.details.overview.trad]</a>) and Salt systems (Salt, <a href="#_fig.system_details.details.overview.salt">[_fig.system_details.details.overview.salt]</a>) display differerent tabs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/system_details_traditional_overview.png" alt="system details traditional overview">
+</div>
+<div class="title">Figure 1. System Details Overview (Traditional Client) <a id="_fig.system_details.details.overview.trad"></a></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/system_details_salt_overview.png" alt="system details salt overview">
+</div>
+<div class="title">Figure 2. System Details Overview (Salt Minion) <a id="_fig.system_details.details.overview.salt"></a></div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_overview">3.1.1. System Details &gt;  Details  &gt;  Overview</h4>
+<div class="paragraph">
+<p>This system summary page displays the system status message and the following key information about the system:</p>
+</div>
+<div class="paragraph">
+<div class="title"><b class="menuref">System Status</b>::</div>
+<p>This message indicates the current state of your system in relation to {susemgr}
+.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If updates are available for any entitled system, the message <span class="menuseq"><b class="menu">Software Updates Available</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ appears</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">displaying the number of critical and non-critical updates and the sum of affected packages.
+To apply these updates</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Packages[</b></span>
+ and select some or all packages to update, then click <b class="menuref">Upgrade Packages</b>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<div class="title"><b class="menuref">System Info</b></div>
+<dl>
+<dt class="hdlist1">Hostname</dt>
+<dd>
+<p>The host name as defined by the client system.
+A machine can have one and only one hostname.</p>
+</dd>
+<dt class="hdlist1">FQDN</dt>
+<dd>
+<p>The FQDN(Names) listed here represents the host.domain that the machine answers to.
+A machine can have any number of FQDNs.
+Keep in mind that FQDN is not equal to hostname.</p>
+</dd>
+<dt class="hdlist1">IP Address</dt>
+<dd>
+<p>The IP address of the client.</p>
+</dd>
+<dt class="hdlist1">IPv6 Address</dt>
+<dd>
+<p>The IPv6 address of the client.</p>
+</dd>
+<dt class="hdlist1">Virtualization</dt>
+<dd>
+<p>If the client is a virtual machine, the type of virtualization is listed.</p>
+</dd>
+<dt class="hdlist1">UUID</dt>
+<dd>
+<p>Displays the universally unique identifier.</p>
+</dd>
+<dt class="hdlist1">Kernel</dt>
+<dd>
+<p>The kernel installed and operating on the client system.</p>
+</dd>
+<dt class="hdlist1">{susemgr} System ID</dt>
+<dd>
+<p>A unique identifier generated each time a system registers with {susemgr}
+.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The system ID can be used to eliminate duplicate profiles from {susemgr}
+.
+Compare the system ID listed on this page with the information stored on the client system in the <code class="path">/etc/sysconfig/rhn/systemid</code>
+ file.
+In that file, the system&#8217;s current ID is listed under <code>system_id</code>.
+The value starts after the characters <code>ID-</code>.
+If the value stored in the file does not match the value listed in the profile, the profile is not the most recent one and may be removed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Activation Key</dt>
+<dd>
+<p>Displays the activation key used to register the system.</p>
+</dd>
+<dt class="hdlist1">Installed Products</dt>
+<dd>
+<p>Lists the products installed on the system.</p>
+</dd>
+<dt class="hdlist1">Lock Status</dt>
+<dd>
+<p>Indicates whether a system has been locked.</p>
+<div class="paragraph">
+<p>Actions cannot be scheduled for locked systems on the Web interface until the lock is removed manually.
+This does not include preventing automated patch updates scheduled via the Web interface.
+To prevent the application of automated patch updates, deselect <span class="menuseq"><b class="menu">Auto Patch Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+from the menu:System
+Details[Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Properties</b></span>
+subtab.
+For more information, refer to <a href="#_s5_sm_system_details_properties">System Details &gt;  Details  &gt;  Properties</a>.</p>
+</div>
+<div class="paragraph">
+<p>Locking a system can prevent you from accidentally changing a system.
+For example, the system may be a production system that should not receive updates or new packages until you decide to unlock it.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Locking a system in the Web interface <em>will not</em> prevent any actions that originate from the client system.
+For example, if a user logs in to the client directly and runs {yast}
+ Online Update (on {slea}
+) or <code class="command">pup</code> (on {rhela}
+), the update tool will install available patches even if the system is locked in the Web interface.</p>
+</div>
+<div class="paragraph">
+<p>Locking a system <em>does not</em> restrict the number of users who can access the system via the Web interface.
+If you want to restrict access to the system, associate that system with a System Group and assign a System Group Administrator to it.
+Refer to <a href="#_ref.webui.systems.systemgroups">System Groups</a> for more information about System Groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+
+It is also possible to lock multiple systems via the System Set Manager.
+Refer to <a href="#_s4_sm_ssm_misc_lock">System Set Manager &gt;  Misc  &gt;  Lock/Unlock</a> for instructions.</p>
+</div>
+<div class="paragraph">
+<div class="title"><b class="menuref">Subscribed Channels</b>::</div>
+<p>List of subscribed channels.
+Clicking a channel name takes you to the <span class="menuseq"><b class="menu">Basic Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+page.
+To change subscriptions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:(Alter Channel Subscriptions)[</b></span>
+link right beside the title to assign available base and child channels to this system.
+When finished making selections, click the <b class="menuref">Change Subscriptions</b>
+button to change subscriptions and the base software channel.
+For more information, refer to <a href="#_s5_sm_system_details_channels_software">System Details &gt;  Software  &gt;  Software Channels</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Base Channel</dt>
+<dd>
+<p>The first line indicates the base channel to which this system is subscribed.
+The base channel should match the operating system of the client.</p>
+</dd>
+<dt class="hdlist1">Child Channels</dt>
+<dd>
+<p>The subsequent lines of text, which depend on the base channel, list child channels.
+An example is the <b class="menuref">SUSE Manager Tools</b>
+channel.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<div class="title"><b class="menuref">System Events</b></div>
+<dl>
+<dt class="hdlist1">Checked In</dt>
+<dd>
+<p>The date and time at which the system last checked in with {susemgr}
+.</p>
+</dd>
+<dt class="hdlist1">Registered</dt>
+<dd>
+<p>The date and time at which the system registered with {susemgr}
+and created this profile.</p>
+</dd>
+<dt class="hdlist1">Last Booted</dt>
+<dd>
+<p>The date and time at which the system was last started or restarted.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Systems with Salt or Management system type can be rebooted from this screen.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select <b class="menuref">Schedule system reboot</b> .</p>
+</li>
+<li>
+<p>Provide the earliest date and time at which the reboot may take place.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">Schedule Reboot</b> button in the lower right.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When the client checks in after the scheduled start time, {susemgr}
+will instruct the system to restart itself.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<div class="title"><b class="menuref">System Properties</b></div>
+<dl>
+<dt class="hdlist1">System Types</dt>
+<dd>
+<p>Lists system types and add-on types currently applied to the system.</p>
+</dd>
+<dt class="hdlist1">Notifications</dt>
+<dd>
+<p>Indicates the notification options for this system.
+You can activate whether you want to receive e-mail notifying you of available updates for this system.
+In addition, you may activate to include systems in the daily summary e-mail.</p>
+</dd>
+<dt class="hdlist1">Contact Method</dt>
+<dd>
+<p>Available methods: Default (Pull), Push via SSH, and Push via SSH tunnel.</p>
+<div class="paragraph">
+<p>The so-called OSA status is also displayed for client systems registered with {susemgr}
+that have the OSA dispatcher (osad) configured.</p>
+</div>
+<div class="paragraph">
+<p>Push enables {susemgr}
+customers to immediately initiate tasks rather than wait for those systems to check in with {susemgr}
+.
+Scheduling actions through push is identical to the process of scheduling any other action, except that the task can immediately be carried out instead of waiting the set interval for the system to check in.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the configuration of {susemgr}
+, to receive pushed actions each client system must have the <code class="systemitem">osad</code>
+package installed and its service started.</p>
+</div>
+</dd>
+<dt class="hdlist1">Auto Patch Update</dt>
+<dd>
+<p>Indicates whether this system is configured to accept updates automatically.</p>
+</dd>
+<dt class="hdlist1">System Name</dt>
+<dd>
+<p>By default, the host name of the client is displayed, but a different system name can be assigned.</p>
+</dd>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This information is automatically generated at registration.
+You can edit the description to include any information you want.</p>
+</dd>
+<dt class="hdlist1">Location</dt>
+<dd>
+<p>This field displays the physical address of the system if specified.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Clicking the <span class="menuseq"><b class="menu">Edit These Properties</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link right beside the menu:System Properties[</b></span>
+ title opens the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Properties</b></span>
+ subtab.
+On this page, edit any text you choose, then click the <b class="menuref">Update Properties</b>
+ button to confirm.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_properties">3.1.2. System Details &gt;  Details  &gt;  Properties</h4>
+<div class="paragraph">
+<p>This subtab allows you to alter basic properties of the selected system.
+image::system_details_traditional_edit.png[]</p>
+</div>
+<div class="dlist">
+<div class="title">System Details</div>
+<dl>
+<dt class="hdlist1">System Name</dt>
+<dd>
+<p>By default, this is the host name of the system.
+You can however alter the profile name to anything that allows you to distinguish this system from others.</p>
+</dd>
+<dt class="hdlist1">Base System Type</dt>
+<dd>
+<p>For information only.</p>
+</dd>
+<dt class="hdlist1">Add-on System Types</dt>
+<dd>
+<p>Select one of the available system types such as <b class="menuref">Virtualization</b>
+.</p>
+</dd>
+<dt class="hdlist1">Notifications</dt>
+<dd>
+<p>Select whether notifications about this system should be sent and whether to include this system in the daily summary. This setting keeps you aware of all advisories pertaining to the system.
+Anytime an update is released for the system, you receive an e-mail notification.</p>
+<div class="paragraph">
+<p>The daily summary reports system events that affect packages, such as scheduled patch updates, system reboots, or failures to check in.
+In addition to including the system here, you must activate to receive e-mail notification in the <span class="menuseq"><b class="menu">Your Preferences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+page of the menu:Overview[</b></span>
+category.</p>
+</div>
+</dd>
+<dt class="hdlist1">Contact Method</dt>
+<dd>
+<p>Select between <span class="menuseq"><b class="menu">Pull</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Push via SSH[</b></span>
+, and <b class="menuref">Push via SSH tunnel</b>
+.</p>
+</dd>
+</dl>
+</div>
+<div id="_varentry_system_details_properties_auto" class="dlist">
+<dl>
+<dt class="hdlist1">Auto Patch Update</dt>
+<dd>
+<p>If this box is checked, available patches are automatically applied to the system when it checks in (Pull) or immediately if you select either Push option.
+This action takes place without user intervention.
+The {susemgr}
+Daemon (<code class="systemitem">rhnsd</code>
+) must be enabled on the system for this feature to work.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Conflicts With Third Party Packages</div>
+<div class="paragraph">
+<p>Enabling auto-update might lead to failures because of conflicts between system updates and third party packages.
+To avoid failures caused by those issues, it is better to leave this box unchecked.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>By default, this text box records the operating system, release, and architecture of the system when it first registers.
+Edit this information to include anything you like.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The remaining fields record the physical address at which the system is stored.
+To confirm any changes to these fields, click the <b class="menuref">Update Properties</b>
+ button.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Setting Properties for Multiple Systems</div>
+<div class="paragraph">
+<p>Many of these properties can be set for multiple systems in one go via the System Set Manager interface.
+For details, see <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_remote">3.1.3. System Details &gt;  Details  &gt;  Remote Command</h4>
+<div class="paragraph">
+<p>This subtab allows you to run remote commands on the selected system. Before doing so, you must first configure the system to accept such commands.
+image::system_details_traditional_edit.png[]</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On {slea} clients, subscribe the system to the {susemgr} Tools child channel. Then use Zypper to install the <code class="command">rhncfg</code>, <code class="command">rhncfg-client</code>, and <code class="command">rhncfg-actions</code> packages, if not already installed:</p>
+<div class="listingblock">
+<div class="content">
+<pre>zypper in rhncfg rhncfg-client rhncfg-actions</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On {rhela}
+clients, subscribe the system to the Tools child channel.
+Then use <code class="command">up2date</code> or <code class="command">yum</code> to install the <code class="command">rhncfg</code>, <code class="command">rhncfg-client</code>, and <code class="command">rhncfg-actions</code> packages, if not already installed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>yum install rhncfg rhncfg-client rhncfg-actions</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Log in to the system as root and add the following file to the local {susemgr} configuration directory: <code class="path">allowed-actions/scripts/run</code> .</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create the necessary directory on the target system:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mkdir -p /etc/sysconfig/rhn/allowed-actions/script</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create an empty <code class="path">run</code> file in that directory to act as a flag to {susemgr} , signaling permission to allow remote commands:</p>
+<div class="listingblock">
+<div class="content">
+<pre>touch /etc/sysconfig/rhn/allowed-actions/script/run</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When the setup is complete, refresh the page to view the text boxes for remote commands.
+Identify a specific user, group, and timeout period, and the script to run.
+Select a date and time to execute the command, then click <b class="menuref">Schedule</b>
+ or add the remote command to an action chain.
+For further information on action chains, refer to <a href="#_ref.webui.schedule.chains">[_ref.webui.schedule.chains]</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_react">3.1.4. System Details &gt;  Details  &gt;  Reactivation  [Management]</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Reactivation keys include this system&#8217;s ID, history, groups, and channels.
+This key can then be used only once with the <code class="command">rhnreg_ks</code> command line utility to re-register this system and regain all {susemgr}
+ settings.
+Unlike typical activation keys, which are not associated with a specific system ID, keys created here do not show up within the <span class="menuseq"><b class="menu">Activation Keys</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+image::system_details_reactivation.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Reactivation keys can be combined with activation keys to aggregate the settings of multiple keys for a single system profile.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>rhnreg_ks --server=`server-url`
+\
+  --activationkey=`reactivation-key`
+,`activationkey`
+--force</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When autoinstalling a system with its existing {susemgr}
+profile, the profile uses the system-specific activation key created here to re-register the system and return its other {susemgr}
+settings.
+For this reason, you should not regenerate, delete, or use this key (with <code class="command">rhnreg_ks</code>) while a profile-based autoinstallation is in progress.
+If you do, the autoinstallation will fail.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_hardware">3.1.5. System Details &gt;  Details  &gt;  Hardware</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This subtab provides information about the system, such as networking, BIOS, memory, and other devices.
+This only works if you included the hardware profile during registration.
+If the hardware profile looks incomplete or outdated, click the <b class="menuref">Schedule Hardware Refresh</b>
+ button.
+The next time the {susemgr}
+ Daemon (<code class="systemitem">rhnsd</code>
+) connects to {susemgr}
+, it will update your system profile with the latest hardware information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_migrate">3.1.6. System Details &gt;  Details  &gt;  Migrate</h4>
+<div class="paragraph">
+<p>This subtab provides the option to migrate systems between organizations.
+Select an <span class="menuseq"><b class="menu">Organization Name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ and click menu:Migrate System[</b></span>
+ to initiate the migration.
+image::system_details_traditional_migrate.png[]</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Defined system details such as channel assignments, system group membership, custom data value, configuration channels, reactivation keys, and snapshots will be dropped from the system configuration after the migration.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_notes">3.1.7. System Details &gt;  Details  &gt;  Notes</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This subtab provides a place to create notes about the system.
+To add a new note, click the <span class="menuseq"><b class="menu">Create Note</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ link</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">type a subject and write your note</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click the menu:Create[</b></span>
+ button.
+To modify a note, click its subject in the list of notes, make your changes, and click the <span class="menuseq"><b class="menu">Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+To remove a note</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click its subject in the list of notes then click the menu:delete note[</b></span>
+ link.
+image::system_details_traditional_notes.png[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_info">3.1.8. System Details &gt;  Details  &gt;  Custom Info</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This subtab provides completely customizable information about the system.
+Unlike <span class="menuseq"><b class="menu">Notes</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Custom Info[</b></span>
+ is structured, formalized, and can be searched.
+Before you can provide custom information about a system, you must have <span class="menuseq"><b class="menu">Custom Information Keys</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+To create such keys</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Custom System Info[</b></span>
+ in the left bar.
+For more information, see <a href="#_ref.webui.systems.cust_info">Custom System Info</a>.
+image::system_details_traditional_custom_info.png[]</p>
+</div>
+<div class="paragraph">
+<p>When you have created one or more keys, you may assign values for this system by selecting the <span class="menuseq"><b class="menu">Create Value</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link.
+Click the name of the key in the resulting list and enter a value for it in the menu:Description[</b></span>
+ field, then click the <b class="menuref">Update Key</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_proxy">3.1.9. System Details &gt;  Details  &gt;  Proxy  [Proxy]</h4>
+<div class="paragraph">
+<p>This tab is only available for {susemgrproxy}
+systems.
+The tab lists all clients registered with the selected {susemgrproxy}
+server.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_channels">3.2. System Details &gt;  Software</h3>
+<div class="paragraph">
+<p>This tab and its subtabs allow you to manage the software on the system: patches (errata), packages and package profiles, software channel memberships, and migrations.</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_details_errata">3.2.1. System Details  &gt;  Software  &gt;  Patches</h4>
+<div class="paragraph">
+<p>This subtab contains a list of patch (errata) alerts applicable to the system.
+Refer to <a href="#_ref.webui.intro.patch_alerts">[_ref.webui.intro.patch_alerts]</a> for meanings of the icons on this tab.
+image::system_details_traditional_software_patches.png[]</p>
+</div>
+<div class="paragraph">
+<p>To apply updates, select them and click the <span class="menuseq"><b class="menu">Apply Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+Double-check the updates to be applied on the confirmation page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click the menu:Confirm[</b></span>
+ button.
+The action is added to the <span class="menuseq"><b class="menu">Pending Actions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ list under menu:Schedule[</b></span>
+.
+Patches that have been scheduled cannot be selected for update.
+Instead of a check box there is a clock icon.
+Click the clock to see the <b class="menuref">Action Details</b>
+ page.</p>
+</div>
+<div class="paragraph">
+<p>A <span class="menuseq"><b class="menu">Status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ column in the patches table shows whether an update has been scheduled.
+Possible values are: None</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Pending</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Picked Up</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Completed</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">and Failed.
+This column displays only the latest action related to a patch.
+For example</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">if an action fails and you reschedule it</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">this column shows the status of the patch as <code>Pending</code> with no mention of the previous failure.
+Clicking a status other than <code>None</code> takes you to the menu:Action Details[</b></span>
+ page.
+This column corresponds to the one on the <span class="menuseq"><b class="menu">Affected Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:Patch Details[</b></span>
+ page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_details_packages">3.2.2. System Details &gt;  Software  &gt;  Packages</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Manage the software packages on the system.
+Most of the following actions can also be performed via action chains.
+For further information on action chains, refer to <a href="#_ref.webui.schedule.chains">[_ref.webui.schedule.chains]</a>.
+image::system_details_traditional_software_packages.png[]</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When new packages or updates are installed on the client via {susemgr}
+, any licenses (EULAs) requiring agreement before installation are automatically accepted.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Packages</dt>
+<dd>
+<p>The default display of the <span class="menuseq"><b class="menu">Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+tab describes the options available and provides the means to update your package list.
+To update or complete a potentially outdated list</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">possibly because of the manual installation of packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Update Package List[</b></span>
+button in the bottom right-hand corner of this page.
+The next time the {susemgr}
+daemon (<code class="systemitem">rhnsd</code>
+) connects to {susemgr}
+, it updates your system profile with the latest list of installed packages.</p>
+</dd>
+<dt class="hdlist1">List / Remove</dt>
+<dd>
+<p>Lists installed packages and enables you to remove them.
+View and sort packages by name or the date they were installed on the system.
+Search for the wanted packages by typing its name in the <span class="menuseq"><b class="menu">Filter by Package Name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+text box</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">or by clicking the letter or number corresponding to the first character of the package name.
+Click a package name to view its menu:Package Details[</b></span>
+page.
+To delete packages from the system, select their check boxes and click the <span class="menuseq"><b class="menu">Remove Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+button on the bottom right-hand corner of the page.
+A confirmation page appears with the packages listed.
+Click the menu:Confirm[</b></span>
+button to remove the packages.</p>
+</dd>
+<dt class="hdlist1">Upgrade</dt>
+<dd>
+<p>Displays a list of packages with newer versions available in the subscribed channels.
+click the latest package name to view its <span class="menuseq"><b class="menu">Package Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+page.
+To upgrade packages immediately</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select them and click the menu:Upgrade Packages[</b></span>
+button.
+Any EULAs will be accepted automatically.</p>
+</dd>
+<dt class="hdlist1">Install</dt>
+<dd>
+<p>Install new packages on the system from the available channels.
+Click the package name to view its <span class="menuseq"><b class="menu">Package Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+page.
+To install packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select them and click the menu:Install Selected Packages[</b></span>
+button.
+EULAs are automatically accepted.</p>
+</dd>
+<dt class="hdlist1">Verify</dt>
+<dd>
+<p>Validates the packages installed on the system against its RPM database.
+This is the equivalent of running <code class="command">rpm -V</code>.
+The metadata of the system&#8217;s packages are compared with information from the database, such as file checksum, file size, permissions, owner, group and type.
+To verify a package or packages, select them, click the <span class="menuseq"><b class="menu">Verify Selected Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+button</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">and confirm.
+When the check is finished</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select this action in the menu:History[</b></span>
+subtab under <b class="menuref">Events</b>
+to see the results.</p>
+</dd>
+</dl>
+</div>
+<div id="_s1_package_lock" class="dlist">
+<dl>
+<dt class="hdlist1">Lock</dt>
+<dd>
+<p>Locking a package prevents modifications like removal or update of the package.
+Since locking and unlocking happens via scheduling requests, locking might take effect with some delay.
+If an update happens before then, the lock will have no effect.
+Select the packages you want to lock.
+If locking should happen later, select the date and time above the <span class="menuseq"><b class="menu">Request Lock</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+button</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">then click it.
+A small lock icon marks locked packages.
+To unlock</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the package and click menu:Request Unlock[</b></span>
+, optionally specifying the date and time for unlocking to take effect.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature only works if Zypper is used as the package manager.
+On the target machine the <code class="command">zypp-plugin-spacewalk</code> package must be installed (version 0.9.x or higher).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="_s1_package_profiles" class="dlist">
+<dl>
+<dt class="hdlist1">Profiles</dt>
+<dd>
+<p>Compare installed packages with the package lists in stored profiles and other systems.
+Select a stored profile from the drop-down box and click the <span class="menuseq"><b class="menu">Compare</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+button.
+To compare with packages installed on a different system</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the system from the associated drop-down box and click the menu:Compare[</b></span>
+button.
+To create a stored profile based on the existing system, click the <span class="menuseq"><b class="menu">Create System Profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+button</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">enter any additional information you want</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and click the menu:Create Profile[</b></span>
+button.
+These profiles are kept within the <b class="menuref">Stored Profiles</b>
+page linked from the left bar.</p>
+<div class="paragraph">
+<p>When installed packages have been compared with a profile, customers have the option to synchronize the selected system with the profile.
+All changes apply to the system not the profile.
+Packages might get deleted and additional packages installed on the system.
+To install only specific packages, click the respective check boxes in the profile.
+To remove specific packages installed on the system, select the check boxes of these packages showing a difference of <span class="menuseq"><b class="menu">This System Only</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+To completely synchronize the system&#8217;s packages with the compared profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the master check box at the top of the column.
+Then click the menu:Sync Packages to[</b></span>
+button.
+On the confirmation screen, review the changes, select a time frame for the action, and click the <b class="menuref">Schedule Sync</b>
+button.</p>
+</div>
+<div class="paragraph">
+<p>You can use a stored profile as a template for the files to be installed on an autoinstalled system; see <a href="#_s4_system_ks_soft_pkg_profile">[_s4_system_ks_soft_pkg_profile]</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1">Non Compliant</dt>
+<dd>
+<p>Lists packages that are installed on this system and are not present in any of its channels.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_channels_software">3.2.3. System Details &gt;  Software  &gt;  Software Channels</h4>
+<div class="paragraph">
+<p>Software channels provide a well-defined method to determine which packages should be available to a system for installation or upgrade based on its operating systems, installed packages, and functionality.
+image::system_details_traditional_software_system_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click the chain icon right to a channel name to view its <span class="menuseq"><b class="menu">Channel Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page.
+To change the base software channel the system is subscribed to select a different base channel in the left selection box.
+To modify the child channels associated with this system</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">in the right selection box use the check boxes left to the channel names.
+When done click menu:Next[</b></span>
+ to schedule the Software Channel Change action.
+Then click <b class="menuref">Confirm</b>
+.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Changing the Channels Is Now an Action</div>
+<div class="paragraph">
+<p>Since the 3.1 maintenance update (2018) changing the channels is an action that can be scheduled like any other action.
+Earlier channel changes were applied immediately.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information about channel management, see <a href="#_ref.webui.channels.software">[_ref.webui.channels.software]</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_sp_migration">3.2.4. System Details &gt;  Software  &gt;  SP Migration</h4>
+<div class="paragraph">
+<p>Service Pack Migration (SP Migration) allows you to upgrade a system from one service pack to another.
+image::system_details_traditional_software_sp_migration.png[]</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>During migration {susemgr}
+automatically accepts any required licenses (EULAs) before installation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Beginning with SLE 12 {suse}
+supports service pack skipping, it is now possible to migrate from for example, SLE 12 to SLE 12 SP2.
+Note that SLE 11 may only be migrated step by step and individual service packs should not be skipped.
+Supported migrations include any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SLE 11 &gt; SLE 11 SP1 &gt; SLE 11 SP2 &gt; SLE 11 SP3 &gt; SLE 11 SP4</p>
+</li>
+<li>
+<p>SLE 12 &gt; SLE 12 SP1 &gt; SLE 12 SP2</p>
+</li>
+<li>
+<p>SLE 12 &gt; SLE 12 SP2 (skipping SLE 12 SP1)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Migrating from an Earlier Version of SLES</div>
+<div class="paragraph">
+<p>It is not possible to migrate, for example, from SLE 11 to SLE 12 using this tool.
+You must use autoYaST to perform a migration on this level.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Rollback Not Possible</div>
+<div class="paragraph">
+<p>The migration feature does not cover any rollback functionality.
+When the migration procedure is started, rolling back is not possible.
+Therefore it is recommended to have a working system backup available for an emergency.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Performing a Migration</div>
+<ol class="arabic">
+<li>
+<p>From the <b class="menuref">Systems Overview</b> page, select a client.</p>
+</li>
+<li>
+<p>Select the <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] tab then the menu:SP Migration[</b></span> tab.</p>
+</li>
+<li>
+<p>Select your target migration path and click <b class="menuref">Select Channels</b> .</p>
+</li>
+<li>
+<p>On the <span class="menuseq"><b class="menu">Service Pack Migration - Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] view select the correct base channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">including <code>Mandatory Child Channels</code> and any additional <code>Optional Child Channels</code>. Select menu:Schedule Migration[</b></span> when your channels have been configured properly.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s5_sm_system_details_channels_config">3.3. System Details &gt;  Configuration  [Management]</h3>
+<div class="paragraph">
+<p>This tab and its subtabs assist in managing the configuration files associated with the system.
+These configuration files may be managed solely for the current system or distributed widely via a Configuration Channel.
+The following sections describe these and other available options on the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Configuration</b></span>
+ subtabs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To manage the configuration of a system, it must have the latest <span class="package">rhncfg*</span>
+ packages installed.
+Refer to <a href="#_ref.webui.config.preparing">[_ref.webui.config.preparing]</a> for instructions on enabling and disabling scheduled actions for a system.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This section is available to normal users with access to systems that have configuration management enabled.
+Like software channels, configuration channels store files to be installed on systems.
+While software updates are provided by SCC, configuration files are managed solely by you.
+Also unlike with software packages, various versions of configuration files may prove useful to a system at any time.
+Only the latest version can be deployed.</p>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_overview">3.3.1. System Details  &gt;  Configuration  &gt;  Overview</h4>
+<div class="paragraph">
+<p>This subtab provides access to the configuration files of your system and to the most common tasks used to manage configuration files.
+image::system_details_traditional_configuration_overview.png[]</p>
+</div>
+<div class="paragraph">
+<p>In the <span class="menuseq"><b class="menu">Configuration Overview</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Add[</b></span>
+ links to add files, directories, or symbolic links.
+Here you also find shortcuts to perform any of the common configuration management tasks listed on the right of the screen by clicking one of the links under <b class="menuref">Configuration Actions</b>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_mngfiles">3.3.2. System Details &gt;  Configuration  &gt;  View/Modify Files</h4>
+<div class="paragraph">
+<p>This subtab lists all configuration files currently associated with the system.
+These are sorted via subtabs in centrally and locally managed files and a local sandbox for files under development.</p>
+</div>
+<div class="paragraph">
+<p>Using the appropriate buttons on a subtab, you can copy from one to the other subtabs.</p>
+</div>
+<div class="paragraph">
+<p>Centrally-Managed Files::+
+image::system_details_traditional_configuration_view_mod_central_paths.png[]
+Centrally-managed configuration files are provided by global configuration channels.
+Determine which channel provides which file by examining the <span class="menuseq"><b class="menu">Provided By</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+column below.
+Some of these centrally-managed files may be overridden by locally-managed files.
+Check the menu:Overridden By[</b></span>
+column to find out if any files are overridden, or click <b class="menuref">Override this file</b>
+to provide such an overriding file.</p>
+</div>
+<div class="paragraph">
+<p>Locally-Managed Files::+
+image::system_details_traditional_configuration_view_mod_local_paths.png[]
+Locally-managed configuration files are useful for overriding centrally-managed configuration profiles that cause problems on particular systems.
+Also, locally-managed configuration files are a method by which system group administrators who do not have configuration administration privileges can manage configuration files on the machines they can manage.</p>
+</div>
+<div class="paragraph">
+<p>Local Sandbox::+
+image::system_details_traditional_configuration_view_mod_sandbox_paths.png[]
+In the sandbox you can store configuration files under development.
+You can promote files from the sandbox to a centrally-managed configuration channel using <b class="menuref">Copy Latest to Central Channel</b>
+.
+After files in this sandbox have been promoted to a centrally-managed configuration channel, you can deploy them to other systems.</p>
+</div>
+<div class="paragraph">
+<p>+
+Use <span class="menuseq"><b class="menu">Copy Latest to System Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+to install a configuration on the local system only.
+When done</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">the file will end up on the menu:Locally-Managed Files[</b></span>
+subtab.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_add_files">3.3.3. System Details &gt;  Configuration  &gt;  Add Files</h4>
+<div class="paragraph">
+<p>To upload, import, or create new configuration files, click <b class="menuref">Add Files</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>Upload File::+
+image::system_details_traditional_configuration_add_files_upload.png[]
+To upload a configuration file from your local machine, browse for the upload file, specify whether it is a text or binary file, enter <span class="menuseq"><b class="menu">Filename/Path</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+and user and group ownership.
+Specific file permissions can be set.
+When done</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Upload Configuration File[</b></span>
+.</p>
+</div>
+<div class="paragraph">
+<p>Import Files::+
+image::system_details_traditional_configuration_add_files_import.png[]
+Via the <b class="menuref">Import Files</b>
+tab, you can add files from the system you have selected before and add it to the sandbox of this system.
+Files will be imported the next time <code class="command">rhn_check</code> runs on the system.
+To deploy these files or override configuration files in global channels, copy this file into your local override channel after the import has occurred.</p>
+</div>
+<div class="paragraph">
+<p>+
+In the text box under <span class="menuseq"><b class="menu">Import New Files</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+enter the full path of any files you want import into {susemgr}
+or select deployable configuration files from the menu:Import Existing Files[</b></span>
+list.
+When done, click <b class="menuref">Import Configuration Files</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>Create File::+
+image::system_details_traditional_configuration_add_files_create.png[]
+Under <span class="menuseq"><b class="menu">Create File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+, you can directly create the configuration file from scratch.
+Select the file type, specify the path and file name, where to store the file, plus the symbolic link target file name and path.
+Ownership and permissions and macro delimiters need to be set.
+For more information on using macros, see &lt;&lt;_s3_sm_file_macros</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">.
+In the menu:File Contents[</b></span>
+text box, type the configuration file.
+Select the type of file you are creating from the drop-down box.
+Possible choices are Shell, Perl, Python, Ruby and XML.
+When done, click <b class="menuref">Create Configuration File</b>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_deploy_files">3.3.4. System Details &gt;  Configuration  &gt;  Deploy Files</h4>
+<div class="paragraph">
+<p>Under <span class="menuseq"><b class="menu">Deploy Files</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ you find all files that can be deployed on the selected system.
+image::system_details_traditional_configuration_deploy_file.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Files from configuration channels with a higher priority take precedence over files from configuration channels with a lower priority.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_diff">3.3.5. System Details &gt;  Configuration  &gt;  Compare Files</h4>
+<div class="paragraph">
+<p>This subtab compares a configuration file stored on the {susemgr}
+ with the file stored on the client.
+(It does not compare versions of the same file stored in different channels.)
+image::system_details_traditional_configuration_diff_file.png[]</p>
+</div>
+<div class="paragraph">
+<p>Select the files to be compared, click the <span class="menuseq"><b class="menu">Compare Files</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">select a time to perform the diff</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and click the menu:Schedule Compare[</b></span>
+ button to confirm.</p>
+</div>
+<div class="paragraph">
+<p>To watch progress, see <a href="#_s4_sm_system_details_events">System Details &gt;  Events</a>.
+After the diff has been performed, go to <b class="menuref">Recent Events</b>
+ in <a href="#_s5_sdc_configuration_overview">System Details  &gt;  Configuration  &gt;  Overview</a> to see the results.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_configuration_channels">3.3.6. System Details  &gt;  Configuration  &gt;  Manage Configuration Channels</h4>
+<div class="paragraph">
+<p>This subtab allows you to subscribe to and rank configuration channels associated with the system, lowest first.
+image::system_details_traditional_configuration_config_channel_list.png[]</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">List/Unsubscribe from Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab contains a list of the system&#8217;s configuration channel subscriptions.
+Click the check box next to the Channel and click menu:Unsubscribe[</b></span>
+ to remove the subscription to the channel.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Subscribe to Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ subtab lists all available configuration channels.
+To subscribe to a channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the check box next to it and click menu:Continue[</b></span>
+.
+To subscribe to all configuration channels, click <span class="menuseq"><b class="menu">Select All</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ and click menu:Continue[</b></span>
+.
+The <b class="menuref">View/Modify Rankings</b>
+ page automatically loads.</p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">View/Modify Rankings</b>
+ subtab allows users to set the priority with which files from a particular configuration channel are ranked.
+The higher the channel is on the list, the more its files take precedence over files on lower-ranked channels.
+For example, the higher-ranked channel may have an <code class="path">httpd.conf</code>
+ file that will take precedence over the same file in a lower-ranked channel.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_kick">3.4. System Details &gt;  Provisioning  [Management]</h3>
+<div class="paragraph">
+<p>The <b class="menuref">Provisioning</b>
+ tab and its subtabs allow you to schedule and monitor {ay}
+ or Kickstart installations and to restore a system to its previous state.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Available for Clients Using the "`Traditional`"Method</div>
+<div class="paragraph">
+<p>The note <span class="menuseq"><b class="menu">Provisioning</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab will be available when adding a client using the &#8220;traditional&#8221;
+ method (system type <code>management</code>). Using Salt the menu:Provisioning[</b></span>
+ tab will not be available (system type <code>salt</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>{ay}
+is a {sle}
+and Kickstart is a Red Hat utility{mdash}
+both allow you to automate the reinstallation of a system.
+Snapshot rollbacks provide the ability to revert certain changes on the system.
+You can roll back a set of RPM packages, but rolling back across multiple update levels is not supported.
+Both features are described in the sections that follow.</p>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_provisioning_kickstart">3.4.1. System Details  &gt;  Provisioning  &gt;  Autoinstallation</h4>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ subtab allows you to configure and schedule an autoinstallation for this system.
+For background information about autoinstallation, see &lt;&lt;_ref.webui.systems.autoinst</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">.
+image::system_details_traditional_provisioning_schedule_wizard.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>In the <b class="menuref">Schedule</b>
+ subtab, schedule the selected system for autoinstallation.
+Choose from the list of available profiles.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You must first create a profile before it appears on this subtab.
+If you have not created any profiles, refer to <a href="#_ref.webui.systems.autoinst.profiles.create">[_ref.webui.systems.autoinst.profiles.create]</a> before scheduling an autoinstallation for a system.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To alter autoinstallation settings, click the <span class="menuseq"><b class="menu">Advanced Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Configure the network connection and post-installation networking information.
+You can aggregate multiple network interfaces into a single logical "bonded" interface.
+In menu:Kernel Options[</b></span>
+ specify kernel options to be used during autoinstallation. <b class="menuref">Post Kernel Options</b>
+ are used after the installation is complete and the system is booting for the first time.
+Configure package profile synchronization.</p>
+</div>
+<div class="paragraph">
+<p>Select a time for the autoinstallation to begin and click <b class="menuref">Schedule Autoinstall and Finish</b>
+ for all changes to take effect and to schedule the autoinstallation.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, click <b class="menuref">Create PXE Installation Configuration</b>
+ to create a Cobbler system record.
+The selected autoinstallation profile will be used to automatically install the configured distribution next time that particular system boots from PXE.
+In this case {susemgr}
+ and its network must be properly configured to allow boot using PXE.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any settings changed on the <b class="menuref">Advanced Configuration</b>
+ page will be ignored when creating a PXE installation configuration for Cobbler.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Variables</b>
+ subtab can be used to create Kickstart variables, which substitute values in Kickstart files.
+To define a variable, create a name-value pair (<code class="replaceable">name/value</code>) in the text box.</p>
+</div>
+<div class="paragraph">
+<p>For example, to {kickstart}
+a system that joins the network of a specific organization (for example the Engineering department) you can create a profile variable to set the IP address and the gateway server address to a variable that any system using that profile will use.
+Add the following line to the <b class="menuref">Variables</b>
+ text box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IPADDR=192.168.0.28
+GATEWAY=192.168.0.1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To use the system variable, use the name of the variable in the profile instead of the value.
+For example, the <code class="option">network</code> portion of a {kickstart}
+ file could look like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>network --bootproto=static --device=eth0 --onboot=on --ip=$IPADDR \
+  --gateway=$GATEWAY</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code class="option">$IPADDR</code> will be <code>192.168.0.28</code>, and the <code class="option">$GATEWAY</code> will be <code>192.168.0.1</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is a hierarchy when creating and using variables in {kickstart}
+files.
+System {kickstart}
+variables take precedence over profile variables, which in turn take precedence over distribution variables.
+Understanding this hierarchy can alleviate confusion when using variables in {kickstart}
+s.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Using variables are one part of the larger Cobbler infrastructure for creating templates that can be shared between multiple profiles and systems.
+For more information about Cobbler and {kickstart}
+templates, refer to <a href="#_advanced.topics.cobbler">[_advanced.topics.cobbler]</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sdc_provisioning_powermgnt">3.4.2. System Details  &gt;  Provisioning  &gt;  Power Management</h4>
+<div class="paragraph">
+<p>{susemgr}
+allows you to power on, off, and reboot systems via the IPMI protocol if the systems are IPMI-enabled.
+image::system_details_traditional_provisioning_power_management.png[]</p>
+</div>
+<div class="paragraph">
+<p>You need a fully patched {susemgr}
+installation.
+To use any power management functionality, IPMI configuration details must be added to {susemgr}
+.
+First select the target system on the systems list, then select <span class="menuseq"><b class="menu">Provisioning</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Power
+     Management</b></span>
+.
+On the displayed configuration page, edit all required fields (marked with a red asterisk) and click <b class="menuref">Save</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>Systems can be powered on, off, or rebooted from the configuration page via corresponding buttons.
+Note that any configuration change is also saved in the process.
+The <span class="menuseq"><b class="menu">Save and Get Status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button can also be used to query for the system&#8217;s power state.
+If configuration details are correct</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">a row is displayed with the current power status ("on" or "off"). If a power management operation succeeds on a system</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">it will also be noted in its menu:Events[History</b></span>
+ subtab.</p>
+</div>
+<div class="paragraph">
+<p>Power management functionalities can also be used from the system set manager to operate on multiple systems at the same time.
+Specifically, you can change power management configuration parameters or apply operations (power on, off, reboot) to multiple systems at once:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the respective systems to the system set manager as described in <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a>.</p>
+</li>
+<li>
+<p>Click <span class="menuseq"><b class="menu">Manage</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] (in the upper right corner)</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then menu: Provisioning[Power Management Configuration</b></span> to change one or more configuration parameters for all systems in the set. Note that any field left blank will not alter the configuration parameter in selected systems.</p>
+</li>
+<li>
+<p>When all configuration parameters are set correctly, click <span class="menuseq"><b class="menu">Manage</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then menu:Provisioning[Power Management Operations</b></span> to power on, off or reboot systems from the set.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To check that a power operation was executed correctly, click <span class="menuseq"><b class="menu">System Set Manager</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Status</b></span>
+ on the left-hand menu, then click the proper line in the list.
+This will display a new list with systems to which the operation was applied.
+If errors prevent correct execution, a brief message with an explanation will be displayed in the <b class="menuref">Note</b>
+ column.</p>
+</div>
+<div class="paragraph">
+<p>This feature uses Cobbler power management, thus a Cobbler system record is automatically created at first use if it does not exist already.
+In that case, the automatically created system record will not be bootable from the network and will reference a dummy image.
+This is needed because Cobbler does not currently support system records without profiles or images.
+The current implementation of Cobbler power management uses the fence-agent tools to support multiple protocols besides IPMI.
+Those are not supported by {susemgr}
+but can be used by adding the fence agent names as a comma-separated list to the <code class="command">java.power_management.types</code> configuration parameter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_details_shots">3.4.3. System Details  &gt;  Provisioning  &gt;  Snapshots</h4>
+<div class="paragraph">
+<p>Snapshots enable you to roll back the system&#8217;s package profile, configuration files, and {susemgr}
+settings.
+image::system_details_traditional_provisioning_snapshot_index.png[]</p>
+</div>
+<div class="paragraph">
+<p>Snapshots are always captured automatically after an action takes place.
+The <b class="menuref">Snapshots</b>
+ subtab lists all snapshots for the system, including the reason the snapshot was taken, the time it was taken, and the number of tags applied to each snapshot.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Technical Details</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A snapshot is always taken <em>after</em> a successful operation and not before, as you might expect. One consequence of taking snapshots after the action is that, to undo action number X, then you must roll back to the snapshot number X-1.</p>
+</li>
+<li>
+<p>It is possible to disable snapshotting globally (in <code class="path">rhn.conf</code> set <code>enable_snapshots = 0</code>), but it is enabled by default. No further fine tuning is possible.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To revert to a previous configuration, click the <span class="menuseq"><b class="menu">Reason</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ for the snapshot and review the potential changes on the provided subtabs</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">starting with menu:Rollback[</b></span>
+.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Unsupported Rollback Scenarios</div>
+<div class="paragraph">
+<p>Snapshot roll backs support the ability to revert <em>certain</em> changes to the system, but not in every scenario.
+For example, you can roll back a set of RPM packages, but rolling back across multiple update levels is not supported.</p>
+</div>
+<div class="paragraph">
+<p>Rolling back an SP migration is also not supported.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Each subtab provides the specific changes that will be made to the system during the rollback:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>group memberships,</p>
+</li>
+<li>
+<p>channel subscriptions,</p>
+</li>
+<li>
+<p>installed packages,</p>
+</li>
+<li>
+<p>configuration channel subscriptions,</p>
+</li>
+<li>
+<p>configuration files,</p>
+</li>
+<li>
+<p>snapshot tags.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When satisfied with the reversion, return to the <span class="menuseq"><b class="menu">Rollback</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab and click the menu:Rollback to Snapshot[</b></span>
+ button.
+To see the list again, click <b class="menuref">Return to snapshot list</b>
+.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Background Information About Snapshots</div>
+<div class="paragraph">
+<p>There is no maximum number of snapshots that {susemgr}
+will keep, thus related database tables will grow with system count, package count, channel count, and the number of configuration changes over time.
+Installations with more than a thousand systems should consider setting up a recurring cleanup script via the API or disabling this feature altogether.</p>
+</div>
+<div class="paragraph">
+<p>There is currently no integrated support for &#8220;rotated
+      snapshots&#8221;
+.</p>
+</div>
+<div class="paragraph">
+<p>Snapshot rollback gets scheduled like any other action, this means the rollback usually does not happen immediately.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_shots_tags">3.4.4. System Details &gt;  Provisioning  &gt;  Snapshot Tags</h4>
+<div class="paragraph">
+<p>Snapshot tags provide a means to add meaningful descriptions to your most recent system snapshot.
+This can be used to indicate milestones, such as a known working configuration or a successful upgrade.</p>
+</div>
+<div class="paragraph">
+<p>To tag the most recent snapshot, click <span class="menuseq"><b class="menu">Create System Tag</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">enter a descriptive term in the menu:Tag name[</b></span>
+ field, and click the <span class="menuseq"><b class="menu">Tag Current Snapshot</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+You may then revert using this tag directly by clicking its name in the Snapshot Tags list.
+To delete tags</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">select their check boxes</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Remove Tags[</b></span>
+, and confirm the action.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_virtualization">3.5. System Details &gt;  Virtualization</h3>
+<div class="paragraph">
+<p>This tab allows you to create a new virtual guest on a host system or change the status of virtual guests.
+image::system_details_traditional_provisioning_snapshot_index.png[]</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Virtualization</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ tab has two subtabs</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Details[</b></span>
+ and <b class="menuref">Kickstart</b>
+.
+These tabs appear the same for both virtual hosts and guests, but the functionality only makes sense for virtual hosts.
+It is not possible to create a guest system that runs on another guest system.</p>
+</div>
+<h4 id="_sdc_virt_host_place" class="float">System Details &gt; Virtualization&gt; Details</h4>
+<div class="paragraph">
+<p><b class="menuref">Details</b>
+ is the default tab.
+For host systems, it presents a table of the host system&#8217;s virtual guests.
+For each guest system, the following information is provided:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Status</b></dt>
+<dd>
+<p>This field indicates whether the virtual system is running, paused, stopped, or has crashed.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Updates</b></dt>
+<dd>
+<p>This field indicates whether patches (errata) applicable to the guest have yet to be applied.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Base Software Channel</b></dt>
+<dd>
+<p>This field indicates the Base Channel to which the guest is subscribed.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a guest system has not registered with {susemgr}
+, this information appears as plain text in the table.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you have System Group Administrator responsibilities assigned for your guest systems, a user might see the message <b class="menuref">You do not have permission to access this system</b>
+ in the table.
+This is because it is possible to assign virtual guests on a single host to multiple System Group Administrators.
+Only users that have System Group Administrator privileges on the host system may create new virtual guests.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_groups">3.6. System Details &gt;  Groups</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Groups</b>
+ tab and its subtabs allow you to manage the system&#8217;s group memberships.</p>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_groups_list">3.6.1. System Details  &gt;  Groups  &gt;  List/Leave</h4>
+<div class="paragraph">
+<p>This subtab lists groups to which the system belongs and enables you to cancel membership.
+image::system_details_traditional_list_groups.png[]</p>
+</div>
+<div class="paragraph">
+<p>Only System Group Administrators and {susemgr}
+Administrators can remove systems from groups.
+Non-admins see a <span class="menuseq"><b class="menu">Review this system&#8217;s group membership</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page.
+To remove the system from one or more groups</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the respective check boxes of these groups and click the menu:Leave Selected Groups[</b></span>
+ button.
+To see the <b class="menuref">System Group Details</b>
+ page, click the group&#8217;s name.
+Refer to <a href="#_ref.webui.systems.systemgroups.details">System Group Details</a> for more information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_groups_join">3.6.2. System Details &gt;  Groups  &gt;  Join</h4>
+<div class="paragraph">
+<p>Lists groups that the system can be subscribed to.
+image::system_details_traditional_add_group.png[]</p>
+</div>
+<div class="paragraph">
+<p>Only System Group Administrators and {susemgr}
+Administrators can add a system to groups.
+Non-admins see a <span class="menuseq"><b class="menu">Review this system&#8217;s group membership</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page.
+To add the system to groups</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the groups' check boxes and click the menu:Join Selected Groups[</b></span>
+ button.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_audit">3.7. System Details &gt;  Audit  [Management]</h3>
+<div class="paragraph">
+<p>Via the <span class="menuseq"><b class="menu">Audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ tab, view OpenSCAP scan results or schedule scans.
+For more information on auditing and OpenSCAP, refer to &lt;&lt;_ref.webui.audit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">.
+image::system_details_traditional_list_audit.png[</b></span></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/system_details_traditional_schedule_audit.png" alt="system details traditional schedule audit">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_states">3.8. System Details &gt;  States  [Salt]</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Overview of <b class="menuref">States</b>
+ subtabs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The following subtabs are only available for Salt minions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="system_details_states_packages">3.8.1. System Details &gt;  States  &gt;  Packages</h4>
+<div class="paragraph">
+<p><span class="menuseq"><b class="menu">Search and install</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ packages then assign them with a pre-defined state for a selected machine.
+image::system_details_salt_states_packages.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Here you can search for a specific package, for example <span class="package">vim</span>
+.
+Then with the drop-down box activate <span class="menuseq"><b class="menu">Unmanaged</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Installed[</b></span>
+, or <span class="menuseq"><b class="menu">Removed</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Select menu:Latest[</b></span>
+ or <span class="menuseq"><b class="menu">Any</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ from the drop-down box. menu:Latest[</b></span>
+ applies the latest package version available while <span class="menuseq"><b class="menu">Any</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ applies the package version required to fulfil dependencies.
+Click the menu:Save[</b></span>
+ button to save changes to the database, then click <b class="menuref">Apply</b>
+ to apply the new package state.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_states_custom">3.8.2. System Details &gt;  States  &gt;  Custom</h4>
+<div class="paragraph">
+<p>States which have been created on the <span class="menuseq"><b class="menu">States Catalog</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page located under menu:Salt[</b></span>
+ on the left bar may be assigned to a system on the <span class="menuseq"><b class="menu">States</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Custom</b></span>
+ page.
+image::system_details_salt_states_custom.png[]</p>
+</div>
+<div class="paragraph">
+<p>Search for the custom state you want to apply to the system then select the <span class="menuseq"><b class="menu">Assign</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ check box.
+Click menu:Save[</b></span>
+ to save the change to the database finally select <b class="menuref">Apply</b>
+ to apply the changes.
+States applied at the system level will only be applied to the selected system.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_states_highstate">3.8.3. System Details &gt;  States  &gt;  Highstate</h4>
+<div class="paragraph">
+<p>From the <span class="menuseq"><b class="menu">Highstate</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page you can view and apply the high state for a selected system.
+image::system_details_salt_states_highstate.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Select a date and time to apply the high state.
+Then click <b class="menuref">Apply Highstate</b>
+.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_formualas">3.9. System Details &gt;  Formulas  [Salt]</h3>
+<div class="paragraph">
+<p>This is a feature preview.
+On the <b class="menuref">Formualas</b>
+ page you can select Salt formulas for this system.
+This allows you to automatically install and configure software.</p>
+</div>
+<div class="paragraph">
+<p>Installed formulas are listed.
+Select from the listing by clicking the check box to the left.
+Then confirm with the <b class="menuref">Save</b>
+ button on the right.
+When done, additional subtabs appear where you can configure the formulas.</p>
+</div>
+<div class="paragraph">
+<p>For usage information, see <a href="#_best.practice.salt.formulas.using">[_best.practice.salt.formulas.using]</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_system_details_events">3.10. System Details &gt;  Events</h3>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Events</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page displays past</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">current</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and scheduled actions on the system.
+You may cancel pending events here.
+The following sections describe the menu:Events[</b></span>
+ subtabs and the features they offer.</p>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_events_pend">3.10.1. System Details  &gt;  Events  &gt;  Pending</h4>
+<div class="paragraph">
+<p>Lists events that are scheduled but have not started.
+image::system_details_traditional_events_pending.png[]</p>
+</div>
+<div class="paragraph">
+<p>A prerequisite action must complete successfully before the given action is attempted.
+If an action has a prerequisite, no check box is available to cancel that action.
+Instead, a check box appears next to the prerequisite action; canceling the prerequisite action causes the action in question to fail.</p>
+</div>
+<div class="paragraph">
+<p>Actions can be chained so that action 'a' requires action 'b' which requires action 'c'. Action 'c' is performed first and has a check box next to it until it is completed successfully.
+If any action in the chain fails, the remaining actions also fail.
+To unschedule a pending event, select the event and click the <b class="menuref">Cancel Events</b>
+ button at the bottom of the page.
+The following icons indicate the type of events:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="../images/src/png/spacewalk-icon-packages.png" alt="spacewalk icon packages"></span>&#8201;&#8212;&#8201;Package Event,</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/spacewalk-icon-patches.png" alt="spacewalk icon patches"></span>&#8201;&#8212;&#8201;Patch Event,</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-cog.png" alt="fa cog"></span>&#8201;&#8212;&#8201;Preferences Event,</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/src/png/fa-desktop.png" alt="fa desktop"></span>&#8201;&#8212;&#8201;System Event.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s5_sm_system_details_events_hist">3.10.2. System Details &gt;  Events  &gt;  History</h4>
+<div class="paragraph">
+<p>The default display of the <span class="menuseq"><b class="menu">Events</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ tab lists the type and status of events that have failed</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">occurred or are occurring.
+image::system_details_traditional_events_history.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>To view details of an event, click its summary in the <span class="menuseq"><b class="menu">System History</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ list.
+To go back to the table again</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Return to history list[</b></span>
+ at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.systemgroups">4. System Groups</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">System Groups</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page allows {susemgr}
+ users to view the menu:System Groups[</b></span>
+ list.
+image::systems_systemgroups.png[]</p>
+</div>
+<div class="paragraph">
+<p>Only System Group Administrators and {susemgr}
+Administrators may perform the following additional tasks:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create system groups. (Refer to <a href="#_ref.webui.systems.systemgroups.create">Creating Groups</a>.)</p>
+</li>
+<li>
+<p>Add systems to system groups. (Refer to <a href="#_ref.webui.systems.systemgroups.add">Adding and Removing Systems in Groups</a>.)</p>
+</li>
+<li>
+<p>Remove systems from system groups. (Refer to <a href="#_s3_sm_system_details">System Details</a>.)</p>
+</li>
+<li>
+<p>Assign system group permissions to users. (Refer to <a href="#_ref.webui.users">[_ref.webui.users]</a>.)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">System Groups</b>
+ list displays all system groups.
+The list contains several columns for each group:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="menuseq"><b class="menu">Select</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Via the check boxes add all systems in the selected groups to the menu:System Set Manager[</b></span> by clicking the <span class="menuseq"><b class="menu">Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] button. All systems in the selected groups are added to the menu:System Set Manager[</b></span> . You can then use the <span class="menuseq"><b class="menu">System Set Manager</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] to perform actions on them simultaneously. It is possible to select only those systems that are members of all of the selected groups</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">excluding those systems that belong only to one or some of the selected groups. To do so</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the relevant groups and click the menu:Work with Intersection[</b></span> button. To add all systems of all selected groups, click the <b class="menuref">Work with Union</b> button. Each system will show up once, regardless of the number of groups to which it belongs. Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> for details.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Updates</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Shows which type of patch alerts are applicable to the group or confirms that all systems are up-to-date. Clicking a group&#8217;s status icon takes you to the menu:Patch[</b></span> tab of its <b class="menuref">System Group Details</b> page. Refer to <a href="#_ref.webui.systems.systemgroups.details">System Group Details</a> for more information.</p>
+<div class="paragraph">
+<p>The status icons call for differing degrees of attention:
+<strong> <span class="image"><img src="../images/src/png/fa-check-circle.svg" alt="Check Circle"></span>&#8201;&#8212;&#8201;All systems in the group are up-to-date.
+</strong> <span class="image"><img src="../images/src/png/fa-exclamation-circle.svg" alt="Exclamation Circle"></span>&#8201;&#8212;&#8201;Critical patches available, update <em>strongly</em> recommended.
+** <span class="image"><img src="../images/src/png/fa-warning.svg" alt="Warning"></span>&#8201;&#8212;&#8201;Updates available and recommended.</p>
+</div>
+</li>
+<li>
+<p><b class="menuref">Health</b> Status of the systems in the group, reported by probes.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Group Name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;The name of the group as configured during its creation. The name should be explicit enough to distinguish from other groups. Clicking the name of a group takes you to the menu:Details[</b></span> tab of its <b class="menuref">System Group Details</b> page. Refer to <a href="#_ref.webui.systems.systemgroups.details">System Group Details</a> for more information.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Total number of systems in the group. Clicking the number takes you to the menu:Systems[</b></span> tab of the <b class="menuref">System Group Details</b> page for the group. Refer to <a href="#_ref.webui.systems.systemgroups.details">System Group Details</a> for more information.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Use in SSM</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Clicking the menu:Use in SSM[</b></span> link in this column loads all and only the systems in the selected group and launches the <b class="menuref">System Set Manager</b> immediately. Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> for more information.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systemgroups.create">4.1. Creating Groups</h3>
+<div class="paragraph">
+<p>To add a new system group, click the <span class="menuseq"><b class="menu">Create Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link at the top-right corner of the page.
+image::systems_edit_group.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Type a name and description and click the <span class="menuseq"><b class="menu">Create Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Make sure you use a name that clearly sets this group apart from others.
+The new group will appear in the menu:System Groups[</b></span>
+ list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systemgroups.add">4.2. Adding and Removing Systems in Groups</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Systems can be added and removed from system groups.
+Clicking the group name takes you to the <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+The menu:Systems[</b></span>
+ tab shows all systems in the group and allows you to select some or all systems for deletion.
+Click <span class="menuseq"><b class="menu">Remove Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ to remove the selected systems from the group.
+The menu:Target Systems[</b></span>
+ page shows you all systems that can be added to the group.
+Select the systems and click the <b class="menuref">Add Systems</b>
+ button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.systemgroups.details">4.3. System Group Details</h3>
+<div class="paragraph">
+<p>At the top of each <span class="menuseq"><b class="menu">System Group Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page are two links: menu:Delete Group[</b></span>
+ and <span class="menuseq"><b class="menu">Work With Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Clicking menu:Delete Group[</b></span>
+ deletes the System Group and should be used with caution.
+Clicking <span class="menuseq"><b class="menu">Work With Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ loads the group&#8217;s systems and launches the menu:System Set Manager[</b></span>
+ immediately like the <span class="menuseq"><b class="menu">Use Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button from the menu:System Groups[</b></span>
+ list.
+Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">System Group Details</b>
+ page is split into the following tabs:</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_details">4.3.1. System Group Details  &gt;  Details</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Provides the group name and group description.
+To change this information, click <span class="menuseq"><b class="menu">Edit These Properties</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">make your changes in the appropriate fields</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and click the menu:Update Group[</b></span>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_systems">4.3.2. System Group Details &gt;  Systems</h4>
+<div class="paragraph">
+<p>Lists all members of the system group.
+Clicking links within the table takes you to corresponding tabs within the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page for the associated system.
+To remove systems from the group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the appropriate check boxes and click the menu:Remove Systems[</b></span>
+ button on the bottom of the page.
+Clicking it does not delete systems from {susemgr}
+ entirely.
+This is done through the <span class="menuseq"><b class="menu">System Set Manager</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ or menu:System Details[</b></span>
+ pages.
+Refer to <a href="#_ref.webui.systems.ssm"><b class="menuref">System Set Manager</b></a> or <a href="#_s3_sm_system_details">System Details</a>, respectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_target">4.3.3. System Group Details &gt;  Target Systems</h4>
+<div class="paragraph">
+<p><span class="menuseq"><b class="menu">Target Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+&#8201;&#8212;&#8201;Lists all systems in your organization.
+To add systems to the specified system group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the check boxes to their left and click the menu:Add Systems[</b></span>
+ button on the bottom right-hand corner of the page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_errata">4.3.4. System Group Details &gt;  Patches</h4>
+<div class="paragraph">
+<p>List of relevant patches for systems in the system group.
+Clicking the advisory takes you to the <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:Patch Details[</b></span>
+ page.
+(Refer to <a href="#_s3_sm_errata_details">[_s3_sm_errata_details]</a> for more information.) Clicking the Affected Systems number lists all of the systems affected by the patch.
+To apply the patch updates in this list, select the systems and click the <b class="menuref">Apply Patches</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_admins">4.3.5. System Group Details &gt;  Admins</h4>
+<div class="paragraph">
+<p>List of all organization users that have permission to manage the system group. {susemgr}
+Administrators are clearly identified.
+System Group Administrators are marked with an asterisk (*). To change the system group&#8217;s users, select and deselect the appropriate check boxes and click the <b class="menuref">Update</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_system_group_details_states">4.3.6. System Group Details &gt;  States  [Salt]</h4>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">States</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab displays states which have been created and added using the menu:Salt[</b></span>
+ &gt; <b class="menuref">State Catalog</b>
+.
+From this page you can select which states should be applied across a group of systems.
+A state applied from this page will be applied to all minions within a group.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>States are applied according to the following order of hierarchy within {susemgr}
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Organization &gt; Group &gt; Single System</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Applying States at the Group Level</div>
+<ol class="arabic">
+<li>
+<p>Create a state using the <span class="menuseq"><b class="menu">Salt</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">State Catalog</b></span> or via the command line.</p>
+</li>
+<li>
+<p>Browse to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">System Groups</b></span> . Select the group that a new state should be applied to. From a specific group page select the <b class="menuref">States</b> tab.</p>
+</li>
+<li>
+<p>Use the search feature to located a state by name or click the <b class="menuref">Search</b> button to list all available states.</p>
+</li>
+<li>
+<p>Select the check box for the state to be applied and click the <span class="menuseq"><b class="menu">Save</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] button. The menu:Save[</b></span> button will save the change to the database but will not apply the state.</p>
+</li>
+<li>
+<p>Apply the state by clicking the <b class="menuref">Apply</b> button. The state will be scheduled and applied to any systems included within a group.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.ssm">5. <b class="menuref">System Set Manager</b></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The following actions executed on individual systems from the System Details page may be performed for multiple systems via the System Set Manager.
+The System Set Manager can be used to schedule actions on both Salt and Traditional systems.
+The following table provides information on what actions may be performed across both Salt and Traditional systems.
+These two methods have different actions which may be accessed with the System Set Manager:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">System Set Manager: Overview</th>
+<th class="tableblock halign-left valign-top">Traditional SSM</th>
+<th class="tableblock halign-left valign-top">Salt SSM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Systems:</p>
+<p class="tableblock">* List Systems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install Patches:</p>
+<p class="tableblock">* Schedule Patch Updates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install Packages:</p>
+<p class="tableblock">* Upgrade
+* Install
+* Remove
+* Verify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported
+* Supported
+* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Limited</p>
+<p class="tableblock">* Supported
+* Supported
+* Supported
+* Not Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Groups:</p>
+<p class="tableblock">* Create
+* Manage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Channels:</p>
+<p class="tableblock">* Channel Memberships
+* Channel Subscriptions
+* Deploy / Diff Channels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported
+* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Limited</p>
+<p class="tableblock">* Supported
+* Not Available
+* Not Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisioning:</p>
+<p class="tableblock">* Autoinstall Systems
+* Tag for Snapshot
+* Remote Commands
+* Power Management
+* Power Management Operations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported
+* Supported
+* Supported
+* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Misc:</p>
+<p class="tableblock">* Update Hardware Profiles
+* Update Package Profiles
+* Update System Preferences
+* Set/Remove Custom Values
+* Add/Remove Add-on Types
+* Delete Systems
+* Reboot Systems
+* Migrate Systems to another Organization
+* Lock/Unlock Systems
+* Audit Systems (OpenSCAP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p>
+<p class="tableblock">* Supported
+* Supported
+* Supported
+* Supported
+* Supported
+* Supported
+* Supported
+* Supported
+* Supported
+* Supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Limited</p>
+<p class="tableblock">* Supported
+* Supported
+* Not Available
+* Supported
+* Not Available
+* Supported
+* Supported
+* Supported
+* Not Available
+* Not Available</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Before performing actions on multiple systems, select the systems to work with.
+To select systems, click <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ in the left bar</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">check the boxes to the left of the systems you want to work with</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and click the menu:Manage[</b></span>
+ button in the top bar.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, you can access the System Set Manager in three different ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the <b class="menuref">System Set Manager</b> link in the left bar.</p>
+</li>
+<li>
+<p>Click the <span class="menuseq"><b class="menu">Use in SSM</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] link in the menu:System Groups[</b></span> list.</p>
+</li>
+<li>
+<p>Click the <span class="menuseq"><b class="menu">Work with Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] link on the menu:System Group Details[</b></span> page.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.overview">5.1. System Set Manager &gt;  Overview</h3>
+<div class="paragraph">
+<p>This page contains links to most SSM option tabs with short explanations.
+image::systems_ssm_overview.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.systems">5.2. System Set Manager &gt;  Systems</h3>
+<div class="paragraph">
+<p>List of selected systems.
+image::systems_ssm_list_systems.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.patches">5.3. System Set Manager &gt;  Patches</h3>
+<div class="paragraph">
+<p>List of patch updates applicable to the current system set.
+image::systems_ssm_patches.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click the number in the Systems column to see to which systems in the System Set Manager a patch applies.
+To apply updates, select the patches and click the <b class="menuref">Apply Patches</b>
+ button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.packages">5.4. System Set Manager &gt;  Packages</h3>
+<div class="paragraph">
+<p>Click the number in the Systems column to see the systems in the System Set Manager to which a package applies.
+Modify packages on the system via the following subtabs.
+image::systems_ssm_packages_overview.png[]</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_packages_install">5.4.1. System Set Manager &gt;  Packages  &gt;  Install</h4>
+<div class="paragraph">
+<p>This list includes all channels to which systems in the set are subscribed.
+A package is only installed on a system if the system is subscribed to the channel providing the package.
+image::systems_ssm_install.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click the channel name and select the packages from the list.
+Then click the <b class="menuref">Install Packages</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_packages_remove">5.4.2. System Set Manager &gt;  Packages  &gt;  Remove</h4>
+<div class="paragraph">
+<p>A list of all the packages installed on the selected systems that might be removed.
+image::systems_ssm_remove.png[]</p>
+</div>
+<div class="paragraph">
+<p>Multiple versions appear if systems in the System Set Manager have more than one version installed.
+Select the packages to be deleted, then click the <b class="menuref">Remove Packages</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_packages_upgrade">5.4.3. System Set Manager &gt;  Packages  &gt;  Upgrade</h4>
+<div class="paragraph">
+<p>A list of all the packages installed on the selected systems that might be upgraded.
+image::systems_ssm_upgrade.png[]</p>
+</div>
+<div class="paragraph">
+<p>Systems must be subscribed to a channel providing the packages to be upgraded.
+If multiple versions of a package are available, note that your system will be upgraded to the latest version.
+Select the packages to be upgraded, then click the <b class="menuref">Upgrade Packages</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s3_sm_ssm_verify">5.4.4. System Set Manager &gt;  Packages  &gt;  Verify</h4>
+<div class="paragraph">
+<p>A list of all installed packages whose contents, file checksum, and other details may be verified.
+image::systems_ssm_verify.png[]</p>
+</div>
+<div class="paragraph">
+<p>At the next check in, the verify event issues the command <code class="command">rpm
+     --verify</code> for the specified package.
+If there are any discrepancies, they are displayed in the System Details page for each system.</p>
+</div>
+<div class="paragraph">
+<p>Select the check box next to all packages to be verified, then click the <span class="menuseq"><b class="menu">Verify Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+On the next page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">select a date and time for the verification</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click the menu:Schedule Verifications[</b></span>
+ button.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.groups">5.5. System Set Manager &gt;  Groups</h3>
+<div class="paragraph">
+<p>Tools to create groups and manage system memberships.
+image::systems_ssm_groups.png[]</p>
+</div>
+<div class="paragraph">
+<p>These functions are limited to {susemgr}
+Administrators and System Group Administrators.
+To add a new group, click <span class="menuseq"><b class="menu">Create Group</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ on the top-right corner.
+In the next page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">type the group name and description in the respective fields and click the menu:Create Group[</b></span>
+ button.
+To add or remove selected systems in any of the system groups, toggle the appropriate radio buttons and click the <b class="menuref">Alter Membership</b>
+ button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.channels">5.6. System Set Manager &gt;  Channels</h3>
+<div class="paragraph">
+<p>As a Channel Administrator, you may change the base channels your systems are subscribed to.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Changing the Channels Is Now an Action</div>
+<div class="paragraph">
+<p>Since the 3.1 maintenance update (2018) changing the channels is an action that can be scheduled like any other action.
+Earlier channel changes were applied immediately.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Manage channel associations through the following wizard procedure:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Base Channel Alteration</b> (Page 1)</dt>
+<dd>
+<p>Valid channels are either channels created by your organization, or the vendor&#8217;s default base channel for your operating system version and processor type.
+Systems will be unsubscribed from all channels, and subscribed to their new base channels.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Changing Base Channel</div>
+<div class="paragraph">
+<p>This operation can have a dramatic effect on the packages and patches available to the systems.
+Use with caution.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+image::systems_ssm_base_channels.png[]</p>
+</div>
+<div class="paragraph">
+<p>+
+To change the base channel, select the new one from the <b class="menuref">Desired base Channel</b>
+and confirm the action.</p>
+</div>
+<div class="paragraph">
+<p>+
+On the this wizard page you see the the <span class="menuseq"><b class="menu">Current base Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+and how many menu:Systems[</b></span>
+are subscribed to it.
+Click the number link in the <b class="menuref">Systems</b>
+column to see which systems are actually selected.</p>
+</div>
+<div class="paragraph">
+<p>+
+To change the base channel subscription select the <span class="menuseq"><b class="menu">Desired base Channel</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+from the selection box.
+Then click menu:Next[</b></span>
+in the lower left corner.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><b class="menuref">Child Channels</b> (Page 2)</dt>
+<dd>
+<p>The <b class="menuref">Child Channels</b>
+page allows you to subscribe and unsubscribe individual child channels related to its parent or base channel.
+Systems must subscribe to a base channel before subscribing to a child channel.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/systems_ssm_child_subscriptions.png" alt="systems ssm child subscriptions">
+</div>
+</div>
+<div class="paragraph">
+<p>Change the child channel subscription on this page.
+Then click <b class="menuref">Next</b>
+in the lower left corner.</p>
+</div>
+</dd>
+<dt class="hdlist1"><b class="menuref">Channel Changes Overview</b> (Page 3)</dt>
+<dd>
+<p>Schedule when the channel changes should take place the earliest.
+Then click <b class="menuref">Confirm</b>
+in the lower left corner.</p>
+</dd>
+<dt class="hdlist1"><b class="menuref">Channel Changes Actions</b> (Page 4)</dt>
+<dd>
+<p>See the scheduled change actions.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.config">5.7. System Set Manager &gt;  Configuration</h3>
+<div class="paragraph">
+<p>Like in the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Configuration</b></span>
+ tab, the subtabs here can be used to subscribe the selected systems to configuration channels and deploy and compare the configuration files on the systems.
+The channels are created in the <span class="menuseq"><b class="menu">Manage Config Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ interface within the menu:Channels[</b></span>
+ category.
+Refer to <a href="#_ref.webui.config.overview">[_ref.webui.config.overview]</a> for channel creation instructions.</p>
+</div>
+<div class="paragraph">
+<p>To manage the configuration of a system, install the latest <code class="path">rhncfg*</code>
+ packages.
+Refer to <a href="#_ref.webui.config.preparing">[_ref.webui.config.preparing]</a> for instructions on enabling and disabling scheduled actions for a system.</p>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.config.deploy">5.7.1. System Set Manager  &gt;  Configuration  &gt;  Deploy Files</h4>
+<div class="paragraph">
+<p>Use this subtab to distribute configuration files from your central repository on {susemgr}
+to each of the selected systems.
+image::systems_ssm_config_deploy_files.png[]</p>
+</div>
+<div class="paragraph">
+<p>The table lists the configuration files associated with any of the selected systems.
+Clicking its system count displays the systems already subscribed to the file.</p>
+</div>
+<div class="paragraph">
+<p>To subscribe the selected systems to the available configuration files, select the check box for each wanted file.
+When done, click <b class="menuref">Deploy Configuration</b>
+ and schedule the action.
+Note that the latest versions of the files, at the time of scheduling, are deployed.
+Newer versions created after scheduling are disregarded.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.config.verify">5.7.2. System Set Manager &gt;  Configuration  &gt;  Compare Files</h4>
+<div class="paragraph">
+<p>Use this subtab to validate configuration files on the selected systems against copies in your central repository on {susemgr}
+.
+image::systems_ssm_config_compare_files.png[]</p>
+</div>
+<div class="paragraph">
+<p>The table lists the configuration files associated with any of the selected systems.
+Clicking a file&#8217;s system count displays the systems already subscribed to the file.</p>
+</div>
+<div class="paragraph">
+<p>To compare the configuration files deployed on the systems with those in {susemgr}
+, select the check box for each file to be validated.
+Then click <span class="menuseq"><b class="menu">Analyze Differences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Schedule File
+     Comparison</b></span>
+.
+The comparisons for each system will not complete until each system checks in to {susemgr}
+.
+When each comparison is complete, any differences between the files will be accessible from each system&#8217;s events page.</p>
+</div>
+<div class="paragraph">
+<p>Note that the latest versions of the files, at the time of scheduling, are compared.
+Newer versions created after scheduling are disregarded.
+Find the results in the main <span class="menuseq"><b class="menu">Schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ category or within the menu:System Details[Events</b></span>
+ tab.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.config.subs">5.7.3. System Set Manager &gt;  Configuration  &gt;  Subscribe to Channels</h4>
+<div class="paragraph">
+<p>Subscribe systems to configuration channels, and in a second step rank these channels according to the order of preference.
+This tab is available only to {susemgr}
+Administrators and Configuration Administrators.
+image::systems_ssm_config_subscribe_to_channels.png[]</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select channels for subscription by activating the check box. When done, confirm with <b class="menuref">Continue</b> .</p>
+</li>
+<li>
+<p>In the second step, rank the channels with the arrow-up or arrow-down symbols.</p>
+<div class="paragraph">
+<p>Then decide how the channels are applied to the selected systems.
+The three buttons below the channels reflect your options.
+Clicking <span class="menuseq"><b class="menu">Subscribe with Highest Priority</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+places all the ranked channels before any other channels to which the selected systems are currently subscribed.
+Clicking menu:Subscribe With Lowest Priority[</b></span>
+places the ranked channels after those channels to which the selected systems are currently subscribed.
+Clicking <b class="menuref">Replace Existing Subscriptions</b>
+removes any existing association and creates new ones with the ranked channels, leaving every system with the same configuration channels in the same order.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Confliction Ranks</div>
+In the first two cases, if any of the newly ranked configuration channels are already in a system&#8217;s existing configuration channel list, the duplicate channel is removed and replaced according to the new rank, effectively reordering the system&#8217;s existing channels.
+When such conflicts exist, you are presented with a confirmation page to ensure the intended action is correct.
+When the change has taken place, a message appears at the top of the page indicating the update was successful.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then, click <b class="menuref">Apply Subscriptions</b>
+.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Channels are accessed in the order of their rank.
+Your local configuration channel always overrides all other channels.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.config.unsubs">5.7.4. System Set Manager &gt;  Configuration  &gt;  Unsubscribe from Channels</h4>
+<div class="paragraph">
+<p>Administrators may unsubscribe systems from configuration channels by clicking the check box next to the channel name and clicking the <span class="menuseq"><b class="menu">Unsubscribe Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+image::systems_ssm_config_unsubscribe_from_channels.png[</b></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.config.enable">5.7.5. System Set Manager &gt;  Configuration  &gt;  Enable Configuration</h4>
+<div class="paragraph">
+<p>Registered systems without configuration management preparation will appear here in a list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/systems_ssm_config_enable_config.png" alt="systems ssm config enable config">
+</div>
+<div class="title">Figure 3. Enable Configuration <a id="_fig_ssm_config_enable"></a></div>
+</div>
+<div class="paragraph">
+<p>Administrators may enable configuration management by clicking the <span class="menuseq"><b class="menu">Enable SUSE Manager Configuration Management</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+You can also schedule the action by adjusting the menu:Schedule no sooner than[</b></span>
+ date and time setting using the drop-down box, then clicking <b class="menuref">Enable SUSE Manager Configuration Management</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>Then the systems will get subscribed to the required {susemgr}
+tools channel and required <span class="package">rhncfg*</span>
+ packages will get installed.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.provision">5.8. System Set Manager &gt;  Provisioning</h3>
+<div class="paragraph">
+<p>Set the options for provisioning systems via the following subtabs.</p>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision_autoinst">5.8.1. System Set Manager  &gt;  Provisioning  &gt;  Autoinstallation</h4>
+<div class="paragraph">
+<p>Use this subtab to reinstall clients.
+image::systems_ssm_autoinstallation.png[]</p>
+</div>
+<div class="paragraph">
+<p>To schedule autoinstallations for these systems, select a distribution.
+The autoinstallation profile used for each system in the set is determined via the <b class="menuref">Autoinstallable Type</b>
+ radio buttons.</p>
+</div>
+<div class="paragraph">
+<p>Choose <span class="menuseq"><b class="menu">Select autoinstallation profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ to apply the same profile to all systems in the set.
+This is the default option.
+You will see a list of available profiles to select from when you click menu:Continue[</b></span>
+.</p>
+</div>
+<div class="paragraph">
+<p>Choose <b class="menuref">Autoinstall by IP Address</b>
+ to apply different autoinstallation profiles to different systems in the set, by IP address.
+To do so, at least two autoinstallation profiles must be configured with associated IP ranges.</p>
+</div>
+<div class="paragraph">
+<p>If you use <b class="menuref">Autoinstall by IP Address</b>
+, {susemgr}
+ will automatically pick a profile for each system so that the system&#8217;s IP address will be in one of the IP ranges specified in the profile itself.
+If such a profile cannot be found, {susemgr}
+ will look for an organization default profile and apply that instead. If no matching IP ranges nor organization default profiles can be found, no autoinstallation will be performed on the system.
+You will be notified on the next page if that happens.</p>
+</div>
+<div class="paragraph">
+<p>To use Cobbler system records for autoinstallation, select <b class="menuref">Create PXE Installation Configuration</b>
+.
+With PXE boot, you cannot only reinstall clients, but automatically install machines that do not have an operating system installed yet. {susemgr}
+ and its network must be properly configured to enable boot using PXE.
+For more information on Cobbler and {kickstart}
+ templates, refer to <a href="#_advanced.topics.cobbler">[_advanced.topics.cobbler]</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a system set contains bare-metal systems and installed clients, only features working for systems without an operating system installed will be available.
+Full features will be enabled again when all bare-metal systems are removed from the set.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If any of the systems connect to {susemgr}
+via a proxy server, choose either the <span class="menuseq"><b class="menu">Preserve Existing Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ radio button or the menu:Use Proxy[</b></span>
+ radio button.
+If you choose to autoinstall through a proxy server, select from the available proxies listed in the drop-down box beside the <span class="menuseq"><b class="menu">Use Proxy</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ radio button.
+All of the selected systems will autoinstall via the selected proxy.
+Click the menu:Schedule Autoinstall[</b></span>
+ button to confirm your selections.
+When the autoinstallations for the selected systems are successfully scheduled, you will return to the <b class="menuref">System Set Manager</b>
+ page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision.tag">5.8.2. System Set Manager &gt;  Provisioning  &gt;  Tag Systems</h4>
+<div class="paragraph">
+<p>Use this subtab to add meaningful descriptions to the most recent snapshots of your selected systems.
+image::systems_ssm_tag_systems.png[]</p>
+</div>
+<div class="paragraph">
+<p>To tag the most recent system snapshots, enter a descriptive term in the <span class="menuseq"><b class="menu">Tag name</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ field and click the menu:Tag Current Snapshots[</b></span>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision.roll">5.8.3. System Set Manager &gt;  Provisioning  &gt;  Rollback</h4>
+<div class="paragraph">
+<p>Use this subtab to rollback selected systems to previous snapshots marked with a tag.
+image::systems_ssm_rollback.png[]</p>
+</div>
+<div class="paragraph">
+<p>Click the tag name, verify the systems to be reverted, and click the <b class="menuref">Rollback Systems</b>
+ button.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision.remote">5.8.4. System Set Manager &gt;  Provisioning  &gt;  Remote Command</h4>
+<div class="paragraph">
+<p>Use this subtab to issue remote commands.
+image::systems_ssm_remote_command.png[]</p>
+</div>
+<div class="paragraph">
+<p>First create a <code class="path">run</code>
+ file on the client systems to allow this function to operate.
+Refer to <a href="#_s5_sm_system_details_remote">System Details &gt;  Details  &gt;  Remote Command</a> for instructions.
+Then identify a specific user, group, timeout period, and the script to run.
+Select a date and time to execute the command and click <b class="menuref">Schedule</b>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision.pm_config">5.8.5. System Set Manager &gt;  Provisioning  &gt;  Power Management Configuration</h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/systems_ssm_power_management_config.png" alt="systems ssm power management config">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ref.webui.systems.ssm.provision.pm_op">5.8.6. System Set Manager &gt;  Provisioning  &gt;  Power Management Operation</h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/systems_ssm_power_management_operations.png" alt="systems ssm power management operations">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.audit">5.9. System Set Manager &gt;  Audit</h3>
+<div class="paragraph">
+<p>System sets can be scheduled for XCCDF scans; XCCDF stands for &#8220;The
+    Extensible Configuration Checklist Description Format&#8221;
+.
+image::systems_ssm_audit.png[]</p>
+</div>
+<div class="paragraph">
+<p>Enter the command and command line arguments, and the path to the XCCDF document.
+Then schedule the scan.
+All target systems are listed below with a flag whether they support OpenSCAP scans.
+For more details on OpenSCAP and audits, refer to <a href="#_ref.webui.audit">[_ref.webui.audit]</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.ssm.misc">5.10. System Set Manager &gt;  Misc</h3>
+<div class="paragraph">
+<p>On the <span class="menuseq"><b class="menu">Misc</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">you can modify menu:Custom System Information[</b></span>
+.
+Click <span class="menuseq"><b class="menu">Set a custom value for selected systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">then the name of a key.
+Enter values for all selected systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click the menu:Set Values[</b></span>
+ button.
+To remove values for all selected systems, click <span class="menuseq"><b class="menu">Remove a custom value from selected systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then the name of the key.
+Click the menu:Remove Values[</b></span>
+ button to delete.</p>
+</div>
+<div class="paragraph">
+<p>Set <b class="menuref">System Preferences</b>
+ via the respective radio buttons.</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_updates_hw">5.10.1. System Set Manager  &gt;  Misc  &gt;  Hardware</h4>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Hardware</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab to schedule a hardware profile refresh.
+Click menu:Confirm Refresh[</b></span>
+.
+image::systems_ssm_misc_hardware_refresh.png[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_updates_sw">5.10.2. System Set Manager &gt;  Misc  &gt;  Software</h4>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ subtab</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then the menu:Confirm Refresh[</b></span>
+ button to schedule a package profile update of the selected systems.
+image::systems_ssm_misc_software_refresh.png[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_migrate">5.10.3. System Set Manager &gt;  Misc  &gt;  Migrate</h4>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Migrate</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab to move selected systems to a selected organization.
+image::systems_ssm_misc_migrate_systems.png[</b></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_lock">5.10.4. System Set Manager &gt;  Misc  &gt;  Lock/Unlock</h4>
+<div class="paragraph">
+<p>Select the <span class="menuseq"><b class="menu">Lock/Unlock</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab to select systems to be excluded from package updates.
+image::systems_ssm_misc_lock_unlock.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Enter a <span class="menuseq"><b class="menu">Lock reason</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ in the text box and click the menu:Lock[</b></span>
+ button.
+Already locked systems can be unlocked on this page.
+Select them and click <b class="menuref">Unlock</b>
+.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_delete">5.10.5. System Set Manager &gt;  Misc  &gt;  Delete</h4>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Delete</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ subtab</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">to remove systems by deleting their system profiles.
+Click the menu:Confirm Deletion[</b></span>
+ button to remove the selected profiles permanently.
+image::systems_ssm_misc_delete_confirm.png[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_ssm_misc_reboot">5.10.6. System Set Manager &gt;  Misc  &gt;  Reboot</h4>
+<div class="paragraph">
+<p>Select the appropriate systems, then click the <b class="menuref">Reboot Systems</b>
+ link to select these systems for reboot.</p>
+</div>
+<div class="paragraph">
+<p>To cancel a reboot action, see <a href="#_ref.webui.schedule.pending">[_ref.webui.schedule.pending]</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.bootstrapping">6. Bootstrapping [Salt]</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <b class="menuref">Bootstrapp Minions</b>
+ page allows you to bootstrap Salt minions from the {webui}
+.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/bootstrapping.png" alt="bootstrapping">
+</div>
+<div class="title">Figure 4. Bootstrapping</div>
+</div>
+<div class="dlist">
+<div class="title">Bootstrapping Parameters</div>
+<dl>
+<dt class="hdlist1">Host</dt>
+<dd>
+<p>Place the FQDN of the minion to be bootstrapped within this field.</p>
+</dd>
+<dt class="hdlist1">SSH Port</dt>
+<dd>
+<p>Place the SSH port that will be used to connect and bootstrap a machine.
+The default is <code>22</code>.</p>
+</dd>
+<dt class="hdlist1">User</dt>
+<dd>
+<p>Input the minions user login.
+The default is {rootuser}
+.</p>
+</dd>
+<dt class="hdlist1">Password</dt>
+<dd>
+<p>Input the minions login password.</p>
+</dd>
+<dt class="hdlist1">Activation Key</dt>
+<dd>
+<p>Select the activation key (associated with a software source channel) that the minion should use to bootstrap with.</p>
+</dd>
+<dt class="hdlist1">Disable SSH Strict Key Host Checking</dt>
+<dd>
+<p>This check box is selected by default.
+This allows the script to auto-accept host keys without requiring a user to manually authenticate.</p>
+</dd>
+<dt class="hdlist1">Manage System Completely via SSH (Will not Install an Agent)</dt>
+<dd>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Technology Preview</div>
+<div class="paragraph">
+<p>This feature is a Technology preview.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If selected a system will automatically be configured to use SSH.
+No other connection method will be configured.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Once your minion&#8217;s connection details have been filled in click the <span class="menuseq"><b class="menu">Bootstrap</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+When the minion has completed the bootstrap process</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">find your new minion listed on the menu:Systems[Overview</b></span>
+ page.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.visualization">7. Visualization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can visualize your virtualized, proxy, and systems group topologies.
+Listed under <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Visualization</b></span>
+ you will find the <span class="menuseq"><b class="menu">Virtualization Hierarchy</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Proxy Hierarchy[</b></span>
+, and <b class="menuref">Systems Grouping</b>
+ subpages.
+This features allows you to search, filter, and partition systems by name, base channel, check-in date, group, etc.</p>
+</div>
+<div class="paragraph">
+<p>To visualize your systems select <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Visualization</b></span>
+ from the left navigation menu.</p>
+</div>
+<div class="paragraph">
+<p>Click the <span class="menuseq"><b class="menu">Show Filters</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button in the upper right corner to open the filters panel.
+On the menu:Filtering[</b></span>
+ tab, systems are filterable by name, base channel, installed products, or with special properties such as security, bug fix, and product enhancement advisories.
+etc.
+image::systems_visualization_filter_example.png[]</p>
+</div>
+<div class="paragraph">
+<p>On the <span class="menuseq"><b class="menu">Partitioning</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ tab</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">systems may also be partitioned by check-in time.
+Select the check-in date and time and click the menu:Apply[</b></span>
+ button.
+The <span class="menuseq"><b class="menu">Clear</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button will revert current partition configuration.
+image::systems_visualization_partition_example.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>All elements of the network tree are selectable.
+Clicking any element in the tree opens a box containing information about the selected systems and will be displayed in the top-right of the visualization area.
+image::systems_visualization_selections_example.png[]</p>
+</div>
+<div class="paragraph">
+<p>Systems shown in the visualization view may be added to System Set Manager (SSM) for futher management.
+This can be performed in two ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select single systems and click the <b class="menuref">Add system to SSM</b> button in the top-right detail box.</p>
+</li>
+<li>
+<p>Add all visible child elements of any parent node in the view (visible means when filters have been applied) by clicking the <b class="menuref">Add Children to SSM</b> button at the bottom of the selection details panel.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.virtual.visualzation">7.1. Virtualization Hierarchy</h3>
+<div class="paragraph">
+<p>The following is an example graphical representation tree of the virtual network hierarchy of virtual systems registered with {susemgr}
+.
+image::systems_visualization_virtualization_hierarchy.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.proxy.visualzation">7.2. Proxy Hierarchy</h3>
+<div class="paragraph">
+<p>The following is an example graphical representation tree of the proxy network hierarchy of proxy systems and their clients registered with {susemgr}
+.
+image::systems_proxy_heirarchy.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.grouping.visualzation">7.3. Systems Grouping</h3>
+<div class="paragraph">
+<p>The following is a graphical representation tree of the all systems registered with {susemgr}
+.
+image::visualization_system_grouping_all.png[]</p>
+</div>
+<div class="paragraph">
+<p>Systems are grouped according to preconfigured systems groups, and they may also be grouped into various group compositions by using the multi-select box.
+image::visualization_system_grouping.png[]</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.search">8. Advanced Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Carry out an <span class="menuseq"><b class="menu">Advanced Search</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ on your systems according to the following criteria: network info</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">hardware devices</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">location</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">activity</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">DMI info</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and hardware.
+image::systems_advanced_search.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Refine searches using the <span class="menuseq"><b class="menu">Field to Search</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ drop-down box</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">which is set to menu:Name/Description[</b></span>
+ by default.</p>
+</div>
+<div class="paragraph">
+<p>The Activity selections (<b class="menuref">Days Since Last Check-in</b>
+, for example) are useful in finding and removing outdated system profiles.</p>
+</div>
+<div class="paragraph">
+<p>Type the keyword, select the criterion to search by, use the radio buttons to specify whether you want to query all systems or only those in the <span class="menuseq"><b class="menu">System Set Manager</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">and click the menu:Search[</b></span>
+ button.
+To list all systems that do <em>not</em> match the criteria, select the <b class="menuref">Invert Result</b>
+ check box.</p>
+</div>
+<div class="paragraph">
+<p>The results appear at the bottom of the page.
+For details on how to use the resulting system list, refer to <a href="#_ref.webui.systems.systems">Systems</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.activ_keys">9. Activation Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Users with the Activation Key Administrator role (including {susemgr}
+Administrators) can generate activation keys in the {susemgr}
+Web interface.
+With such an activation key, register a {sle}
+or Red Hat Enterprise Linux system, entitle the system to a {susemgr}
+service level and subscribe the system to specific channels and system groups through the <code class="command">rhnreg_ks</code> command line utility.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>System-specific activation keys created through the <span class="menuseq"><b class="menu">Reactivation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ subtab of the menu:System Details[</b></span>
+ page are not part of this list because they are not reusable across systems.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information about Activation Keys, see <a href="#_bp.key.managment">[_bp.key.managment]</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_system_keys_manage">9.1. Managing Activation Keys</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>From the <span class="menuseq"><b class="menu">Activation Key</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page organize activation keys for channel management.
+image::systems_activation_keys.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>To create an activation key:</p>
+</div>
+<div id="_pro.ref.manager.activationkey" class="olist arabic">
+<div class="title">Procedure: Creating Activation Keys</div>
+<ol class="arabic">
+<li>
+<p>Select <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Activation Keys</b></span> from the left bar.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">Create Key</b> link at the upper right corner.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Description</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Enter a menu:Description[</b></span> to identify the generated activation key.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Key</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Either choose automatic generation by leaving this field blank or enter the key you want to generate in the menu:Key[</b></span> field. This string of characters can then be used with <code class="command">rhnreg_ks</code> to register client systems with {susemgr} . Refer to <a href="#_s3_sm_system_keys_multiple">Using Multiple Activation Keys at Once</a> for details.</p>
+<div class="paragraph">
+<div class="title">Allowed Characters</div>
+<p>WARNING:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Do not insert commas or double quotes in the key.
+All other characters are allowed, but <code>&lt;&gt; (){}</code> (this includes the space) will get removed automatically.
+If the string is empty, a random one is generated.</p>
+</div>
+<div class="paragraph">
+<p>Commas are problematic because they are used as separator when two or more activation keys are used at once.
+. <span class="menuseq"><b class="menu">Usage</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;The maximum number systems that can be registered with the activation key concurrently. Leave blank for unlimited use. Deleting a system profile reduces the usage count by one and registering a system profile with the key increases the usage count by one.
+. menu:Base Channels[</b></span>&#8201;&#8212;&#8201;The primary channel for the key. This can be either the <code>{susemgr} Default</code> channel, a {suse} provided channel, or a custom base channel.</p>
+</div>
+<div class="paragraph">
+<p>+
+Selecting <code>{susemgr}
+Default</code> allows client systems to register with the {suse}
+-provided default channel that corresponds with their installed version of {sle}
+.
+You can also associate the key with a custom base channel.
+If a system using this key is not compatible with the selected channel, it will fall back to the {susemgr}
+default channel.
+. <span class="menuseq"><b class="menu">Add-on System Types</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]&#8201;&#8212;&#8201;The supplemental system types for the key</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">e.&#160; g. Virtualization Host. All systems will receive these system types with the key.
+. menu:Contact Method[</b></span> - Select how clients communicate with {susemgr} . <span class="menuseq"><b class="menu">Default</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] (Pull) waits for the client to check in. With menu:Push via SSH[</b></span> and <b class="menuref">Push via SSH tunnel</b> the server contacts the client via SSH (with or without tunnel) and pushes updates and actions, etc.</p>
+</div>
+<div class="paragraph">
+<p>+
+For more information about contact methods, see <a href="#_bp.systems.management">[_bp.systems.management]</a>.
+. <b class="menuref">Universal Default</b>&#8201;&#8212;&#8201;Select whether this key should be considered the primary activation key for your organization.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Changing the Default Activation Key</div>
+Only one universal default activation key can be defined per organization.
+If a universal key already exists for this organization, you will unset the currently used universal key by activating the check box.
+. Click <b class="menuref">Create Activation Key</b> .
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To create more activation keys, repeat the steps above.</p>
+</div>
+<div class="paragraph">
+<p>After creating the unique key, it appears in the list of activation keys along with the number of times it has been used.
+Only Activation Key Administrators can see this list.
+At this point, you can configure the key further, for example, associate the key with child channels (for example, the Tools child channel), packages (for example, the <span class="package">rhncfg-actions</span>
+ package) and groups.
+Systems registered with the key get automatically subscribed to them.</p>
+</div>
+<div class="paragraph">
+<p>To change the settings of a key, click the key&#8217;s description in the list to display its <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page (see &lt;&lt;_fig_s1_sm_systems_akey_details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">). Via additional tabs you can select child channels, packages, configuration channels, group membership and view activated systems.
+Modify the appropriate tab then click the menu:Update Activation Key[</b></span>
+ button.
+To disassociate channels and groups from a key, deselect them in the respective menus by <kbd>Ctrl</kbd>
+-clicking their highlighted names.
+To remove a key entirely, click the <span class="menuseq"><b class="menu">Delete Key</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ link in the upper right corner of the menu:Details[</b></span>
+ page.
+In the upper right corner find also the <b class="menuref">Clone Key</b>
+ link.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/src/png/systems_activation_key_details.png" alt="systems activation key details">
+</div>
+<div class="title">Figure 5. Activation Key Details With Subtabs <a id="_fig_s1_sm_systems_akey_details"></a></div>
+</div>
+<div class="paragraph">
+<p>Any (client tools) package installation requires that the Client Tools channel is available and the <span class="menuseq"><b class="menu">Provisioning</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ check box is selected.
+The Client Tools channel should be selected in the menu:Child Channels[</b></span>
+ tab.</p>
+</div>
+<div class="paragraph">
+<p>After creating the activation key, you can see in the <span class="menuseq"><b class="menu">Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab a check box named menu:Configuration File Deployment[</b></span>
+.
+If you select it, all needed packages are automatically added to the <b class="menuref">Packages</b>
+ list.
+By default, the following packages are added: <span class="package">rhncfg</span>
+, <span class="package">rhncfg-client</span>
+, and <span class="package">rhncfg-actions</span>
+.</p>
+</div>
+<div class="paragraph">
+<p>If you select <b class="menuref">Virtualization Host</b>
+ you automatically get the following package: <span class="package">rhn-virtualization-host</span>
+.</p>
+</div>
+<div class="paragraph">
+<p>Adding the <span class="package">osad</span>
+ package makes sense to execute scheduled actions immediately after the schedule time.
+When the activation key is created, you can add packages with selecting the key (<span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Activation Keys</b></span>
+), then on the activation key details tab, go for the <b class="menuref">Packages</b>
+ subtab and add <span class="package">osad</span>
+.</p>
+</div>
+<div class="paragraph">
+<p>To disable system activations with a key, uncheck the corresponding box in the <span class="menuseq"><b class="menu">Enabled</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ column in the key list.
+The key can be re-enabled by selecting the check box.
+Click the menu:Update Activation Keys[</b></span>
+ button on the bottom right-hand corner of the page to apply your changes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_system_keys_multiple">9.2. Using Multiple Activation Keys at Once</h3>
+<div class="paragraph">
+<p>Multiple activation keys can be specified at the command line or in a single autoinstallation profile.
+This allows you to aggregate the aspects of various keys without re-creating a specific key for every system that you want to register, simplifying the registration and autoinstallation processes while slowing the growth of your key list.
+Separate keys with a comma at the command line with <code class="command">rhnreg_ks</code> or in a {kickstart}
+ profile in the <span class="menuseq"><b class="menu">Activation Keys</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:Autoinstallation Details[</b></span>
+ page.</p>
+</div>
+<div class="paragraph">
+<p>Registering with multiple activation keys requires some caution.
+Conflicts between some values cause registration to fail.
+Conflicts in the following values do not cause registration to fail, a combination of values is applied: software packages, software child channels, and configuration channels.
+Conflicts in the remaining properties are resolved in the following manner:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Base software channels: registration fails.</p>
+</li>
+<li>
+<p>System types: registration fails.</p>
+</li>
+<li>
+<p>Enable configuration flag: configuration management is set.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Do not use system-specific activation keys along with other activation keys; registration fails in this event.</p>
+</div>
+<div class="paragraph">
+<p>You are now ready to use multiple activation keys at once.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.profiles">10. Stored Profiles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>{susemgr}
+Provisioning customers can create package profiles via the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+image::systems_stored_profiles.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Under <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Profiles</b></span>
+, click <span class="menuseq"><b class="menu">Create System Profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Enter a menu:Profile Name[</b></span>
+ and <span class="menuseq"><b class="menu">Profile Description</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click menu:Create Profile[</b></span>
+.
+These profiles are displayed on the <b class="menuref">Stored Profiles</b>
+ page (left navigation bar), where they can be edited or deleted.</p>
+</div>
+<div class="paragraph">
+<p>To edit a profile, click its name in the list, alter its name or description, and click the <span class="menuseq"><b class="menu">Update</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ button.
+To view software associated with the profile</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Packages[</b></span>
+ subtab.
+To remove the profile entirely, click <b class="menuref">Delete Profile</b>
+ at the upper-right corner of the page.</p>
+</div>
+<div class="paragraph">
+<p>For more information about stored profiles, see <a href="#_s1_package_profiles">[_s1_package_profiles]</a> in <a href="#_s4_sm_system_details_packages">System Details &gt;  Software  &gt;  Packages</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.cust_info">11. Custom System Info</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{susemgr}
+customers may include completely customizable information about their systems.
+image::systems_custom_system_info.png[]</p>
+</div>
+<div class="paragraph">
+<p>Unlike with notes, the information here is more formal and can be searched.
+for example, you may decide to specify an asset tag for each system.
+To do so, select <b class="menuref">Custom System Info</b>
+ from the left navigation bar and create an <code>asset</code> key.</p>
+</div>
+<div class="paragraph">
+<p>Click <span class="menuseq"><b class="menu">Create Key</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ in the upper-right corner of the page.
+Enter a suitable label and description</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">such as <code>Asset</code> and <code>Precise location of each system</code></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click menu:Create Key[</b></span>
+.
+The key will show up in the custom info keys list.</p>
+</div>
+<div class="paragraph">
+<p>When the key exists, you may assign a value to it through the <span class="menuseq"><b class="menu">Custom Info</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ tab of the menu:System Details[</b></span>
+ page.
+Refer to <a href="#_s5_sm_system_details_info">System Details &gt;  Details  &gt;  Custom Info</a> for instructions.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in reference-webui-systems.adoc - include::reference-webui-systems-autoinstallation.adoc[leveloffset=1]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.systems.virt_host_managers">12. Virtual Host Managers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Third party hypervisors and hypervisor managers such as VMWare vCenter are called &#8220;Virtual Host Managers&#8221;
+ (VHM) within {susemgr}
+.
+These managers can manage one or multiple virtual hosts, which in turn may contain virtual guests. {susemgr}
+ ships with a tool called <code class="command">virtual-host-gatherer</code> that can connect to VHMs using their API, and request information about virtual hosts.
+This tool is automatically invoked via Taskomatic nightly, therefore you need to configure your VHMs via XMLRPC APIs. <code class="command">virtual-host-gatherer</code> maintains the concept of optional modules, where each module enables a specific Virtual Host Manager.</p>
+</div>
+<div class="paragraph">
+<p>Proceed to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Virtual Host
+   Managers</b></span>
+ page in the {webui}
+ to begin working with a Virtual Host Manager.
+In the upper right you can click <span class="menuseq"><b class="menu">Create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ and select either menu:VMware-based[</b></span>
+ or <b class="menuref">File-based</b>
+.</p>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.virt_host_managers.vmware">12.1. VMware-Based</h3>
+<div class="paragraph">
+<p>After selecting <span class="menuseq"><b class="menu">Create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">VMware-based</b></span>
+ enter the location of your VMware-based virtual host.
+Enter a <span class="menuseq"><b class="menu">Label</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Hostname[</b></span>
+, <span class="menuseq"><b class="menu">Port</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Username[</b></span>
+ and <span class="menuseq"><b class="menu">Password</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+.
+Finally click the menu:Add Virtual Host Manager[</b></span>
+ button.
+For detailed information on working with a VMware-based Virtual Host Manager, see <a href="#_advanced.topics.adding.vmware.esxi.host">[_advanced.topics.adding.vmware.esxi.host]</a>.
+image::systems_virtual_host_managers_vmware.png[]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ref.webui.systems.virt_host_managers.file">12.2. File-Based</h3>
+<div class="paragraph">
+<p>If you are using an unsupported virtual host manager, you can create and use a file formatted in JSON containing information about a host and all managed guest machines.
+After selecting <span class="menuseq"><b class="menu">Create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">File-Based</b></span>
+ enter a label and URL leading to the location of this file.
+image::systems_virtual_host_managers_file.png[]</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">VMWare vCenter Installations without Direct Access</div>
+<div class="paragraph">
+<p>The file-based is not meant to be used with manually crafted files.
+It only meant to be used with the output of <code class="command">virtual-host-gatherer</code> against some other module.
+File-based is suitable for VMWare vCenter installations for which no direct API access is possible from the SUSE Manager Server.</p>
+</div>
+<div class="paragraph">
+<p>The solution is to run <code class="command">virtual-host-gatherer</code> from somewhere else in the network and save the produced JSON data for further processing.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following JSON example describes how this file should look:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "examplevhost": {
+        "10.11.12.13": {
+            "cpuArch": "x86_64",
+            "cpuDescription": "AMD Opteron(tm) Processor 4386",
+            "cpuMhz": 3092.212727,
+            "cpuVendor": "amd",
+            "hostIdentifier": "'vim.HostSystem:host-182'",
+            "name": "11.11.12.13",
+            "os": "VMware ESXi",
+            "osVersion": "5.5.0",
+            "ramMb": 65512,
+            "totalCpuCores": 16,
+            "totalCpuSockets": 2,
+            "totalCpuThreads": 16,
+            "type": "vmware",
+            "vms": {
+                "vCenter": "564d6d90-459c-2256-8f39-3cb2bd24b7b0"
+            }
+        },
+        "10.11.12.14": {
+            "cpuArch": "x86_64",
+            "cpuDescription": "AMD Opteron(tm) Processor 4386",
+            "cpuMhz": 3092.212639,
+            "cpuVendor": "amd",
+            "hostIdentifier": "'vim.HostSystem:host-183'",
+            "name": "10.11.12.14",
+            "os": "VMware ESXi",
+            "osVersion": "5.5.0",
+            "ramMb": 65512,
+            "totalCpuCores": 16,
+            "totalCpuSockets": 2,
+            "totalCpuThreads": 16,
+            "type": "vmware",
+            "vms": {
+                "49737e0a-c9e6-4ceb-aef8-6a9452f67cb5": "4230c60f-3f98-2a65-f7c3-600b26b79c22",
+                "5a2e4e63-a957-426b-bfa8-4169302e4fdb": "42307b15-1618-0595-01f2-427ffcddd88e",
+                "NSX-gateway": "4230d43e-aafe-38ba-5a9e-3cb67c03a16a",
+                "NSX-l3gateway": "4230b00f-0b21-0e9d-dfde-6c7b06909d5f",
+                "NSX-service": "4230e924-b714-198b-348b-25de01482fd9"
+            }
+        }
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see the man page on your {susemgr}
+server for <code class="command">virtual-host-gatherer</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.user}
+man virtual-host-gatherer</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>README</code> file coming with the package provides background information about the <code>type</code> of a hypervisor, etc.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/usr/share/doc/packages/virtual-host-gatherer/README.md</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring_virtual_host_managers_via_xmlrpc_api">12.3. Configuring Virtual Host Managers via XMLRPC API</h3>
+<div class="paragraph">
+<p>The following APIs allow you to get a list of available <code class="command">virtual-host-manager</code> modules and the parameters they require:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.listAvailableVirtualHostGathererModules(session)</pre>
+</div>
+</div>
+</li>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.getModuleParameters(session, moduleName)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following APIs allow you to create and delete VHMs.
+The module parameter map must match the map returned by <code>virtualhostmanager.getModuleParameters</code> to work correctly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.create(session, label, moduleName, parameters)</pre>
+</div>
+</div>
+</li>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.delete(session, label)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following APIs return information about configured VHMs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.listVirtualHostManagers(session)</pre>
+</div>
+</div>
+</li>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>virtualhostmanager.getDetail(session, label)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

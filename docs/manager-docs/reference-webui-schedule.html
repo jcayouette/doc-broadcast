@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Schedule</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Schedule</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/reference-webui-schedule.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.schedule.pending">1. Pending Actions</a></li>
+<li><a href="#_ref.webui.schedule.fail">2. Failed Actions</a></li>
+<li><a href="#_ref.webui.schedule.compl">3. Completed Actions</a></li>
+<li><a href="#_s2_sm_action_arch">4. Archived Actions</a></li>
+<li><a href="#_ref.webui.schedule.chains">5. Action Chains</a></li>
+<li><a href="#_ref.webui.schedule.list">6. Actions List</a></li>
+<li><a href="#_s3_sm_action_details">7. Action Details</a>
+<ul class="sectlevel2">
+<li><a href="#_s4_sm_action_details_details">7.1. Action Details &gt;  Details</a></li>
+<li><a href="#_s4_sm_action_details_completed">7.2. Action Details &gt; Completed Systems</a></li>
+<li><a href="#_s4_sm_action_details_progress">7.3. Action Details &gt; In Progress Systems</a></li>
+<li><a href="#_s4_sm_action_details_failed">7.4. Action Details &gt; Failed Systems</a></li>
+<li><a href="#_s4_sm_action_details_packagelist">7.5. Action Details &gt; Package List</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p><b class="menuref">Schedule</b>
+ helps with managing actions and combining actions to action chains.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p><b class="menuref">Schedule</b>
+ on the left navigation menu features pages that enable you to manage the actions carried out on your systems.
+An action is a scheduled task to be performed on one or more client systems.
+For example, an action can be scheduled to apply all patches to a system.
+Actions can also be grouped into action chains to schedule them at the same time in a particular order, for example to reboot a system after deploying patches.</p>
+</div>
+<div class="paragraph">
+<p>{susemgr}
+keeps track of the following action types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>package alteration (installation, upgrade, and removal),</p>
+</li>
+<li>
+<p>rollback package actions,</p>
+</li>
+<li>
+<p>system reboots,</p>
+</li>
+<li>
+<p>patch application,</p>
+</li>
+<li>
+<p>configuration file alteration (deploy, upload, and diff),</p>
+</li>
+<li>
+<p>hardware profile updates,</p>
+</li>
+<li>
+<p>package list profile updates,</p>
+</li>
+<li>
+<p>automated installation initiation,</p>
+</li>
+<li>
+<p>service pack migrations,</p>
+</li>
+<li>
+<p>remote commands.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each page in the <b class="menuref">Schedule</b>
+ category represents an action status.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.schedule.pending">1. Pending Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Pending Actions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page appears when clicking menu:Schedule[Pending
+   Actions</b></span>
+.
+It displays actions not yet started or still in progress.
+image::schedule_pending_actions.png[]</p>
+</div>
+<div class="paragraph">
+<p>To cancel an action, select the action, and click <span class="menuseq"><b class="menu">Cancel Actions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then menu:Confirm[</b></span>
+.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.schedule.fail">2. Failed Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Sometimes actions cannot be completed.
+If the action returns an error, it is displayed here.
+image::schedule_failed_actions.png[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.schedule.compl">3. Completed Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>List of actions successfully carried out.
+image::schedule_completed_actions.png[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_s2_sm_action_arch">4. Archived Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>If you selected actions to store for review, they are displayed here and can be deleted.
+image::schedule_archived_actions.png[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.schedule.chains">5. Action Chains</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create action chains{mdash}
+or grouped actions{mdash}
+for example, in the <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Packages</b></span>
+ or <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Packages</b></span>
+ subtabs on a system details page (see <a href="#_s4_sm_system_details_errata">[_s4_sm_system_details_errata]</a> or <a href="#_s4_sm_system_details_packages">[_s4_sm_system_details_packages]</a>) or in the <span class="menuseq"><b class="menu">Configuration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Deploy Files</b></span>
+ subtab on a system details page (see <a href="#_s5_sdc_configuration_deploy_files">[_s5_sdc_configuration_deploy_files]</a>).
+image::schedule_action_chains.png[]</p>
+</div>
+<div class="paragraph">
+<p>In the <span class="menuseq"><b class="menu">Action Chain List</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ you can click the label to view or edit an menu:Action Chain[</b></span>
+.
+In the top right corner is the <span class="menuseq"><b class="menu">delete action chain</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ link.
+To add actions to an existing chain, pick up a &#8220;chainable&#8221;
+ action (such as running a remote command) from a system details page (see &lt;&lt;_s3_sm_system_details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">.
+Then check menu:Add to Action Chain[</b></span>
+ and select an action chain from the drop-down box.
+Confirm with <b class="menuref">Schedule</b>
+.</p>
+</div>
+<div class="paragraph">
+<p>To create a new action chain, configure the first action, then select <span class="menuseq"><b class="menu">Add to Action Chain</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ instead of menu:Schedule no sooner than[</b></span>
+.
+Click the drop-down box, enter a name, and click <b class="menuref">Schedule</b>
+ to save the chain.
+Then proceed to the next action and add it to the new chain.</p>
+</div>
+<div class="paragraph">
+<p>Action chains can be edited via the <span class="menuseq"><b class="menu">Schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Action Chains</b></span>
+ page.
+Click a chain name to see the actions in the order they will be performed.
+The following tasks can be carried out here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change the order of actions by dragging the respective action to the right position and dropping it.</p>
+</li>
+<li>
+<p>Delete actions from the chain by clicking the <b class="menuref">delete action</b> link.</p>
+</li>
+<li>
+<p>Inspect the list of systems on which an action is run by clicking the menu:+[] sign.</p>
+</li>
+<li>
+<p>Delete a single system from an action chain by clicking the <b class="menuref">delete system</b> link.</p>
+</li>
+<li>
+<p>Delete the complete action chain with the <b class="menuref">delete action chain</b> link in the top-left corner.</p>
+</li>
+<li>
+<p>Change an action chain label by clicking it.</p>
+</li>
+<li>
+<p>Schedule an action chain for execution on a certain date by clicking the <b class="menuref">Save and Schedule</b> button.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Unsaved Changes</div>
+<div class="paragraph">
+<p>If you leave the page without clicking either <span class="menuseq"><b class="menu">Save</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ or menu:Save and Schedule[</b></span>
+ all unsaved changes will be discarded.
+In this case, a confirmation dialog will pop up.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Currently you cannot add an action to an action chain from the <span class="menuseq"><b class="menu">Edit</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ section of the action chain details page.
+When a Chain is scheduled</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">the actions it contains will be displayed under menu:Schedule[</b></span>
+ on the appropriate pages: <span class="menuseq"><b class="menu">Pending Actions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Failed Actions[</b></span>
+ or <b class="menuref">Completed Actions</b>
+, depending on the status.
+If one action fails on a system no other actions from the same chain will be executed on that systems.
+Because of technical limitations it is not possible to reuse Action Chains.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.schedule.list">6. Actions List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>On each action page, each row in the list represents a single scheduled event or action that might affect multiple systems and involve various packages.
+The list contains several columns of information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="menuseq"><b class="menu">Filter by Action</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Enter a term to filter the listed actions or use the check boxes in this column to select actions. Then either add them to your selection list or archive them by clicking menu:Archive Actions[</b></span> . If you archive a pending action, it is not canceled, but the action item moves from the <span class="menuseq"><b class="menu">Pending Actions</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] list to the menu:Archived Actions[</b></span> list.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Action</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]&#8201;&#8212;&#8201;Type of action to perform such as Patches or Package Install. Clicking an action name shows its menu:Action Details[</b></span> page. Refer to <a href="#_s3_sm_action_details">Action Details</a> for more information.</p>
+</li>
+<li>
+<p><b class="menuref">Scheduled Time</b>&#8201;&#8212;&#8201;The earliest day and time the action will be performed.</p>
+</li>
+<li>
+<p><b class="menuref">Succeeded</b>&#8201;&#8212;&#8201;Number of systems on which this action was successfully carried out.</p>
+</li>
+<li>
+<p><b class="menuref">Failed</b>&#8201;&#8212;&#8201;Number of systems on which this action has been tried and failed.</p>
+</li>
+<li>
+<p><b class="menuref">In Progress</b>&#8201;&#8212;&#8201;Number of systems on which this action is taking place.</p>
+</li>
+<li>
+<p><b class="menuref">Total</b>&#8201;&#8212;&#8201;Total number of systems on which this action has been scheduled.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_s3_sm_action_details">7. Action Details</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you click the name of an action, the <b class="menuref">Action Details</b>
+ page appears.
+This page is split into the following tabs.</p>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_action_details_details">7.1. Action Details &gt;  Details</h3>
+<div class="paragraph">
+<p>General information about the action.
+This is the first tab you see when you click an action.
+It displays the action type, scheduling administrator, earliest execution, and notes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Patch Advisory</div>
+<div class="paragraph">
+<p>Clicking the Patch Advisory takes you to the <b class="menuref">Patch Details</b>
+ page.
+The Patch Advisory appears only if the action is a patch.
+Refer to <a href="#_s3_sm_errata_details">[_s3_sm_errata_details]</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_action_details_completed">7.2. Action Details &gt; Completed Systems</h3>
+<div class="paragraph">
+<p>List of systems on which the action has been successfully performed.
+Clicking a system name displays its <b class="menuref">System Details</b>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a> for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_action_details_progress">7.3. Action Details &gt; In Progress Systems</h3>
+<div class="paragraph">
+<p>List of systems on which the action is now being carried out.
+To cancel an action, select the system by marking the appropriate check box and click the <span class="menuseq"><b class="menu">Unschedule Action</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Clicking a system name shows its menu:System Details[</b></span>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a> for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_action_details_failed">7.4. Action Details &gt; Failed Systems</h3>
+<div class="paragraph">
+<p>List of systems on which the action has failed.
+It can be rescheduled here.
+Clicking a system name takes you to its <b class="menuref">System Details</b>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a> for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s4_sm_action_details_packagelist">7.5. Action Details &gt; Package List</h3>
+<div class="paragraph">
+<p>List of packages are associated with this action.
+The tab appears only if the action is package related (installation, removal, etc.).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

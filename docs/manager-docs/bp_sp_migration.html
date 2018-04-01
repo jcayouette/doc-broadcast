@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{susemgr} Server Migration</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">{susemgr} Server Migration</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/bp_sp_migration.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bp.sp.migration.sp">1. Service Pack Migration</a></li>
+<li><a href="#_sp.migration.postgresql">2. Upgrading PostgreSQL to Version 9.6</a></li>
+<li><a href="#_update.suse.manager">3. Updating {susemgr}</a></li>
+<li><a href="#_bp.sp.migration.version">4. Migrating {susemgr} version 3.0 to 3.1</a>
+<ul class="sectlevel2">
+<li><a href="#_bp.sp.migration.version.yast">4.1. Using {yast}</a></li>
+<li><a href="#_bp.sp.migration.version.zypper">4.2. Using zypper</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>You can upgrade the underlying operating system and also migrate {susemgr}
+server from one patch level to the other (SP migration) or from one version to the next.
+This works for migrating {susemgr}
+server 3.0 or version 3.1 to version {productnumber}
+.</p>
+</div>
+<div class="paragraph">
+<p>For migrating from version 2.1 to 3.0, see <a href="#_bp.chap.mgr.migration">[_bp.chap.mgr.migration]</a>.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sp.migration.sp">1. Service Pack Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SUSE Manager utilizes {sls}
+ 12 as its underlying operating system.
+Therefore Service Pack migration (for example, from version 12 SP1 to 12 SP3) may be performed in the same way as a typical SLES migration.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Upgrading PostgreSQL to Version 9.6 before Migrating to SLES12 SP3</div>
+<div class="paragraph">
+<p>Before migrating the underlying system to {sle}
+12 SP3 you must upgrade PostgreSQL to version 9.6.</p>
+</div>
+<div class="paragraph">
+<p>The migration needs PostgreSQL 9.4 and 9.6 installed in parallel and PostgreSQL 9.4 is only available in SLES 12 SP2.
+For more information, see <a href="#_sp.migration.postgresql">Upgrading PostgreSQL to Version 9.6</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>{suse}
+offers a graphical and command line tool for upgrading to a new service pack.
+Comprehensive documentation for executing service pack migration scenarios is located in the {sls}
+documentation chapter <a href="https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_update_sle.html" class="bare">https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_update_sle.html</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sp.migration.postgresql">2. Upgrading PostgreSQL to Version 9.6</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Migrating to SLES 12 SP3</div>
+<div class="paragraph">
+<p>{susemgr}
+Server 3.1 must <em>not</em> be migrated to SLES 12 SP3 before upgrading PostgreSQL to version 9.6.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The upgrade needs PostgreSQL 9.4 and 9.6 installed in parallel.
+PostgreSQL 9.4 is only available in SLES 12 SP2.</p>
+</div>
+<div class="paragraph">
+<p>Before starting the update, prepare an up-to-date backup of your database.</p>
+</div>
+<div class="paragraph">
+<p>On existing installations of {susemgr}
+Server 3.1 you must run</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+/usr/lib/susemanager/bin/pg-migrate.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to migrate from PostgreSQL 9.4 to version 9.6.
+During the upgrade your {susemgr}
+Server will not be accessible.</p>
+</div>
+<div class="paragraph">
+<p>The upgrade will create a copy of the database under <code class="path">/var/lib/pgsql</code>
+ and thus needs sufficient disk space to hold two copies (9.4 and 9.6) of the database.
+Because it does a full copy of the database, it also needs considerable time depending on the size of the database and the IO speed of the storage system.</p>
+</div>
+<div class="paragraph">
+<p>If your system is short on disk space you can do an fast, in-place upgrade by running</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+/usr/lib/susemanager/bin/pg-migrate.sh fast</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fast upgrade usually only takes minutes and no additional disk space.
+However, in case of failure you need to restore the database from a backup.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://wiki.microfocus.com/index.php?title=SUSE_Manager/postgresql96" class="bare">https://wiki.microfocus.com/index.php?title=SUSE_Manager/postgresql96</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_update.suse.manager">3. Updating {susemgr}</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides information on performing regular updates and running a <code class="command">spacewalk-schema-upgrade</code> on your postgresql database.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Updating {susemgr}</div>
+<ol class="arabic">
+<li>
+<p>As the {rootuser} user stop Spacewalk services:</p>
+<div class="listingblock">
+<div class="content">
+<pre>spacewalk-service stop</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply latest patches with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>zypper patch</pre>
+</div>
+</div>
+</li>
+<li>
+<p>You will be informed if a new database schema was included in the latest patch. Ensure the database is started with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>rcpostgresql start</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Perform the upgrade with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>spacewalk-schema-upgrade</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start Spacewalk services again with:</p>
+<div class="listingblock">
+<div class="content">
+<pre>spacewalk-service start</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Restart of Services and Applications</div>
+Services affected by a package update are not automatically restarted after an update.
+You need to restart these services manually to avoid potential failures.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You may use <code class="command">zypper ps</code> to check for any applications which may be using old code.
+Restart these applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sp.migration.version">4. Migrating {susemgr} version 3.0 to 3.1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The migration can either be done with the Online Migration tool ({yast}
+) or with the Zypper command line tool.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Reduce Installation Size</div>
+<div class="paragraph">
+<p>When performing the migration, {yast}
+will install all recommended packages.
+Especially in the case of custom minimal installations, this may increase the installation size of the system significantly.</p>
+</div>
+<div class="paragraph">
+<p>To change this default behavior and allow only required packages, adjust <code class="path">/etc/zypp/zypp.conf</code>
+ and set the following variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>solver.onlyRequires = true
+installRecommends=false # or commented</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This changes the behavior of all package operations, such as the installation of patches or new packages.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_bp.sp.migration.version.yast">4.1. Using {yast}</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Checking PostgreSQL Version</div>
+<div class="paragraph">
+<p>Before migrating to SLES 12 SP3, check whether PostgreSQL is already updated to version 9.6.
+For more information, see <a href="#_sp.migration.postgresql">Upgrading PostgreSQL to Version 9.6</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To perform the migration with {yast}
+, use the <b class="menuref">Online Migration</b>
+ tool:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Migrating using {yast}</div>
+<ol class="arabic">
+<li>
+<p>If you are logged into a GNOME session running on the machine you are going to update, switch to a text console. Running the update from within a GNOME session is not recommended. This does not apply when being logged in from a remote machine (unless you are running a VNC session with GNOME).</p>
+</li>
+<li>
+<p>Start in {yast}<span class="menuseq"><b class="menu">System</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Online Migration</b></span> (<code class="command">yast2 migration</code>). {yast} will show possible migration targets with detailed summaries.</p>
+<div class="paragraph">
+<p>In case of trouble, resolve the following issues first:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the <b class="menuref">Online Migration</b> is not available, install the <span class="package">yast2-migration</span> package and its dependencies. Restart {yast} , otherwise the newly installed module will not be shown in the control center.</p>
+</li>
+<li>
+<p>If there are &#8220;old&#8221; online updates available for installation, the migration tool will warn and ask to install them now before starting the actual migration. It is recommended to install all updates before proceeding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If more than one migration target is available for your system, select one from the list. In case you are still on {sls} 12 SP1 or SP2, SLES 12 will be upgraded to SP2 or SP3, while selecting <b class="menuref">SUSE Manager Server 3.1</b> as a migration target.</p>
+<div class="imageblock">
+<div class="content">
+<img src="yast_migration_target31.png" alt="yast migration target31">
+</div>
+<div class="title">Figure 1. {yast}: Select the Migration Target <a id="_fig_migration_summary"></a></div>
+</div>
+</li>
+<li>
+<p>Update the {susemgr} database schema (<code class="command">spacewalk-schema-upgrade</code>).</p>
+</li>
+<li>
+<p>Make sure {susemgr} is up and running (<code class="command">spacewalk-service start</code>).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After finishing the migration procedure {susemgr}
+ 3.1 on {sls}
+ 12 (SP2 or) SP3 is available to be used.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bp.sp.migration.version.zypper">4.2. Using zypper</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Checking PostgreSQL Version</div>
+<div class="paragraph">
+<p>Before migrating to SLES 12 SP3, check whether PostgreSQL is already updated to version 9.6.
+For more information, see <a href="#_sp.migration.postgresql">Upgrading PostgreSQL to Version 9.6</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To perform the migration with Zypper on the command-line, use the <code class="command">zypper migration</code> subcommand tool:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Migrating using <code class="command">zypper migration</code></div>
+<ol class="arabic">
+<li>
+<p>If you are logged into a GNOME session running on the machine you are going to update, switch to a text console. Running the update from within a GNOME session is not recommended. This does not apply when being logged in from a remote machine (unless you are running a VNC session with GNOME).</p>
+</li>
+<li>
+<p>The <code class="command">zypper migration</code> subcommand show possible migration targets and a summary:</p>
+<div class="listingblock">
+<div class="content">
+<pre>#
+zypper migration
+Executing 'zypper  refresh'
+
+Repository 'SLES12-SP1 12.1-0' is up to date.
+Repository 'SLES12-SP1-Pool' is up to date.
+Repository 'SLES12-SP1-Updates' is up to date.
+Repository 'SUSE-Manager-Server-3.0-Pool' is up to date.
+Repository 'SUSE-Manager-Server-3.0-Updates' is up to date.
+All repositories have been refreshed.
+
+Executing 'zypper  --no-refresh patch-check --updatestack-only'
+
+Loading repository data...
+Reading installed packages...
+0 patches needed (0 security patches)
+
+Available migrations:
+
+    1 | SUSE Linux Enterprise Server 12 SP3 x86_64
+        SUSE Manager Server 3.1 x86_64
+
+    2 | SUSE Linux Enterprise Server 12 SP3 x86_64
+        SUSE Manager Server 3.0 x86_64 (already installed)
+
+    3 | SUSE Linux Enterprise Server 12 SP2 x86_64
+        SUSE Manager Server 3.1 x86_64
+
+    4 | SUSE Linux Enterprise Server 12 SP2 x86_64
+        SUSE Manager Server 3.0 x86_64 (already installed)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case of trouble, resolve the following issues first:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the <code class="command">migration</code> subcommand is not available install the <span class="package">zypper-migration-plugin</span> package and its dependencies.</p>
+</li>
+<li>
+<p>If there are &#8220;old&#8221; online updates available for installation, the migration tool will warn and ask to install them now before starting the actual migration. It is recommended to install all updates before proceeding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If more than one migration target is available for your system, select one from the list (specify the number). In case you are still on {sls} 12 SP1 or SP2, SLES 12 will be upgraded to (SP2 or) SP3, while selecting <b class="menuref">SUSE Manager Server 3.1</b> as a migration target.</p>
+</li>
+<li>
+<p>Read the notification and update the {susemgr} database schema as described (<code class="command">spacewalk-schema-upgrade</code>).</p>
+</li>
+<li>
+<p>Make sure {susemgr} is up and running (<code class="command">spacewalk-service start</code>).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After finishing the migration procedure {susemgr}
+ 3.1 on {sls}
+ 12 (SP2 or) SP3 is available to be used.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in bp_sp_migration.adoc - include::bp_sec_mgr_21_migration.adoc[leveloffset=1]</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

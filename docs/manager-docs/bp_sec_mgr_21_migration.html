@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{susemgr} Migration from Version 2.1 to Version 3</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">{susemgr} Migration from Version 2.1 to Version 3</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/bp_sec_mgr_21_migration.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The migration from {susemgr}
+ 2.1 to {susemgr}
+ 3 works quite the same as a migration from Red Hat Satellite to {susemgr}
+.
+The migration happens from the original machine to a new one.
+There is no in-place migration.
+While this has the drawback that you temporarily need two machines, it also has the advantage that the original machine will remain fully functional in case something goes wrong.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Migration Process</div>
+<div class="paragraph">
+<p>The whole process may be tricky, so it is strongly advised that the migration is done by an experienced consultant.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Given the complexity of the product, the migration is an &#8220;all-or-nothing&#8221;
+ procedure{mdash}
+if something goes wrong you will need to start all over.
+Error handling is very limited.
+Nevertheless it should work more or less out of the box if all the steps are carefully executed as documented.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Time-Consuming Operation</div>
+<div class="paragraph">
+<p>The migration involves dumping the whole database on the source machine and restoring it on the target machine.
+Also all of the channels and packages need to be copied to the new machine, so expect the whole migration to take several hours,</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.prereq">Prerequisites</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Latest Updates</div>
+<div class="paragraph">
+<p>The source machine needs to run {susemgr}
+ 2.1 with all the latest updates applied.
+Before starting the migration process, make sure that the machine is up to date and all updates have been installed sucessfully.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Only machines running with the embedded PostgreSQL database may be migrated in one go.
+For the migration of an Oracle based installation, a two-step migration is required: First the installation needs to get migrated from Oracle to PostgreSQL (by means of a separate tool) and afterwards the migration to {susemgr}
+ 3 can be performed as documented here.</p>
+</div>
+<div class="paragraph">
+<p>{susemgr}
+ 3 does no longer support {ncc}
+but only SCC ({scc}
+). Therefore, you can migrate a machine only after it has been switched to SCC.
+The migration script will check if the installation has already been switched to SCC and will terminate if this is not the case.
+Switch to SCC on the source machine and repeat the migration.
+During migration the database from the source machine needs to get dumped and this dump needs to be temporarily stored on the target system.
+The dump gets compressed with <code class="command">gzip</code> using the default compression options (maximum compression only yields about 10% of space savings but costs a lot of runtime); so check the disk usage of the database with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+du -sch /var/lib/pgsql/data</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will ensure that you have at least 30 % of this value available in <code class="path">/var/spacewalk/tmp</code>
+.</p>
+</div>
+<div class="paragraph">
+<p>These values from a test migration should aid in illustrating space requirements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>suma21:/var/lib/pgsql#
+du -sch data
+1,8G    data
+1,8G    total
+suma21:/var/spacewalk/tmp#
+ls -lh susemanager.dmp.gz
+-rw-r--r-- 1 root root 506M Jan 12 14:58 susemanager.dmp.gz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a small test installation; for bigger installations the ratio might be better (space required for the database dump might be less than 30%). The dump will be written to the directory <code class="path">/var/spacewalk/tmp</code>
+, the directory will be created if it does not exist yet.
+If you want the dump to be stored somewhere else, change the definition of the variable <code class="var">$TMPDIR</code> on the beginning of the script to suit your needs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.setup.target">Setup the Target Machine</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To prepare the target machine (with the example host name <code>suma30</code>) proceed as follows:</p>
+</div>
+<div id="_proc.mgr.migration.setup.target" class="olist arabic">
+<div class="title">Procedure: Setup Target Machine</div>
+<ol class="arabic">
+<li>
+<p>On the target machine install {sls} 12 SP2 including the extension product &#8220;{susemgr}&#8221; .</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Background Information on Required Target Machine</div>
+It is actually required to install version 12 SP2 on the target machine.
+On that version you will upgrade the PostgreSQL database from version_9.4 to 9.6.
+For more information about the PostgreSQL upgrade, see <a href="#_sp.migration.postgresql">[_sp.migration.postgresql]</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Initiate <code class="command">yast2 susemanager_setup</code> as you would normally do for an installation of {susemgr} .</p>
+<div class="paragraph">
+<p>For more information about installing {susemgr}
+, see <a href="#_sles.installation.within.kvm.jeos">[_sles.installation.within.kvm.jeos]</a>.</p>
+</div>
+</li>
+<li>
+<p>On the first {susemgr} setup screen, ensure that menu:Migrate a SUSE Manager compatible server[] is marked instead of menu:Set up SUSE Manager from scratch[] .</p>
+</li>
+<li>
+<p>On the second screen, enter the name of the source system as menu:Hostname of source SUSE Manager Server[] as well as the domain name. Also enter the database credentials of the source system.</p>
+</li>
+<li>
+<p>On the next screen, you will need to specify the IP address of the {susemgr} 3 target system. Normally this value should be pre-set to the correct value and you only should need to press kbd:[Enter] . Only in the case of multiple IP addresses you might need to specify the one that should be used during migration.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Faking the Host Name</div>
+During the migration process, the target system will fake its host name to be the same as the source system, this is necessary as the host name of a {susemgr}
+installation is vital and should not be changed once set.
+Therefore do not be confused when logging in to your systems during migration; they both will present you with the same host name.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Continue by following the normal installation steps.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Database Parameters</div>
+Specify the database parameters using the same database parameters as the source system is recommended.
+At least, using the the same database credentials as when creating the source or original {susemgr}
+database is mandatory.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Enter your SCC credentials.
+After all the data has been gathered, {yast}
+will terminate.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The actual migration will not start automatically but needs to be triggered manually as outlined in <a href="#_bp.sec.mgr.migration.performing">Performing the Migration</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.performing">Performing the Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A migration is performed by excecuting the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/usr/lib/susemanager/bin/mgr-setup -m</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command reads the data gathered during <a href="#_proc.mgr.migration.setup.target">Procedure: Setup Target Machine</a>, sets up {susemgr}
+ onto a new target machine and transfers all of the data from the source machine.
+As several operations need to be performed on the source machine via SSH, you will be prompted once for the root password of the source machine.
+A temporary SSH key named <code>migration-key</code> is created and installed on the source machine, so you need to give the {rootuser}
+ password only once.
+The temporary SSH key will be deleted after successful migration.
+Ideally, this is all you will need to do.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the size of the installation, the actual migration will take up to several hours.
+Once finished, you will be prompted to shutdown the source machine, re-configure the network of the target machine to use the same IP address and host name as the original machine and restart it.
+It should now be a fully functional replacement for your previous {susemgr}
+ 2.1 installation.
+The following numbers illustrate the runtime for dumping and importing a small database:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>14:53:37   Dumping remote database to /var/spacewalk/tmp/susemanager.dmp.gz on target system. Please wait...
+14:58:14   Database successfully dumped. Size is: 506M
+14:58:29   Importing database dump. Please wait...
+15:05:11   Database dump successfully imported.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this example dumping the database takes around five minutes to complete.
+Importing the dump onto the target system will take an additional seven minutes.
+For big installations this can take up to several hours.
+You should also account for the time it takes to copy all the package data to the new machine.
+Depending on your network infrastructure and hardware, this can also take a significant amount of time.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.speedup">Speeding up the Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A complete migration can consume a lot of time.
+This is caused by the amount of data that must be copied.
+Total migration time can be greatly decreased by eliminating the need to copy data prior to performing the migration (for example, channels, packages, auto-install images, and any additional data). You can gather all data via {yast}
+by running the command <code class="command">mgr-setup -r</code>.</p>
+</div>
+<div class="paragraph">
+<p>Executing <code class="command">mgr-setup -r</code> will copy the data from the old server to the new one.
+This command may be run at any time and your current server will remain fully functional.
+Once the migration has been initiated only data changed since running <code class="command">mgr-setup -r</code> will need to be transferred which will significantly reduces downtime.</p>
+</div>
+<div class="paragraph">
+<p>On large installations transfering the database (which involves dumping the database onto the source machine and then importing the dump onto the target system) will still take some time.
+During the database transfer no write operations should occurr therefore the migration script will shutdown running {susemgr}
+database services running on the source machine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.pkg.extern">Packages on External Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some installations may store the package data on external storage (for example, NFS mount on <code class="path">/var/spacewalk/packages</code>
+). You do not need to copy this data to the new machine.
+Edit the script located in <code class="path">/usr/lib/susemanager/bin/mgr-setup</code>
+ and remove the respective <code class="command">rsync</code> command (located around line 345).</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Mounting External Storage</div>
+<div class="paragraph">
+<p>Make sure your external storage is mounted on the new machine before starting the system for the first time.
+Analogue handling for <code class="path">/srv/www/htdocs/pub</code>
+ if appropriate.</p>
+</div>
+<div class="paragraph">
+<p>In general, all needed files and directories, not copied by the migration tool, should be copied to the new server manually.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.trouble">Troubleshooting a Broken {webui} after Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible that the {webui}
+may break during migration.
+This behavior is not a bug, but a browser caching issue.
+The new machine has the same host name and IP address as the old machine.
+This duplication can confuse some Web browsers.
+If you experience this issue reload the page.
+For example, in Firefox pressing the key combination kbd:[Ctrl+F5]
+ should resume normal functionality.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.sec.mgr.migration.example">Example Session</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the output of a typical migration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>suma30#
+/usr/lib/susemanager/bin/mgr-setup -m
+  Filesystem type for /var/spacewalk is ext4 - ok.
+  Open needed firewall ports...
+  Migration needs to execute several commands on the remote machine.
+  Please enter the root password of the remote machine.
+Password:
+  Remote machine is SUSE Manager
+  Remote system is already migrated to SCC. Good.
+  Shutting down remote spacewalk services...
+  Shutting down spacewalk services...
+  Stopping Taskomatic...
+  Stopped Taskomatic.
+  Stopping cobbler daemon: ..done
+
+  Stopping rhn-search...
+  Stopped rhn-search.
+  Stopping MonitoringScout ...
+  [ OK ]
+  Stopping Monitoring ...
+  [ OK ]
+  Shutting down osa-dispatcher: ..done
+  Shutting down httpd2 (waiting for all children to terminate) ..done
+  Shutting down Tomcat (/usr/share/tomcat6)
+  ..done
+  Terminating jabberd processes...
+        Stopping router ..done
+        Stopping sm ..done
+        Stopping c2s ..done
+        Stopping s2s ..done
+  Done.
+  CREATE ROLE
+  * Loading answer file: /root/spacewalk-answers.
+  ** Database: Setting up database connection for PostgreSQL backend.
+  ** Database: Populating database.
+  ** Database: Skipping database population.
+  * Configuring tomcat.
+  * Setting up users and groups.
+  ** GPG: Initializing GPG and importing key.
+  * Performing initial configuration.
+  * Configuring apache SSL virtual host.
+  ** /etc/apache2/vhosts.d/vhost-ssl.conf has been backed up to vhost-ssl.conf-swsave
+  * Configuring jabberd.
+  * Creating SSL certificates.
+  ** Skipping SSL certificate generation.
+  * Deploying configuration files.
+  * Setting up Cobbler..
+  * Setting up Salt Master.
+  11:26:47   Dumping remote database. Please wait...
+  11:26:50   Database successfully dumped.
+  Copy remote database dump to local machine...
+  Delete remote database dump...
+  11:26:50   Importing database dump. Please wait...
+  11:28:55   Database dump successfully imported.
+  Schema upgrade: [susemanager-schema-2.1.50.14-3.2.devel21] -&gt; [susemanager-schema-3.0.5-5.1.develHead]
+  Searching for upgrade path to: [susemanager-schema-3.0.5-5.1]
+  Searching for upgrade path to: [susemanager-schema-3.0.5]
+  Searching for upgrade path to: [susemanager-schema-3.0]
+  Searching for start path:  [susemanager-schema-2.1.50.14-3.2]
+  Searching for start path:  [susemanager-schema-2.1.50.14]
+  The path: [susemanager-schema-2.1.50.14] -&gt; [susemanager-schema-2.1.50.15] -&gt; [susemanager-schema-2.1.51] -&gt; [susemanager-schema-3.0]
+  Planning to run schema upgrade with dir '/var/log/spacewalk/schema-upgrade/schema-from-20160112-112856'
+  Executing spacewalk-sql, the log is in [/var/log/spacewalk/schema-upgrade/schema-from-20160112-112856-to-susemanager-schema-3.0.log].
+(248/248) apply upgrade [schema-from-20160112-112856/99_9999-upgrade-end.sql]        e-suse-channels-to-public-channel-family.sql.postgresql]
+  The database schema was upgraded to version [susemanager-schema-3.0.5-5.1.develHead].
+  Copy files from old SUSE Manager...
+  receiving incremental file list
+  ./
+  packages/
+
+  sent 18 bytes  received 66 bytes  168.00 bytes/sec
+  total size is 0  speedup is 0.00
+  receiving incremental file list
+  ./
+  RHN-ORG-TRUSTED-SSL-CERT
+  res.key
+  rhn-org-trusted-ssl-cert-1.0-1.noarch.rpm
+  suse-307E3D54.key
+  suse-39DB7C82.key
+  suse-9C800ACA.key
+  bootstrap/
+  bootstrap/bootstrap.sh
+  bootstrap/client-config-overrides.txt
+  bootstrap/sm-client-tools.rpm
+
+  sent 189 bytes  received 66,701 bytes  44,593.33 bytes/sec
+  total size is 72,427  speedup is 1.08
+  receiving incremental file list
+  ./
+  .mtime
+  lock
+  web.ss
+  config/
+  config/distros.d/
+  config/images.d/
+  config/profiles.d/
+  config/repos.d/
+  config/systems.d/
+  kickstarts/
+  kickstarts/autoyast_sample.xml
+  loaders/
+  snippets/
+  triggers/
+  triggers/add/
+  triggers/add/distro/
+  triggers/add/distro/post/
+  triggers/add/distro/pre/
+  triggers/add/profile/
+  triggers/add/profile/post/
+  triggers/add/profile/pre/
+  triggers/add/repo/
+  triggers/add/repo/post/
+  triggers/add/repo/pre/
+  triggers/add/system/
+  triggers/add/system/post/
+  triggers/add/system/pre/
+  triggers/change/
+  triggers/delete/
+  triggers/delete/distro/
+  triggers/delete/distro/post/
+  triggers/delete/distro/pre/
+  triggers/delete/profile/
+  triggers/delete/profile/post/
+  triggers/delete/profile/pre/
+  triggers/delete/repo/
+  triggers/delete/repo/post/
+  triggers/delete/repo/pre/
+  triggers/delete/system/
+  triggers/delete/system/post/
+  triggers/delete/system/pre/
+  triggers/install/
+  triggers/install/post/
+  triggers/install/pre/
+  triggers/sync/
+  triggers/sync/post/
+  triggers/sync/pre/
+
+  sent 262 bytes  received 3,446 bytes  7,416.00 bytes/sec
+  total size is 70,742  speedup is 19.08
+  receiving incremental file list
+  kickstarts/
+  kickstarts/snippets/
+  kickstarts/snippets/default_motd
+  kickstarts/snippets/keep_system_id
+  kickstarts/snippets/post_delete_system
+  kickstarts/snippets/post_reactivation_key
+  kickstarts/snippets/redhat_register
+  kickstarts/snippets/sles_no_signature_checks
+  kickstarts/snippets/sles_register
+  kickstarts/snippets/sles_register_script
+  kickstarts/snippets/wait_for_networkmanager_script
+  kickstarts/upload/
+  kickstarts/wizard/
+
+  sent 324 bytes  received 1,063 bytes  2,774.00 bytes/sec
+  total size is 12,133  speedup is 8.75
+  receiving incremental file list
+  ssl-build/
+  ssl-build/RHN-ORG-PRIVATE-SSL-KEY
+  ssl-build/RHN-ORG-TRUSTED-SSL-CERT
+  ssl-build/index.txt
+  ssl-build/index.txt.attr
+  ssl-build/latest.txt
+  ssl-build/rhn-ca-openssl.cnf
+  ssl-build/rhn-ca-openssl.cnf.1
+  ssl-build/rhn-org-trusted-ssl-cert-1.0-1.noarch.rpm
+  ssl-build/rhn-org-trusted-ssl-cert-1.0-1.src.rpm
+  ssl-build/serial
+  ssl-build/d248/
+  ssl-build/d248/latest.txt
+  ssl-build/d248/rhn-org-httpd-ssl-archive-d248-1.0-1.tar
+  ssl-build/d248/rhn-org-httpd-ssl-key-pair-d248-1.0-1.noarch.rpm
+  ssl-build/d248/rhn-org-httpd-ssl-key-pair-d248-1.0-1.src.rpm
+  ssl-build/d248/rhn-server-openssl.cnf
+  ssl-build/d248/server.crt
+  ssl-build/d248/server.csr
+  ssl-build/d248/server.key
+  ssl-build/d248/server.pem
+
+  sent 380 bytes  received 50,377 bytes  101,514.00 bytes/sec
+  total size is 90,001  speedup is 1.77
+  SUSE Manager Database Control. Version 1.5.2
+  Copyright (c) 2012 by SUSE Linux Products GmbH
+
+  INFO: Database configuration has been changed.
+  INFO: Wrote new general configuration. Backup as /var/lib/pgsql/data/postgresql.2016-01-12-11-29-42.conf
+  INFO: Wrote new client auth configuration. Backup as /var/lib/pgsql/data/pg_hba.2016-01-12-11-29-42.conf
+  INFO: New configuration has been applied.
+  Database is online
+  System check finished
+
+  ============================================================================
+  Migration complete.
+  Please shut down the old SUSE Manager server now.
+  Reboot the new server and make sure it uses the same IP address and hostname
+  as the old SUSE Manager server!
+
+  IMPORTANT: Make sure, if applicable, that your external storage is mounted
+  in the new server as well as the ISO images needed for distributions before
+  rebooting the new server!
+  ============================================================================</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Patches</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Patches</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/reference-webui-patches.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ref.webui.patches.relevant">1. Relevant</a></li>
+<li><a href="#_ref.webui.patches.all">2. All</a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sm_apply_errata">2.1. Applying Patches</a></li>
+<li><a href="#_s3_sm_errata_details">2.2. Patch Details</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.patches.search">3. Advanced Search</a></li>
+<li><a href="#_ref.webui.patches.manage">4. Manage Patches</a>
+<ul class="sectlevel2">
+<li><a href="#_s3_sm_errata_create">4.1. Creating and Editing Patches</a></li>
+<li><a href="#_s3_sm_errata_assign_packs">4.2. Assigning Packages to Patches</a></li>
+<li><a href="#_s3_sm_errata_publish">4.3. Publishing Patches</a></li>
+<li><a href="#_s3_sm_errata_published">4.4. Published</a></li>
+<li><a href="#_s3_sm_errata_unpublished">4.5. Unpublished</a></li>
+</ul>
+</li>
+<li><a href="#_ref.webui.patches.clone">5. Cloning Patches</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Patches</b>
+ menu from the left bar helps tracking the availability and application of patches to your managed systems.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Patches</b></span>
+ page displays all or relevant patches for at least one of your managed systems that have not been applied yet.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Receiving Patches for Your System</div>
+<div class="paragraph">
+<p>To receive an e-mail when patches are issued for your system, go to <span class="menuseq"><b class="menu">Overview</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Your Preferences</b></span>
+ and select <b class="menuref">Receive email notifications</b>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>{suse}
+distinguishes three types of patches: security updates, bug fix updates, and enhancement updates.
+Each patch consists of a summary of the problem and solution, including the RPM packages fixing the problem.</p>
+</div>
+<div class="paragraph">
+<p>Icons are used to identify the three types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="fa-shield.svg" alt="Security Alert"></span>&#8201;&#8212;&#8201;Security Updates available, <em>strongly</em> recommended</p>
+</li>
+<li>
+<p><span class="image"><img src="fa-bug.svg" alt="Bug Fix Alert"></span>&#8201;&#8212;&#8201;Bug Fix Updates available, recommended</p>
+</li>
+<li>
+<p><span class="image"><img src="spacewalk-icon-enhancement.svg" alt="Enhancement Alert"></span>&#8201;&#8212;&#8201;Enhancement Updates available, optional</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A summary of each patch is provided in list form displaying its type, advisory ID, synopsis (with the severity as a textual prefix in case of security updates, such as &#8220;critical&#8221;
+, &#8220;important&#8221;
+, &#8220;moderate&#8221;
+, or &#8220;low&#8221;
+), number of affected systems in your network, and date updated.</p>
+</div>
+<div class="paragraph">
+<p>In addition, you may view patches by product line at the following location: <a href="http://download.suse.com/patch/psdb/" class="bare">http://download.suse.com/patch/psdb/</a>.
+For more information on security updates, see <a href="https://www.suse.com/support/security/" class="bare">https://www.suse.com/support/security/</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.patches.relevant">1. Relevant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Relevant</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ patches page displays a customized list of patches applying to your registered systems.
+image::patches_relevant_patches.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Clicking an <span class="menuseq"><b class="menu">Advisory</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ ID of a patch takes you to the menu:Details[</b></span>
+ page of the <span class="menuseq"><b class="menu">Patch Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+Clicking the number of associated systems takes you to the menu:Affected Systems[</b></span>
+ page of the <b class="menuref">Patch Details</b>
+ page.
+Refer to <a href="#_s3_sm_errata_details">Patch Details</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.patches.all">2. All</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">All</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ patches page displays a list of all patches released by {suse}</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">irrelevant of whether they apply to your registered systems or not.
+image::patches_all_patches.png[</b></span></p>
+</div>
+<div class="paragraph">
+<p>Like in the <span class="menuseq"><b class="menu">Relevant Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">clicking either menu:Advisory[</b></span>
+ or the number of systems affected takes you to related tabs of the <b class="menuref">Patch Details</b>
+ page.
+Refer to <a href="#_s3_sm_errata_details">Patch Details</a> for more information.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_apply_errata">2.1. Applying Patches</h3>
+<div class="paragraph">
+<p>Patches include a list of updated packages.
+To apply patches to a system, the system must be entitled.</p>
+</div>
+<div class="paragraph">
+<p>Apply all applicable patches to a system by clicking <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Systems</b></span>
+ in the top and left navigation bars.
+Click the name of an entitled system.
+Then in the <span class="menuseq"><b class="menu">System Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page click the menu:Software[Patches</b></span>
+ subtab.
+When the relevant patch list appears, click <span class="menuseq"><b class="menu">Select All</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ then menu:Apply Patches[</b></span>
+ on the bottom right-hand corner of the page.
+Only patches not scheduled, scheduled but failed, or canceled patches are listed.
+Pending updates are excluded.</p>
+</div>
+<div class="paragraph">
+<p>In addition, users with appropriate roles can apply patches using two other methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To apply a specific patch to one or more systems, locate it in the patch list and click the number of systems affected, which takes you to the <span class="menuseq"><b class="menu">Affected Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] page of the menu:Patch Details[</b></span> page. Select the individual systems to be updated and click the <span class="menuseq"><b class="menu">Apply Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] button. Double-check the systems to be updated on the confirmation page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then click the menu:Confirm[</b></span> button.</p>
+</li>
+<li>
+<p>To apply more than one patch to one or more systems, select the systems from the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] list. Click the menu:System Set Manager[</b></span> link in the left navigation bar, then click the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] tab. After ensuring the appropriate systems are selected</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Patches[</b></span> tab, select the patches to apply, and click the <span class="menuseq"><b class="menu">Apply Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] button. Schedule a date and time for the patch to be applied. Default is the current date. Click the menu:Confirm[</b></span> button. You can follow the progress of the patch application via the <b class="menuref">Pending Actions</b> list. Refer to <a href="#_ref.webui.schedule">[_ref.webui.schedule]</a> for more details.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use scheduled package installation, the packages or patches are installed via the {susemgr}
+daemon (<code class="command">rhnsd</code>). You must enable the {susemgr}
+ daemon on your systems.
+For more information about the {susemgr}
+ daemon, see <a href="#_bp.contact.methods.rhnsd">[_bp.contact.methods.rhnsd]</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following rules apply to patches:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each package is a member of one or more channels. If a selected system is not subscribed to a channel containing the package, the update will not be installed on that system.</p>
+</li>
+<li>
+<p>If a newer version of the package is already installed on the system, the update will not be installed.</p>
+</li>
+<li>
+<p>If an older version of the package is installed, the package will be upgraded.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_details">2.2. Patch Details</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>If you click the advisory of a patch in the <span class="menuseq"><b class="menu">Relevant</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ or menu:All[</b></span>
+ pages, its <b class="menuref">Patch Details</b>
+ page appears.
+This page is further divided into the following tabs:</p>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_errata_details_details">2.2.1. <span class="menuseq"><b class="menu">Patch Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Details[</b></span></h4>
+<div class="paragraph">
+<p>This subtab displays the patch report issued by {suse}
+.
+It provides a synopsis of the patch first (with the severity as a textual prefix in case of security updates, such as &#8220;critical&#8221;
+, &#8220;important&#8221;
+, &#8220;moderate&#8221;
+, or &#8220;low&#8221;
+), issue date, and any update dates.
+This is followed by a description of the patch and the steps required to resolve the issue.</p>
+</div>
+<div class="paragraph">
+<p>Below the <span class="menuseq"><b class="menu">Affected Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ label</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">all channels that contain the affected package are listed.
+Clicking a channel name displays the menu:Packages[</b></span>
+ subtab of the <b class="menuref">Channel Details</b>
+ page for that channel.
+Refer to <a href="#_s3_sm_channel_details">[_s3_sm_channel_details]</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Security updates list the specific vulnerability as tracked by <a href="http://cve.mitre.org" class="bare">http://cve.mitre.org</a>.
+This information is listed below the <b class="menuref">CVEs</b>
+ label.</p>
+</div>
+<div class="paragraph">
+<p>OVAL is an open vulnerability and assessment language promoted by Mitre, <a href="http://oval.mitre.org" class="bare">http://oval.mitre.org</a>.
+Clicking the link below the <b class="menuref">Oval</b>
+ label downloads this information to your system.
+More useful are the {suse}
+ Update Advisories at <a href="https://www.suse.com/support/update/" class="bare">https://www.suse.com/support/update/</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_errata_details_packages">2.2.2. <span class="menuseq"><b class="menu">Patch Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Packages[</b></span></h4>
+<div class="paragraph">
+<p>This page provides links to each of the updated RPMs by channel.
+Clicking the name of a package displays its <b class="menuref">Package Details</b>
+ page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s4_sm_errata_details_systems">2.2.3. <span class="menuseq"><b class="menu">Patch Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">menu:Affected Systems[</b></span></h4>
+<div class="paragraph">
+<p>This page lists systems affected by the patches.
+You can apply updates here.
+(See <a href="#_s3_sm_apply_errata">Applying Patches</a>.) Clicking the name of a system takes you to its <b class="menuref">System Details</b>
+ page.
+Refer to <a href="#_s3_sm_system_details">[_s3_sm_system_details]</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>To determine whether an update has been scheduled, refer to the <span class="menuseq"><b class="menu">Status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ column in the affected systems table.
+Possible values are: N/A</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Pending</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Picked Up</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Completed</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">and Failed.
+This column identifies only the last action related to a patch.
+For example</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">if an action fails and you reschedule it</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">this column shows the status of the patch as pending with no mention of the previous failure.
+Clicking a status other than menu:N/A[</b></span>
+ takes you to the <span class="menuseq"><b class="menu">Action Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page.
+This column corresponds to one on the menu:Patch[</b></span>
+ tab of the <b class="menuref">System Details</b>
+ page.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.patches.search">3. Advanced Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <span class="menuseq"><b class="menu">Patches Search</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ page allows you to search through patches by specific criteria.
+image::patches_advanced_search_patches.png[</b></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><b class="menuref">All Fields</b>&#8201;&#8212;&#8201;Search patches by synopsis, description, topic, or solution.</p>
+</li>
+<li>
+<p><b class="menuref">Patch Advisory</b>&#8201;&#8212;&#8201;The name or the label of the patch.</p>
+</li>
+<li>
+<p><b class="menuref">Package Name</b>&#8201;&#8212;&#8201;Search particular packages by name:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kernel</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Results will be grouped by advisory.
+For example, searching for 'kernel' returns all package names containing the string <code>kernel</code>, grouped by advisory.</p>
+</div>
+</li>
+<li>
+<p><b class="menuref">CVE</b>&#8201;&#8212;&#8201;The name assigned to the security advisory by the Common Vulnerabilities and Exposures (CVE) project at <a href="http://cve.mitre.org" class="bare">http://cve.mitre.org</a>. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre>CVE-2006-4535</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To filter patch search results, check or uncheck the boxes next to the type of advisory:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug Fix Advisory&#8201;&#8212;&#8201;Patches that fix issues reported by users or discovered during development or testing.</p>
+</li>
+<li>
+<p>Security Advisory&#8201;&#8212;&#8201;Patches fixing a security issue found during development, testing, or reported by users or a software security clearing house. A security advisory usually has one or more CVE names associated with each vulnerability found in each package.</p>
+</li>
+<li>
+<p>Product Enhancement Advisory&#8201;&#8212;&#8201;Patches providing new features, improving functionality, or enhancing performance of a package.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.patches.manage">4. Manage Patches</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Custom patches enable organizations to issue patch alerts for the packages in their custom channels, schedule deployment and manage patches across organizations.
+image::patches_published_patches.png[]</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the organization is using both {susemgr}
+and {susemgr}
+Proxy server, then manage patches only on the {susemgr}
+server since the proxy servers receive updates directly from it.
+Managing patches on a proxy in this combined configuration risks putting your servers out of synchronization.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_create">4.1. Creating and Editing Patches</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>To create a custom patch alert, proceed as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the top navigation bar, click <span class="menuseq"><b class="menu">Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then select menu:Manage Patches[</b></span> on the left navigation bar. On the <span class="menuseq"><b class="menu">Patches Management</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click menu:Create Patch[</b></span> .</p>
+<div class="imageblock">
+<div class="content">
+<img src="patches_create_patch.png" alt="patches create patch">
+</div>
+</div>
+</li>
+<li>
+<p>Enter a label for the patch in the <b class="menuref">Advisory</b> field, ideally following a naming convention adopted by your organization.</p>
+</li>
+<li>
+<p>Complete all remaining required fields, then click the <b class="menuref">Create Patch</b> button. View standard SUSE Alerts for examples of properly completed fields.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Patch management distinguishes between published and unpublished patches.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="menuseq"><b class="menu">Published</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] : this page displays the patch alerts the organization has created and disseminated. To edit an existing published patch, follow the steps described in &lt;&lt;_s3_sm_errata_create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">. To distribute the patch, click menu:Send Notification[</b></span> in the <span class="menuseq"><b class="menu">Send Patch Mail</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] section on the top of the menu:Patch Details[</b></span> page. The patch alert is sent to the administrators of all affected systems.</p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Unublished</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] : this page displays the patch alerts your organization has created but not yet distributed. To edit an existing unpublished patch, follow the steps described in &lt;&lt;_s3_sm_errata_create</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">. To publish the patch, click menu:Publish Patch[</b></span> on the top-right corner of the <span class="menuseq"><b class="menu">Patch Details</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] page. Confirm the channels associated with the patch and click the menu:Publish Patch[</b></span> button, now in the lower-right corner. The patch alert is moved to the <b class="menuref">Published</b> page awaiting distribution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>{susemgr}
+administrators can also create patches by cloning an existing one.
+Cloning preserves package associations and simplifies issuing patches.
+See <a href="#_ref.webui.patches.clone">Cloning Patches</a> for instructions.</p>
+</div>
+<div class="paragraph">
+<p>To edit an existing patch alert&#8217;s details, click its advisory on the <span class="menuseq"><b class="menu">Patches Management</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">make the changes in the appropriate fields of the menu:Details[</b></span>
+ tab, and click the <span class="menuseq"><b class="menu">Update Patch</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ button.
+Click the menu:Channels[</b></span>
+ tab to alter the patch&#8217;s channel association.
+Click the <b class="menuref">Packages</b>
+ tab to view and modify its packages.</p>
+</div>
+<div class="paragraph">
+<p>To delete patches, select their check boxes on the <span class="menuseq"><b class="menu">Patches Management</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">click the menu:Delete Patches[</b></span>
+ button, and confirm the action.
+Deleting published patches might take a few minutes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_assign_packs">4.2. Assigning Packages to Patches</h3>
+<div class="paragraph">
+<p>To assign packages to patches, proceed as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select a patch, click the <span class="menuseq"><b class="menu">Packages</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] tab</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then the menu:Add[</b></span> subtab.</p>
+</li>
+<li>
+<p>To associate packages with the patch being edited, select the channel from the <span class="menuseq"><b class="menu">View</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] drop-down box that contains the packages and click menu:View[</b></span> . Packages already associated with the patch being edited are not displayed. Selecting <b class="menuref">All managed packages</b> presents all available packages.</p>
+</li>
+<li>
+<p>After clicking <b class="menuref">View</b> , the package list for the selected option appears. Note that the page header still lists the patch being edited.</p>
+</li>
+<li>
+<p>In the list, select the check boxes of the packages to be assigned to the edited patch and click <b class="menuref">Add Packages</b> at the bottom-right corner of the page.</p>
+</li>
+<li>
+<p>A confirmation page appears with the packages listed. Click <span class="menuseq"><b class="menu">Confirm</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] to associate the packages with the patch. The menu:List/Remove[</b></span> subtab of the <b class="menuref">Managed Patch Details</b> page appears with the new packages listed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When packages are assigned to a patch, the patch cache is updated to reflect the changes.
+This update is delayed briefly so that users may finish editing a patch before all the changes are made available.
+To initiate the changes to the cache manually, follow the directions to <b class="menuref">commit the changes immediately</b>
+ at the top of the page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_publish">4.3. Publishing Patches</h3>
+<div class="paragraph">
+<p>After adding packages to the patch, the patch needs to be published to be disseminated to affected systems.
+Follow this procedure to publish patches:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the top navigation bar, click <span class="menuseq"><b class="menu">Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then menu:Manage Patches[Unpublished</b></span> on the left navigation bar to see all the unpublished patches listed.</p>
+</li>
+<li>
+<p>Click the patch <b class="menuref">Advisory</b> name to open the patch details pages.</p>
+</li>
+<li>
+<p>On the patch details page, click <b class="menuref">Publish Patch</b> . A confirmation page appears that will ask you to select which channels you want to make the patch available in. Choose the relevant channels.</p>
+</li>
+<li>
+<p>At the bottom of the page, click <span class="menuseq"><b class="menu">Publish Patch</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] . The patch published will now appear on the menu:Published[</b></span> page of <b class="menuref">Manage Patches</b> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_published">4.4. Published</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Here all published patches are listed.
+It is possible to perform the following actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To create a patch, click <b class="menuref">Create Patch</b> .</p>
+</li>
+<li>
+<p>To delete patches, select them first and then click <b class="menuref">Delete Patches</b> .</p>
+</li>
+<li>
+<p>Click an Advisory name to open the patch details page.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3_sm_errata_unpublished">4.5. Unpublished</h3>
+<div class="paragraph">
+<p>Here all published patches are listed.
+It is possible to perform the same actions as with published patches.
+For more information, see <a href="#_s3_sm_errata_published">Published</a>.
+Additionally, on a patch details page, you can click <b class="menuref">Publish Patch</b>
+ for publishing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.patches.clone">5. Cloning Patches</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Patches can be cloned for easy replication and distribution as part of {susemgr}
+.
+image::patches_clone_patches.png[]</p>
+</div>
+<div class="paragraph">
+<p>Only patches potentially applicable to one of your channels can be cloned.
+Patches can be applicable to a channel if that channel was cloned from a channel to which the patch applies.
+To access this functionality, click <span class="menuseq"><b class="menu">Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ on the top navigation bar</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then menu:Clone Patches[</b></span>
+ on the left navigation bar.</p>
+</div>
+<div class="paragraph">
+<p>On the <span class="menuseq"><b class="menu">Clone Patches</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+ page</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the channel containing the patch from the menu:View[</b></span>
+ drop-down box and click <span class="menuseq"><b class="menu">View</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">]
+.
+When the patch list appears</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">select the check box of the patch to be cloned and click menu:Clone Patch[</b></span>
+.
+A confirmation page appears with the patch listed.
+Click <b class="menuref">Confirm</b>
+ to finish cloning.</p>
+</div>
+<div class="paragraph">
+<p>The cloned patch appears in the <b class="menuref">Unpublished</b>
+ patch list.
+Verify the patch text and the packages associated with that patch, then publish the patch so it is available to users in your organization.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>
