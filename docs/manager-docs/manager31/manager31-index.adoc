@@ -9,8 +9,3 @@ layout: page
 == Available Documents
 
 <<book-mgr-getting-started.adoc#getting-started, Getting Started>>
-
-* Placeholder Installation and Deployment
-* Placeholder Reference Manual
-* Placeholder Administration Guide
-* Placeholder White Papers
