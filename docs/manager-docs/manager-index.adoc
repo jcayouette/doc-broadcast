@@ -5,6 +5,8 @@ layout: page
 :showtitle:
 :page-title:
 :page-description: SUSE Manager Documentation
+:src32: manager32
+:src31: manager31
 
 == Documentation Editions
 
@@ -14,7 +16,7 @@ This page contains links to upstream/downstream builds from the SUSE Manager doc
 
 Latest builds are triggered automatically once a pull request has been accepted by a SUSE Technical Writer. Keep in mind these documents are living works in progress and will contain bugs and incomplete sections and procedures. Use of these development documents is performed at _your own risk_.
 
-<<MAIN-manager.adoc#main-manager, SUSE Manager 3.2>>
+<<manager32/MAIN-manager.adoc#main-manager, SUSE Manager 3.2>>
 
 <<manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
 
