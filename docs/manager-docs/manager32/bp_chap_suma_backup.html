@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Database Backup and Restoration</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Database Backup and Restoration</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager32/bp_chap_suma_backup.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#files_and_directories_requiring_backup">1. Files and Directories Requiring Backup</a></li>
+<li><a href="#_config.suma.database.smdba">2. Administering The SUSE Manager Database with (smdba)</a></li>
+<li><a href="#_config_smdb.start_and_stop">3. Starting and Stopping the Database</a></li>
+<li><a href="#_config_smdb.create_backup">4. Backing up the Database</a></li>
+<li><a href="#_smdba.automatic.backup.with.cron">5. Automatic Backup with cron</a></li>
+<li><a href="#_config_smdb.restore_backup">6. Restoring a Database Backup</a></li>
+<li><a href="#_config_smdb.archivelog">7. Archive Log Settings</a></li>
+<li><a href="#_config_smdb.spaces">8. Retrieving an Overview of Occupied Database Space</a></li>
+<li><a href="#moving_the_database">9. Moving the Database</a></li>
+<li><a href="#recovering_from_a_crashed_root_partition">10. Recovering from a Crashed Root Partition</a></li>
+<li><a href="#database_connection_information">11. Database Connection Information</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Backing up SUSE Manager can be done in several ways.
+Regardless of the method chosen, the associated database also needs to be backed up.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="files_and_directories_requiring_backup">1. Files and Directories Requiring Backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following files and directories should be backed up:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The location of your SUSE Manager database, for example: <code class="path">/var/spacewalk/db-backup</code></p>
+</li>
+<li>
+<p><code class="path">/etc/sysconfig/rhn/</code></p>
+</li>
+<li>
+<p><code class="path">/etc/rhn/</code></p>
+</li>
+<li>
+<p><code class="path">/etc/sudoers</code></p>
+</li>
+<li>
+<p><code class="path">/srv/www/htdocs/pub/</code></p>
+</li>
+<li>
+<p><code class="path">/var/spacewalk/packages/1</code> (/2, /3, for each additional organization using custom RPMs)</p>
+</li>
+<li>
+<p><code class="path">/root/.gnupg/</code></p>
+</li>
+<li>
+<p><code class="path">/root/ssl-build/</code></p>
+</li>
+<li>
+<p><code class="path">/etc/dhcp.conf</code></p>
+</li>
+<li>
+<p><code class="path">/srv/tftpboot/</code></p>
+</li>
+<li>
+<p><code class="path">/etc/cobbler/</code></p>
+</li>
+<li>
+<p><code class="path">/var/lib/cobbler/</code></p>
+</li>
+<li>
+<p><code class="path">/var/lib/rhn/kickstarts/</code></p>
+</li>
+<li>
+<p><code class="path">/srv/www/cobbler</code></p>
+</li>
+<li>
+<p><code class="path">/root/.ssh</code> (Backup is required when using ssh tunnel or ssh push. Keep in mind if you need to reinstall the server and you do not have a copy of the id-susemanager key saved, you must perform a mgr-ssh-push-init again for all clients.lsls)</p>
+</li>
+<li>
+<p>Directories containing your custom data (scripts, kickstart profiles, autoyast, custom rpms, etc) should be included in the backup.</p>
+</li>
+<li>
+<p>If you have mountpoints to ISO&#8217;s needed for distributions, these ISOs and the <code class="path">/etc/fstab</code> should be part of your backup.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>{suse}
+recommends backing up the entire <code class="path">/var/spacewalk/</code>
+ tree.
+In case of failure, this will save you lengthy download/resync time.
+Since <code class="path">/var/spacewalk/</code>
+ (more specifically <code class="path">/var/spacewalk/packages/NULL/</code>
+) is primarily a duplicate of the package repository, it can be regenerated with <code class="command">mgr-sync</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you are running SUSE Manager in a disconnected setup <code class="path">/var/spacewalk/</code><em>must</em> be backed up.</p>
+</div>
+<div class="paragraph">
+<p>Backing up only these files and directories requires reinstalling the {susemgr}
+RPMs and re-registering {susemgr}
+.
+In addition, packages need to be resynchronized using the <code class="command">mgr-sync</code> tool.
+Finally, you have to reinstall the <code class="path">/root/ssl-build/rhn-org-httpd-ssl-key-pair-MACHINE_NAME-VER-REL.noarch.rpm</code>
+.</p>
+</div>
+<div class="paragraph">
+<p>Another method is to back up all the files and directories mentioned above but reinstall the {susemgr}
+without re-registering it.
+During the installation, cancel or skip the registration and SSL certificate generation sections.</p>
+</div>
+<div class="paragraph">
+<p>The most comprehensive method is to back up the entire machine.
+This saves time in downloading and reinstalling but requires additional disk space and backup time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Regardless of the backup method used, when restoring {susemgr}
+from a backup, you must run the following command to schedule the recreation of search indexes the next time the <code class="command">rhn-search</code> service is started:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>rcrhn-search cleanindex</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config.suma.database.smdba">2. Administering The SUSE Manager Database with (smdba)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{susemgr}
+provides the <code class="command">smdba</code> command for managing the installed database.</p>
+</div>
+<div class="paragraph">
+<p>The <code class="command">smdba</code> command works on local databases only, not remote.
+This utility allows you to do several administrative tasks like backing up and restoring the database, everything from creating, verifying, and restoring backups to obtain the database status and restart the database if necessary.
+The <code class="command">smdba</code> command supports postgres databases.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Running <code class="command">smdba</code> Relies on <code class="command">sudo</code>Enablement</div>
+<div class="paragraph">
+<p>Running <code class="command">smdba</code> relies on proper <code class="command">sudo</code> configuration. <code class="command">sudo</code> allows you to invoke <code class="command">smdba</code> as a regular user and thus, you are save from executing unwanted system changes.</p>
+</div>
+<div class="paragraph">
+<p>For example, to allow the user <code class="username">admin</code>
+ (the &#8220;administrative UID&#8221;
+) to execute <code class="command">smdba</code> commands, and thus manipulating the underlying database with the &#8220;operative
+                    UID&#8221;
+, make sure something as follows is configured in <code class="path">/etc/sudoers</code>
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>admin   ALL=(postgres) /usr/bin/smdba</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With these settings <code class="username">admin</code>
+ user will be allowed to access the target database account (<code>oracle</code> or <code>postgres</code>).</p>
+</div>
+<div class="paragraph">
+<p>For configuring <code class="command">sudo</code> and its security implications, see the <code>sudo</code> and <code>sudoers</code> manpages and the extensive comments in the <code class="path">/etc/sudoers</code>
+ configuration file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Find basic information about <code class="command">smdba</code> in the <code>smdba</code> manpage.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Restart Spacewalk Services When Connection is Lost</div>
+<div class="paragraph">
+<p>If you have stopped or restarted the database, Spacewalk services connections may be interrupted.
+In such a case, execute the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>``spacewalk-service``
+restart</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config_smdb.start_and_stop">3. Starting and Stopping the Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are three commands to start, stop, or retrieve the status of the database.
+These commands work with both databases.
+Use the following commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-status
+Checking database core...       online</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-stop
+Stopping the SUSE Manager database...
+Stopping core:         done</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-status
+Checking database core...       offline</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-start
+Starting core...       done</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config_smdb.create_backup">4. Backing up the Database</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">smdba</dt>
+<dd>
+<p>The <code class="command">smdba</code> command performs a <em>continuous
+archiving backup</em>.</p>
+</dd>
+<dt class="hdlist1">Hot Backup</dt>
+<dd>
+<p>The term hot backup refers to a backup performed when both the database and SUSE Manager are running.</p>
+</dd>
+<dt class="hdlist1">Cold Backup</dt>
+<dd>
+<p>The term cold backup refers to a backup performed when both the database and SUSE Manager services are shutdown.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Database Backup Space Requirements</div>
+<div class="paragraph">
+<p>For both a running/hot database backup or an automated backup of the database using cron you must have at least 3 times the amount of space of the current database.
+Check current database space usage with <code class="command">df -h</code> on <code class="path">/var/lib/pgsql/</code>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To perform a hot database backup for postgresql, do the following:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Performing a Hot Backup</div>
+<ol class="arabic">
+<li>
+<p>Allocate permanent space on your remote storage, which you use for general backups (NAS, iSCSI target, etc.). For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre>/var/spacewalk/db-backup</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Backup on NFS Share</div>
+A backup from the SUSE Manager server is not required when the mount point for <code class="path">/var/spacewalk</code>
+ is on an NFS share.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This directory should always be the same and never change.
+It will be a permanent target to store new backups and restore from it during a disaster recovery.</p>
+</div>
+</li>
+<li>
+<p>Create a directory with the correct permissions in your target directory, e.g., with using <code class="command">sudo</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>sudo -u postgres mkdir /var/spacewalk/db-backup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, as {rootuser}
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>install -d -o postgres /var/spacewalk/db-backup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mkdir /var/spacewalk/db-backup
+chown postgres:postgres /var/spacewalk/db-backup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you want to create a backup for the first time, run:</p>
+<div class="listingblock">
+<div class="content">
+<pre>``smdba``
+backup-hot --enable=on --backup-dir=/var/spacewalk/db-backup</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command performs a restart of the postgresql database.
+If you want to renew the basic backup, use the same command.</p>
+</div>
+</li>
+<li>
+<p>Perform the hot database backup:</p>
+<div class="listingblock">
+<div class="content">
+<pre>smdba backup-hot --backup-dir=/var/spacewalk/db-backup
+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the command exits without any errors, find the backup files in your <code class="path">/mnt/backup/database</code>
+directory.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Performing a Cold Backup</div>
+<div class="paragraph">
+<p>When using smdba, you should never require a cold backup.
+You may perform a cold backup once after initial SUSE Manager installation and configuration. {suse}
+recommends creating a full-backup once a month or weekly and an additional incremental backup for single days.
+Moving <code class="path">/var/spacewalk</code>
+ to an NFS share that is centrally backed-up, will save you alot of time when a restore is required.
+The NFS share may also be used during the migration from SUSE Manager 2.1 to SUSE Manager 3.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_smdba.automatic.backup.with.cron">5. Automatic Backup with cron</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is important to ensure your SUSE Manager database is backed up within a regularly defined schedule.
+You can do this with a cron job.
+The following procedure describes this process.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Database Backup Space Requirements</div>
+<div class="paragraph">
+<p>For all forms of database backup (hot, cold, or automated via cron) you must have at least 3 times the amount of space of the current database.
+Check current database space usage with <code class="command">df -h</code> on <code class="path">/var/spacewalk/</code>
+.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Automatic Backup with cron</div>
+<ol class="arabic">
+<li>
+<p>If you have not created a backup directory do so now:</p>
+<div class="listingblock">
+<div class="content">
+<pre># mkdir /var/spacewalk/db-backup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set the correct user and rights permissions to the directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre># chown -R postgres:postgres /var/spacewalk/db-backup</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># chmod 700 /var/spacewalk/db-backup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the following line to the cron job at <code class="path">/etc/cron.d/db-backup-mgr</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre>0 2 * * * root /usr/bin/smdba backup-hot --enable=on --backup-dir=/var/spacewalk/db-backup</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config_smdb.restore_backup">6. Restoring a Database Backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use <code class="command">smdba backup-restore</code> to restore to an earlier point in time.
+To restore the backup, proceed as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Shutdown the database:</p>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-stop</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the restore process:</p>
+<div class="listingblock">
+<div class="content">
+<pre>smdba backup-restore start</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Restart the database:</p>
+<div class="listingblock">
+<div class="content">
+<pre>smdba db-start</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run <code class="command">spacewalk-data-fsck</code> to check if there are differences between the RPMs and the database.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The above steps can be combined with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba backup-restore force</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case it will select the most recent backup and purge the rest.
+Every time you create a new backup, it also purges the previous backups.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Restoring the Most Recent Backup Only</div>
+<div class="paragraph">
+<p>Because <code class="command">smdba</code> makes automatic running database backups, it allows restoration of only the most recent backup, which includes merging of current archive logs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config_smdb.archivelog">7. Archive Log Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In {susemgr}
+with an embedded database, archive logging is enabled by default.
+This feature allows the database management tool <code class="command">smdba</code> to perform hot backups.</p>
+</div>
+<div class="paragraph">
+<p>With archive log enabled, even more data is stored on the hard disk:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Postgresql maintains a limited number of archive logs. Using the default configuration, approx. 64 files with a size of 16 MiB are stored.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Creating a user and syncing the channels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SLES12-SP2-Pool-x86_64</p>
+</li>
+<li>
+<p>SLES12-SP2-Updates-x86_64</p>
+</li>
+<li>
+<p>SLE-Manager-Tools12-Pool-x86_64-SP2</p>
+</li>
+<li>
+<p>SLE-Manager-Tools12-Updates-x86_64-SP2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Postgresql will generate an additional ~1 GB of data.
+So it is important to think about a backup strategy and create a backups in a regular way.</p>
+</div>
+<div class="paragraph">
+<p>Archive logs are stored at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="path">/var/lib/pgsql/data/pg_xlog/</code> (postgresql)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_config_smdb.spaces">8. Retrieving an Overview of Occupied Database Space</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Database administrators may use the subcommand <code class="command">space-overview</code> to get a report about occupied table spaces, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba space-overview
+SUSE Manager Database Control. Version 1.5.2
+Copyright (c) 2012 by SUSE Linux Products GmbH
+
+
+Tablespace  | Size (Mb) | Avail (Mb) | Use %
+------------+-----------+------------+------
+postgres    | 7         | 49168      | 0.013
+susemanager | 776       | 48399      | 1.602</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following command is available for Postgresql.
+For a more detailed report, use the <code class="command">space-tables</code> subcommand.
+It lists the table and its size, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>smdba space-tables
+SUSE Manager Database Control. Version 1.5.2
+Copyright (c) 2012 by SUSE Linux Products GmbH
+
+
+Table                                 | Size
+--------------------------------------+-----------
+public.all_primary_keys               | 0 bytes
+public.all_tab_columns                | 0 bytes
+public.allserverkeywordsincereboot    | 0 bytes
+public.dblink_pkey_results            | 0 bytes
+public.dual                           | 8192 bytes
+public.evr_t                          | 0 bytes
+public.log                            | 32 kB
+...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="moving_the_database">9. Moving the Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to move the database to another location.
+For example if your database storage space is running low.
+The following procedure will guide you through moving the database to a new location for use by SUSE Manager.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Moving the Database</div>
+<ol class="arabic">
+<li>
+<p>The default storage location for {susemgr} is: <code class="path">/var/lib/pgsql/</code> . You would like to move it, for example to: <code class="path">/storage/postgres/</code> . To begin, stop the running database with:</p>
+<div class="listingblock">
+<div class="content">
+<pre># rcpostgresql stop</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Shutdown running spacewalk services with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># spacewalk-service stop</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the current working directory structure with the following syntax:</p>
+<div class="listingblock">
+<div class="content">
+<pre>cp [OPTION]... SOURCE... DIRECTORY</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>using the <code class="option">-a, --archive</code> option.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># cp -ar /var/lib/pgsql/ /storage/postgres/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will copy the contents of <code class="path">/var/lib/pgsql/</code>
+to <code class="path">/storage/postgres/pgsql/</code>
+.</p>
+</div>
+<div class="paragraph">
+<p>IMPORTANT:
+The contents of the /var/lib/pgsql needs to remain the same or the SUSE Manager database may malfunction.
+You also should ensure there is enough available disk space.</p>
+</div>
+</li>
+<li>
+<p>Mount the new database directory with:</p>
+<div class="listingblock">
+<div class="content">
+<pre># mount /storage/postgres/pgsql</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make sure ownership is <code>postgres:postgres</code> and not <code>root:root</code> by changing to the new directory and running the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>/var/lib/pgsql/ # cd /storage/postgres/pgsql/
+/storage/postgres/pgsql/ # l
+total 8
+drwxr-x---  4 postgres postgres   47 Jun  2 14:35 ./</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the new database mount location to your servers fstab by editing  <code class="path">etc/fstab</code> .</p>
+</li>
+<li>
+<p>Start the database with:</p>
+<div class="listingblock">
+<div class="content">
+<pre># rcpostgresql start</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Start spacewalk-services with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># spacewalk-service start</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="recovering_from_a_crashed_root_partition">10. Recovering from a Crashed Root Partition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides guidance on restoring your server after its root partition has crashed.
+This section assumes you have setup your server similar to the procedure explained in Getting Started guide with separate partitions for the database and for channels mounted at <code class="path">/var/lib/pgsql</code>
+ and <code class="path">/var/spacewalk/</code>
+.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Recovering from a Crashed Root Partition</div>
+<ol class="arabic">
+<li>
+<p>Start by installing SLES12 SP2 and the SUSE Manager Extension. Do not mount the <code class="path">/var/spacewalk</code> and <code class="path">/var/lib/pgsql</code> partitions.</p>
+</li>
+<li>
+<p>Once installation of SUSE Manager has completed shutdown services with <code class="command">spacewalk-service shutdown</code> and the database with <code class="command">rcpostgresql stop</code>.</p>
+</li>
+<li>
+<p>Mount your <code class="path">/var/spacewalk</code> and <code class="path">/var/lib/pgsql</code> partitions and restore the directories listed in section one.</p>
+</li>
+<li>
+<p>Start SUSE Manager services and the database with <code class="command">spacewalk-services start</code> and <code class="command">rcpostgresql start</code></p>
+</li>
+<li>
+<p>SUSE Manager should now operate normally without loss of your database or synced channels.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="database_connection_information">11. Database Connection Information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The information for connecting to the SUSE Manager database is located in <code class="path">/etc/rhn/rhn.conf</code>
+:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>db_backend = postgresql
+db_user = susemanager
+db_password = susemanager
+db_name = susemanager
+db_host = localhost
+db_port = 5432
+db_ssl_enabled =</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

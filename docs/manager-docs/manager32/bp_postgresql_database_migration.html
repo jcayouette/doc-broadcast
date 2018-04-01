@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Postgresql Database Migration</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Postgresql Database Migration</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager32/bp_postgresql_database_migration.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bp.postgresql.database.migration.new.installations">1. New {susemgr} Installations</a></li>
+<li><a href="#_bp.postgresql.database.migrating.existing.installations">2. Migrating an Existing Installation</a></li>
+<li><a href="#performing_a_fast_migration">3. Performing a Fast Migration</a></li>
+<li><a href="#typical_migration_sample_session">4. Typical Migration Sample Session</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>{susemgr}
+3 uses postgresql database version 9.4.
+postgresql version 9.6 has been officially released for SLES 12 SP3.
+In the near future postgresql 9.6 will become the base version provided by {susemgr}
+.
+Currently version 9.4 is hardcoded into SUSE Manager, therefore when installing {susemgr}
+it will explicitly use this version.
+This chapter provides guidance on migrating an existing 9.4 database to 9.6 on your {susemgr}
+Server.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.postgresql.database.migration.new.installations">1. New {susemgr} Installations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once support for postgresql version 9.6 has been officially released for SUSE Manager, no action will be required for new installations.
+The {susemgr}
+extension will pick up the latest version during installation on SLES 12 SP3.
+This will be fully transparent to the user.
+Check the active postgresql version with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>suse-manager-example-srv:~ # psql --version
+psql (PostgreSQL) 9.6.3</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.postgresql.database.migrating.existing.installations">2. Migrating an Existing Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before migrating to the new database version, ensure SUSE Manager is fully patched to the latest version.
+You can check if the system is ready to use postgresql 9.6 by issuing the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>suma-test-srv:~ # rpm -q smdba
+smdba-1.5.8-0.2.3.1.x86_64</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Postgresql 9.6 requires smdba version 1.5.8 or higher</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Always create a database backup before performing a migration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>.
+The database migration begins by executing the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$&gt; /usr/lib/susemanager/bin/pg-migrate.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code class="path">pg-migrate.sh</code>
+ script will automatically perform the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop spacewalk services</p>
+</li>
+<li>
+<p>Shut down the running database</p>
+</li>
+<li>
+<p>Check if postgresql 9.6 is installed and install it if not already present</p>
+</li>
+<li>
+<p>Switch from postgresql 9.4 to postgresql 9.6 as the new default</p>
+</li>
+<li>
+<p>Initiates the database migration</p>
+</li>
+<li>
+<p>Creates a postgresql configuration file tuned for use by SUSE Manager (The reason for the latest version of smdba)</p>
+</li>
+<li>
+<p>Start both the database and spacewalk services</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please note that during the migration the data directory of the database is copied for use by the postgresql 9.6.
+This results in temporarily doubling the amount of required disk space.
+In case of a failure, the migration script will attempt a restore to the original state.
+After a successful migration, you may safely delete the old database directory (renamed to /var/lib/pgsql/data-pg94) to reclaim lost disk space.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="performing_a_fast_migration">3. Performing a Fast Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two negative aspects to performing a regular migration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You temporarily need double the disk space under <code class="path">/var/lib/pgsql</code></p>
+</li>
+<li>
+<p>Depending on the size of the database the migration can take up some time because the whole data directory needs to be copied.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is possible however to perform a <code>fast migration</code>.
+In this case you do not need the additional disk space as the database files will not be copied but hard linked.
+This also has the natural effect of greatly increasing the speed of the migration process The entire migration could be completed in less than one minute.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Keep in mind if a fast migration fails, database restoration will only be possible with a database backup.
+Only perform a fast migration if you have an availabel database backup.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Perform a fast migration with the following command (Ensure you have a database backup):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$&gt; /usr/lib/susemanager/bin/pg-migrate.sh fast</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typical_migration_sample_session">4. Typical Migration Sample Session</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A slow migration should provide you with the following output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>d235:~ # /usr/lib/susemanager/bin/pg-migrate.sh
+15:58:00   Shut down spacewalk services...
+Shutting down spacewalk services...
+Done.
+15:58:03   Checking postgresql version...
+15:58:03   Installing postgresql 9.6...
+Dienst 'SUSE_Linux_Enterprise_Server_12_SP2_x86_64' wird aktualisiert.
+Dienst 'SUSE_Manager_Server_3.1_x86_64' wird aktualisiert.
+Repository-Daten werden geladen...
+Installierte Pakete werden gelesen...
+Paketabhängigkeiten werden aufgelöst...
+
+Die folgenden 3 NEUEN Pakete werden installiert:
+  postgresql96 postgresql96-contrib postgresql96-server
+
+3 neue Pakete zu installieren.
+Gesamtgröße des Downloads: 5,7 MiB. Bereits im Cache gespeichert: 0 B. Nach der Operation werden zusätzlich 25,3 MiB belegt.
+Fortfahren? [j/n/...? zeigt alle Optionen] (j): j
+Paket postgresql96-9.6.3-2.4.x86_64 abrufen (1/3),   1,3 MiB (  5,1 MiB entpackt)
+Abrufen: postgresql96-9.6.3-2.4.x86_64.rpm [fertig]
+Paket postgresql96-server-9.6.3-2.4.x86_64 abrufen (2/3),   3,7 MiB ( 17,9 MiB entpackt)
+Abrufen: postgresql96-server-9.6.3-2.4.x86_64.rpm [.fertig]
+Paket postgresql96-contrib-9.6.3-2.4.x86_64 abrufen (3/3), 648,9 KiB (  2,2 MiB entpackt)
+Abrufen: postgresql96-contrib-9.6.3-2.4.x86_64.rpm [fertig]
+Überprüfung auf Dateikonflikte läuft: [......fertig]
+(1/3) Installieren: postgresql96-9.6.3-2.4.x86_64 [............fertig]
+(2/3) Installieren: postgresql96-server-9.6.3-2.4.x86_64 [............fertig]
+(3/3) Installieren: postgresql96-contrib-9.6.3-2.4.x86_64 [............fertig]
+15:58:08   Ensure postgresql 9.6 is being used as default...
+15:58:09   Successfully switched to new postgresql version 9.6.
+15:58:09   Create new database directory...
+15:58:09   Initialize new postgresql 9.6 database...
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.UTF-8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+15:58:12   Successfully initialized new postgresql 9.6 database.
+15:58:12   Upgrade database to new version postgresql 9.6...
+Performing Consistency Checks
+-----------------------------
+Checking cluster versions                                   ok
+Checking database user is the install user                  ok
+Checking database connection settings                       ok
+Checking for prepared transactions                          ok
+Checking for reg* system OID user data types                ok
+Checking for contrib/isn with bigint-passing mismatch       ok
+Checking for roles starting with 'pg_'                      ok
+Creating dump of global objects                             ok
+Creating dump of database schemas
+  postgres
+  susemanager
+  template1
+                                                            ok
+Checking for presence of required libraries                 ok
+Checking database user is the install user                  ok
+Checking for prepared transactions                          ok
+
+If pg_upgrade fails after this point, you must re-initdb the
+new cluster before continuing.
+
+Performing Upgrade
+------------------
+Analyzing all rows in the new cluster                       ok
+Freezing all rows on the new cluster                        ok
+Deleting files from new pg_clog                             ok
+Copying old pg_clog to new server                           ok
+Setting next transaction ID and epoch for new cluster       ok
+Deleting files from new pg_multixact/offsets                ok
+Copying old pg_multixact/offsets to new server              ok
+Deleting files from new pg_multixact/members                ok
+Copying old pg_multixact/members to new server              ok
+Setting next multixact ID and offset for new cluster        ok
+Resetting WAL archives                                      ok
+Setting frozenxid and minmxid counters in new cluster       ok
+Restoring global objects in the new cluster                 ok
+Restoring database schemas in the new cluster
+  postgres
+  susemanager
+  template1
+                                                            ok
+Copying user relation files
+  /var/lib/pgsql/data-pg94/base/12753/12710
+
+[...]
+
+  /var/lib/pgsql/data-pg94/base/1/12574
+                                                            ok
+Setting next OID for new cluster                            ok
+Sync data directory to disk                                 ok
+Creating script to analyze new cluster                      ok
+Creating script to delete old cluster                       ok
+
+Upgrade Complete
+----------------
+Optimizer statistics are not transferred by pg_upgrade so,
+once you start the new server, consider running:
+    ./analyze_new_cluster.sh
+
+Running this script will delete the old cluster's data files:
+    ./delete_old_cluster.sh
+15:58:51   Successfully upgraded database to postgresql 9.6.
+15:58:51   Tune new postgresql configuration...
+INFO: Database configuration has been changed.
+INFO: Wrote new general configuration. Backup as /var/lib/pgsql/data/postgresql.2017-07-26-15-58-51.conf
+INFO: Wrote new client auth configuration. Backup as /var/lib/pgsql/data/pg_hba.2017-07-26-15-58-51.conf
+INFO: Configuration has been changed, but your database is right now offline.
+Database is offline
+System check finished
+15:58:51   Successfully tuned new postgresql configuration.
+15:58:51   Starting spacewalk services...
+Starting spacewalk services...
+Done.</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

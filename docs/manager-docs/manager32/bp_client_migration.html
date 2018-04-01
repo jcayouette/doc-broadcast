@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Client Migration</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Client Migration</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager32/bp_client_migration.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bp.client.migration.sle12">1. Migrating {sls}  12 or later to version 12 SP3</a></li>
+<li><a href="#_bp.client.migration.sle11">2. Migrating {sle}  11 SPx to version 12 SP3</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>{susemgr}
+supports you with upgrading SLE clients to the latest version or SP (service pack).  Upgrading from SLE 12, SLE 12 SP1, or SP2 to SLE 12 SP3 or later (when available) is straight forward.
+Upgrading from SLE 11 SPx to SLE 12 SP3 or later (when available) requires some additional steps, but can be automated.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.client.migration.sle12">1. Migrating {sls}  12 or later to version 12 SP3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Existing {sls}
+ 12 clients (SLE) may be upgraded to SP3 with the <b class="menuref">SP Migration</b>
+ procedure provided by the {webui}
+.
+The same applies for other supported products based on {sle}
+ 12.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Synchronizing Target Channels</div>
+<div class="paragraph">
+<p>Before successfully initializing the product migration, you first must make sure that the migration target channels are completely mirrored.
+For the upgrade to {sle}
+ 12 SP3, at least the <code class="systemitem">SLES12-SP3-Pool</code>
+ base channel with the <code class="systemitem">SLE-Manager-Tools12-Pool</code>
+ child channel for your architecture is required.
+The matching update channels such as <code class="systemitem">SLE-Manager-Tools12-Updates</code>
+ and <code class="systemitem">SLES12-SP3-Updates</code>
+ are recommended.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Migrating {sle}12 Client to SP3</div>
+<ol class="arabic">
+<li>
+<p>Direct your browser to the {susemgr}{webui} where your client is registered, and login.</p>
+</li>
+<li>
+<p>On the <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">All</b></span> page select your client system from the table.</p>
+<div class="imageblock">
+<div class="content">
+<img src="sles_old_details_page.png" alt="sles old details page">
+</div>
+<div class="title">Figure 1. Client System Details Page <a id="_fig_sles_old_details"></a></div>
+</div>
+<div class="paragraph">
+<p>If there are <span class="menuseq"><b class="menu">Software Updates Available</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+in the menu:System Status[</b></span>
+notification install these updates first to avoid trouble during the migration process.</p>
+</div>
+</li>
+<li>
+<p>On the system&#8217;s detail page (<a href="#_fig_sles_old_details">[_fig_sles_old_details]</a>) select the <span class="menuseq"><b class="menu">Software</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] tab</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">then the menu:SP Migration[</b></span> tab (<a href="#_fig_sles_old_spmigr">[_fig_sles_old_spmigr]</a>).</p>
+<div class="imageblock">
+<div class="content">
+<img src="sles_old_details_spmigration.png" alt="sles old details spmigration">
+</div>
+<div class="title">Figure 2. SP Migration Page <a id="_fig_sles_old_spmigr"></a></div>
+</div>
+</li>
+<li>
+<p>On <a href="#_fig_sles_old_spmigr">[_fig_sles_old_spmigr]</a> you will see the installed products listed on your client. Select the wanted <b class="menuref">Target Products</b> (if there is more than one), which is <code class="systemitem">SUSE Linux Enterprise Server 12 SP3</code> .</p>
+<div class="imageblock">
+<div class="content">
+<img src="sles_migration_target.png" alt="sles migration target">
+</div>
+<div class="title">Figure 3. SP Migration Target <a id="_fig_sles_migration_target"></a></div>
+</div>
+<div class="paragraph">
+<p>Then confirm with <b class="menuref">Select Channels</b>
+.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="sles_migration_channels.png" alt="sles migration channels">
+</div>
+<div class="title">Figure 4. SP Migration Channels <a id="_fig_sles_migration_channels"></a></div>
+</div>
+</li>
+<li>
+<p>On <a href="#_fig_sles_migration_channels">[_fig_sles_migration_channels]</a>, <span class="menuseq"><b class="menu">Schedule Migration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] , and on &lt;&lt;_fig_sles_migration_schedule</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu"></b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">, menu:Confirm[</b></span> .</p>
+<div class="imageblock">
+<div class="content">
+<img src="sles_migration_schedule.png" alt="sles migration schedule">
+</div>
+<div class="title">Figure 5. Schedule Client System Migration <a id="_fig_sles_migration_schedule"></a></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Check the <b class="menuref">System Status</b>
+ on the system&#8217;s details when the migration is done.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="sles_migrated.png" alt="sles migrated">
+</div>
+<div class="title">Figure 6. Migrated Client System <a id="_fig_sles_migrated"></a></div>
+</div>
+<div class="paragraph">
+<p>If the <span class="menuseq"><b class="menu">System Status</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">]
+ notification does not report a successful migration but lists menu:Software Updates Available[</b></span>
+, install the update now and then check again.</p>
+</div>
+<div class="paragraph">
+<p>Finally, consider to schedule a reboot.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bp.client.migration.sle11">2. Migrating {sle}  11 SPx to version 12 SP3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{sle}
+ 11 SPx clients may be auto-upgraded to version 12 SP3 by means of {yast}
+auto-installation.
+The same applies for other supported products based on {sle}
+ 11.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Supported Upgrade Paths</div>
+<div class="paragraph">
+<p>For generally supported {sle}
+upgrade paths, see the {slea}{deploy}
+, chapter &#8220;Supported Upgrade Paths to SLE 12
+    SP3&#8221;
+: <a href="https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_update_sle_paths.html" class="bare">https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_update_sle_paths.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>As you can see, it is especially important that you migrate the client to the latest available SP first (December 2017: Version 11 SP4).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This procedure will work for &#8220;traditionally&#8221;
+ managed systems (system type <code>management</code>).  Using Salt it will not be available (system type <code>salt</code>).</p>
+</div>
+<div class="paragraph">
+<p>During the procedure, the machine reboots and performs the system upgrade.
+The process is controlled by {yast}
+and {ay}
+, not by plain <code class="command">zypper</code> commands.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only perform this migration on client systems managed by {susemgr}
+servers.
+For upgrading the {susemgr}
+server itself, see <a href="#_bp.sp.migration">[_bp.sp.migration]</a>.
+This is a viable method for major version upgrades such as an upgrade from {sle}
+ 11 to 12.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Perform the following steps:</p>
+</div>
+<div id="_bp.proc.client.migration.sle11.prep" class="paragraph">
+<div class="title">Procedure: System Upgrade Preparation</div>
+<p>NOTE:
+Make sure your {susemgr}
+and all the clients you want to upgrade have installed all available updates, including the {susemgr}
+tools.
+This is absolutely necessary, otherwise the system upgrade will fail.
+. On the {susemgr} server, create a local tree with the SLES 12 SP3 installation sources. This is needed for booting the clients into the installation or upgrade scenario. For example, download the ISO image of the DVD1 with the installation sources and mount the ISO image as <code class="path">/mnt/sles12-sp3</code> :</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mkdir /mnt/sles12-sp3
+mount -o loop`DVD1`
+.iso /mnt/sles12-sp3</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create an auto-installation distribution: For all distributions you want to perform a system upgrade, you need to create a SLE 12 SP3 distribution in {susemgr} . Use the following steps to create one:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In the {susemgr} Web interface, click <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Distributions</b></span> .</p>
+</li>
+<li>
+<p>Enter a <span class="menuseq"><b class="menu">Distribution Label</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] for your distribution (for example</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">use <code>summer2017</code>) as a label and specify the menu:Tree Path[</b></span> , which is the root directory of the {sls} 12 SP3 installation sources (for example, in this case <code class="path">/mnt/sles12-sp3</code> ). As the <b class="menuref">Base Channel</b> use the update target distribution &#8220;SLES12-SP3-Pool for x86_64&#8221; .</p>
+</li>
+<li>
+<p>Confirm with <b class="menuref">Create Autoinstallable Distribution</b> .</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about Autoinstallation, see <a href="#_ref.webui.systems.autoinst">[_ref.webui.systems.autoinst]</a>.</p>
+</div>
+</li>
+<li>
+<p>Create an activation key for your SLE 12 SP3 systems.</p>
+<div class="paragraph">
+<p>In order to switch from the old SLES 11 base channel to the new SLE 12 SP3 base channel, you need an activation key.
+Use the following steps to create it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Activation Keys</b></span> and click <b class="menuref">Create Key</b> .</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="_st.maintenance_migration.activationkey" class="ulist">
+<ul>
+<li>
+<p>Enter a description for your key.</p>
+</li>
+<li>
+<p>Enter a key or leave it blank to generate an automatic key.</p>
+</li>
+<li>
+<p>If you want to limit the usage, enter your value in the <b class="menuref">Usage</b> text field.</p>
+</li>
+<li>
+<p>Select the &#8220;SLES12-SP3-Pool for x86_64&#8221; base channel.</p>
+</li>
+<li>
+<p>Decide about <b class="menuref">Add-On System Types</b> .</p>
+</li>
+<li>
+<p>Click <b class="menuref">Create Activation Key</b> .</p>
+</li>
+<li>
+<p>Click the <span class="menuseq"><b class="menu">Child Channels</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] tab and select the required channels. Finish with menu:Update Key[</b></span> .</p>
+<div id="_st.maintenance_migration.upload" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upload an {ay} profile.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create an {ay} XML file according to <a href="#_ap_sample_autoinst_system_upgrade">[_ap_sample_autoinst_system_upgrade]</a>.</p>
+<div class="paragraph">
+<p>For more information about {ay}
+, see <a href="#_ref.webui.systems.autoinst.ay_intro">[_ref.webui.systems.autoinst.ay_intro]</a>.</p>
+</div>
+</li>
+<li>
+<p>Go to <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Autoinstallation</b></span> and click <b class="menuref">Upload Kickstart/Autoyast File</b> .</p>
+</li>
+<li>
+<p>Paste the XML content in the text area or select the file to upload. Click <b class="menuref">Create</b> .</p>
+</li>
+<li>
+<p>Add <code>autoupgrade=1</code> in the <span class="menuseq"><b class="menu">Kernel Options</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">] of the menu:Details[</b></span> tab and click <b class="menuref">Update</b> .</p>
+</li>
+<li>
+<p>Switch to the <b class="menuref">Variable</b> tab.</p>
+</li>
+<li>
+<p>Enter in the text field <code>registration_key=</code> and the key from <a href="#_st.maintenance_migration.activationkey">[_st.maintenance_migration.activationkey]</a>.</p>
+</li>
+<li>
+<p>Click <b class="menuref">Update Variables</b> .</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After you have successfully finished the previous procedure, everything is prepared for an upgrade.
+To upgrade a system, continue with <a href="#_bp.proc.client.migration.sle11.upgrade">Synchronizing Target Channels</a>.</p>
+</div>
+<div id="_bp.proc.client.migration.sle11.upgrade" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Synchronizing Target Channels</div>
+Before successfully initializing the product migration, make sure that the migration target channels are completely mirrored.
+For the upgrade to {sle}
+ 12 SP3, at least the <code class="systemitem">SLES12-SP3-Pool</code>
+ base channel with the <code class="systemitem">SLE-Manager-Tools12-Pool</code>
+ child channel for your architecture is required.
+The matching update channels such as <code class="systemitem">SLE-Manager-Tools12-Updates</code>
+ and <code class="systemitem">SLES12-SP3-Updates</code>
+ are recommended.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, watch progress in <code class="path">/var/log/rhn/reposync/sles12-sp3-pool-x86_64.log</code>
+.
+. Go to the system via <span class="menuseq"><b class="menu">Systems</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">] and click the name of the system. Then on the systems details page, click menu:Provisioning[Autoinstallation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Schedule</b></span> , and choose the {ay} XML profile you have uploaded in <a href="#_bp.proc.client.migration.sle11.prep">Procedure: System Upgrade Preparation</a>, <a href="#_st.maintenance_migration.upload">[_st.maintenance_migration.upload]</a>.
+. Click <b class="menuref">Schedule Autoinstallation and Finish</b> .</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>+
+Next time the machine asks the {susemgr}
+server for jobs, it will receive a reinstallation job which fetches kernel and initrd and writes a new <code class="path">/boot/grub/menu.lst</code>
+(containing pointers to the new kernel and initrd).</p>
+</div>
+<div class="paragraph">
+<p>+
+When the machine boots, it will use the {grub}
+configuration and boots the new kernel with its initrd.
+No PXE boot is required for this process.
+A shutdown of the machine is initiated as well, effectively 3 minutes after the job was fetched.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in bp_client_migration.adoc - include::bp_ex_autoinst_system-upgrade.adoc[leveloffset=1]</p>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

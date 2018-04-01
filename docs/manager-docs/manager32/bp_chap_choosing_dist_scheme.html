@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Managing Your Subscriptions</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Managing Your Subscriptions</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager32/bp_chap_choosing_dist_scheme.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_scc">1. {scc} (SCC)</a></li>
+<li><a href="#_disconnect_setup">2. Disconnected Setup with RMT or SMT (DMZ)</a>
+<ul class="sectlevel2">
+<li><a href="#_rmtool">2.1. {rmtool} (RMT) and Disconnected Setup (DMZ)</a></li>
+<li><a href="#_sub.mgr.tool">2.2. {smtool} (SMT) and Disconnected Setup (DMZ)</a></li>
+<li><a href="#_disconnect.mgr.update_repos">2.3. Updating Repositories on {susemgr} From Storage Media</a></li>
+<li><a href="#refreshing_data_on_the_storage_medium">2.4. Refreshing Data on the Storage Medium</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two methods for managing your subscriptions.
+Both methods access {scc}
+and provide specialized benefits.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Directly connecting to {scc} is the recommended default way of managing your {susemgr} server.</p>
+</li>
+<li>
+<p>If you have special network security requirements which do not allow access from your internal network to the internet then you can use {sls} 12 running the {rmtool} (RMT) or {smtool} (SMT).  These tools will contact {scc} from a system connected to the external network and obtain updates for your clients which you may then mount on your internal {susemgr} server. This is the preferred method for managing client systems within a highly secure network infrastructure.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scc">1. {scc} (SCC)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{scc}
+(SCC) is the central place to manage your purchased {suse}
+subscriptions, helping you access your update channels and get in contact with {suse}
+experts.
+The user-friendly interface gives you a centralized view of all your {suse}
+subscriptions, allowing you to easily find all subscription information you need.
+The improved registration provides faster access to your patches and updates. {scc}
+is also designed to provide a common platform for your support requests and feedback.
+Discover a new way of managing your {suse}
+account and subscriptions via one interface&#8212;&#8203;anytime, anywhere.
+For more information on using {scc}
+, see <a href="https://scc.suse.com/docs/userguide" class="bare">https://scc.suse.com/docs/userguide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_disconnect_setup">2. Disconnected Setup with RMT or SMT (DMZ)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If it is not possible to connect {susemgr}
+directly or via a proxy to the Internet, a disconnected setup in combination with RMT or SMT is the recommended solution.
+In this scenario, RMT or SMT stays in an &#8220;external&#8221;
+ network with a connection to {scc}
+ and synchronizes the software channels and repositories on a removable storage medium.
+Then you separate the storage medium from RMT or SMT, and mount it locally on your {susemgr}
+ server to read the updated data.</p>
+</div>
+<div class="paragraph">
+<div class="title">RMT</div>
+<p>The successor of SMT and currently runs on the following systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>{sle} 15 (when available)</p>
+</li>
+<li>
+<p>Temporarily (for testing only): 12 SP2, and 12 SP3</p>
+</li>
+<li>
+<p>Not officially supported: openSUSE Leap 42.2, Leap 42.3, and openSUSE Tumbleweed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>RMT allows you to provision updates for all of your devices running a product based on {sle}
+ 12 SPx and later as well as openSUSE Leap.</p>
+</div>
+<div class="paragraph">
+<div class="title">SMT</div>
+<p>The predecessor of RMT and is no longer actively developed.
+It runs on {sls}
+ 12 SPx and allows you to provision updates for products based on {sle}
+ 12 SPx and earlier.
+You will still need it, if you want to update {sle}
+ 11 clients.</p>
+</div>
+<div class="sect2">
+<h3 id="_rmtool">2.1. {rmtool} (RMT) and Disconnected Setup (DMZ)</h3>
+<div class="paragraph">
+<p>The following procedure will guide you through using RMT.
+It will work best with a dedicated RMT instance per {susemgr}
+.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: RMT: Fetching Repository Data from {scc}</div>
+<ol class="arabic">
+<li>
+<p>Configure RMT in the external network with SCC. For details about configuring RMT, see the official guide (when available).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Preparation work:</p>
+<div class="paragraph">
+<p>Run <code class="command">rmt-cli sync</code> to download available products and repositories data for your organization from SCC.</p>
+</div>
+<div class="paragraph">
+<p>Run <code class="command">rmt-cli products list --all</code> to see the list of products that are available for your organization.</p>
+</div>
+<div class="paragraph">
+<p>Run <code class="command">rmt-cli repos list --all</code> to see the list of all repositories available.</p>
+</div>
+</li>
+<li>
+<p>With <code class="command">rmt-cli repos enable</code> enable repositories you want to mirror.</p>
+</li>
+<li>
+<p>With <code class="command">rmt-cli products enable</code>enable products. For example, to enable {slsa} _15:</p>
+<div class="listingblock">
+<div class="content">
+<pre>rmt-cli product enable sles/15/x86_64</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using RMT, mirror all required repositories.</p>
+</li>
+<li>
+<p>Get the required JSON responses from SCC and save them as files at the specified path (for example, <code class="path">/mnt/usb</code> ).</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Write Permissions for RMT User</div>
+The directory being written to must be writeable for the same user as the rmt service.
+The rmt user setting is defined in the <code>cli</code> section of <code class="path">/etc/rmt.conf</code>
+.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Enter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+rmt-cli export data /mnt/usb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Export settings about repositories to mirror to the specified path (in this case, <code class="path">/mnt/usb</code> ); this command will create a <code class="path">repos.json</code> file there:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+rmt-cli export settings /mnt/usb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Mirror the repositories according to the settings in the <code class="path">repos.json</code> file to the specified path (in this case, <code class="path">/mnt/usb</code> ).</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+rmt-cli export repos /mnt/usb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Unmount the storage medium and carry it securely to your {susemgr} server.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>On the {susemgr}
+server, continue with <a href="#_disconnect.mgr.update_repos">Updating Repositories on {susemgr} From Storage Media</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub.mgr.tool">2.2. {smtool} (SMT) and Disconnected Setup (DMZ)</h3>
+<div class="paragraph">
+<p>The following procedure will guide you through using SMT.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: SMT: Fetching Repository Data from {scc}</div>
+<ol class="arabic">
+<li>
+<p>Configure SMT in the external network with SCC. For details about configuring SMT with {sle} 12, see <a href="https://www.suse.com/documentation/sles-12/book_smt/data/book_smt.html" class="bare">https://www.suse.com/documentation/sles-12/book_smt/data/book_smt.html</a>.</p>
+</li>
+<li>
+<p>Using SMT, mirror all required repositories.</p>
+</li>
+<li>
+<p>Create a &#8220;database replacement file&#8221; (for example, <code class="path">/tmp/dbrepl.xml</code> ).</p>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+smt-sync --createdbreplacementfile /tmp/dbrepl.xml</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="_pro.mgr.tool.mount.storage" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mount a removable storage medium such as an external hard disk or USB flash drive.</p>
+</li>
+<li>
+<p>Export the data to the mounted medium:</p>
+<div class="listingblock">
+<div class="content">
+<pre>smt-sync --todir /media/disk/
+smt-mirror --dbreplfile /tmp/dbrepl.xml --directory /media/disk \
+           --fromlocalsmt -L /var/log/smt/smt-mirror-export.log</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Write Permissions for SMT User</div>
+The directory being written to must be writeable for the same user as the smt daemon (user=smt). The smt user setting is defined in <code class="path">/etc/smt.conf</code>
+.
+You can check if the correct user is specified via the following command:
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{prompt.root}
+egrep '^smtUser' /etc/smt.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Keeping the Disconnected Server Up-to-date</div>
+<code class="command">smt-sync</code> also exports your subscription data.
+To keep {susemgr}
+ up-to-date with your subscriptions, you must frequently import and export this data.
+. Unmount the storage medium and carry it securely to your {susemgr} server.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On the {susemgr}
+server, continue with <a href="#_disconnect.mgr.update_repos">Updating Repositories on {susemgr} From Storage Media</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_disconnect.mgr.update_repos">2.3. Updating Repositories on {susemgr} From Storage Media</h3>
+<div class="paragraph">
+<p>This procedure will show you how to update the repositories on the {susemgr}
+server from the storage media.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure: Updating the {susemgr}Server from the Storage Medium</div>
+<ol class="arabic">
+<li>
+<p>Mount the storage medium on your {susemgr} server (for example, at <code class="path">/media/disk</code> ).</p>
+</li>
+<li>
+<p>Specify the local path on the {susemgr} server in <code>/etc/rhn/rhn.conf</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>server.susemanager.fromdir = /media/disk</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This setting is mandatory for {scc}
+and <code class="command">mgr-sync</code>.</p>
+</div>
+</li>
+<li>
+<p>Restart Tomcat:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>systemctl restart tomcat</pre>
+</div>
+</div>
+<div id="_pro.mgr.tool.sync" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before performing another operation on the server execute a full sync:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mgr-sync refresh   # SCC (fromdir in rhn.conf required!)</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code class="command">mgr-sync</code> can now be executed normally:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mgr-sync list channels
+mgr-sync add channel channel-label</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Data Corruption</div>
+The disk must always be available at the same mount point.
+To avoid data corruption, do not trigger a sync, if the storage medium is not mounted.
+If you have already added a channel from a local repository path, you will not be able to change its URL to point to a different path afterwards.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Up-to-date data is now available on your {susemgr}
+server and is ready for updating client systems.
+According to your maintenance windows or update schedule refresh the data on the storage medium with RMT or SMT.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="refreshing_data_on_the_storage_medium">2.4. Refreshing Data on the Storage Medium</h3>
+<div class="olist arabic">
+<div class="title">Procedure: Refreshing Data on the Storage Medium from RMT or SMT</div>
+<ol class="arabic">
+<li>
+<p>On your {susemgr} server, unmount the storage medium and carry it to your RMT or SMT.</p>
+</li>
+<li>
+<p>On your RMT or SMT system, continue with the synchronization step (either <a href="#_pro.rmtool.export.repos">[_pro.rmtool.export.repos]</a> or <a href="#_pro.mgr.tool.sync">[_pro.mgr.tool.sync]</a>).</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Data Corruption</div>
+The storage medium must always be available at the same mount point.
+To avoid data corruption, do not trigger a sync if the storage medium is not mounted.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This concludes using RMT or SMT with {susemgr}
+.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>

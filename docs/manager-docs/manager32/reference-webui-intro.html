@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Navigation</title>
+    <meta name="description" content="This site generates SUSE documentation using jekyll, asciidoc, travis and github.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/abbdb82656.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/coderay.css">
+    <link rel="stylesheet" href="assets/css/asciidoctor.css">
+
+    <div class="content"><nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #EDEDED;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SUSE Live Documentation (ALPHA)</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://jcayouette.github.io/suse-publisher/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+    </div>
+</nav>
+</div>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+
+<body class="landing-page">
+<!-- Top most navbar -->
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="post-header">
+    <h1 class="post-title-main">Navigation</h1>
+</div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
+<!-- If this does not work place post-content back in div and remove article -->
+<div class="post-content">
+    <!-- HACK enough for the demo lol -->
+    
+
+    
+      <a target="_blank" href="https://github.com/jcayouette/example-manager-docs/edit/master/docs/manager-docs/manager32/reference-webui-intro.adoc" class="btn btn-primary" role="button"> Edit me</a>
+    
+
+    <!-- page content -->
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The top bar provides access to commonly used tools and user settings.
+image::topnav.png[]</p>
+</div>
+<div class="paragraph">
+<p>The right part of the top bar contains functionalities such as a bell icon with a counter bubble of unread notification messages, optionally, an eye icon with a context legend to the current page, quick search, links to background information, user preferences, and sign off.
+On the left is the so-called breadcrumb.
+The breadcrumb tells you how far you are from the root of the menu and it brings you back to any previous step.
+image::home-overview-legend.png[]</p>
+</div>
+<div class="paragraph">
+<p>The left navigation bar is the menu to the {susemgr}{webui}
+from where you load the {webui}
+pages.
+If you click a the label of a menu entry you either open that page, or, if it is just a container of sub-entries, it expands this part of the menu tree without actually loading a page.
+To collaps all open parts of the menu system, click the menu:Clear Menus[]
+ button at the top of menu.
+If you click the small circle icon on the right of a menu label, the first available page of that menu entry will get loaded and displayed automatically.
+Enter a search string in the menu:Search page[]
+ field to find an entry of the menu tree.
+Available menu entries depend on the roles of the user.
+Only {susemgr}
+ Administrators see the menu:Images[]
+, menu:Users[]
+, and menu:Admin[]
+ entries.
+image::sidenav.png[]</p>
+</div>
+<div class="paragraph">
+<p>Some pages have tabs and subtabs.
+These tabs offer an additional layer of granularity in performing tasks for systems or users.
+The following example displays the tabs and subtabs available under menu:Systems[System Details]
+.
+Green bars underline active subtabs.
+image::subtabs.png[]</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Views Depending on User Roles</div>
+<div class="paragraph">
+<p>This guide covers the administrator user role level, some tabs, pages, and even whole categories described here may not be visible to you. Text markers are not used to identify which functions are available to each user role level.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.intro.categories_pages">Categories and Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This section summarizes all of the categories and primary pages (those linked from the left navigation bar) within the {susemgr}
+Web interface ({webui}
+). It does not list the many subpages, tabs and subtabs accessible from the individual pages.
+Each area of the Web interface is explained in detail later in this guide.
+image::sidenav.png[]</p>
+</div>
+<div class="paragraph">
+<div class="title">menu:Home[]</div>
+<p>Check your tasks and systems.
+View and manage your primary account information and get help.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Overview[]</div>
+<p>Obtain a quick overview of your account.
+This page notifies you if your systems need attention, provides a quick link directly to these systems, displays the most recent patch alerts for your account, and recently registered systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Your Account[]</div>
+<p>Update your personal profile, addresses, email, and credentials.
+Deactivate your account.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Your Preferences[]</div>
+<p>Indicate if you wish to receive email notifications about available patches for your systems.
+Set how many items are displayed in system and group lists.
+Set contents of the overview start page.
+Select your preferred CSV separator.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Locale Preferences[]</div>
+<p>Configure timezone.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Your Organization[]</div>
+<p>Update organization configuration and display organization trusts.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Systems[]</div>
+<p>Manage all your systems (including virtual guests) here.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Overview[]</div>
+<p>View a summary of your systems or system groups showing how many available patches each system has and which systems are entitled.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Systems[]</div>
+<p>Select and view subsets of your systems by specific criteria, such as Virtual Systems, Unprovisioned Systems, Recently Registered, Proxy, and Inactive.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:System Groups[]</div>
+<p>List your system groups.
+Create additional groups.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:System Set Manager[]</div>
+<p>Perform various actions on sets of systems, including scheduling patch updates, package management, listing and creating new groups, managing channel entitlements, deploying configuration files, schedule audits, apply system states, and check status.
+The availability of these actions depend on the system type.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Bootstrapping[]</div>
+<p>Bootstrap minion machines using SSH.
+Input SSH credentials and the activation key the selected system will use for its software sources.
+SUSE Manager will install required software (salt-minion packages on the client machine) and remotely perform the registration.</p>
+</div>
+</li>
+<li>
+<p></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">menu:Visualization[]</div>
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Advanced Search[]</div>
+<p>Quickly search all your systems by specific criteria, such as name, hardware, devices, system info, networking, packages, and location.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Activation Keys[]</div>
+<p>Generate an activation key for a {susemgr}
+-entitled system.
+This activation key can be used to grant a specific level of entitlement or group membership to a newly registered system using the <code class="command">rhnreg_ks</code> command.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Stored Profiles[]</div>
+<p>View system profiles used to provision systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Custom System Info[]</div>
+<p>Create and edit system information keys with completely customizable values assigned while provisioning systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Autoinstallation[]</div>
+<p>Display and modify various aspects of autoinstallation profiles (Kickstart and {ay}
+) used in provisioning systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Software Crashes[]</div>
+<p>List software crashes grouped by UUID.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Virtual Host Managers[]</div>
+<p>Display and modify virtual host managers, file-based or VMware-based.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Salt[]</div>
+<p>View all minions.
+Manage on-boarding, remote commands, and states catalogs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">menu:Keys[]</div>
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Remote Commands[]</div>
+<p>Execute remote commands on targeted systems.
+Select the preview button to ensure selected targets are available and click Run to execute.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:State Catalog[]</div>
+<p>Create, store, and manage states for your Salt minions from the State Catalog.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">menu:Images[]</div>
+<ul>
+<li>
+<p></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">menu:Images[]</div>
+<ul>
+<li>
+<p></p>
+</li>
+<li>
+<p></p>
+</li>
+<li>
+<p></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Patches[]</div>
+<p>View and manage patch (errata) alerts here.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Patches[]</div>
+<p>Lists patch alerts and downloads associated RPMs relevant to your systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Advanced Search[]</div>
+<p>Search patch alerts based on specific criteria, such as synopsis, advisory type, and package name.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Manage Patches[]</div>
+<p>Manage the patches for an organization&#8217;s channels.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Clone Patches[]</div>
+<p>Clone patches for an organization for ease of replication and distribution across an organization.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Software[]</div>
+<p>View and manage the available {susemgr}
+channels and the files they contain.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Channels[]</div>
+<p>View a list of all software channels and those applicable to your systems.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Package Search[]</div>
+<p>Search packages using all or some portion of the package name, description, or summary, with support for limiting searches to supported platforms.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Manage Software Channels[]</div>
+<p>Create and edit channels used to deploy configuration files.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Distribution Channel Mapping[]</div>
+<p>Define default base channels for servers according to their operating system or architecture when registering.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Audit[]</div>
+<p>View and search CVE audits, system subscriptions, and OpenSCAP scans.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:CVE Audit[]</div>
+<p>View a list of systems with their patch status regarding a given CVE (Common Vulnerabilities and Exposures) number.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Subscription Matching[]</div>
+<p>List subscriptions.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:OpenSCAP[]</div>
+<p>View and search OpenSCAP (Security Content Automation Protocol) scans.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Configuration[]</div>
+<p>Keep track of and manage configuration channels, actions, individual configuration files, and systems with {susemgr}
+-managed configuration files.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Overview[]</div>
+<p>A general dashboard view that shows a configuration summary.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Configuration Channels[]</div>
+<p>List and create configuration channels from which any subscribed system can receive configuration files.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Configuration Files[]</div>
+<p>List and create files from which systems receive configuration input.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Systems[]</div>
+<p>List the systems that have {susemgr}
+-managed configuration files.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Schedule[]</div>
+<p>Keep track of your scheduled actions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Pending Actions[]</div>
+<p>List scheduled actions that have not been completed.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Failed Actions[]</div>
+<p>List scheduled actions that have failed.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Completed Actions[]</div>
+<p>List scheduled actions that have been completed.
+Completed actions can be archived at any time.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Archived Actions[]</div>
+<p>List completed actions that have been selected to archive.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Action Chains[]</div>
+<p>View and edit defined action chains.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Users[]</div>
+<p>View and manage users in your organization.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:User List[]</div>
+<p>List users in your organization.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:System Group Configuration[]</div>
+<p>Configure user group creation.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Admin[]</div>
+<p>&#8201;&#8212;&#8201;Use the Setup Wizard to configure {susemgr}
+.
+List, create, and manage one or more {susemgr}
+organizations.
+The {susemgr}
+administrator can assign channel entitlements, create and assign administrators for each organization, and other tasks.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Setup Wizard[]</div>
+<p>Streamlined configuration of basic tasks.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Organizations[]</div>
+<p>List and create new organizations.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Users[]</div>
+<p>List all users known by {susemgr}
+, across all organizations.
+Click individual user names to change administrative privileges of the user.</p>
+</div>
+<div class="paragraph">
+<p>NOTE:
+Users created for organization administration can only be configured by the organization administrator, <em>not</em> the {susemgr}
+ administrator.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Manager Configuration[]</div>
+<p>Make General configuration changes to the {susemgr}
+server, including Proxy settings, Certificate configuration, Bootstrap Script configuration, Organization changes, and Restart the {susemgr}
+server.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:ISS Configuration[]</div>
+<p>Configure master and slave servers for inter-server synchronization.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Task Schedules[]</div>
+<p>View and create schedules.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Task Engine Status[]</div>
+<p>View the status of the various tasks of the {susemgr}
+task engine.</p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<div class="title">menu:Show Tomcat Logs[]</div>
+<p>Display the log entries of the Tomcat server, on which the {susemgr}
+server is running.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">menu:Help[]</div>
+<p>List references to available help resources such as the product documentation, release notes, and a general search for all of this.</p>
+</div>
+<div class="paragraph">
+<div class="title">menu:External Links[]</div>
+<p>List external links to the knowledge base and the online documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.intro.patch_alerts">Patch Alert Icons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Throughout {susemgr}
+you will see three patch (errata) alert icons.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="fa-shield.svg" alt="Security Alert"></span>{mdash}
+represents a security alert.</p>
+</li>
+<li>
+<p><span class="image"><img src="fa-bug.svg" alt="Bug Fix Alert"></span>{mdash}
+represents a bug fix alert.</p>
+</li>
+<li>
+<p><span class="image"><img src="spacewalk-icon-enhancement.svg" alt="Enhancement Alert"></span>{mdash}
+represents an enhancement alert.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On the menu:Overview[]
+ page of the menu:Home[]
+ menu, in the menu:Relevant Security Patches[]
+ section click the patch advisory to view details about the patch or click the number of affected systems to see which systems are affected by the patch alert.
+Both links take you to tabs of the menu:Patch Details[]
+ page.
+If all patches are installed, there is just a menu:View All Patches[]
+ link to open the menu:Patches[]
+ page.
+Refer to <a href="#_s3_sm_errata_details">[_s3_sm_errata_details]</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.intro.quick_search">Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the top bar, {susemgr}
+offers a search functionality for Packages, Patches (Errata), Documentation, and Systems.
+To use the search, click the magnifier, then select the search item (choose from menu:Systems[]
+, menu:Packages[]
+, menu:Documentation[]
+, and menu:Patches[]
+) and type a string to look for a name match.
+Click the menu:Search[]
+ button.
+Your results appear at the bottom of the page.
+image::top_search.png[]</p>
+</div>
+<div class="paragraph">
+<p>If you misspell a word during your search query, the {susemgr}
+search engine performs approximate string (or fuzzy string) matching, returning results that may be similar in spelling to your misspelled queries.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you want to search for a certain development system called <code>test-1.example.com</code> that is registered with {susemgr}
+, but you misspell your query <code>tset</code>, the <code>test-1.example.com</code> system still appears in the search results.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you add a distribution or register a system with a {susemgr}
+server, it may take several minutes for it to be indexed and appear in search results.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For advanced System searches, refer to <a href="#_ref.webui.systems.search">[_ref.webui.systems.search]</a>.</p>
+</li>
+<li>
+<p>For advanced Patch or Errata searches, refer to <a href="#_ref.webui.patches.search">[_ref.webui.patches.search]</a>.</p>
+</li>
+<li>
+<p>For advanced Package searches, refer to <a href="#_ref.webui.channels.search">[_ref.webui.channels.search]</a>.</p>
+</li>
+<li>
+<p>For advanced Documentation searches, refer to <a href="#_s2_sm_your_rhn_help_docsearch">[_s2_sm_your_rhn_help_docsearch]</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.intro.systems_selected">Systems Selected</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On the menu:Systems[Overview]
+ page, if you mark the check box next to a system, the menu:system selected[]
+ number on the right area of the top bar increases.
+This number keeps track of the systems you have selected for use in the System Set Manager (SSM); for more information, see to <a href="#_ref.webui.systems.ssm">[_ref.webui.systems.ssm]</a>.
+At any time, it identifies the number of selected systems and provides the means to work (simultaneously) with an entire selection.
+Clicking the the rubber symbol (menu:Clear[]
+) deselects all systems, while clicking the menu:system selected[]
+ string (menu:Manage[]
+) launches the System Set Manager with your selected systems in place.</p>
+</div>
+<div class="paragraph">
+<p>These systems can be selected in a number of ways.
+Only systems with at least a Management system role are eligible for selection.
+On all system and system group lists, a check boxes exist for this purpose.
+Each time you select a check box next to the systems or groups the menu:systems selected[]
+ counter at the top of the page changes to reflect the new number of systems ready for use in the System Set Manager.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ref.webui.intro.list_nav">Lists</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The information within most categories is presented in the form of lists.
+These lists have some common features for navigation.
+For instance, you can set the number of menu:items per page[]
+ and navigate through virtually all lists by clicking the back and next arrows above and below the right side of the table.
+Some lists also offer the option to retrieve items alphabetically by clicking numbers or letters from the menu:Alphabetical Index[]
+ above the table.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Performing Large List Operations</div>
+<div class="paragraph">
+<p>Performing operations on large lists{mdash}
+such as removing RPM packages from the database with the {susemgr}
+Web interface{mdash}
+may take some time and the system may become unresponsive or signal &#8220;Internal Server
+    Error 500&#8221;
+.
+Nevertheless, the command will succeed in the background if you wait long enough.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="row">
+
+</footer>
+
+<!-- <script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
+</script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'WNURXD2O78',
+  indexName: 'suse-publisher',
+  apiKey: '761b121f117dc5882bfa9e6b1a7abd88'
+});
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-box',
+    placeholder: 'Search in documents...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits'
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+</body>
+</html>
