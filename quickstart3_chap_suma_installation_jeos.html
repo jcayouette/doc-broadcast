@@ -37,12 +37,18 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
+        <div id="navigation">
+<input type="text" id="search-box" />
+</div>
+          <!--
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
     </div>
-</nav></div>
+</nav>
+</div>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Copse|Cutive|Lora:700|Sanchez|Scope+One|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
@@ -63,6 +69,35 @@
     <div class="post-header">
     <h1 class="post-title-main"></h1>
 </div>
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<script>
+  const search = instantsearch(options);
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for products'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.start();
+</script>
+
 <!-- If this does not work place post-content back in div and remove article -->
 <div class="post-content">
     <!-- HACK enough for the demo lol -->
@@ -398,8 +433,8 @@ const search = instantsearch({
 // Adding searchbar and results widgets
 search.addWidget(
   instantsearch.widgets.searchBox({
-    container: '#search-searchbar',
-    placeholder: 'Search into posts...',
+    container: '#search-box',
+    placeholder: 'Search in documents...',
     poweredBy: true // This is required if you're on the free Community plan
   })
 );
@@ -449,8 +484,8 @@ const search = instantsearch({
 // Adding searchbar and results widgets
 search.addWidget(
   instantsearch.widgets.searchBox({
-    container: '#search-searchbar',
-    placeholder: 'Search into posts...',
+    container: '#search-box',
+    placeholder: 'Search in documents...',
     poweredBy: true // This is required if you're on the free Community plan
   })
 );
