@@ -1,0 +1,16 @@
+---
+permalink: manager31-index.html
+layout: page
+---
+:showtitle:
+:page-title: SUSE Manager 3.1
+:page-description: 3.1 Docs
+
+== Available Documents
+
+<<book-mgr-getting-started.adoc#getting-started, Getting Started>>
+
+* Placeholder Installation and Deployment
+* Placeholder Reference Manual
+* Placeholder Administration Guide
+* Placeholder White Papers
