@@ -18,7 +18,7 @@ Latest builds are triggered automatically once a pull request has been accepted 
 
 <<manager32/MAIN-manager.adoc#main-manager, SUSE Manager 3.2>>
 
-<<manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
+<<manager31/manager31-index.adoc#manager31-index, SUSE Manager 3.1>>
 
 === Enterprise Editions (Downstream)
 
