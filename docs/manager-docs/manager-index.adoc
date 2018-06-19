@@ -16,8 +16,6 @@ layout: page
 Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
 Start contributing now!
 
-We want you!
-
 image::wewantyou.jpeg[500, 500]
 
 ====
