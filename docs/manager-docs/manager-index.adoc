@@ -10,6 +10,8 @@ layout: page
 
 == Documentation Editions
 
+Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
+
 This page contains links to upstream/downstream builds from the SUSE Manager documentation source code repository.
 
 === Latest Development Edition (Upstream)
