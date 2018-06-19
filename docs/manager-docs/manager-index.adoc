@@ -7,11 +7,24 @@ layout: page
 :page-description: SUSE Manager Documentation
 :src32: manager32
 :src31: manager31
+:imagesdir: .
 
 == Documentation Editions
 
-// Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
+[IMPORTANT]
+====
+Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
+Start contributing now!
 
+We want you!
+
+image::wewantyou.jpg[]
+
+====
+
+
+image::
+====
 This page contains links to upstream/downstream builds from the SUSE Manager documentation source code repository.
 
 === Latest Development Edition (Upstream)
