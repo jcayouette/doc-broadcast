@@ -14,7 +14,7 @@ layout: page
 [IMPORTANT]
 .Start contributing now!
 ====
-Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
+Docs up-to-date in minutes not months. ROCK ON!
 
 image::wewantyou.jpeg[500, 500]
 
