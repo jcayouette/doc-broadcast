@@ -12,9 +12,9 @@ layout: page
 == Documentation Editions
 
 [IMPORTANT]
+.Start contributing now!
 ====
 Welcome to Support Training! Up-to-date in minutes not months. ROCK ON!
-Start contributing now!
 
 image::wewantyou.jpeg[500, 500]
 
