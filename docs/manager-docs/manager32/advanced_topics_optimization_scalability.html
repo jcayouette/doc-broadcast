@@ -113,8 +113,8 @@
 <ul class="sectlevel1">
 <li><a href="#_optimizing.apache_tomcat">1. Optimizing Apache and Tomcat</a>
 <ul class="sectlevel2">
-<li><a href="#apache_s_httpd_maxclients_parameter">1.1. Apache&#8217;s httpd MaxClients Parameter</a></li>
-<li><a href="#tomcat_s_maxthreads_parameter">1.2. Tomcat&#8217;s maxThreads Parameter</a></li>
+<li><a href="#apaches_httpd_maxclients_parameter">1.1. Apache&#8217;s httpd MaxClients Parameter</a></li>
+<li><a href="#tomcats_maxthreads_parameter">1.2. Tomcat&#8217;s maxThreads Parameter</a></li>
 </ul>
 </li>
 <li><a href="#_optimizing.big">2. Big Scale Deployment (1000 Minions or More)</a>
@@ -147,7 +147,7 @@ Furthermore testing of these altered values should be performed within a test en
 </table>
 </div>
 <div class="sect2">
-<h3 id="apache_s_httpd_maxclients_parameter">1.1. Apache&#8217;s httpd MaxClients Parameter</h3>
+<h3 id="apaches_httpd_maxclients_parameter">1.1. Apache&#8217;s httpd MaxClients Parameter</h3>
 <div class="paragraph">
 <p>The <code class="parameter">MaxClients</code> setting determines the number of Apache httpd processes, and thus limits the number of client connections that can be made at the same time (SUSE Manager uses the pre-fork MultiProcessing Modules). The default value for <code class="parameter">MaxClients</code> in SUSE Manager is 150.
 If you need to set the <code class="parameter">MaxClients</code> value greater than 150, Apache httpd&#8217;s ServerLimit setting and Tomcat&#8217;s <code class="parameter">maxThreads</code> must also be increased accordingly (see below).</p>
@@ -212,7 +212,7 @@ You can check the Apache httpd&#8217;s <code class="path">error.log</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tomcat_s_maxthreads_parameter">1.2. Tomcat&#8217;s maxThreads Parameter</h3>
+<h3 id="tomcats_maxthreads_parameter">1.2. Tomcat&#8217;s maxThreads Parameter</h3>
 <div class="paragraph">
 <p>Tomcat&#8217;s <code class="parameter">maxThreads</code> represents the maximum number of request processing threads that it will create.
 This value determines the maximum number of simultaneous requests that it is able to handle.
