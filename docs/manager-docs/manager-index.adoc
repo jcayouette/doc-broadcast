@@ -21,13 +21,13 @@ endif::[]
 == Documentation Editions
 
 
-//[IMPORTANT]
-//.Start contributing now!
-//====
-//Docs up-to-date in minutes not months. ROCK ON!
+[IMPORTANT]
+.Start contributing now!
+====
+Docs up-to-date in minutes not months. ROCK ON!
 
-//Thank you for your time! Any questions?
-//====
+Thank you for your time! Any questions?
+====
 
 
 This page contains links to upstream/downstream builds from the SUSE Manager documentation source code repository.
